@@ -1,3 +1,26 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.search-box input[type="text"]').on("keyup input", function(){
+            /* Get input value on change */
+            var inputVal = $(this).val();
+            var resultDropdown = $(this).siblings(".result");
+            if(inputVal.length){
+                $.get("live_search.php", {term: inputVal}).done(function(data){
+                    // Display the returned data in browser
+                    resultDropdown.html(data);
+                });
+            } else{
+                resultDropdown.empty();
+            }
+        });
+
+        // Set search input value on click of result item
+        $(document).on("click", ".result p", function(){
+            $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+            $(this).parent(".result").empty();
+        });
+    });
+</script>
 
 <nav class="navbar navbar-inverse" >
         <div class="container-fluid">
@@ -9,13 +32,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-brand">PC LIFE ONLINE</a>
+                <a href="index.html.php" class="navbar-brand">PC LIFE ONLINE</a>
             </div>
 
             <!-- Menu items -->
             <div class="collapse navbar-collapse" id="mainNavBar">
                 <ul class="nav navbar-nav">
-                    <li class="active" ><a href="#">Home</a></li>
+                    <li class="active" ><a href="index.html.php">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Desktop Computers <span class="caret"></span></a>
                         <ul class="dropdown-menu multi-column columns-2">
@@ -140,7 +163,7 @@
                             <li><a href="#">Delivery</a> </li>
                         </ul>
                     </li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="about.html.php">About Us</a></li>
                     <li><a href="#">Contact Us</a></li>
                 </ul>
                 <!-- Right allign -->

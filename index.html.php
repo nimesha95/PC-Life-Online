@@ -19,31 +19,6 @@
 
     <link rel="stylesheet" type="text/css" href="css/Style1.css">
 
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.search-box input[type="text"]').on("keyup input", function(){
-                /* Get input value on change */
-                var inputVal = $(this).val();
-                var resultDropdown = $(this).siblings(".result");
-                if(inputVal.length){
-                    $.get("live_search.php", {term: inputVal}).done(function(data){
-                        // Display the returned data in browser
-                        resultDropdown.html(data);
-                    });
-                } else{
-                    resultDropdown.empty();
-                }
-            });
-
-            // Set search input value on click of result item
-            $(document).on("click", ".result p", function(){
-                $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-                $(this).parent(".result").empty();
-            });
-        });
-    </script>
-
 </head>
 <body>
     <?php
@@ -66,16 +41,16 @@
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <div class="item active carosol_features">
-                        <img class="carosol_features" src="img/cover1.jpg" alt="Los Angeles">
+                    <div class="item active">
+                        <img src="/img/Cover1.jpg" alt="Los Angeles">
                     </div>
 
                     <div class="item">
-                        <img src="img/hiking-fb-cover.jpg" alt="Chicago">
+                        <img src="/img/Cover2.jpg" alt="Chicago">
                     </div>
 
                     <div class="item">
-                        <img src="img/Cover2.jpg" alt="New York">
+                        <img src="/img/hiking-fb-cover.jpg" alt="New York">
                     </div>
                 </div>
 
