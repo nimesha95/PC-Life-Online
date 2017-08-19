@@ -9,17 +9,57 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body style="background-color:  #20B2AA">
+<body style="background-color: #ecebeb">
             <div class="container">
                 <h2 STYLE="text-align: center">Add Desktop computers</h2>
-                <form class="form-horizontal" action="/action_page.php">
+                <?php
+                require '../../dbcon/user.php';
+                require '../../dbcon/dbcon.php';
+                $sql2 ="SELECT * FROM tb_desktop WHERE id = (SELECT max(id) FROM tb_desktop)";
+                $result2=mysqli_query($conn,$sql2);
+                if($result2!="") {
+                    while ($row = mysqli_fetch_array($result2)){
+                        $preid= $row['id'];
+                    }
+                }
+                else{
+                    $preid= 1;
+                }
+                if($preid<9){
+                    $dc_id='DC0000'.($preid+1);
+                }
+                elseif ($preid<99){
+                    $dc_id='DC000'.($preid+1);
+                }
+                elseif ($preid<999){
+                    $dc_id='DC00'.($preid+1);
+                }
+                elseif ($preid<9999){
+                    $dc_id='DC0'.($preid+1);
+                }
+                else{
+                    $dc_id='DC'.($preid+1);
+                }
+
+
+                echo'';
+
+                ?>
+                <form class="form-horizontal" action="" method="post">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Product ID ">Product ID:</label>
+                        <div class="col-sm-10">
+                            <label class="control-label col-sm-2" for="Product ID "><?php echo $dc_id ?></label>
+                            <input type="hidden"  value="<?php echo $dc_id ?>" class="form-control" id="pro_id" title="Model Number" "  name="pro_id">
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Brand">Brand:</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="brand" name="brand">
-                                <option value="Please Select" selected>Please Select...</option>
-                                <option value="HP">HP</option>
+
+                                <option value="HP" selected>HP</option>
                                 <option value="Lenovo">Lenovo</option>
                                 <option value="Samsung">Samsung</option>
                                 <option value="Dell">Dell</option>
@@ -43,8 +83,8 @@
                         <label class="control-label col-sm-2" for="Condition">Condition:</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="cond" name="cond">
-                                <option value="Please Select" selected>Please Select...</option>
-                                <option value="Brand New">Brand new</option>
+
+                                <option value="Brand New" selected>Brand new</option>
                                 <option value="Used">Used</option>
                             </select>
                         </div>
@@ -59,7 +99,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="RAM">RAM type:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" " pattern="[A-Za-z]{3,}" id="ram" title="RAM Type" placeholder="Enter RAM type" name="ram">
+                            <input type="text" class="form-control" " pattern="[A-Za-z]{3,}" id="ram" title="RAM Type" placeholder="Enter RAM type" name="ram" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -108,7 +148,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Sound System">Sound System:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" " pattern="[A-Za-z]{3,}" id="sound" title="Sound System Details" placeholder="Enter Sound System type" name="sound">
+                            <input type="text" class="form-control" " pattern="[A-Za-z]{3,}" id="sound" title="Sound System Details" placeholder="Enter Sound System type" name="sounds">
                         </div>
                     </div>
 
@@ -128,8 +168,8 @@
                         <label class="control-label col-sm-2" for="Condition">Availability:</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="availability" name="availability">
-                                <option value="Please Select" selected>Please Select...</option>
-                                <option value="Available">Available</option>
+
+                                <option value="Available"selected>Available</option>
                                 <option value="Not Available">Not Available</option>
                             </select>
                         </div>
@@ -152,8 +192,8 @@
                         <label class="control-label col-sm-2" for="Form Factor">Form Factor:</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="frm_factor" name="frm_factor">
-                                <option value="Please Select" selected>Please Select...</option>
-                                <option value="ATX">ATX</option>
+
+                                <option value="ATX" selected>ATX</option>
                                 <option value="Mini ATX">Mini ATX</option>
                                 <option>Micro ATX</option>
                             </select>
@@ -162,38 +202,38 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Primary Image">Primary Image:</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" id="pri_image" placeholder="Select Image " name="pri_image" accept="image/*">
+                            <input type="text" class="form-control" id="pri_image" placeholder="Paste the link of the Image (Thumbnail Image)" name="pri_image" accept="image/*">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Image 1">Image 1:</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" id="img1" placeholder="Select Image " name="img1" accept="image/*">
+                            <input type="text" class="form-control" id="img1" placeholder="Paste the link of the Image" name="img1" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Image 2">Image 2:</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" id="img2" placeholder="Select Image " name="img2" accept="image/*">
+                            <input type="text" class="form-control" id="img2" placeholder="Paste the link of the Image" name="img2" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Image 3">Image 3:</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" id="img3" placeholder="Select Image " name="img3" accept="image/*">
+                            <input type="text" class="form-control" id="img3" placeholder="Paste the link of the Image" name="img3" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Image 4">Image 4:</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" id="img4" placeholder="Select Image " name="img4" accept="image/*">
+                            <input type="text" class="form-control" id="img4" placeholder="Paste the link of the Image " name="img4" >
                         </div>
                     </div>
 
                     
                      <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Add Item</button><button type="clear" class="btn btn-default">Clear</button>      </div>
+        <button type="submit" class="btn btn-default" name="add">Add Item</button><button type="clear" class="btn btn-default" name="clear">Clear</button>      </div>
     </div>
 
 
@@ -201,6 +241,7 @@
             </div>
     </form>
 </div>
+
 
 </body>
 </html>
