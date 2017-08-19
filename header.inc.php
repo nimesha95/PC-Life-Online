@@ -19,7 +19,6 @@
 
     <link rel="stylesheet" type="text/css" href="css/Style1.css">
 
-
     <script type="text/javascript">
         $(document).ready(function(){
             $('.search-box input[type="text"]').on("keyup input", function(){
@@ -46,8 +45,7 @@
 
 </head>
 <body>
-
-    <nav class="navbar navbar-inverse" >
+<nav class="navbar navbar-inverse" >
         <div class="container-fluid">
 
             <!-- logo -->
@@ -57,13 +55,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-brand">PC LIFE ONLINE</a>
+                <a href="index.html.php" class="navbar-brand">PC LIFE ONLINE</a>
             </div>
 
             <!-- Menu items -->
             <div class="collapse navbar-collapse" id="mainNavBar">
                 <ul class="nav navbar-nav">
-                    <li class="active" ><a href="#">Home</a></li>
+                    <li class="active" ><a href="index.html.php">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Desktop Computers <span class="caret"></span></a>
                         <ul class="dropdown-menu multi-column columns-2">
@@ -80,7 +78,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="multi-column-dropdown">
-                                        <li><a href="#"><b>Used Computers</b></a> </li>
+                                        <li><a href="#"><b>Brand New Computers</b></a> </li>
                                         <li><a href="#">HP</a> </li>
                                         <li><a href="#">Samsung</a> </li>
                                         <li><a href="#">Lenovo</a> </li>
@@ -132,7 +130,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <ul class="multi-column-dropdown">
-                                        <li><a href="#">Motherboard</a> </li>
+                                        <li><a href="items.html.php?item=motherboard">Motherboard</a> </li>
                                         <li><a href="#">Ram</a> </li>
                                         <li><a href="#">Processors</a> </li>
                                         <li><a href="#">Hard Drives</a> </li>
@@ -188,7 +186,7 @@
                             <li><a href="#">Delivery</a> </li>
                         </ul>
                     </li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="about.html.php">About Us</a></li>
                     <li><a href="#">Contact Us</a></li>
                 </ul>
                 <!-- Right allign -->
@@ -205,52 +203,3 @@
             </div>
         </div>
     </nav>
-<!--
-    <div class="navbar navbar-inverse navbar-fixed-left">
-        <a class="navbar-brand" href="#">Brand</a>
-        <ul class="nav navbar-nav">
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Sub Menu1</a></li>
-                    <li><a href="#">Sub Menu2</a></li>
-                    <li><a href="#">Sub Menu3</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Sub Menu4</a></li>
-                    <li><a href="#">Sub Menu5</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Link2</a></li>
-            <li><a href="#">Link3</a></li>
-            <li><a href="#">Link4</a></li>
-            <li><a href="#">Link5</a></li>
-        </ul>
-    </div>
-   -->
-
-
-    <div class="row">  <!-- This is for the number 1 in diagram -->
-        <div class="col-sm-3 visible-lg">
-            <p>News container 1</p>
-        <!--
-        </div>
-        <div class="col-sm-9">
-            <img src="img/cover1.jpg">
-        </div>
-        -->
-
-    </div>
-
-    <div class="row">  <!-- This is for the number 1 in diagram -->
-        <div class="col-sm-3 visible-lg">
-            <p>News container 2</p>
-        </div>
-        <div class="col-sm-9">
-            <p>Offer bar 2</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <p align="center">Footer <a href="#"> Link</a> </p>
-    </div>
-</body>
-</html>
