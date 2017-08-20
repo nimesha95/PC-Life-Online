@@ -51,18 +51,19 @@ if(isset($_POST['add'])){
     $img4=$_POST['img4'];
     echo $img4;
     date_default_timezone_set("Asia/Calcutta");
+    date_default_timezone_set("Asia/Calcutta");
 
     $up_date= date('Y-m-d H:i:s');;
     $add_date= date('Y-m-d H:i:s');;
-    echo $add_date;
-    $up_date= date('Y-m-d H:i:s');;
+
+
     echo $up_date;
     $os=$_POST['os'];
     echo $os;
     $frm_factor=$_POST['frm_factor'];
     echo $frm_factor;
 
-    $sql="INSERT INTO `tb_desktop`(`pro_id`, `cat`, `brand`, `model`, `processor`, `m_board`, `ram`, `hdd`, `gui`, `op_drive`, `monitor_des`, `pw_supply`, `mouse`, `key_bd`, `sounds`, `price`, `dis_price`, `availability`, `warranty`, `pri_image`, `img1`, `img2`, `img3`, `img5`, `img4`, `add_date`, `up_date`, `os`, `frm_factor`) VALUES ('$pro_id','$cond','$brand','$model','$processor','$m_board','$ram','$hdd','$gui','$op_drive','$monitor_des','$pw_supply','$mouse','$key_bd','$sounds','$price','$dis_price','$availability','$warranty','$pri_image','$img1','$img2','$img3','$img4','$img4','$add_date','$up_date','$os','$frm_factor')";
+    $sql=" UPDATE `tb_desktop` SET `cat`='$cond',`brand`='$brand',`model`='$model',`processor`='$processor',`m_board`='$m_board',`ram`='$ram',`hdd`='$hdd',`gui`='$gui',`op_drive`='$op_drive',`monitor_des`='$monitor_des',`pw_supply`='$pw_supply',`mouse`='$mouse',`key_bd`='$key_bd',`sounds`='$sounds',`price`='$price',`dis_price`='$dis_price',`availability`='$availability',`warranty`='$warranty',`pri_image`='$pri_image',`img1`='$img1',`img2`='$img2',`img3`='$img3',`img5`='$img4',`img4`='$img4',`up_date`='$up_date',`os`='$os',`frm_factor`='$frm_factor' WHERE pro_id='$pro_id'";
     $res1=mysqli_query($conn,$sql);
 
 
