@@ -67,6 +67,9 @@ if(isset($_POST['add'])){
     $res1=mysqli_query($conn,$sql);
 
 
+    header('Location:view.php?id='.$pro_id);
+
+
 
 
 }

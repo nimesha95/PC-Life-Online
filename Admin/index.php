@@ -1,7 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mzone
- * Date: 2017-08-15
- * Time: AM 3:30
- */
+include 'header.inc.php';
+if(isset($_GET['id'])){
+    if($_GET['id']=='products'){
+        include 'Products/index.php';
+    }
+
+}
+else {
+    echo 'Home';
+}
+?>

@@ -1,0 +1,35 @@
+.thumbimg{
+    margin:10px ;width: 120px; height: 120px;
+}
+.thumbproduct{
+    margin: 5px;padding: 5px; height:150px; box-shadow: black 0px 0px 2px; background-color: white;
+    border-radius: 2px;
+    -webkit-transition: box-shadow 0.2s;
+}
+
+
+.thumbproduct:hover{
+
+    box-shadow: black 0px 0px 5px;
+    text-decoration: none;
+
+
+
+
+
+}
+#imaginary_container{
+    margin-top:20%; /* Don't copy this */
+}
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}

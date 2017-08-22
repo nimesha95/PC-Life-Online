@@ -11,51 +11,79 @@
 </head>
 <body style="background-color: #ecebeb">
             <div class="container">
-
+                <h2 STYLE="text-align: center">Add Desktop computers</h2>
                 <?php
-                if(isset($_GET['id']))
-                {
-                    require '../../dbcon/user.php';
-                    require '../../dbcon/dbcon.php';
-                   $dc_id=$_GET['id'];
-                    $sql ="SELECT * FROM tb_desktop WHERE pro_id='$dc_id'";
-                    $result=mysqli_query($conn,$sql);
-                    if($result!="Select Course"){
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo '
-<h2 STYLE="text-align: center">Update Desktop computers ( '.$dc_id.' )</h2>
-                            <form class="form-horizontal" action="Updatefuction.php" method="post">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="Product ID ">Product ID:</label>
-                        <div class="col-sm-10">
-                            <label class="control-label col-sm-2" for="Product ID ">'.$dc_id.'</label>
-                            <input type="hidden"  value="'.$dc_id.'" class="form-control" id="pro_id" title="Model Number" "  name="pro_id">
-                        </div>
-                    </div>
+                require '../../dbcon/user.php';
+                require '../../dbcon/dbcon.php';
+                $sql2 ="SELECT * FROM tb_desktop WHERE id = (SELECT max(id) FROM tb_desktop)";
+                $result2=mysqli_query($conn,$sql2);
+                if($result2!="") {
+                    while ($row = mysqli_fetch_array($result2)){
+                        $preid= $row['id'];
+                    }
+                }
+                else{
+                    $preid= 1;
+                }
+                if($preid<9){
+                    $dc_id='DC0000'.($preid+1);
+                }
+                elseif ($preid<99){
+                    $dc_id='DC000'.($preid+1);
+                }
+                elseif ($preid<999){
+                    $dc_id='DC00'.($preid+1);
+                }
+                elseif ($preid<9999){
+                    $dc_id='DC0'.($preid+1);
+                }
+                else{
+                    $dc_id='DC'.($preid+1);
+                }
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="Brand">Brand:</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="brand" name="brand">
 
-                                <option value="HP" ';if($row['brand']=='HP'){echo 'selected';} echo '>HP</option>
-                                <option value="Lenovo"';if($row['brand']=='Lenovo'){echo 'selected';} echo '>Lenovo</option>
-                                <option value="Samsung"';if($row['brand']=='Samsung'){echo 'selected';} echo '>Samsung</option>
-                                <option value="Dell"';if($row['brand']=='Dell'){echo 'selected';} echo '>Dell</option>
-                                <option value="Other"';if($row['brand']=='Other'){echo 'selected';} echo '>Other</option>
-                            </select>
+                echo'';
+
+                ?>
+                <form class="form-horizontal" action="addfunction.php" method="post">
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="Product ID ">Product ID:</label>
+                            <div class="col-sm-10">
+                                <label class="control-label col-sm-2" for="Product ID "><?php echo $dc_id ?></label>
+                                <input type="hidden"  value="<?php echo $dc_id ?>" class="form-control" id="pro_id" title="Model Number" "  name="pro_id">
+                            </div>
                         </div>
-                    </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="Brand">Brand:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="brand" name="brand">
+
+                                    <option value="HP" selected>HP</option>
+                                    <option value="Lenovo">Lenovo</option>
+                                    <option value="Samsung">Samsung</option>
+                                    <option value="Dell">Dell</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Model">Model:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="model" title="Model Number"   placeholder="Enter model type" name="model" value="'.$row['model'].'">
+                            <input type="text" class="form-control" id="model" title="Model Number" "  placeholder="Enter model type" name="model">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Processor">Processor:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="'.$row['processor'].'"  id="processor" title="Processor Details" placeholder="Enter Processor type" name="processor">
+                            <input type="text" class="form-control" "  id="processor" title="Processor Details" placeholder="Enter Processor type" name="processor">
                         </div>
                     </div>
                     <div class="form-group">
@@ -63,28 +91,28 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="cond" name="cond">
 
-                                <option value="Brand New"';if($row['cat']=='Brand New'){echo 'selected';} echo '>Brand new</option>
-                                <option value="Used"';if($row['brand']=='HP'){echo 'selected';} echo '>Used</option>
+                                <option value="Brand New" selected>Brand new</option>
+                                <option value="Used">Used</option>
                             </select>
                         </div>
-                    </div> 
+                    </div>
                         
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Mother Board">Mother Board Details:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="'.$row['m_board'].'" id="m_board" title="Mother Board Details" placeholder="Enter motherboard type" name="m_board">
+                            <input type="text" class="form-control" "  id="m_board" title="Mother Board Details" placeholder="Enter motherboard type" name="m_board">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="RAM">RAM type:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="'.$row['ram'].'"  id="ram" title="RAM Type" placeholder="Enter RAM type" name="ram" required>
+                            <input type="text" class="form-control" "  id="ram" title="RAM Type" placeholder="Enter RAM type" name="ram" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Hard Drive">Hard Drive:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="" id="hdd" title="Hard Drive Details" placeholder="Enter Hard Drive details" name="hdd">
+                            <input type="text" class="form-control" id="hdd" title="Hard Drive Details" placeholder="Enter Hard Drive details" name="hdd">
                         </div>
                     </div>
                     <div class="form-group">
@@ -134,13 +162,13 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Price">Price:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" pattern="\d+.{2,}" id="price" title="" placeholder="Enter Price" name="price">
+                            <input type="text" class="form-control" pattern="\d+.{1,}"id="price" title="" placeholder="Enter Price" name="price">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Discounted Price">Discounted Price:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" pattern="\d+.{2,}" id="dis_price" title="Price after got discount" placeholder="Enter Discounted Price " name="dis_price">
+                            <input type="text" class="form-control" pattern="\d+.{1,}"id="dis_price" title="Price after got discount" placeholder="Enter Discounted Price " name="dis_price">
                         </div>
                     </div>
                     <div class="form-group">
@@ -174,7 +202,7 @@
 
                                 <option value="ATX" selected>ATX</option>
                                 <option value="Mini ATX">Mini ATX</option>
-                                <option>Micro ATX</option>
+                                <option value="Micro ATX">Micro ATX</option>
                             </select>
                         </div>
                     </div>
@@ -217,20 +245,9 @@
 
 
                 </form>
-                            
-                            ';
-
-                        }
-                }
-                }
-
-
-                echo'';
-
-                ?>
-
             </div>
-
+    </form>
+</div>
 
 
 </body>
