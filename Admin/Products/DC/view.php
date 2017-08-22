@@ -107,8 +107,9 @@ else{ echo '<form class="form-horizontal" action="ava.php" method="post"><div cl
 echo'
 </td>
 <td> 
-<form class="form-horizontal" action="addfunction.php" method="post"><div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default" name="add"><b>Update</b></button>      </div>
+<form class="form-horizontal" action="delete.php" method="post"><div class="col-sm-offset-2 col-sm-10">
+<input type="hidden"  value="'.$pro_id.'" class="form-control" id="pro_id" title="Model Number" "  name="pro_id">
+        <button type="submit" class="btn btn-default" name="delete" ><b style="color:red">DELETE</b></button>      </div>
     </div>
 </form>
 </td>
