@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Desktop Computers</title>
+    <title>Laptop Computers</title>
     <?php
     require '../header.pro.php';
     ?>
@@ -13,7 +13,7 @@
                     require '../../dbcon/user.php';
                     require '../../dbcon/dbcon.php';
                    $dc_id=$_POST['pro_id'];
-                    $sql ="SELECT * FROM tb_desktop WHERE pro_id='$dc_id'";
+                    $sql ="SELECT * FROM tb_laptop WHERE pro_id='$dc_id'";
                     $result=mysqli_query($conn,$sql);
                     if($result!="Select Course"){
                         while ($row = mysqli_fetch_array($result)) {
@@ -58,18 +58,13 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="cond" name="cond">
 
-                                <option value="Brand New"';if($row['cat']=='Brand New'){echo 'selected';} echo '>Brand new</option>
-                                <option value="Used"';if($row['brand']=='HP'){echo 'selected';} echo '>Used</option>
+                                <option value="Brand New"';if($row['cond']=='Brand New'){echo 'selected';} echo '>Brand new</option>
+                                <option value="Used"';if($row['cond']=='HP'){echo 'selected';} echo '>Used</option>
                             </select>
                         </div>
                     </div> 
-                        
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="Mother Board">Mother Board Details:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" value="'.$row['m_board'].'" id="m_board" title="Mother Board Details" placeholder="Enter motherboard type" name="m_board">
-                        </div>
-                    </div>
+                     
+                    
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="RAM">RAM type:</label>
                         <div class="col-sm-10">
@@ -95,27 +90,39 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="Monitor details">Monitor Details:</label>
+                        <label class="control-label col-sm-2" for="Monitor details">Screen Type :</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="'.$row['monitor_des'].'"  id="monitor_des" placeholder="Enter Monitor Details" title="Monitor Details" name="monitor_des">
+                            <input type="text" class="form-control" value="'.$row['screen_type'].'"  id="screen_type" placeholder="Enter Monitor Details" title="Monitor Details" name="screen_type">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="power Supply">Power Supply:</label>
+                        <label class="control-label col-sm-2" for="power Supply">Screen Size:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="'.$row['pw_supply'].'"  id="pw_supply" title="Power Supply Details" placeholder="Enter Power Supply Details" name="pw_supply">
+                            <input type="text" class="form-control" value="'.$row['screen_size'].'"  id="screen_size" title="Power Supply Details" placeholder="Enter Screen Size Details" name="screen_size">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="Mouse type">Mouse Type:</label>
+                        <label class="control-label col-sm-2" for="Mouse type">Wifi:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="'.$row['mouse'].'"  title="Mouse Details" id="mouse" placeholder="Enter Mouse type" name="mouse">
+                            <input type="text" class="form-control" value="'.$row['wifi'].'"  title="wifi" id="wifi" placeholder="Enter Mouse type" name="wifi">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="Key Board">Key Board Type:</label>
+                        <label class="control-label col-sm-2" for="Key Board">Bluetooth:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="'.$row['key_bd'].'" id="key_bd" title="Key Board Details" placeholder="Enter Key Board type" name="key_bd">
+                            <input type="text" class="form-control" value="'.$row['bluetooth'].'" id="bluetooth" title="Key Board Details" placeholder="Enter Key Board type" name="bluetooth">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Key Board">Web Camera:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" value="'.$row['web_cam'].'" id="web_cam" title="Key Board Details" placeholder="Enter Key Board type" name="web_cam">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Key Board">Colors:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" value="'.$row['colors'].'" id="web_cam" title="Key Board Details" placeholder="Enter Key Board type" name="colors">
                         </div>
                     </div>
 
@@ -143,8 +150,8 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="availability" name="availability">
 
-                                <option value="Available"';if($row['cat']=='Available'){echo 'selected';} echo '>Available</option>
-                                <option value="Not Available"';if($row['cat']=='Not Available'){echo 'selected';} echo '>Not Available</option>
+                                <option value="Available"';if($row['availability']=='Available'){echo 'selected';} echo '>Available</option>
+                                <option value="Not Available"';if($row['availability']=='Not Available'){echo 'selected';} echo '>Not Available</option>
                             </select>
                         </div>
                     </div>
@@ -162,17 +169,7 @@
                             <input type="text" class="form-control" value="'.$row['os'].'" id="os" title="Already Installed Operating System" placeholder="Enter OS " name="os">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="Form Factor">Form Factor:</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="frm_factor" name="frm_factor">
-
-                                <option value="ATX" ';if($row['cat']=='ATX'){echo 'selected';} echo '>ATX</option>
-                                <option value="Mini ATX"';if($row['cat']=='Mini ATX'){echo 'selected';} echo '>Mini ATX</option>
-                                <option value="Micro ATX"';if($row['cat']=='Micro ATX'){echo 'selected';} echo '>Micro ATX</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Primary Image">Primary Image:</label>
                         <div class="col-sm-10">
@@ -207,7 +204,7 @@
                     
                      <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default" name="add">Add Item</button><button type="clear" class="btn btn-default" name="clear">Clear</button>      </div>
+        <button type="submit" class="btn btn-default" name="add">Update</button><button type="clear" class="btn btn-default" name="clear">Clear</button>      </div>
     </div>
 
 

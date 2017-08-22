@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Desktop Computers</title>
+    <title>Laptop Computers</title>
     <?php
     require '../header.pro.php';
     ?>
     <div class="container">
-        <h3 ><a href="../../Porducts.php">Products</a> > Desktop Computers</h3>
+        <h3 ><a href="../../Porducts.php">Products</a> > Laptop Computers</h3>
 
 
         <div class="row">
@@ -34,7 +33,7 @@
             require '../../dbcon/dbcon.php';
             if(isset($_POST['search'])){
                 $pro_id=$_POST['searchres'];
-                $sql ="SELECT * FROM tb_desktop WHERE pro_id='$pro_id' Order BY up_date DESC";
+                $sql ="SELECT * FROM tb_laptop WHERE pro_id='$pro_id' Order BY up_date DESC";
                 $result=mysqli_query($conn,$sql);
                 if($result!="") {
                     while ($row = mysqli_fetch_array($result)) {
@@ -84,7 +83,7 @@
 
             }
             else{
-                $sql ="SELECT * FROM tb_desktop Order BY up_date DESC ";
+                $sql ="SELECT * FROM tb_laptop Order BY up_date DESC ";
                 $result=mysqli_query($conn,$sql);
                 if($result!="") {
                     while ($row = mysqli_fetch_array($result)) {

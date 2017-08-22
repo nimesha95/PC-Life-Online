@@ -26,6 +26,7 @@ include 'header.inc.php';
                     </a>
             </div>
             <div class="col-sm-6">
+                <a href="Products/LC/index.php">
                 <div class="thumbproduct">
                     <table> <tr> <td rowspan="4"><img src="Products/img/Lap.jpg" style="margin:10px ;width: 120px; height: 120px">
                             </td><td><h3> Laptop Computers</h3></td></tr>
@@ -39,7 +40,9 @@ include 'header.inc.php';
                             <td><b>------------</b></td>
                         </tr>
                     </table>
+
                 </div>
+                </a>
             </div>
             <div class="col-sm-6">
                 <div class="thumbproduct">
