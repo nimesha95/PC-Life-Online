@@ -18,6 +18,9 @@
                                 <h3>{{$item->name}}</h3>
                                 <p>{{$item->description}}</p>
                                 <div class="clearfix">
+                                    <div class="pull-left price">
+                                        <h4>{{$item->price}} LKR</h4>
+                                    </div>
                                     <a href="#"
                                        class="btn btn-success pull-right" role="button"> Add to Cart </a>
                                 </div>
