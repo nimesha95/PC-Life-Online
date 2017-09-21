@@ -26,22 +26,22 @@
                             <div class="col-sm-6">
                                 <ul class="multi-column-dropdown">
                                     <li><a href="{{ url('/desktops/used') }}"><b>Used Computers</b></a></li>
-                                    <li><a href="#">HP</a></li>
-                                    <li><a href="#">Samsung</a></li>
-                                    <li><a href="#">Lenovo</a></li>
-                                    <li><a href="#">Dell</a></li>
-                                    <li><a href="#">Others</a></li>
+                                    <li><a href="{{ url('/desktops/used/HP') }}">HP</a></li>
+                                    <li><a href="{{ url('/desktops/used/Samsung') }}">Samsung</a></li>
+                                    <li><a href="{{ url('/desktops/used/Lenovo') }}">Lenovo</a></li>
+                                    <li><a href="{{ url('/desktops/used/Dell') }}">Dell</a></li>
+                                    <li><a href="{{ url('/desktops/used/Other') }}">Others</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="multi-column-dropdown">
                                     <li><a href="{{ url('/desktops/new') }}"><b>Brand New
                                                 Computers</b></a></li>
-                                    <li><a href="#">HP</a></li>
-                                    <li><a href="#">Samsung</a></li>
-                                    <li><a href="#">Lenovo</a></li>
-                                    <li><a href="#">Dell</a></li>
-                                    <li><a href="#">Others</a></li>
+                                    <li><a href="{{ url('/desktops/new/HP') }}">HP</a></li>
+                                    <li><a href="{{ url('/desktops/new/Samsung') }}">Samsung</a></li>
+                                    <li><a href="{{ url('/desktops/new/Lenovo') }}">Lenovo</a></li>
+                                    <li><a href="{{ url('/desktops/new/Dell') }}">Dell</a></li>
+                                    <li><a href="{{ url('/desktops/new/Other') }}">Others</a></li>
                                 </ul>
                             </div>
                         </div>

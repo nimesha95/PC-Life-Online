@@ -13,10 +13,14 @@ class ProductController extends Controller
         return view('shop.index');
     }
 
-    public function getDesktops($type)
+    public function getDesktops($type, $brand = null)
     {
-        $items = DB::select("select * from desktops where type='".$type."'");
-       // $desktops = Desktop::all();
+        if ($brand == null) {
+            $items = DB::select("select * from desktops where type='" . $type . "'");
+        } else {
+            //$items = DB::select("select * from desktops where type='"new\" and brand= \"Lenovo\" ");
+            $items = DB::select("select * from desktops where type='" . $type . "' and brand='" . $brand . "'");
+        }
         return view('shop.product',['items'=>$items]);
     }
 
