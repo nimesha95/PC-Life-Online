@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('partials/desktop_sbar')
+    @include('partials/'.$sidebar)
 
     <div class="col-md-9">
         @if(sizeof($items)>0)

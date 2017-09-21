@@ -150,13 +150,13 @@
                                 class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if(Auth::check())
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="{{ route('user.profile') }}">Profile</a></li>
                             <li><a href="#">Settings</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Sign Out</a></li>
+                            <li><a href="{{ route('user.logout') }}">Sign Out</a></li>
                         @else
-                            <li><a href="#">Sign In</a></li>
-                            <li><a href="#">Sign Up</a></li>
+                            <li><a href="{{ route('user.signin') }}">Sign In</a></li>
+                            <li><a href="{{ route('user.signup') }}">Sign Up</a></li>
                         @endif
                     </ul>
                 </li>

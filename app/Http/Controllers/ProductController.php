@@ -21,7 +21,7 @@ class ProductController extends Controller
             //$items = DB::select("select * from desktops where type='"new\" and brand= \"Lenovo\" ");
             $items = DB::select("select * from desktops where type='" . $type . "' and brand='" . $brand . "'");
         }
-        return view('shop.product',['items'=>$items]);
+        return view('shop.product', ['items' => $items, 'sidebar' => 'desktop_sbar']);
     }
 
 }
