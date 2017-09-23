@@ -54,23 +54,23 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <ul class="multi-column-dropdown">
-                                    <li><a href="items.html.php?item=tb_laptop&cat=Used"><b>Used Laptops</b></a></li>
-                                    <li><a href="#">HP</a></li>
-                                    <li><a href="#">Samsung</a></li>
-                                    <li><a href="#">Lenovo</a></li>
-                                    <li><a href="#">Dell</a></li>
-                                    <li><a href="#">Others</a></li>
+                                    <li><a href="{{ url('/laptops/used') }}"><b>Used Laptops</b></a></li>
+                                    <li><a href="{{ url('/laptops/used/HP') }}">HP</a></li>
+                                    <li><a href="{{ url('/laptops/used/Samsung') }}">Samsung</a></li>
+                                    <li><a href="{{ url('/laptops/used/Lenovo') }}">Lenovo</a></li>
+                                    <li><a href="{{ url('/laptops/used/Dell') }}">Dell</a></li>
+                                    <li><a href="{{ url('/laptops/used/Other') }}">Others</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="multi-column-dropdown">
-                                    <li><a href="items.html.php?item=tb_laptop&cat=Brand_New"><b>Brand New
+                                    <li><a href="{{ url('/laptops/new') }}"><b>Brand New
                                                 Laptops</b></a></li>
-                                    <li><a href="#">HP</a></li>
-                                    <li><a href="#">Samsung</a></li>
-                                    <li><a href="#">Lenovo</a></li>
-                                    <li><a href="#">Dell</a></li>
-                                    <li><a href="#">Others</a></li>
+                                    <li><a href="{{ url('/laptops/new/HP') }}">HP</a></li>
+                                    <li><a href="{{ url('/laptops/new/Samsung') }}">Samsung</a></li>
+                                    <li><a href="{{ url('/laptops/new/Lenovo') }}">Lenovo</a></li>
+                                    <li><a href="{{ url('/laptops/new/Dell') }}">Dell</a></li>
+                                    <li><a href="{{ url('/laptops/new/Other') }}">Others</a></li>
                                 </ul>
                             </div>
                         </div>

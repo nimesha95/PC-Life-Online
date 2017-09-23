@@ -21,6 +21,11 @@ Route::get('/desktops/{type}/{brand?}', [
     'as' => 'product.product'
 ]);
 
+Route::get('/laptops/{type}/{brand?}', [
+    'uses' => 'ProductController@getLaptops',
+    'as' => 'product.product'
+]);
+
 Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/signup', [

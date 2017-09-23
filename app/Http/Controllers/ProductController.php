@@ -24,4 +24,14 @@ class ProductController extends Controller
         return view('shop.product', ['items' => $items, 'sidebar' => 'desktop_sbar']);
     }
 
+    public function getLaptops($type, $brand = null)
+    {
+        if ($brand == null) {
+            $items = DB::select("select * from laptops where type='" . $type . "'");
+        } else {
+            $items = DB::select("select * from laptops where type='" . $type . "' and brand='" . $brand . "'");
+        }
+        return view('shop.product', ['items' => $items, 'sidebar' => 'laptop_sbar']);
+    }
+
 }

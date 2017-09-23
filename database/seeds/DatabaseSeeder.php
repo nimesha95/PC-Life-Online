@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(DesktopSeeder::class);
+        //$this->call(DesktopSeeder::class);
+        $this->call(LaptopSeeder::class);
     }
 }
