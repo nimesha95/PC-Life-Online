@@ -41,4 +41,4 @@
         </ul>
     </nav>
 
-
+    <!-- This div is not closed and this will be closed on the relevent page this partial item goes -->

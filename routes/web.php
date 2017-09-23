@@ -26,6 +26,11 @@ Route::get('/laptops/{type}/{brand?}', [
     'as' => 'product.product'
 ]);
 
+Route::get('/add-to-cart/{id}', [
+    'uses' => 'ProductController@getAddToCart',
+    'as' => 'product.addToCart'
+]);
+
 Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/signup', [

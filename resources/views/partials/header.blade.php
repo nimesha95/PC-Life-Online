@@ -135,7 +135,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-                        <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
+                        <span class="badge">{{Cart::count()}}</span>
                     </a>
                 </li>
                 <li class="dropdown">

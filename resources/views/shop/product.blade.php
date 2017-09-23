@@ -22,7 +22,7 @@
                                         <div class="pull-left price">
                                             <h4>{{$item->price}} LKR</h4>
                                         </div>
-                                        <a href="#"
+                                        <a href="{{route('product.addToCart' , ['id'=> $item->proid])}}"
                                            class="btn btn-success pull-right" role="button"> Add to Cart </a>
                                     </div>
                                 </div>
