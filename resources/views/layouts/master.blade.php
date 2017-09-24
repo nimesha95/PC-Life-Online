@@ -17,6 +17,7 @@
 @include('partials.header')
 
 <div class='container'>
+    @yield('scripts1')
     @yield('content')
 </div>
 

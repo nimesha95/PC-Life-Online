@@ -14,9 +14,13 @@
                     @foreach($itemschunk as $item)
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <img src="{{$item->image}}">
+                                <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                    <img src="{{$item->image}}">
+                                </a>
                                 <div class="caption">
-                                    <h3>{{$item->name}}</h3>
+                                    <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                        <h3>{{$item->name}}</h3>
+                                    </a>
                                     <p>{{$item->description}}</p>
                                     <div class="clearfix">
                                         <div class="pull-left price">

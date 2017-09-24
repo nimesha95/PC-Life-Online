@@ -26,6 +26,11 @@ Route::get('/laptops/{type}/{brand?}', [
     'as' => 'product.product'
 ]);
 
+Route::get('/product/{id}', [
+    'uses' => 'ProductController@showItem',
+    'as' => 'product.show'
+]);
+
 
 
 Route::group(['prefix' => 'user'], function () {

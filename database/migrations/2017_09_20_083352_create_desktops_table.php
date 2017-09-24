@@ -22,7 +22,12 @@ class CreateDesktopsTable extends Migration
             $table->string('type');
             $table->text('description');
             $table->string('image');
+            $table->string('img1');
+            $table->string('img2');
+            $table->string('img3');
+            $table->string('img4');
             $table->float('price');
+            $table->text('itemDetails');
         });
     }
 

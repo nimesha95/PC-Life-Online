@@ -16,6 +16,13 @@ class ProductController extends Controller
         return view('shop.index');
     }
 
+    public function showItem($id)
+    {
+        $table = $this->selectItemType($id);
+        $item = DB::select("select * from " . $table . " where proid='" . $id . "'");
+        return view('shop.show', ['items' => $item]);
+    }
+
     public function getCart()
     {
         return view('shop.cart');
