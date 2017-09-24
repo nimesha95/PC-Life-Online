@@ -102,8 +102,6 @@
     background-color: #fff;
     color: #555;
 }
-/*
-****** Look into this CSS to make carousel responsive for any image type ********
 
 @media screen and (min-width: 768px) {
 
@@ -115,12 +113,11 @@
 
 @media screen and (min-width: 992px) {
 
-    .container {
+    .container .carouselRes {
         max-width: 930px;
     }
 
 }
-*/
 
 
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use \Cart as Cart;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -54,7 +55,7 @@ class ProductController extends Controller
         }
 
         Cart::add($proid, $name, 1, $price);    //qty is set to 1 ---- need to update dynamically later
-
+        Cart::store(Auth::user()->email);
         return back();
     }
 
@@ -68,6 +69,7 @@ class ProductController extends Controller
         } elseif (!strcmp('all', $count)) {
             Cart::remove($rowid);
         }
+        Cart::store(Auth::user()->email);
         return redirect()->route('user.getCart');
     }
 
@@ -75,6 +77,7 @@ class ProductController extends Controller
     {
         $newQty = $curcount + 1; //add 1 to current Qty
         Cart::update($rowid, $newQty);
+        Cart::store(Auth::user()->email);
         return redirect()->route('user.getCart');
     }
 
