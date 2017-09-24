@@ -133,9 +133,9 @@
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">
+                <li><a href="{{ route('user.getCart') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-                        <span class="badge">{{Cart::count()}}</span>
+                        <span class="badge">{{Auth::check()? Cart::count() : ''}}</span>
                     </a>
                 </li>
                 <li class="dropdown">

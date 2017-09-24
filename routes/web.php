@@ -26,10 +26,7 @@ Route::get('/laptops/{type}/{brand?}', [
     'as' => 'product.product'
 ]);
 
-Route::get('/add-to-cart/{id}', [
-    'uses' => 'ProductController@getAddToCart',
-    'as' => 'product.addToCart'
-]);
+
 
 Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'guest'], function () {
@@ -58,6 +55,26 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('/profile', [
             'uses' => 'UserController@getProfile',
             'as' => 'user.profile'
+        ]);
+
+        Route::get('/add-to-cart/{id}', [
+            'uses' => 'ProductController@getAddToCart',
+            'as' => 'product.addToCart'
+        ]);
+
+        Route::get('/remove_item/{count}/{rowid}/{curcount?}', [
+            'uses' => 'ProductController@getRemoveFromCart',
+            'as' => 'product.RemoveFromCart'
+        ]);
+
+        Route::get('/plus_item/{rowid}/{curcount}', [
+            'uses' => 'ProductController@getPlusOneCart',
+            'as' => 'product.PlusOneCart'
+        ]);
+
+        Route::get('/cart', [
+            'uses' => 'ProductController@getCart',
+            'as' => 'user.getCart'
         ]);
 
         Route::get('/logout', [

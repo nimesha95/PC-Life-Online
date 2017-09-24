@@ -15,6 +15,11 @@ class ProductController extends Controller
         return view('shop.index');
     }
 
+    public function getCart()
+    {
+        return view('shop.cart');
+    }
+
     public function getDesktops($type, $brand = null)
     {
         if ($brand == null) {
@@ -50,7 +55,27 @@ class ProductController extends Controller
 
         Cart::add($proid, $name, 1, $price);    //qty is set to 1 ---- need to update dynamically later
 
-        return view('shop.test');
+        return view('shop.cart');
+    }
+
+    public function getRemoveFromCart($count, $rowid, $curcount = null)
+    {
+        if ($curcount == 1) {
+            Cart::remove($rowid);   //removes item if curQty is less than 1
+        } elseif ($count == 1) {
+            $newQty = $curcount - $count; //subtacts 1 from current Qty
+            Cart::update($rowid, $newQty);
+        } elseif (!strcmp('all', $count)) {
+            Cart::remove($rowid);
+        }
+        return redirect()->route('user.getCart');
+    }
+
+    public function getPlusOneCart($rowid, $curcount)
+    {
+        $newQty = $curcount + 1; //add 1 to current Qty
+        Cart::update($rowid, $newQty);
+        return redirect()->route('user.getCart');
     }
 
     private function selectItemType($id)
