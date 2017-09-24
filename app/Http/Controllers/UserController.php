@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use \Cart as Cart;
 
 class UserController extends Controller
 {
@@ -47,6 +48,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            Cart::restore(Auth::user()->email);
             return redirect()->route('user.profile');
         }
         return redirect()->back();
@@ -59,6 +61,8 @@ class UserController extends Controller
 
     public function getLogout()
     {
+        Cart::store(Auth::user()->email);       //saving the cart into a database
+        Cart::destroy();        //destroying the current cart object
         Auth::logout();
         return redirect()->back();
     }
