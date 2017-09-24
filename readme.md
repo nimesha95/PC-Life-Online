@@ -7,10 +7,10 @@ This is the web based solution we're developing to automate the process in PC-Li
 - Service Technician Panel
 - **[Android App for the Delivary Person](https://github.com/nimesha95/Group32)**
 
-#####Backend
+###Backend
 Laravel
 
-~Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.~
+Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
 
 ## Learning Laravel
 
