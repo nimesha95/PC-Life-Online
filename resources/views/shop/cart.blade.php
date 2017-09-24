@@ -1,11 +1,10 @@
 @extends('layouts.master')
 
 @section('title')
-    Some header passed from the parameters
+    Cart
 @endsection
 
 @section('content')
-
 
     <div class=" container">
         <div class="row">

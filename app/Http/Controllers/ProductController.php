@@ -55,7 +55,7 @@ class ProductController extends Controller
 
         Cart::add($proid, $name, 1, $price);    //qty is set to 1 ---- need to update dynamically later
 
-        return view('shop.cart');
+        return back();
     }
 
     public function getRemoveFromCart($count, $rowid, $curcount = null)
