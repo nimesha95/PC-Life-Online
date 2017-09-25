@@ -32,7 +32,6 @@ Route::get('/product/{id}', [
 ]);
 
 
-
 Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/signup', [
@@ -88,5 +87,29 @@ Route::group(['prefix' => 'user'], function () {
         ]);
     });
 
-
 });
+
+Route::get('/admin', [
+    'uses' => 'AdminController@getIndex',
+    'as' => 'admin.index',
+    'middleware' => ['auth', 'admin']
+]);
+
+
+Route::get('/stockmanager', [
+    'uses' => 'StockManagerController@getIndex',
+    'as' => 'stockmanager.index',
+    'middleware' => ['auth', 'stockmanager']
+]);
+
+Route::get('/cashier', [
+    'uses' => 'CashierController@getIndex',
+    'as' => 'cashier.index',
+    'middleware' => ['auth', 'cashier']
+]);
+
+Route::get('/technician', [
+    'uses' => 'TechnicianController@getIndex',
+    'as' => 'technician.index',
+    'middleware' => ['auth', 'technician']
+]);

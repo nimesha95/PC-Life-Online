@@ -48,8 +48,27 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-            Cart::restore(Auth::user()->email);
-            return redirect()->route('user.profile');
+            $type = Auth::user()->role;
+            //dd($type);
+
+            switch ($type) {
+                case 0: //0 is admin
+                    return redirect()->route('admin.index');
+                    break;
+                case 1: //1 is normal user
+                    Cart::restore(Auth::user()->email);
+                    return redirect()->route('user.profile');
+                    break;
+                case 2: //2 is stockmanager
+                    return redirect()->route('stockmanager.index');
+                    break;
+                case 3: //3 is cashier
+                    return redirect()->route('cashier.index');
+                    break;
+                case 4: //4 is technician
+                    return redirect()->route('technician.index');
+                    break;
+            }
         }
         return redirect()->back();
     }

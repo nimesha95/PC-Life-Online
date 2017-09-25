@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Support\Facades\Auth;
+
+class Cashier
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        if (Auth::check() && Auth::user()->getRole() == 3)  //authority id given to Cashier is 3
+        {
+            return $next($request);
+        }
+
+        return redirect()->route('product.index');
+    }
+}
