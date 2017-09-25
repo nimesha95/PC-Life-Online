@@ -21,6 +21,6 @@ class Technician
             return $next($request);
         }
 
-        return redirect()->route('technician.index');
+        return redirect()->route('product.index');
     }
 }

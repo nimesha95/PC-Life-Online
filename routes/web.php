@@ -31,6 +31,11 @@ Route::get('/product/{id}', [
     'as' => 'product.show'
 ]);
 
+Route::get('/logout', [
+    'uses' => 'UserController@getLogout',
+    'as' => 'user.logout',
+    'middleware' => 'auth'
+]);
 
 Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'guest'], function () {
@@ -81,35 +86,36 @@ Route::group(['prefix' => 'user'], function () {
             'as' => 'user.getCart'
         ]);
 
-        Route::get('/logout', [
-            'uses' => 'UserController@getLogout',
-            'as' => 'user.logout'
-        ]);
     });
 
 });
 
-Route::get('/admin', [
-    'uses' => 'AdminController@getIndex',
-    'as' => 'admin.index',
-    'middleware' => ['auth', 'admin']
-]);
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/admin', [
+        'uses' => 'AdminController@getIndex',
+        'as' => 'admin.index',
+    ]);
+});
+
+Route::group(['middleware' => ['auth', 'stockmanager']], function () {
+    Route::get('/stockmanager', [
+        'uses' => 'StockManagerController@getIndex',
+        'as' => 'stockmanager.index',
+    ]);
+});
+
+Route::group(['middleware' => ['auth', 'cashier']], function () {
+    Route::get('/cashier', [
+        'uses' => 'CashierController@getIndex',
+        'as' => 'cashier.index',
+    ]);
+});
+
+Route::group(['middleware' => ['auth', 'technician']], function () {
+    Route::get('/technician', [
+        'uses' => 'TechnicianController@getIndex',
+        'as' => 'technician.index',
+    ]);
 
 
-Route::get('/stockmanager', [
-    'uses' => 'StockManagerController@getIndex',
-    'as' => 'stockmanager.index',
-    'middleware' => ['auth', 'stockmanager']
-]);
-
-Route::get('/cashier', [
-    'uses' => 'CashierController@getIndex',
-    'as' => 'cashier.index',
-    'middleware' => ['auth', 'cashier']
-]);
-
-Route::get('/technician', [
-    'uses' => 'TechnicianController@getIndex',
-    'as' => 'technician.index',
-    'middleware' => ['auth', 'technician']
-]);
+});

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Cashier
+class User
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class Cashier
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->getRole() == 3)  //authority id given to Cashier is 3
+        if (Auth::check() && Auth::user()->getRole() == 1)  //authority id given to user is 1
         {
             return $next($request);
         }

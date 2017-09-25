@@ -21,6 +21,6 @@ class StockManager
             return $next($request);
         }
 
-        return redirect()->route('stockmanager.index');
+        return redirect()->route('product.index');
     }
 }
