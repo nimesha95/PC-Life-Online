@@ -21,6 +21,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect()->route('product.index');
+        return redirect()->route('admin.index');
     }
 }

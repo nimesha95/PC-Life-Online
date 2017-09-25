@@ -21,6 +21,6 @@ class Cashier
             return $next($request);
         }
 
-        return redirect()->route('product.index');
+        return redirect()->route('cashier.index');
     }
 }

@@ -55,7 +55,7 @@ Route::group(['prefix' => 'user'], function () {
         ]);
     });
 
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth', 'user']], function () {
         Route::get('/profile', [
             'uses' => 'UserController@getProfile',
             'as' => 'user.profile'
