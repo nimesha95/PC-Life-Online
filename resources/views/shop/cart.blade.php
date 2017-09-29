@@ -108,7 +108,7 @@
                                 <label class="control-label col-sm-4" for="delivery">Do you want order
                                     delivered?:</label>
                                 <div class="col-sm-6">
-                                    <select class="form-control" onchange="yesnoCheck(this)" id="delivery"
+                                    <select class="form-control" onchange="showAddrDiv(this)" id="delivery"
                                             name="delivery">
                                         <option value="0">No</option>
                                         <option value="1">Yes</option>
@@ -120,7 +120,7 @@
                                 <label class="control-label col-sm-4" for="addr">Select Shipping Address:</label>
                                 <div class="col-sm-6">
                                     <select class="form-control" id="addr" name="addr">
-                                        <option value="0">Use my defautl address</option>
+                                        <option value="0">Use my default address</option>
                                         <option value="1">Enter new address</option>
                                     </select>
                                 </div>
@@ -146,7 +146,7 @@
 
 @section('scripts')
     <script>
-        function yesnoCheck(that) {
+        function showAddrDiv(that) {
             if (that.value == 1) {
                 document.getElementById("addr_div").style.display = "block";
             } else {
