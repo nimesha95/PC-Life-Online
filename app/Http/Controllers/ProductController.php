@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Desktop;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use \Cart as Cart;
 use Auth;
+use App\Order;
 
 class ProductController extends Controller
 {
@@ -85,6 +86,20 @@ class ProductController extends Controller
         $newQty = $curcount + 1; //add 1 to current Qty
         Cart::update($rowid, $newQty);
         Cart::store(Auth::user()->email);
+        return redirect()->route('user.getCart');
+    }
+
+    public function checkout()
+    {
+        $order = new Order();
+        $content = Cart::content();
+        /*
+        $order->addRow($content);
+        dd($content);
+        */
+        $serializedContent = serialize($content);
+        $total = Cart::subtotal();
+        DB::insert('insert into orders (email,order_obj,total) values (?,?,?)', [Auth::user()->email, $serializedContent, $total]);
         return redirect()->route('user.getCart');
     }
 

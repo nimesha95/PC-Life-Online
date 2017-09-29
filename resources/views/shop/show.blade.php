@@ -14,6 +14,10 @@
     </script>
 @endsection
 
+@section('header')
+    @include('partials.header')
+@endsection
+
 @section('content')
 
     @foreach($items as $item)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -69,13 +70,33 @@ class UserController extends Controller
                     return redirect()->route('technician.index');
                     break;
             }
+        } else {
+            return redirect()->back()->withErrors("Please Check your credentials");
         }
-        return redirect()->back();
+
     }
 
     public function getProfile()
     {
         return view('user.profile');
+    }
+
+    public function viewOrders()
+    {
+        $orders = DB::select("select * from orders where email='" . Auth::user()->email . "'");
+
+        $count = 0;
+        foreach ($orders as $order) {
+            $order_obj = unserialize($order->order_obj);
+            //    $order_obj = (array) $order_obj;
+            //dd($order_obj);
+            $orders[$count]->order_obj = $order_obj;
+            $count++;
+        }
+
+        //dd($orders);
+//This return the order, but need to show it .... RECHECK
+        return view('user.profile', ['orders' => $orders]);
     }
 
     public function getLogout()

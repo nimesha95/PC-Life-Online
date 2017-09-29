@@ -4,6 +4,10 @@
     Cart
 @endsection
 
+@section('header')
+    @include('partials.header')
+@endsection
+
 @section('content')
 
     <div class=" container">
@@ -62,7 +66,92 @@
                 <div class="col-md-2 col-xs-2"><b>SubTotal</b></div>
                 <div class="col-md-2 col-xs-2">{{Cart::subtotal()}}</div>
             </div>
+
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-3 col-xs-4"></div>
+                <div class="col-md-2 col-xs-3"></div>
+                <div class="col-md-2 col-xs-2"></div>
+                <div class="col-md-2 col-xs-2">
+                    <a href="#" class="btn btn-default btn-success" data-toggle="modal" data-target="#SelectPayment"
+                       role="button">Checkout</a>
+                </div>
+            </div>
+
         @endif
+
+        <div class="modal fade" id="SelectPayment" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">CheckOut</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post" action="{{route('admin.reguser')}}">
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="Payment">Select Payment Method:</label>
+                                <div class="col-sm-6">
+                                    <div class="radio">
+                                        <label><input type="radio" name="payment">EzCash</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="payment">Bank Deposit</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="payment">Pay when pickup</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="delivery">Do you want order
+                                    delivered?:</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" onchange="yesnoCheck(this)" id="delivery"
+                                            name="delivery">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="addr_div" style="display: none">
+                                <label class="control-label col-sm-4" for="addr">Select Shipping Address:</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="addr" name="addr">
+                                        <option value="0">Use my defautl address</option>
+                                        <option value="1">Enter new address</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success">Make my Order</button>
+                                </div>
+                            </div>
+                            {{ csrf_field() }}
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        function yesnoCheck(that) {
+            if (that.value == 1) {
+                document.getElementById("addr_div").style.display = "block";
+            } else {
+                document.getElementById("addr_div").style.display = "none";
+            }
+        }
+    </script>
 @endsection

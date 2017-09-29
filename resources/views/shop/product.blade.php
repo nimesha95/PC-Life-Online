@@ -4,6 +4,10 @@
     Some header passed from the parameters
 @endsection
 
+@section('header')
+    @include('partials.header')
+@endsection
+
 @section('content')
     @include('partials/'.$sidebar)
 

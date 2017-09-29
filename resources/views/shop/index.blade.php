@@ -4,6 +4,9 @@
     PC-Life Online
 @endsection
 
+@section('header')
+    @include('partials.header')
+@endsection
 
 @section('content')
 

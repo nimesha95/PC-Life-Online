@@ -66,6 +66,11 @@ Route::group(['prefix' => 'user'], function () {
             'as' => 'user.profile'
         ]);
 
+        Route::get('/profile/vieworders', [
+            'uses' => 'UserController@viewOrders',
+            'as' => 'user.orders'
+        ]);
+
         Route::get('/add-to-cart/{id}', [
             'uses' => 'ProductController@getAddToCart',
             'as' => 'product.addToCart'
@@ -86,6 +91,11 @@ Route::group(['prefix' => 'user'], function () {
             'as' => 'user.getCart'
         ]);
 
+        Route::get('/checkout', [
+            'uses' => 'ProductController@checkout',
+            'as' => 'user.checkout'
+        ]);
+
     });
 
 });
@@ -95,6 +105,20 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         'uses' => 'AdminController@getIndex',
         'as' => 'admin.index',
     ]);
+
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/reports', [
+            'uses' => 'AdminController@getReports',
+            'as' => 'admin.reports',
+        ]);
+
+        Route::post('/signup', [
+            'uses' => 'AdminController@postRegUser',
+            'as' => 'admin.reguser'
+        ]);
+
+    });
+
 });
 
 Route::group(['middleware' => ['auth', 'stockmanager']], function () {
