@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master_fluid')
 
 @section('title')
     Administrator
@@ -10,13 +10,10 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <h2>Admin Module</h2>
-        </div>
-        <div class="row">
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal
-            </button>
+    <div class="row">
+        @include('partials.admin_sidebar')
+        <div class="col-md-9">
+            <h2>Some stuff goes here</h2>
         </div>
     </div>
 @endsection

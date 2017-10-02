@@ -112,6 +112,21 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'as' => 'admin.reports',
         ]);
 
+        Route::get('/additems', [
+            'uses' => 'AdminController@getAdditems',
+            'as' => 'admin.additems',
+        ]);
+
+        Route::post('/redirect_add', [
+            'uses' => 'AdminController@redirect_add',
+            'as' => 'admin.redirect_add',
+        ]);
+
+        Route::post('/additems', [
+            'uses' => 'AdminController@postAdditems',
+            'as' => 'admin.additems',
+        ]);
+
         Route::post('/signup', [
             'uses' => 'AdminController@postRegUser',
             'as' => 'admin.reguser'

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Item_info;
+use Illuminate\Support\Facades\DB;
+
 
 class AdminController extends Controller
 {
@@ -15,6 +18,37 @@ class AdminController extends Controller
     public function getReports()
     {
         return view('admin.reports');
+    }
+
+    public function getAdditems()
+    {
+        $type = session('type');
+        //dd($type[0]);
+        return view('admin.add_item')->with('type', [$type]);
+    }
+
+    public function redirect_add(Request $request)
+    {
+        $itmtype = $request->input('ItemType');    //this function passes the type of the item user selected to the getAdditems()
+        $type = $this->getItemName($itmtype);
+        $table = $this->getTable($itmtype);
+        $LastproidRow = DB::select("SELECT * FROM $table WHERE id = (SELECT max(id) FROM $table)");
+        foreach ($LastproidRow as $row) {
+            $lastID = $row->proid;
+        }
+        $lastID = $this->getNextProid($lastID);
+        \Illuminate\Support\Facades\Session::put('lastID', $lastID);
+        return redirect(route('admin.additems'))->with('type', [$type]);
+    }
+
+    public function postAdditems(Request $request)
+    {
+        $item = new Item_info();
+        foreach ($request->except('_token') as $key => $value) {
+            $item->addToArray($key, $value);
+        }
+
+        dd($item);
     }
 
     public function postRegUser(Request $request)
@@ -55,4 +89,37 @@ class AdminController extends Controller
             return 'Technician';
         }
     }
+
+    private function getItemName($var)
+    {
+        if ($var == 1) {
+            return 'partials.items.desktop';
+        }
+    }
+
+    private function getTable($var)
+    {
+        if ($var == 1) {
+            return 'desktops';
+        }
+    }
+
+    private function getNextProid($var)
+    {
+        $prefix = substr($var, 0, 2);
+        $postfix = substr($var, 2);
+        $postfix = (int)$postfix;
+        $postfix++;
+
+        if (strlen((string)$postfix) == 3) {
+            $postfix = "0" . $postfix;
+        } elseif (strlen((string)$postfix) == 2) {
+            $postfix = "00" . $postfix;
+        } elseif (strlen((string)$postfix) == 1) {
+            $postfix = "000" . $postfix;
+        }
+        $proid = $prefix . $postfix;
+        return $proid;
+    }
+
 }

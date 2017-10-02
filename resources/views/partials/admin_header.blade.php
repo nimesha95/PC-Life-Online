@@ -34,7 +34,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Stock <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Add items</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#AddSelectModal">Add Item</a></li>
                         <li><a href="#">Edit items</a></li>
                         <li><a href="#">Remove items</a></li>
                         <li><a href="#">Update Stock</a></li>
@@ -242,6 +242,47 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                    {{ csrf_field() }}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Add item Select Menu Modal -->
+<div class="modal fade" id="AddSelectModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Remove user</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="post" action="{{route('admin.redirect_add')}}">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="type">Type:</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="items" name="ItemType">
+                                <option value="1">Desktop</option>
+                                <option value="2">Laptop</option>
+                                <option value="3">some</option>
+                                <option value="4">stuff</option>
+                                <option value="5">goes</option>
+                                <option value="6">here</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-info">Submit</button>
                         </div>
                     </div>
                     {{ csrf_field() }}

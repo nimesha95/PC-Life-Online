@@ -61,7 +61,6 @@ class ProductController extends Controller
             $name = $itm->name;
             $price = $itm->price;
         }
-
         Cart::add($proid, $name, 1, $price);    //qty is set to 1 ---- need to update dynamically later
         Cart::store(Auth::user()->email);
         return back();
