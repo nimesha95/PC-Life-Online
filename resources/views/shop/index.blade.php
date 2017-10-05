@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master_without_container')
 
 @section('title')
     PC-Life Online
@@ -10,46 +10,86 @@
 
 @section('content')
 
-    <div class="container carouselRes">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ol>
+    <div class="carousel   fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Milna%2C_Bra%C4%8D%2C_Hrvatska_-_Blata%C5%A1ka_riva_800x400.jpg" alt="...">
-                        <div class="carousel-caption">
-                            <h2>Heading</h2>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="http://tpf.eu/wp-content/uploads/2015/03/800-400-Barcelone-Groupe.jpg" alt="...">
-                        <div class="carousel-caption">
-                            <h2>Heading</h2>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="http://www.tentacle.eu/images/made/a/uploads/bilder/slideshow_800x400/bsr_gdynia_800x400_800_400_80_c1.jpg" alt="...">
-                        <div class="carousel-caption">
-                            <h2>Heading</h2>
-                        </div>
-                    </div>
+        <div class="overlay"></div>
+
+        <ol class="carousel-indicators">
+            <li data-target="#bs-carousel" data-slide-to="0" class=""></li>
+            <li data-target="#bs-carousel" data-slide-to="1" class=""></li>
+            <li data-target="#bs-carousel" data-slide-to="2" class="active"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="item slides">
+                <div class="slide-1">
+                    <img src="https://saleme.lk/images/saleme/banner.jpg" class="img-responsive hidden-xs"
+                         alt="saleme.lk">
+                    <img src="https://saleme.lk/images/saleme/banner-m1.jpg" class="img-responsive visible-xs"
+                         alt="saleme.lk">
                 </div>
-
-                <!-- Controls -->
-                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
+                <div class="hero">
+                </div>
             </div>
+            <div class="item slides">
+                <div class="slide-2">
+                    <img src="https://saleme.lk/images/saleme/banner1.jpg" class="img-responsive hidden-xs"
+                         alt="saleme.lk">
+                    <img src="https://saleme.lk/images/saleme/banner-m2.jpg" class="img-responsive visible-xs"
+                         alt="saleme.lk">
+                </div>
+                <div class="hero">
+                </div>
+            </div>
+            <div class="item slides active">
+                <div class="slide-3">
+                    <img src="https://saleme.lk/images/saleme/banner2.jpg" class="img-responsive hidden-xs"
+                         alt="saleme.lk">
+                    <img src="https://saleme.lk/images/saleme/banner-m3.jpg" class="img-responsive visible-xs"
+                         alt="saleme.lk">
+                </div>
+                <div class="hero">
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+    <section class="home-search  cont-bg1 hidden-xs">
+        <div class="container">
+            <div class="row">
+                <div class="mar-70 text-center">
+                    <h1 class="promo-head">
+                        Buy &amp; Sell
+                    </h1>
+                    <h1 class="promo-head2">
+                        Absolutely Free
+                    </h1>
+                    <form id="search_form1" method="GET" action="https://saleme.lk/ads">
+                        <div class="col-xs-12  search-panel1">
+                            <div class="input-group home-search1">
+                                <div class="input-group-btn ">
+                                    <button type="button" class="btn location-btn " data-toggle="modal"
+                                            data-target=".select-city-modal">
+                                        <span class="lnr lnr-pointer-down"></span> <span id="search_concept">&nbsp;Select City</span>
+                                    </button>
+                                    <button type="button" class="btn cat-btn" data-toggle="modal"
+                                            data-target=".select-category-modal">
+                                        <span class="lnr lnr-tag"></span> <span
+                                                id="search_concept">&nbsp;All Category</span>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control search-txt" name="query"
+                                       placeholder="What you looking for...">
+                                <span class="input-group-btn">
+<button class="btn  search-btn" id="more_query1" type="button"><span class="lnr lnr-magnifier"></span></button>
+</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
+    
 @endsection
