@@ -1,14 +1,14 @@
 <?php
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "", "webitems");
+$link = mysqli_connect("localhost", "root", "", "pclifeonline");
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 if(isset($_REQUEST['term'])){
     // Prepare a select statement
-    $sql = "SELECT * FROM motherboard WHERE manufacturer LIKE ?";
+    $sql = "SELECT * FROM keywords WHERE itemName LIKE ?";
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "s", $param_term);
@@ -21,7 +21,7 @@ if(isset($_REQUEST['term'])){
             if(mysqli_num_rows($result) > 0){
                 // Fetch result rows as an associative array
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    echo "<p>" . $row["model"] . "</p>";
+                    echo "<p>" . $row["itemName"] . "</p>";
                 }
             } else{
                 echo "<p>No matches found</p>";

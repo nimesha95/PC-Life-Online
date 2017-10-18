@@ -4,8 +4,8 @@ require '../../dbcon/dbcon.php';
 if(isset($_POST['add'])){
     $pro_id=$_POST['pro_id'];
     echo $pro_id;
-    $cond=$_POST['cond'];
-    echo $cond;
+    $cat=$_POST['cat'];
+    echo $cat;
     $brand=$_POST['brand'];
     echo $brand;
     $model=$_POST['model'];
@@ -64,9 +64,10 @@ if(isset($_POST['add'])){
     echo $os;
 
 
-    $sql=" UPDATE `tb_laptop` SET `cond`='$cond',`brand`='$brand',`model`='$model',`processor`='$processor',`screen_type`='$screen_type',`ram`='$ram',`hdd`='$hdd',`gui`='$gui',`op_drive`='$op_drive',`screen_size`='$screen_size',`wifi`='$wifi',`bluetooth`='$bluetooth',`web_cam`='$web_cam',`sounds`='$sounds',`price`='$price',`dis_price`='$dis_price',`availability`='$availability',`warranty`='$warranty',`pri_image`='$pri_image',`img1`='$img1',`img2`='$img2',`img3`='$img3',`img4`='$img4',`up_date`='$up_date',`os`='$os' WHERE pro_id='$pro_id'";
+    $sql=" UPDATE `tb_laptop` SET `cat`='$cat',`brand`='$brand',`model`='$model',`processor`='$processor',`screen_type`='$screen_type',`ram`='$ram',`hdd`='$hdd',`gui`='$gui',`op_drive`='$op_drive',`screen_size`='$screen_size',`wifi`='$wifi',`bluetooth`='$bluetooth',`web_cam`='$web_cam',`sounds`='$sounds',`price`='$price',`dis_price`='$dis_price',`availability`='$availability',`warranty`='$warranty',`pri_image`='$pri_image',`img1`='$img1',`img2`='$img2',`img3`='$img3',`img4`='$img4',`up_date`='$up_date',`os`='$os' WHERE pro_id='$pro_id'";
     $res1=mysqli_query($conn,$sql);
     header('Location:view.php?id='.$pro_id);
+
 
 
 

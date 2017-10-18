@@ -10,7 +10,7 @@ include 'header.inc.php';
             <div class="col-sm-6">
                     <a href="Products/DC/index.php">
                         <div class="thumbproduct">
-                            <table> <tr> <td rowspan="4"><img src="https://plus.lankahost.net:2083/cpsess5605196824/viewer/home%2fsadhanap%2fImages%2fdc/1.jpg" style="margin:10px ;width: 120px; height: 120px">
+                            <table> <tr> <td rowspan="4"><img src="Products/img/1.jpg" style="margin:10px ;width: 120px; height: 120px">
                                     </td><td><h3> Desktop Computers</h3></td></tr>
                                 <tr>
                                     <td><b>30 Items</b></td>

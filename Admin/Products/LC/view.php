@@ -74,7 +74,7 @@
 <table style="text-align:left">
 <tr><td><h2>' . $row['brand'] . ' - ' . $row['model'] . '   (' . $row['pro_id'] . ')</h2></td></tr>
 
-<tr><td><h3>' . $row['cond'] . '</h3></td></tr>
+<tr><td><h3>' . $row['cat'] . '</h3></td></tr>
 <tr><td><h4>' . $row['processor'] . '</h3></td></tr>
 <tr><td><h4>' . $row['ram'] . '</h3></td></tr>
 <tr><td><h4>' . $row['hdd'] . '</h3></td></tr>

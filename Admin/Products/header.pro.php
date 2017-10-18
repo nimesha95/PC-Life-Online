@@ -41,11 +41,11 @@ if(!isset( $_SESSION['username'])){
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">PC LIFE ONLINE</a>
+            <a class="navbar-brand" href="../../index.php">PC LIFE ONLINE</a>
         </div>
         <ul class="nav navbar-nav">
-            <li ><a href="#">Home</a></li>
-            <li class="active"><a href="../../Porducts.php">Products</a></li>
+            <li ><a href="../../index.php">Home</a></li>
+            <li ><a href="../../Porducts.php">Products</a></li>
             <li><a href="#">Store</a></li>
             <li><a href="#">Sales</a></li>
             <li><a href="#">Orders</a></li>

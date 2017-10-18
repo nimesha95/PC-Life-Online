@@ -29,6 +29,30 @@
         <br>
         <div class="row">
 
+            <div class="col-sm-6">';
+
+                <a href='add.php'>
+                    <div class="thumbproduct">
+                        <table> <tr> <td >
+                                </td><td><h4></h4></td></tr>
+                            <tr>
+                            <tr> <td >
+                                </td><td><h4></h4></td></tr>
+                            <tr>
+                            <tr> <td >
+                                </td><td><h4></h4></td></tr>
+                            <tr>
+                            <tr> <td width="50%" >
+                                </td><td><h3>ADD NEW</h3></td></tr>
+                            <tr>
+
+
+                        </table>
+
+                    </div>
+                </a>
+
+            </div>';
             <?php
             require '../../dbcon/user.php';
             require '../../dbcon/dbcon.php';

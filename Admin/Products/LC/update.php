@@ -56,10 +56,10 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Condition">Condition:</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="cond" name="cond">
+                            <select class="form-control" id="cond" name="cat">
 
-                                <option value="Brand New"';if($row['cond']=='Brand New'){echo 'selected';} echo '>Brand new</option>
-                                <option value="Used"';if($row['cond']=='HP'){echo 'selected';} echo '>Used</option>
+                                <option value="Brand New"';if($row['cat']=='Brand New'){echo 'selected';} echo '>Brand new</option>
+                                <option value="Used"';if($row['cat']=='HP'){echo 'selected';} echo '>Used</option>
                             </select>
                         </div>
                     </div> 

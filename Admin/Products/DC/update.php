@@ -207,7 +207,7 @@
                     
                      <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default" name="add">Add Item</button><button type="clear" class="btn btn-default" name="clear">Clear</button>      </div>
+        <button type="submit" class="btn btn-default" name="add">Update</button><button type="clear" class="btn btn-default" name="clear">Clear</button>      </div>
     </div>
 
 

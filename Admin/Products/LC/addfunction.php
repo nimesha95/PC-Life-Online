@@ -4,8 +4,8 @@ require '../../dbcon/dbcon.php';
 if(isset($_POST['add'])){
     $pro_id=$_POST['pro_id'];
     echo $pro_id;
-    $cond=$_POST['cond'];
-    echo $cond;
+    $cat=$_POST['cat'];
+    echo $cat;
     $brand=$_POST['brand'];
     echo $brand;
     $model=$_POST['model'];
@@ -62,7 +62,7 @@ if(isset($_POST['add'])){
     $frm_factor=$_POST['frm_factor'];
     echo $frm_factor;
 
-    $sql="INSERT INTO `tb_desktop`(`pro_id`, `cat`, `brand`, `model`, `processor`, `m_board`, `ram`, `hdd`, `gui`, `op_drive`, `monitor_des`, `pw_supply`, `mouse`, `key_bd`, `sounds`, `price`, `dis_price`, `availability`, `warranty`, `pri_image`, `img1`, `img2`, `img3`, `img5`, `img4`, `add_date`, `up_date`, `os`, `frm_factor`) VALUES ('$pro_id','$cond','$brand','$model','$processor','$m_board','$ram','$hdd','$gui','$op_drive','$monitor_des','$pw_supply','$mouse','$key_bd','$sounds','$price','$dis_price','$availability','$warranty','$pri_image','$img1','$img2','$img3','$img4','$img4','$add_date','$up_date','$os','$frm_factor')";
+    $sql="INSERT INTO `tb_desktop`(`pro_id`, `cat`, `brand`, `model`, `processor`, `m_board`, `ram`, `hdd`, `gui`, `op_drive`, `monitor_des`, `pw_supply`, `mouse`, `key_bd`, `sounds`, `price`, `dis_price`, `availability`, `warranty`, `pri_image`, `img1`, `img2`, `img3`, `img5`, `img4`, `add_date`, `up_date`, `os`, `frm_factor`) VALUES ('$pro_id','$cat','$brand','$model','$processor','$m_board','$ram','$hdd','$gui','$op_drive','$monitor_des','$pw_supply','$mouse','$key_bd','$sounds','$price','$dis_price','$availability','$warranty','$pri_image','$img1','$img2','$img3','$img4','$img4','$add_date','$up_date','$os','$frm_factor')";
     $res1=mysqli_query($conn,$sql);
 
 

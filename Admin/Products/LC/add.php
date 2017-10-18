@@ -84,14 +84,14 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Condition">Condition:</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="cond" name="cond">
+                            <select class="form-control" id="cat" name="cat">
 
                                 <option value="Brand New" selected>Brand new</option>
                                 <option value="Used">Used</option>
                             </select>
                         </div>
                     </div>
-                        
+
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="Mother Board">Mother Board Details:</label>
                         <div class="col-sm-10">
