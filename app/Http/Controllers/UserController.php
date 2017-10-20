@@ -16,24 +16,27 @@ class UserController extends Controller
         return view('user.signup');
     }
 
-    public function postSignup(Request $request)
+    public function postEditInfo(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'email | required | unique:users',
-            'password' => 'required | min:4'
+            'mobile' => 'required'
         ]);
 
-        $user = new User([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password'))
-        ]);
-        $user->save();
+        $mobile = $request->input('mobile');
+        $addrLine1 = $request->input('addrLine1');
+        $addrLine2 = $request->input('addrLine2');
+        $addrCity = $request->input('addrCity');
 
-        Auth::login($user);
+        $email = Auth::user()->email;
 
-        return redirect()->route('product.index');
+
+        DB::table('users')->where('email', $email)->update(array(
+            'addr_line1' => $addrLine1,
+            'addr_line2' => $addrLine2,
+            'addr_city' => $addrCity,
+            'phone_no' => $mobile,
+        ));
+        return redirect(route('user.profile'))->with('message', 'Information Updated');
     }
 
     public function getSignin()
@@ -98,6 +101,31 @@ class UserController extends Controller
 //This return the order, but need to show it .... RECHECK
         return view('user.profile', ['orders' => $orders]);
     }
+
+    public function postRegUser(Request $request)
+    {
+
+        session(['AdminRegUser' => 1]);
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'email | required | unique:users',
+            'password' => 'required | min:4',
+            'role' => 'required'
+        ]);
+
+
+        $user = new User([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'role' => $request->input('role'),
+            'role_name' => $this->getRoleName($request->input('role')),
+        ]);
+        $user->save();
+        return redirect()->back();
+
+    }
+
 
     public function getLogout()
     {

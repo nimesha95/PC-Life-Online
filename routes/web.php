@@ -16,6 +16,17 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
+Route::get('/send', [
+    'uses' => 'EmailController@send',
+    'as' => 'user.sendMail'
+]);
+
+Route::get('/send_test', function () {
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function ($message) {
+        $message->to('nimesha95@live.com');
+    });
+});
+
 Route::get('/desktops/{type}/{brand?}', [
     'uses' => 'ProductController@getDesktops',
     'as' => 'product.product'
@@ -95,6 +106,17 @@ Route::group(['prefix' => 'user'], function () {
             'uses' => 'ProductController@checkout',
             'as' => 'user.checkout'
         ]);
+
+        Route::post('/editinfo', [
+            'uses' => 'UserController@postEditInfo',
+            'as' => 'user.editinfo'
+        ]);
+
+        Route::get('/send_test', function () {
+            Mail::raw('Sending emails with Mailgun and Laravel is easy!', function ($message) {
+                $message->to('nimesha95@live.com');
+            });
+        });
 
     });
 

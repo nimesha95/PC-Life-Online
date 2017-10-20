@@ -74,10 +74,11 @@ class AdminController extends Controller
 
         $table = \Illuminate\Support\Facades\Session::get('table');
 
+
         DB::insert("insert into $table (proid,name,brand,type,availability,description,image,img1,img2,img3,img4,price,discount_price,itemDetails) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             [$proid, $name, $brand, $type, $availability, $description, $image, $img1, $img2, $img3, $img4, $price, $discount_price, $itemDetails]);
 
-        return redirect(route('admin.additems'))->with('message', 'Item Added Succesfully');;
+        return redirect(route('admin.additems'))->with('message', 'Item Added Succesfully');
         //dd($item);
     }
 
