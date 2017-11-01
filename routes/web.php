@@ -112,6 +112,11 @@ Route::group(['prefix' => 'user'], function () {
             'as' => 'user.editinfo'
         ]);
 
+        Route::post('/get_addr', [
+            'uses' => 'UserController@postAddr',
+            'as' => 'getAddr'
+        ]);
+
         Route::get('/send_test', function () {
             Mail::raw('Sending emails with Mailgun and Laravel is easy!', function ($message) {
                 $message->to('nimesha95@live.com');

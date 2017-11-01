@@ -79,60 +79,84 @@
 
         @endif
 
+
         <div class="modal fade" id="SelectPayment" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">CheckOut</h4>
                     </div>
+
                     <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="{{route('admin.reguser')}}">
-                            <div class="form-group">
-                                <label class="control-label col-sm-4" for="Payment">Select Payment Method:</label>
-                                <div class="col-sm-6">
-                                    <div class="radio">
-                                        <label><input type="radio" name="payment">EzCash</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input type="radio" name="payment">Bank Deposit</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input type="radio" name="payment">Pay when pickup</label>
-                                    </div>
-                                </div>
-                            </div>
+                        <ul class="nav nav-tabs" id="tabContent">
+                            <li class="active"><a href="#paymentTab" data-toggle="tab">Payment</a></li>
+                            <li><a href="#deliveryTab" data-toggle="tab">Delivery</a></li>
+                            <li><a href="#checkoutTab" data-toggle="tab">Checkout</a></li>
+                        </ul>
 
-                            <div class="form-group">
-                                <label class="control-label col-sm-4" for="delivery">Do you want order
-                                    delivered?:</label>
-                                <div class="col-sm-6">
-                                    <select class="form-control" onchange="showAddrDiv(this)" id="delivery"
-                                            name="delivery">
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
-                                    </select>
-                                </div>
-                            </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="paymentTab">
+                                <form class="form-horizontal" method="post" action="{{route('admin.reguser')}}">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4" for="Payment">Select Payment
+                                            Method:</label>
+                                        <div class="col-sm-6">
+                                            <div class="radio">
+                                                <label><input type="radio" name="payment">Paypal</label>
+                                            </div>
+                                            <div class="radio">
+                                                <label><input type="radio" name="payment">Bank Deposit</label>
+                                            </div>
+                                            <div class="radio">
+                                                <label><input type="radio" name="payment">Pay when pickup</label>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="form-group" id="addr_div" style="display: none">
-                                <label class="control-label col-sm-4" for="addr">Select Shipping Address:</label>
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="addr" name="addr">
-                                        <option value="0">Use my default address</option>
-                                        <option value="1">Enter new address</option>
-                                    </select>
-                                </div>
-                            </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4" for="delivery">Do you want order
+                                            delivered?:</label>
+                                        <div class="col-sm-6">
+                                            <select id="deliveryDrop" class="form-control" onchange="showAddrDiv(this)"
+                                                    id="delivery"
+                                                    name="delivery">
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-success">Make my Order</button>
-                                </div>
+                                    <div class="addr_info" id="addr_info" style="display: none">
+                                        <label class="control-label col-sm-4" for="addr">Shipping Address:</label>
+                                        <div class="col-sm-6" id="address_info" style="display: none">
+                                            <p id="line1"></p>
+                                            <p id="line2"></p>
+                                            <p id="city"></p>
+                                            <p id="phone"></p>
+                                        </div>
+                                        <div class="col-sm-6" id="set_addr" style="display: none">
+                                            <a href="#" class="btn btn-info">Set Address</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="button" id="toNext" class="btn btn-success">Next</button>
+                                        </div>
+                                    </div>
+                                    {{ csrf_field() }}
+                                </form>
                             </div>
-                            {{ csrf_field() }}
-                        </form>
+                            <div class="tab-pane" id="checkoutTab">
+                                content 1
+                            </div>
+                            <div class="tab-pane" id="deliveryTab">
+                                content 0000
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -145,13 +169,9 @@
 @endsection
 
 @section('scripts')
+    <script src="{{URL::to('js/shop.js')}}"></script>
     <script>
-        function showAddrDiv(that) {
-            if (that.value == 1) {
-                document.getElementById("addr_div").style.display = "block";
-            } else {
-                document.getElementById("addr_div").style.display = "none";
-            }
-        }
+        var token = '{{\Illuminate\Support\Facades\Session::token()}}';
+        var url = '{{route('getAddr')}}';
     </script>
 @endsection

@@ -126,6 +126,36 @@ class UserController extends Controller
 
     }
 
+    public function postAddr(Request $request)
+    {
+        $addr = DB::select("select * from users where email='" . Auth::user()->email . "'");
+
+        $isnull = 0; //a pointer to show hide divs in client browser
+
+        foreach ($addr as $row) {
+            $line1 = $row->addr_line1;
+            $line2 = $row->addr_line2;
+            $city = $row->addr_city;
+            $phone = $row->phone_no;
+        }
+
+        if ($phone == null) {
+            $phone = "";
+        }
+        if ($line1 == null) {
+            $line1 = "";
+            $isnull = 1;
+        }
+        if ($line2 == null) {
+            $line2 = "";
+        }
+        if ($city == null) {
+            $city = "";
+            $isnull = 1;
+        }
+
+        return response()->json(['line1' => $line1, 'line2' => $line2, 'city' => $city, 'phone' => $phone, 'isnull' => $isnull], 200);
+    }
 
     public function getLogout()
     {
