@@ -102,7 +102,7 @@ Route::group(['prefix' => 'user'], function () {
             'as' => 'user.getCart'
         ]);
 
-        Route::get('/checkout', [
+        Route::post('/checkout', [
             'uses' => 'ProductController@checkout',
             'as' => 'user.checkout'
         ]);

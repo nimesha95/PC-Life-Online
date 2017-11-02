@@ -35,7 +35,7 @@
                 <div class="col-md-2 col-xs-2"><b>Total</b></div>
             </div>
             @foreach(Cart::content() as $row)
-                <div class="row">
+                <div class="row" style="margin-top: 15px">
                     <div class="col-md-3 col-xs-4">{{$row->name}}</div>
                     <div class="col-md-2 col-xs-3">
                         {{$row->qty}}
@@ -60,7 +60,7 @@
                 </div>
             @endforeach
 
-            <div class="row">
+            <div class="row" style="margin-top: 15px">
                 <div class="col-md-3 col-xs-4"></div>
                 <div class="col-md-2 col-xs-3"></div>
                 <div class="col-md-2 col-xs-2"><b>SubTotal</b></div>
@@ -93,7 +93,6 @@
                     <div class="modal-body">
                         <ul class="nav nav-tabs" id="tabContent">
                             <li class="active"><a href="#paymentTab" data-toggle="tab">Payment</a></li>
-                            <li><a href="#deliveryTab" data-toggle="tab">Delivery</a></li>
                             <li><a href="#checkoutTab" data-toggle="tab">Checkout</a></li>
                         </ul>
 
@@ -103,67 +102,108 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4" for="Payment">Select Payment
                                             Method:</label>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" id="pay">
                                             <div class="radio">
-                                                <label><input type="radio" name="payment">Paypal</label>
+                                                <label><input type="radio" name="payment" value="paypal">Paypal</label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" name="payment">Bank Deposit</label>
+                                                <label><input type="radio" name="payment" value="bank">Bank
+                                                    Deposit</label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" name="payment">Pay when pickup</label>
+                                                <label><input type="radio" name="payment" checked="checked"
+                                                              value="pickup">Pay when pickup
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-4" for="delivery">Do you want order
-                                            delivered?:</label>
+                                        <label class="control-label col-sm-4" for="delivery">Delivery Method:</label>
                                         <div class="col-sm-6">
-                                            <select id="deliveryDrop" class="form-control" onchange="showAddrDiv(this)"
-                                                    id="delivery"
+                                            <select id="deliveryDrop" class="form-control" id="delivery"
                                                     name="delivery">
-                                                <option value="0">No</option>
-                                                <option value="1">Yes</option>
+                                                <option value="0">Pickup</option>
+                                                <option value="1">Home Delivery</option>
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="addr_info" id="addr_info" style="display: none">
-                                        <label class="control-label col-sm-4" for="addr">Shipping Address:</label>
-                                        <div class="col-sm-6" id="address_info" style="display: none">
-                                            <p id="line1"></p>
-                                            <p id="line2"></p>
-                                            <p id="city"></p>
-                                            <p id="phone"></p>
-                                        </div>
-                                        <div class="col-sm-6" id="set_addr" style="display: none">
-                                            <a href="#" class="btn btn-info">Set Address</a>
+                                    <div class="form-group">
+                                        <div class="addr_info" id="addr_info" style="display: none">
+                                            <label class="control-label col-sm-4" for="addr">Shipping Address:</label>
+                                            <div class="col-sm-6" id="address_info" style="display: none">
+                                                <p id="line1"></p>
+                                                <p id="line2"></p>
+                                                <p id="city"></p>
+                                                <p id="phone"></p>
+                                            </div>
+                                            <div class="col-sm-6" id="set_addr" style="display: none">
+                                                <a href="#" class="btn btn-info">Set Address</a>
+                                            </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="button" id="toNext" class="btn btn-success">Next</button>
+                                        <div class="col-sm-offset-10 col-sm-20">
+                                            <button type="button" id="toNext" class="btn btn-info">Next</button>
                                         </div>
                                     </div>
                                     {{ csrf_field() }}
                                 </form>
                             </div>
                             <div class="tab-pane" id="checkoutTab">
-                                content 1
-                            </div>
-                            <div class="tab-pane" id="deliveryTab">
-                                content 0000
+                                <div class="row">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <h4>Order Review</h4>
+                                    </div>
+                                </div>
+                                <div class="row col-md-offset-1 col-xs-offset-2" style="margin-top: 10px">
+                                    <div class="col-md-5 col-xs-5"><b>Product</b></div>
+                                    <div class="col-md-2 col-xs-3"><b>Qty</b></div>
+                                    <div class="col-md-2 col-xs-2"><b>Price (pcs)</b></div>
+                                    <div class="col-md-2 col-xs-2"><b>Total</b></div>
+                                </div>
+                                @foreach(Cart::content() as $row)
+                                    <div class="row col-md-offset-1 col-xs-offset-2">
+                                        <div class="col-md-5 col-xs-5">* {{$row->name}}</div>
+                                        <div class="col-md-2 col-xs-3">{{$row->qty}}</div>
+                                        <div class="col-md-2 col-xs-2">{{$row->price}}</div>
+                                        <div class="col-md-2 col-xs-2">{{$row->total}}</div>
+                                    </div>
+                                @endforeach
+                                <div class="row col-md-offset-1 col-xs-offset-2" style="margin-top: 10px">
+                                    <div class="col-md-5 col-xs-5"></div>
+                                    <div class="col-md-2 col-xs-3"><b>SubTotal</b></div>
+                                    <div class="col-md-2 col-xs-2"></div>
+                                    <div class="col-md-2 col-xs-2"><b>{{Cart::subtotal()}}</b></div>
+                                </div>
+                                <div class="row" style="margin-top: 15px">
+                                    <label class="control-label col-sm-4" for="paymentMethod">Payment Method:</label>
+                                    <div class="col-sm-6">
+                                        <p id="pay_meth"></p>
+                                    </div>
+                                </div>
+                                <div class="row" id="addr_infoX" style="margin-top: 15px;display: none">
+                                    <label class="control-label col-sm-4" for="paymentMethod">Delivery Address:</label>
+                                    <div class="col-sm-6">
+                                        <p id="line1x"></p>
+                                        <p id="line2x"></p>
+                                        <p id="cityx"></p>
+                                        <p id="phonex"></p>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 15px">
+                                    <div class="col-sm-offset-5 col-sm-2">
+                                        <button type="button" id="orderSubmit" class="btn btn-success">Make Order
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 @endsection
@@ -173,5 +213,6 @@
     <script>
         var token = '{{\Illuminate\Support\Facades\Session::token()}}';
         var url = '{{route('getAddr')}}';
+        var submitURL = '{{route('user.checkout')}}';
     </script>
 @endsection
