@@ -16,6 +16,11 @@ class UserController extends Controller
         return view('user.signup');
     }
 
+    public function getTrack()
+    {
+        return view('user.tracking');
+    }
+
     public function postEditInfo(Request $request)
     {
         $this->validate($request, [
