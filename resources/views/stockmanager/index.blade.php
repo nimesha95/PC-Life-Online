@@ -1,10 +1,13 @@
-@extends('layouts.master')
+@extends('layouts.master_fluid')
 
 @section('title')
-    PC-Life Online
+    Stock Manager
 @endsection
 
+@section('header')
+    @include('partials.stock_header')
+@endsection
 
 @section('content')
-    <h1>This is the stock manager module</h1>
+    <a href="">Add Product</a>
 @endsection

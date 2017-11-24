@@ -177,6 +177,20 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
         'uses' => 'StockManagerController@getIndex',
         'as' => 'stockmanager.index',
     ]);
+
+    Route::group(['prefix' => 'stockmanager'], function () {
+        Route::post('/redirect_add', [
+            'uses' => 'StockManagerController@redirect_add',
+            'as' => 'stock.redirect_add',
+        ]);
+
+        Route::get('/additems', [
+            'uses' => 'StockManagerController@getAdditems',
+            'as' => 'stock.additems',
+        ]);
+
+    });
+
 });
 
 Route::group(['middleware' => ['auth', 'cashier']], function () {

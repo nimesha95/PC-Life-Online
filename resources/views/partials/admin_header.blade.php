@@ -34,9 +34,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Stock <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" data-toggle="modal" data-target="#AddSelectModal">Add Item</a></li>
-                        <li><a href="#">Edit items</a></li>
-                        <li><a href="#">Remove items</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#AddSelectModal">Add Product</a></li>
+                        <li><a href="#">Edit Products</a></li>
+                        <li><a href="#">Remove Product</a></li>
                         <li><a href="#">Update Stock</a></li>
                         <li><a href="#">Availability</a></li>
                     </ul>
@@ -263,7 +263,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Remove user</h4>
+                <h4 class="modal-title">Add Product</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="post" action="{{route('admin.redirect_add')}}">
