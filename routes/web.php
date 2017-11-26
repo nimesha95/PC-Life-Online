@@ -179,6 +179,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
     ]);
 
     Route::group(['prefix' => 'stockmanager'], function () {
+        Route::post('/add_stock', [
+            'uses' => 'StockManagerController@getAddStock',
+            'as' => 'stockmanager.addstock',
+        ]);
+
         Route::post('/redirect_add', [
             'uses' => 'StockManagerController@redirect_add',
             'as' => 'stock.redirect_add',
@@ -187,6 +192,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
         Route::get('/additems', [
             'uses' => 'StockManagerController@getAdditems',
             'as' => 'stock.additems',
+        ]);
+
+        Route::post('/fill_product_dropdown', [
+            'uses' => 'StockManagerController@fillDrop',
+            'as' => 'fill_dropdown'
         ]);
 
     });

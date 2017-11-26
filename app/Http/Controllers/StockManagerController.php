@@ -6,11 +6,54 @@ use Illuminate\Http\Request;
 use App\Item_info;
 use Illuminate\Support\Facades\DB;
 
+use Nexmo\Laravel\Facade\Nexmo;
+
 class StockManagerController extends Controller
 {
     public function getIndex()
     {
+        /*
+        Nexmo::message()->send([
+            'to'   => '94775635458',
+            'from' => 'Hippo',
+            'text' => 'Testing sms'
+        ]);
+        */
+
         return view('stockmanager.index');
+    }
+
+    public function getAddStock(Request $request)
+    {
+        $brand = $request['ItemModel1'];
+        $product = $request['productSelect'];
+        return view('stockmanager.add_stock', ["brand" => $brand, "product" => $product]);
+    }
+
+    public function fillDrop(Request $request)
+    {
+        if ($request['type'] == 'model') {
+
+            $catagory = $request['body'];
+            $table = $this->getTable($catagory);
+
+            $itemBrand = DB::select("select DISTINCT brand from $table WHERE 1");
+            foreach ($itemBrand as $row) {
+                $brand_arr[] = array("id" => $row->brand);
+            }
+            return response()->json(['msg' => $brand_arr], 200);
+        } else if ($request['type'] == 'product') {
+            $product = $request['body'];
+            $cat = $request['cat'];
+            $table = $this->getTable($cat);
+
+            $ProductList = DB::select("select name from $table WHERE brand='$product'");
+            foreach ($ProductList as $row) {
+                $product_arr[] = array("id" => $row->name);
+            }
+
+            return response()->json(['msg' => $product_arr], 200);
+        }
     }
 
     public function getAdditems()

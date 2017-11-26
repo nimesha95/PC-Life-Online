@@ -40,6 +40,11 @@
 @endsection
 
 @section('content')
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        </div>
+    </div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 @endsection

@@ -27,7 +27,7 @@
                         <li><a href="#" data-toggle="modal" data-target="#AddSelectModal">Add Product</a></li>
                         <li><a href="#">Edit Products</a></li>
                         <li><a href="#">Remove Product</a></li>
-                        <li><a href="#">Update Stock</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#AddStockModal">Update Stock</a></li>
                         <li><a href="#">Availability</a></li>
                     </ul>
                 </li>
@@ -100,6 +100,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-sm-2" for="model">Model:</label>
+                        <div class="col-sm-10 col-md-4">
+                            <select class="form-control" id="ItemModel" name="ItemModel">
+                                <option value="0" selected>--Model--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-info">Submit</button>
                         </div>
@@ -111,6 +119,67 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
+
+<!-- select stock modal -->
+<div class="modal fade" id="AddStockModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Stock</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="post" action="{{route('stockmanager.addstock')}}">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="type">Catagory:</label>
+                        <div class="col-sm-10 col-md-4">
+                            <select class="form-control" id="ItemType1" name="ItemType1">
+                                <option value="0" selected>Select Catagory</option>
+                                <option value="1">Desktop</option>
+                                <option value="2">Laptop</option>
+                                <option value="3">some</option>
+                                <option value="4">stuff</option>
+                                <option value="5">goes</option>
+                                <option value="6">here</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="model">Model:</label>
+                        <div class="col-sm-10 col-md-4">
+                            <select class="form-control" id="ItemModel1" name="ItemModel1">
+                                <option value="0" selected>--Model--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="product">Product:</label>
+                        <div class="col-sm-10 col-md-4">
+                            <select class="form-control" id="productSelect" name="productSelect">
+                                <option value="0" selected>--Product--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-info">Submit</button>
+                        </div>
+                    </div>
+                    {{ csrf_field() }}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{URL::to('js/add_stock.js')}}"></script>
+<script>
+    var token = '{{\Illuminate\Support\Facades\Session::token()}}';
+    var url = '{{route('fill_dropdown')}}';
+</script>
