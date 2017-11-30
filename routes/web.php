@@ -199,6 +199,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
             'as' => 'fill_dropdown'
         ]);
 
+        Route::post('/submit_stock', [
+            'uses' => 'StockManagerController@AddStock',
+            'as' => 'submit_stock'
+        ]);
+
     });
 
 });

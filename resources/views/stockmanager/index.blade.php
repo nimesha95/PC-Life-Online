@@ -40,6 +40,7 @@
 @endsection
 
 @section('content')
+    <!--
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
@@ -47,4 +48,28 @@
         </div>
     </div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    -->
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="pre-scrollable" style="height: 200px">
+                <li>4546546</li>
+                <li>4546546</li>
+                <li>4546546</li>
+                <li>4546546</li>
+                <li>4546546</li>
+                <li>4546546</li>
+                <li>4546546</li>
+                <li>4546546</li>
+                vv
+                <li>4546546</li>
+                <li>4546546</li>
+
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>2</h2>
+        </div>
+    </div>
 @endsection

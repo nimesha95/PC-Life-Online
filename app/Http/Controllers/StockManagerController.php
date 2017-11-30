@@ -13,21 +13,41 @@ class StockManagerController extends Controller
     public function getIndex()
     {
         /*
-        Nexmo::message()->send([
-            'to'   => '94775635458',
-            'from' => 'Hippo',
-            'text' => 'Testing sms'
-        ]);
-        */
+                Nexmo::message()->send([
+                    'to'   => '94775635458',
+                    'from' => 'Hippo',
+                    'text' => 'Testing sms'
+                ]);
+          */
 
         return view('stockmanager.index');
     }
 
     public function getAddStock(Request $request)
     {
+        $type = $request['ItemType1'];
         $brand = $request['ItemModel1'];
         $product = $request['productSelect'];
-        return view('stockmanager.add_stock', ["brand" => $brand, "product" => $product]);
+
+        $table = $this->getTable($type);
+        $itemProid = DB::select("select proid from $table WHERE 1");
+        foreach ($itemProid as $row) {
+            $proid = $row->proid;
+        }
+
+        return view('stockmanager.add_stock', ["brand" => $brand, "product" => $product, "proid" => $proid]);
+    }
+
+    public function AddStock(Request $request)
+    {
+        $proid = $request['proid'];
+        $sno = $request['serialNo'];
+
+        DB::table('items')->insert(
+            ['sno' => $sno, 'proid' => $proid]
+        );
+
+        return response()->json(['msg' => "hello there"], 200);
     }
 
     public function fillDrop(Request $request)
