@@ -8,6 +8,7 @@ class CashierController extends Controller
 {
     public function getIndex()
     {
+    	x=1;
         return view('cashier.index');
     }
 }
