@@ -204,6 +204,25 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
             'as' => 'submit_stock'
         ]);
 
+        Route::post('/cur_orders', [
+            'uses' => 'StockManagerController@check_orders',
+            'as' => 'check_orders'
+        ]);
+
+        Route::post('/deli_orders', [
+            'uses' => 'StockManagerController@check_deli_orders',
+            'as' => 'check_deli_orders'
+        ]);
+
+        Route::get('/getOrder/{id}', [
+            'uses' => 'StockManagerController@getOrder',
+            'as' => 'stock.getOrder',
+        ]);
+
+        Route::post('/submit_invoice', [
+            'uses' => 'StockManagerController@submitInvoice',
+            'as' => 'stock.subInv'
+        ]);
     });
 
 });
@@ -213,6 +232,19 @@ Route::group(['middleware' => ['auth', 'cashier']], function () {
         'uses' => 'CashierController@getIndex',
         'as' => 'cashier.index',
     ]);
+
+    Route::group(['prefix' => 'cashier'], function () {
+        Route::get('/{cash}', [
+            'uses' => 'CashierController@show',
+            'as' => 'cashier.show',
+        ]);
+
+        Route::put('/{cash}', [
+            'uses' => 'CashierController@update',
+            'as' => 'cashier.update',
+        ]);
+
+    });
 });
 
 Route::group(['middleware' => ['auth', 'technician']], function () {

@@ -53,23 +53,54 @@
     <div class="row">
         <div class="col-md-6">
             <div class="pre-scrollable" style="height: 200px">
-                <li>4546546</li>
-                <li>4546546</li>
-                <li>4546546</li>
-                <li>4546546</li>
-                <li>4546546</li>
-                <li>4546546</li>
-                <li>4546546</li>
-                <li>4546546</li>
-                vv
-                <li>4546546</li>
-                <li>4546546</li>
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Pending Orders</div>
 
-
+                    <!-- Table -->
+                    <table class="table" id="curOrders">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Value</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
-            <h2>2</h2>
+            <div class="pre-scrollable" style="height: 200px">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Orders need Delivering</div>
+
+                    <!-- Table -->
+                    <table class="table" id="deliOrders">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Value</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{URL::to('js/stock_man.js')}}"></script>
+    <script>
+        var token = '{{\Illuminate\Support\Facades\Session::token()}}';
+        var url_curOrders = '{{route('check_orders')}}';
+        var url_deliOrders = '{{route('check_deli_orders')}}';
+    </script>
 @endsection
