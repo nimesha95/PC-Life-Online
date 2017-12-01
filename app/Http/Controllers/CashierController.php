@@ -37,11 +37,18 @@ class CashierController extends Controller
         return view('cashier.details', compact('orders'));
     }
 
-    public function update($cash)
+    public function update($cash, Request $request)
     {
-        //dd($cash);
+        $order_total = $request->input('order_total');
+        $new_total = $request->input('new_total');
 
-        DB::update('update orders set verified = 1 where  id = ? ', [$cash]);
+        if ($order_total == $new_total) {
+            DB::update('update orders set verified = 1 where  id = ? ', [$cash]);
+        } else {
+            DB::update('update orders set verified = 1  where  id = ? ', [$cash]);
+            DB::update('update orders set total = ?  where  id = ? ', [$new_total, $cash]);
+        }
+
         //$email=DB::select('select email from orders where id = ? ', [$cash]);
         //$email = "nimesha95@live.com";
         //Mail::to($email)->send(New cashier());
