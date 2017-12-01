@@ -88,18 +88,32 @@ class ProductController extends Controller
         return redirect()->route('user.getCart');
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
+        $paymentMethod = $request['paymentMethod'];
+        $deliveryMethod = $request['deliveryMethod'];
+
         $order = new Order();
         $content = Cart::content();
-        /*
         $order->addRow($content);
-        dd($content);
-        */
-        $serializedContent = serialize($content);
+        //dd($content);
+        $serializedContent = serialize($content);   //convert the object into a string
         $total = Cart::subtotal();
-        DB::insert('insert into orders (email,order_obj,total) values (?,?,?)', [Auth::user()->email, $serializedContent, $total]);
-        return redirect()->route('user.getCart');
+        DB::insert('insert into orders (email,order_obj,total,delivery,paymentType) values (?,?,?,?,?)', [Auth::user()->email, $serializedContent, $total, $deliveryMethod, $paymentMethod]);
+        Cart::destroy();
+        if ($paymentMethod == "pickup")    //pickup
+        {
+            return response()->json(['returnURL' => "www.google.lk"], 200);
+        } else if ($paymentMethod == "bank")    //pickup
+        {
+            return response()->json(['returnURL' => "bank baibee"], 200);
+        } else if ($paymentMethod == "paypal")    //pickup
+        {
+            return response()->json(['returnURL' => "paypal baibee"], 200);
+        }
+
+        //return redirect()->route('user.getCart');
+
     }
 
     private function selectItemType($id)

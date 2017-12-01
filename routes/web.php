@@ -102,7 +102,12 @@ Route::group(['prefix' => 'user'], function () {
             'as' => 'user.getCart'
         ]);
 
-        Route::get('/checkout', [
+        Route::get('/track', [
+            'uses' => 'UserController@getTrack',
+            'as' => 'user.getTrack'
+        ]);
+
+        Route::post('/checkout', [
             'uses' => 'ProductController@checkout',
             'as' => 'user.checkout'
         ]);
@@ -112,11 +117,20 @@ Route::group(['prefix' => 'user'], function () {
             'as' => 'user.editinfo'
         ]);
 
+        Route::post('/get_addr', [
+            'uses' => 'UserController@postAddr',
+            'as' => 'getAddr'
+        ]);
+
         Route::get('/send_test', function () {
             Mail::raw('Sending emails with Mailgun and Laravel is easy!', function ($message) {
                 $message->to('nimesha95@live.com');
             });
         });
+
+        Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
+        Route::post('paypal', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
+        Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
 
     });
 
@@ -163,6 +177,35 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
         'uses' => 'StockManagerController@getIndex',
         'as' => 'stockmanager.index',
     ]);
+
+    Route::group(['prefix' => 'stockmanager'], function () {
+        Route::post('/add_stock', [
+            'uses' => 'StockManagerController@getAddStock',
+            'as' => 'stockmanager.addstock',
+        ]);
+
+        Route::post('/redirect_add', [
+            'uses' => 'StockManagerController@redirect_add',
+            'as' => 'stock.redirect_add',
+        ]);
+
+        Route::get('/additems', [
+            'uses' => 'StockManagerController@getAdditems',
+            'as' => 'stock.additems',
+        ]);
+
+        Route::post('/fill_product_dropdown', [
+            'uses' => 'StockManagerController@fillDrop',
+            'as' => 'fill_dropdown'
+        ]);
+
+        Route::post('/submit_stock', [
+            'uses' => 'StockManagerController@AddStock',
+            'as' => 'submit_stock'
+        ]);
+
+    });
+
 });
 
 Route::group(['middleware' => ['auth', 'cashier']], function () {
