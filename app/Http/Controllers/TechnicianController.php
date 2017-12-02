@@ -10,4 +10,8 @@ class TechnicianController extends Controller
     {
         return view('technician.index');
     }
+    public function getTodo()
+    {
+        return view('technician.todo');
+    }
 }

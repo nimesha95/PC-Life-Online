@@ -221,5 +221,16 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         'as' => 'technician.index',
     ]);
 
+    Route::group(['prefix' => 'technician'], function () {
+
+        Route::get('/Todo', [
+            'uses' => 'TechnicianController@getTodo',
+            'as' => 'technician.Todo',
+        ]);
+
+
+    });
+
+
 
 });

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Techician
+    Techician | To Do
 @endsection
 
 
@@ -12,9 +12,9 @@
 
 
 @section('content')
-    <h1>Technician | Home </h1>
+    <h1>TO Do List </h1>
     <div class="container">
-        <h2>Horizontal form with static control</h2>
+        <h2>Horizonadssddfs static control</h2>
         <form class="form-horizontal" action="/action_page.php">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="email">Email:</label>
