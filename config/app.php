@@ -182,6 +182,7 @@ return [
         Nexmo\Laravel\NexmoServiceProvider::class,
 
         Barryvdh\Snappy\ServiceProvider::class,
+        'JD\Cloudder\CloudderServiceProvider'
     ],
 
     /*
@@ -234,6 +235,7 @@ return [
         'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Cloudder' => 'JD\Cloudder\Facades\Cloudder',
     ],
 
 ];
