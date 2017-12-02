@@ -56,7 +56,7 @@ Route::group(['prefix' => 'user'], function () {
         ]);
 
         Route::post('/signup', [
-            'uses' => 'UserController@postSignup',
+            'uses' => 'UserController@postRegUser',
             'as' => 'user.signup'
         ]);
 
