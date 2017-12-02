@@ -16,6 +16,13 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
+Route::get('/se', function (\Illuminate\Mail\Mailer $mailer) {
+    $mailer
+        ->to("hiipo@hippo.com")
+        ->send(new \App\Mail\TestMail());
+    return redirect()->route('product.index');
+})->name('haha');
+
 Route::get('/send', [
     'uses' => 'EmailController@send',
     'as' => 'user.sendMail'

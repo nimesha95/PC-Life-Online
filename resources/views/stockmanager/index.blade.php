@@ -94,6 +94,17 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>total pending orders</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>orders today</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>orders need delivering</h3>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
