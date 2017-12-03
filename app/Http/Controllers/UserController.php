@@ -115,7 +115,6 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'email | required | unique:users',
             'password' => 'required | min:4',
-            'role' => 'required'
         ]);
 
 
@@ -123,11 +122,11 @@ class UserController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'role' => $request->input('role'),
-            'role_name' => $this->getRoleName($request->input('role')),
+            'role' => 1,
+            'role_name' => 'user',
         ]);
         $user->save();
-        return redirect()->back();
+        return redirect()->route('product.index');
 
     }
 

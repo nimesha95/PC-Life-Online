@@ -180,6 +180,9 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         Nexmo\Laravel\NexmoServiceProvider::class,
+
+        Barryvdh\Snappy\ServiceProvider::class,
+        'JD\Cloudder\CloudderServiceProvider'
     ],
 
     /*
@@ -230,6 +233,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Cloudder' => 'JD\Cloudder\Facades\Cloudder',
     ],
 
 ];
