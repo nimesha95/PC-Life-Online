@@ -273,10 +273,7 @@
                             <select class="form-control" id="items" name="ItemType">
                                 <option value="1">Desktop</option>
                                 <option value="2">Laptop</option>
-                                <option value="3">some</option>
-                                <option value="4">stuff</option>
-                                <option value="5">goes</option>
-                                <option value="6">here</option>
+                                <option value="3">Accessories</option>
                             </select>
                         </div>
                     </div>

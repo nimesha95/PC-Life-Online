@@ -40,7 +40,7 @@ class AdminController extends Controller
         $type = $this->getItemName($itmtype);
         $table = $this->getTable($itmtype);
 
-        \Illuminate\Support\Facades\Session::put('type', [$table]);
+        // \Illuminate\Support\Facades\Session::put('type', [$table]);
         \Illuminate\Support\Facades\Session::put('type', [$type]);
         \Illuminate\Support\Facades\Session::put('table', $table);
         return redirect(route('admin.additems'));
@@ -48,37 +48,57 @@ class AdminController extends Controller
 
     public function postAdditems(Request $request)
     {
-        $item = new Item_info();
+        $table = \Illuminate\Support\Facades\Session::get('table');
+
+        $count = 0;
+        //added "image not avialable" link to the imgArr
+        $imgThumb = [];
+        $imgArr = ["http://res.cloudinary.com/docp8wv1x/image/upload/v1508704084/dprnfntaojeelbyvakmn.jpg", "http://res.cloudinary.com/docp8wv1x/image/upload/v1508704084/dprnfntaojeelbyvakmn.jpg", "http://res.cloudinary.com/docp8wv1x/image/upload/v1508704084/dprnfntaojeelbyvakmn.jpg"];
+        if ($request->hasFile('img1')) {
+            $thumb = $request->img1;
+            \Cloudder::upload($thumb);      //uploading image to cloudinary
+            $c = \Cloudder::getResult();      //getting the result array
+            $imgThumb[0] = $c['url'];
+        }
+        if ($request->hasFile('img')) {
+            foreach ($request->img as $image) {
+                \Cloudder::upload($image);      //uploading image to cloudinary
+                $c = \Cloudder::getResult();      //getting the result array
+                $imgArr[$count] = $c['url'];
+                $count = $count + 1;
+            }
+        }
 
         $proid = $request->input('productid');
         $name = $request->input('model');
-        $brand = $request->input('brand');
-        $type = $request->input('cond');
-        $availability = $request->input('availability');
         $description = $request->input('description');
-        $image = $request->input('pri_image');
-        $img1 = $request->input('img1');
-        $img2 = $request->input('img2');
-        $img3 = $request->input('img3');
-        $img4 = $request->input('img4');
+        $type = $request->input('cond');
         $price = $request->input('price');
         $discount_price = $request->input('dis_price');
+        $availability = $request->input('availability');
 
-        $specifications = $request->except('_token', 'productid', 'brand', 'model', 'cond', 'price', 'dis_price', 'availability', 'pri_image', 'img1', 'img2', 'img3', 'img4', 'add');
-        foreach ($specifications as $key => $value) {
-            $item->addToArray($key, $value);
+        $item_type = $request->ITEM_TYPE;
+        if ($item_type == "acc") {
+            $specific = $request->input('specification');
+
+            DB::insert("insert into $table (proid,name,type,availability,description,image,img1,img2,img3,price,discount_price,specification) values (?,?,?,?,?,?,?,?,?,?,?,?)",
+                [$proid, $name, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $specific]);
+        } else {
+            $item = new Item_info();
+
+            $brand = $request->input('brand');
+
+            $specifications = $request->except('_token', 'productid', 'brand', 'model', 'cond', 'price', 'dis_price', 'availability', 'img', 'img1', 'add');
+            foreach ($specifications as $key => $value) {
+                $item->addToArray($key, $value);
+            }
+
+            $itemDetails = serialize($item);
+
+            DB::insert("insert into $table (proid,name,brand,type,availability,description,image,img1,img2,img3,price,discount_price,itemDetails) values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                [$proid, $name, $brand, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $itemDetails]);
         }
-
-        $itemDetails = serialize($item);
-
-        $table = \Illuminate\Support\Facades\Session::get('table');
-
-
-        DB::insert("insert into $table (proid,name,brand,type,availability,description,image,img1,img2,img3,img4,price,discount_price,itemDetails) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-            [$proid, $name, $brand, $type, $availability, $description, $image, $img1, $img2, $img3, $img4, $price, $discount_price, $itemDetails]);
-
         return redirect(route('admin.additems'))->with('message', 'Item Added Succesfully');
-        //dd($item);
     }
 
     public function postRegUser(Request $request)
@@ -124,6 +144,10 @@ class AdminController extends Controller
     {
         if ($var == 1) {
             return 'partials.items.desktop';
+        } elseif ($var == 2) {
+            return 'partials.items.laptop';
+        } elseif ($var == 3) {
+            return 'partials.items.accessories';
         }
     }
 
@@ -131,6 +155,10 @@ class AdminController extends Controller
     {
         if ($var == 1) {
             return 'desktops';
+        } elseif ($var == 2) {
+            return 'laptops';
+        } elseif ($var == 3) {
+            return 'accessories';
         }
     }
 
