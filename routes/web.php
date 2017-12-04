@@ -40,12 +40,14 @@ Route::get('/send_test', function () {
 
 Route::get('/desktops/{type}/{brand?}', [
     'uses' => 'ProductController@getDesktops',
-    'as' => 'product.product'
 ]);
 
 Route::get('/laptops/{type}/{brand?}', [
     'uses' => 'ProductController@getLaptops',
-    'as' => 'product.product'
+]);
+
+Route::get('/acc/{type}', [
+    'uses' => 'ProductController@getAcc',
 ]);
 
 Route::get('/product/{id}', [

@@ -3,6 +3,42 @@
 </div>
 
 <div class="form-group">
+    <label class="control-label col-sm-2" for="catagory">Catagory:</label>
+    <div class="col-md-5">
+        <input class="form-control" list="catagory" name="catagory">
+        <datalist id="catagory">
+            <option value="Motherboard">
+            <option value="Ram">
+            <option value="Processor">
+            <option value="Hard_Drive">Hard Drive</option>
+            <option value="Casings">
+            <option value="Monitors">
+            <option value="Mouse">
+            <option value="Keyboard">
+            <option value="VGA_Cards">VGA Cards</option>
+            <option value="Coolers">
+            <option value="Power_Supply">Power Supply</option>
+            <option value="Mass_Storage">Mass Storage</option>
+            <option value="Speakers">
+            <option value="Memory_Cards">Memory Cards</option>
+            <option value="Optical_Drives">Optical Drives</option>
+            <option value="Cables">
+            <option value="UPS">
+            <option value="Network_Devices">Network Devices</option>
+            <option value="Printer">
+            <option value="Scanner">
+            <option value="Laptop_Acc">Laptop Acc</option>
+            <option value="Converters">
+            <option value="Softwares">
+            <option value="Virus_Guard">Virus Guard</option>
+            <option value="Smart_Watch">Smart Watch</option>
+            <option value="Tablet">
+            <option value="Other">
+        </datalist>
+    </div>
+</div>
+
+<div class="form-group">
     <label class="control-label col-sm-2" for="Model">Model:</label>
     <div class="col-sm-10">
         <input type="text" class="form-control" id="model" title="Model Number" placeholder="Enter model type"

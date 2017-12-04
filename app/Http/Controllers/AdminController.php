@@ -49,7 +49,6 @@ class AdminController extends Controller
     public function postAdditems(Request $request)
     {
         $table = \Illuminate\Support\Facades\Session::get('table');
-
         $count = 0;
         //added "image not avialable" link to the imgArr
         $imgThumb = [];
@@ -80,9 +79,10 @@ class AdminController extends Controller
         $item_type = $request->ITEM_TYPE;
         if ($item_type == "acc") {
             $specific = $request->input('specification');
+            $catagory = $request->input('catagory');
 
-            DB::insert("insert into $table (proid,name,type,availability,description,image,img1,img2,img3,price,discount_price,specification) values (?,?,?,?,?,?,?,?,?,?,?,?)",
-                [$proid, $name, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $specific]);
+            DB::insert("insert into $table (proid,catagory,name,type,availability,description,image,img1,img2,img3,price,discount_price,specification) values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                [$proid, $catagory, $name, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $specific]);
         } else {
             $item = new Item_info();
 
