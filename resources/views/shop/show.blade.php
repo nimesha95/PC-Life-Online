@@ -41,9 +41,6 @@
                         <td width="80px" height="80px"><img src="{{$item->img3}}"
                                                             onclick="changeImage('{{$item->img3}}')" width="80px"
                                                             height="80px"></td>
-                        <td width="80px" height="80px"><img src="{{$item->img4}}"
-                                                            onclick="changeImage('{{$item->img4}}')" width="80px"
-                                                            height="80px"></td>
                     </tr>
                 </table>
             </div>

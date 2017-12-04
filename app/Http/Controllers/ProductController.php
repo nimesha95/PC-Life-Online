@@ -50,6 +50,20 @@ class ProductController extends Controller
         return view('shop.product', ['items' => $items, 'sidebar' => 'laptop_sbar']);
     }
 
+    public function getAcc($type)
+    {
+        $brandArr = ["Motherboard", "Ram", "Processor", "Hard_Drive", "Casings", "Monitors", "Mouse", "Keyboard", "VGA_Cards", "Coolers", "Power_Supply",
+            "Mass_Storage", "Speakers", "Memory_Cards", "Optical_Drives", "Cables", "UPS", "Network_Devices", "Printer", "Scanner", "Laptop_Acc",
+            "Converters", "Softwares", "Virus_Guard", "Smart_Watch", "Tablet", "Other"];
+
+        if (in_array($type, $brandArr)) {
+            $items = DB::select("select * from accessories where catagory='" . $type . "'");
+            return view('shop.product', ['items' => $items, 'sidebar' => 'laptop_sbar']);
+        } else {
+            return view('shop.not_found');
+        }
+    }
+
     public function getAddToCart($id)
     {
         $table = $this->selectItemType($id);
@@ -92,14 +106,14 @@ class ProductController extends Controller
     {
         $paymentMethod = $request['paymentMethod'];
         $deliveryMethod = $request['deliveryMethod'];
-
         $order = new Order();
         $content = Cart::content();
         $order->addRow($content);
-        //dd($content);
         $serializedContent = serialize($content);   //convert the object into a string
         $total = Cart::subtotal();
+        //return response()->json(['returnURL' => $total], 200);
         DB::insert('insert into orders (email,order_obj,total,delivery,paymentType) values (?,?,?,?,?)', [Auth::user()->email, $serializedContent, $total, $deliveryMethod, $paymentMethod]);
+
         Cart::destroy();
         if ($paymentMethod == "pickup")    //pickup
         {

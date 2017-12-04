@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\StockHandler;
 use Illuminate\Http\Request;
 use App\Item_info;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Mail;
 use \Cart as Cart;
 use App\cashier;
 use Nexmo\Laravel\Facade\Nexmo;
 use SnappyImage;
+use PDF;
 
 class StockManagerController extends Controller
 {
@@ -185,7 +188,20 @@ class StockManagerController extends Controller
 
     public function submitInvoice(Request $request)
     {
-        dd($request);
+        //dd($request);
+
+        $Stock_data = new StockHandler();
+
+        $data = $request->except('_token');
+        foreach ($data as $key => $value) {
+            $Stock_data->addToArray($key, $value);
+        }
+
+        $arr = $Stock_data->returnArr();
+
+        $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
+        return $pdf->download('invoice.pdf');
+        
     }
 
     private function getItemName($var)

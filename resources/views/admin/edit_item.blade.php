@@ -32,13 +32,12 @@
                                 <label class="control-label col-sm-2" for="proid">Product ID:</label>
                                 <div class="col-sm-2">
                                     <input type="text" id="productid" name="productid"
-                                           value="{{\Illuminate\Support\Facades\Session::get('lastID')}}"
+                                           value="{{$data['row']['proid']}}"
                                            class="form-control" readonly>
                                 </div>
                             </div>
-                            @foreach(session('type') as $type)
-                                @include($type)
-                            @endforeach
+
+                            @include($data['type'])
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
