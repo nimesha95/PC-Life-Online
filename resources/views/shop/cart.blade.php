@@ -98,7 +98,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="paymentTab">
-                                <form class="form-horizontal" method="post" action="{{route('admin.reguser')}}">
+                                <form class="form-horizontal" method="post" action="#">
                                     <div class="form-group">
                                         <label class="control-label col-sm-4" for="Payment">Select Payment
                                             Method:</label>

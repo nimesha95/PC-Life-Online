@@ -106,14 +106,14 @@ class ProductController extends Controller
     {
         $paymentMethod = $request['paymentMethod'];
         $deliveryMethod = $request['deliveryMethod'];
-
         $order = new Order();
         $content = Cart::content();
         $order->addRow($content);
-        //dd($content);
         $serializedContent = serialize($content);   //convert the object into a string
         $total = Cart::subtotal();
+        //return response()->json(['returnURL' => $total], 200);
         DB::insert('insert into orders (email,order_obj,total,delivery,paymentType) values (?,?,?,?,?)', [Auth::user()->email, $serializedContent, $total, $deliveryMethod, $paymentMethod]);
+
         Cart::destroy();
         if ($paymentMethod == "pickup")    //pickup
         {
