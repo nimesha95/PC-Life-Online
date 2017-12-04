@@ -10,6 +10,11 @@ class Item_info
     {
         $this->items[$key] = $value;
     }
+
+    function returnArr()
+    {
+        return $this->items;
+    }
 }
 
 ?>

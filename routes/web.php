@@ -28,6 +28,10 @@ Route::get('/send', [
     'as' => 'user.sendMail'
 ]);
 
+Route::post('/rest_api', [
+    'uses' => 'EmailController@test'
+]);
+
 Route::get('/send_test', function () {
     Mail::raw('Sending emails with Mailgun and Laravel is easy!', function ($message) {
         $message->to('nimesha95@live.com');
@@ -174,6 +178,12 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'uses' => 'AdminController@postRegUser',
             'as' => 'admin.reguser'
         ]);
+
+        Route::post('/edit_item', [
+            'uses' => 'AdminController@getEditItem',
+            'as' => 'admin.get_edit_item'
+        ]);
+
 
     });
 

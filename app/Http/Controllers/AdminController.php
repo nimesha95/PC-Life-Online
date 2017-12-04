@@ -101,9 +101,35 @@ class AdminController extends Controller
         return redirect(route('admin.additems'))->with('message', 'Item Added Succesfully');
     }
 
+    public function getEditItem(Request $request)
+    {
+        //need to validate data here
+        $pro_id = $request->input('pro_id');
+        $table = $this->getItemType($pro_id);
+
+        $item = new Item_info();
+
+        $row = DB::select("SELECT * FROM $table[0] WHERE proid ='$pro_id'");
+
+        //dd($row);
+        // dd(session('type'));
+
+        foreach ($row as $rw) {
+            $item = $rw->itemDetails;
+            $rowX = ['proid' => $rw->proid, 'name' => $rw->name, 'brand' => $rw->brand,
+                'type' => $rw->type, 'availability' => $rw->availability,
+                'description' => $rw->description, 'price' => $rw->price,
+                'discount_price' => $rw->discount_price];
+        }
+        $item = unserialize($item);
+        $row = array_merge($rowX, $item->returnArr());
+
+        return view('admin.edit_item')->with('data', ['type' => $table[1], 'row' => $row]);
+    }
+
     public function postRegUser(Request $request)
     {
-
+        dd($request);
         session(['AdminRegUser' => 1]);
         $this->validate($request, [
             'name' => 'required',
@@ -180,4 +206,15 @@ class AdminController extends Controller
         return $proid;
     }
 
+    private function getItemType($var)
+    {
+        $prefix = substr($var, 0, 2);
+        if ($prefix == "DS") {
+            return ['desktops', 'partials.items.desktop_edit'];
+        } elseif ($prefix == "LP") {
+            return ['laptops', 'partials.items.laptop_edit'];
+        } else {
+            return ['accessories', 'partials.items.accessories_edit'];
+        }
+    }
 }

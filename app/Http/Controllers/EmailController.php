@@ -34,4 +34,10 @@ class EmailController extends Controller
         return response()->json(['message' => 'Request completed']);
         */
     }
+
+    public function test(Request $request)
+    {
+
+        return response()->json(['msg' => 'dumbass']);
+    }
 }
