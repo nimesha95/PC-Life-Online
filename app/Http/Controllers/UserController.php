@@ -81,7 +81,6 @@ class UserController extends Controller
         } else {
             return redirect()->back()->withErrors("Please Check your credentials");
         }
-
     }
 
     public function getProfile()
