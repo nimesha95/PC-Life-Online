@@ -201,7 +201,7 @@ class StockManagerController extends Controller
 
         $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
         return $pdf->download('invoice.pdf');
-        
+
     }
 
     private function getItemName($var)
