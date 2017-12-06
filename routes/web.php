@@ -16,9 +16,20 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
+Route::get('/se', function (\Illuminate\Mail\Mailer $mailer) {
+    $mailer
+        ->to("hiipo@hippo.com")
+        ->send(new \App\Mail\TestMail());
+    return redirect()->route('product.index');
+})->name('haha');
+
 Route::get('/send', [
     'uses' => 'EmailController@send',
     'as' => 'user.sendMail'
+]);
+
+Route::post('/rest_api', [
+    'uses' => 'EmailController@test'
 ]);
 
 Route::get('/send_test', function () {
@@ -29,12 +40,14 @@ Route::get('/send_test', function () {
 
 Route::get('/desktops/{type}/{brand?}', [
     'uses' => 'ProductController@getDesktops',
-    'as' => 'product.product'
 ]);
 
 Route::get('/laptops/{type}/{brand?}', [
     'uses' => 'ProductController@getLaptops',
-    'as' => 'product.product'
+]);
+
+Route::get('/acc/{type}', [
+    'uses' => 'ProductController@getAcc',
 ]);
 
 Route::get('/product/{id}', [
@@ -56,7 +69,7 @@ Route::group(['prefix' => 'user'], function () {
         ]);
 
         Route::post('/signup', [
-            'uses' => 'UserController@postSignup',
+            'uses' => 'UserController@postRegUser',
             'as' => 'user.signup'
         ]);
 
@@ -168,6 +181,12 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'as' => 'admin.reguser'
         ]);
 
+        Route::post('/edit_item', [
+            'uses' => 'AdminController@getEditItem',
+            'as' => 'admin.get_edit_item'
+        ]);
+
+
     });
 
 });
@@ -204,6 +223,25 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
             'as' => 'submit_stock'
         ]);
 
+        Route::post('/cur_orders', [
+            'uses' => 'StockManagerController@check_orders',
+            'as' => 'check_orders'
+        ]);
+
+        Route::post('/deli_orders', [
+            'uses' => 'StockManagerController@check_deli_orders',
+            'as' => 'check_deli_orders'
+        ]);
+
+        Route::get('/getOrder/{id}', [
+            'uses' => 'StockManagerController@getOrder',
+            'as' => 'stock.getOrder',
+        ]);
+
+        Route::post('/submit_invoice', [
+            'uses' => 'StockManagerController@submitInvoice',
+            'as' => 'stock.subInv'
+        ]);
     });
 
 });
@@ -213,6 +251,19 @@ Route::group(['middleware' => ['auth', 'cashier']], function () {
         'uses' => 'CashierController@getIndex',
         'as' => 'cashier.index',
     ]);
+
+    Route::group(['prefix' => 'cashier'], function () {
+        Route::get('/{cash}', [
+            'uses' => 'CashierController@show',
+            'as' => 'cashier.show',
+        ]);
+
+        Route::put('/{cash}', [
+            'uses' => 'CashierController@update',
+            'as' => 'cashier.update',
+        ]);
+
+    });
 });
 
 Route::group(['middleware' => ['auth', 'technician']], function () {

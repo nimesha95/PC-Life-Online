@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\StockHandler;
 use Illuminate\Http\Request;
 use App\Item_info;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Session;
+use Mail;
+use \Cart as Cart;
+use App\cashier;
 use Nexmo\Laravel\Facade\Nexmo;
+use SnappyImage;
+use PDF;
 
 class StockManagerController extends Controller
 {
@@ -19,7 +25,10 @@ class StockManagerController extends Controller
                     'text' => 'Testing sms'
                 ]);
           */
-
+        /*
+                $email = "nimesha95@live.com";
+                Mail::to($email)->send(New cashier());
+        */
         return view('stockmanager.index');
     }
 
@@ -36,6 +45,45 @@ class StockManagerController extends Controller
         }
 
         return view('stockmanager.add_stock', ["brand" => $brand, "product" => $product, "proid" => $proid]);
+    }
+
+    public function getOrder($id)
+    {
+        Cart::destroy();
+        $order = DB::table('orders')
+            ->where('id', '=', $id)
+            ->get();
+        //Cart::add($proid, $name, 1, $price);
+        foreach ($order as $ord) {
+            $cart = $ord->order_obj;
+            $cart = unserialize($cart);
+            //dd($cart);
+            foreach ($cart as $itm) {
+                Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
+            }
+        }
+
+        //dd(Cart::subtotal());
+
+        return view('stockmanager.viewOrder');
+    }
+
+    public function check_orders(Request $request)
+    {
+        $msg = $request['body'];
+
+        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND delivery=0");
+
+        return response()->json(['msg' => $orders_to_process], 200);
+    }
+
+    public function check_deli_orders(Request $request)
+    {
+        $msg = $request['body'];
+
+        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND delivery=1");
+
+        return response()->json(['msg' => $orders_to_process], 200);
     }
 
     public function AddStock(Request $request)
@@ -136,6 +184,24 @@ class StockManagerController extends Controller
         \Illuminate\Support\Facades\Session::put('type', [$type]);
         \Illuminate\Support\Facades\Session::put('table', $table);
         return redirect(route('stock.additems'));
+    }
+
+    public function submitInvoice(Request $request)
+    {
+        //dd($request);
+
+        $Stock_data = new StockHandler();
+
+        $data = $request->except('_token');
+        foreach ($data as $key => $value) {
+            $Stock_data->addToArray($key, $value);
+        }
+
+        $arr = $Stock_data->returnArr();
+
+        $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
+        return $pdf->download('invoice.pdf');
+
     }
 
     private function getItemName($var)

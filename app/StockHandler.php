@@ -1,8 +1,15 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Nimesha
+ * Date: 12/5/2017
+ * Time: 1:36 AM
+ */
 
 namespace App;
 
-class Item_info
+
+class StockHandler
 {
     public $items = [];
 
@@ -16,5 +23,3 @@ class Item_info
         return $this->items;
     }
 }
-
-?>

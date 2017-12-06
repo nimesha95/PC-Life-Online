@@ -1,5 +1,5 @@
 <div class="form-group">
-    <input type="hidden" name="ITEM_TYPE" value="dsk">
+    <input type="hidden" name="ITEM_TYPE" value="lap">
 </div>
 
 <div class="form-group">
@@ -44,19 +44,12 @@
     <div class="col-sm-2">
         <select class="form-control" id="cond" name="cond">
 
-            <option value="new" selected>Brand new</option>
-            <option value="used">Used</option>
+            <option value="Brand New" selected>Brand new</option>
+            <option value="Used">Used</option>
         </select>
     </div>
 </div>
 
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Mother Board">Mother Board Details:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="m_board" title="Mother Board Details" placeholder="Enter
-        motherboard type" name="m_board">
-    </div>
-</div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="RAM">RAM type:</label>
     <div class="col-sm-10">
@@ -76,49 +69,6 @@
     <div class="col-sm-10">
         <input type="text" class="form-control" id="gui" title="VGA Details" placeholder="Enter Graphic Driver
         type" name="gui">
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Optical Driver">Optical Driver:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="op_drive" title="Optical Drive Details"
-               placeholder="Enter Optical Driver type" name="op_drive">
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Monitor details">Monitor Details:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="monitor_des" placeholder="Enter Monitor Details"
-               title="Monitor Details" name="monitor_des">
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="power Supply">Power Supply:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="pw_supply" title="Power Supply Details" placeholder="Enter
-        Power Supply Details" name="pw_supply">
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Mouse type">Mouse Type:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" title="Mouse Details" id="mouse" placeholder="Enter Mouse
-        type" name="mouse">
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Key Board">Key Board Type:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="key_bd" title="Key Board Details"
-               placeholder="Enter Key Board type" name="key_bd">
-    </div>
-</div>
-
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Sound System">Sound System:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="sound" title="Sound System Details"
-               placeholder="Enter Sound System type" name="sounds">
     </div>
 </div>
 
@@ -162,20 +112,7 @@
                placeholder="Enter OS " name="os">
     </div>
 </div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Form Factor">Form Factor:</label>
-    <div class="col-sm-2">
-        <select class="form-control" id="frm_factor" name="frm_factor">
 
-            <option value="ATX" selected>ATX</option>
-            <option value="Mini ATX">Mini ATX</option>
-            <option value="Micro ATX">Micro ATX</option>
-        </select>
-    </div>
-</div>
-
-
-<!-- fafaafafaa -->
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="image">Images (Max 3 images)</label>
