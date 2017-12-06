@@ -9,7 +9,7 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ URL::to('src/css/app.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/mystylesheet.css') }}"/>
+    <link rel="stylesheet" href="{{ URL::asset('src/css/mystylesheet.css') }}"/>
 
     @yield('styles')
 </head>

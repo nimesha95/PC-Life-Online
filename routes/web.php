@@ -252,6 +252,21 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         'uses' => 'TechnicianController@getIndex',
         'as' => 'technician.index',
     ]);
+    Route::post('technician.index', [
+        'uses' => 'TechnicianController@store',
+        'as' => 'technician.index',
+
+    ]);
+    Route::group(['prefix' => 'technician'], function () {
+        Route::get('/custom/{type}', [
+            'uses' => 'TechnicianController@custom',
+            'as' => 'technician.customize',
+        ]);
+        Route::get('/customtask', [
+            'uses' => 'TechnicianController@customtask',
+            'as' => 'technician.ctsk',
+        ]);
 
 
+    });
 });

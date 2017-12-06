@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ URL::to('src/css/app.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/mystylesheet.css') }}"/>
 
+
     @yield('styles')
 </head>
 <body>
