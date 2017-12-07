@@ -40,6 +40,9 @@
                 </tbody>
             </table>
             <div class="form-group">
+                <input type="hidden" name="orderid" id="orderid" value="{{$orderid}}">
+            </div>
+            <div class="form-group">
                 <div class="col-sm-offset-10 col-sm-20">
                     <button type="submit" class="btn btn-info">Submit</button>
                 </div>

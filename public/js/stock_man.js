@@ -45,7 +45,7 @@ function syncCurr() {
                     )
             }
 
-            console.log("hh");
+            //     console.log("hh");
         })
 
     repeater = setTimeout(syncCurr, 10000);
@@ -83,7 +83,7 @@ function syncDelivery() {
                     )
             }
 
-            console.log("hh");
+            // console.log("hh");
         })
 
     repeater = setTimeout(syncDelivery, 10000);

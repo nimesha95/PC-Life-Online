@@ -245,6 +245,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
             'as' => 'check_deli_orders'
         ]);
 
+        Route::post('/stock_stat/{id}', [
+            'uses' => 'StockManagerController@check_stock_stat',
+            'as' => 'check_stock_stat'
+        ]);
+
         Route::get('/getOrder/{id}', [
             'uses' => 'StockManagerController@getOrder',
             'as' => 'stock.getOrder',

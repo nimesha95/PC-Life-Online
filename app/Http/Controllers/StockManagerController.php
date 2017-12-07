@@ -47,32 +47,11 @@ class StockManagerController extends Controller
         return view('stockmanager.add_stock', ["brand" => $brand, "product" => $product, "proid" => $proid]);
     }
 
-    public function getOrder($id)
-    {
-        Cart::destroy();
-        $order = DB::table('orders')
-            ->where('id', '=', $id)
-            ->get();
-        //Cart::add($proid, $name, 1, $price);
-        foreach ($order as $ord) {
-            $cart = $ord->order_obj;
-            $cart = unserialize($cart);
-            //dd($cart);
-            foreach ($cart as $itm) {
-                Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
-            }
-        }
-
-        //dd(Cart::subtotal());
-
-        return view('stockmanager.viewOrder');
-    }
-
     public function check_orders(Request $request)
     {
         $msg = $request['body'];
 
-        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND delivery=0");
+        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND verified=1 AND issued=0 AND delivery= 1 ORDER BY added DESC;");
 
         return response()->json(['msg' => $orders_to_process], 200);
     }
@@ -81,9 +60,34 @@ class StockManagerController extends Controller
     {
         $msg = $request['body'];
 
-        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND delivery=1");
+        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND issued=1 AND delivery=1 ORDER BY added DESC;");
 
         return response()->json(['msg' => $orders_to_process], 200);
+    }
+
+    public function check_stock_stat(Request $request)
+    {
+        $msg = $request['body'];
+        $id = $request->id;
+        /*
+         *  id =1 means accessories
+         *
+         *
+        */
+        $mobo = 0;
+        if ($id == 1) {
+            $mobo = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='motherboard'");
+            $ram = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='ram'");
+            $processor = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='processor'");
+            $memorycard = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='memory_cards'");
+            $mouse = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='mouse'");
+            $keyboard = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='keyboard'");
+
+        }
+
+        //get item count from the database and 
+        $arr = [$mobo[0]->count, $mobo[0]->count, $mobo[0]->count, $mobo[0]->count, $mobo[0]->count, $mobo[0]->count];
+        return response()->json(['msg' => $arr], 200);
     }
 
     public function AddStock(Request $request)
@@ -189,18 +193,43 @@ class StockManagerController extends Controller
         return redirect(route('stock.additems'));
     }
 
+    public function getOrder($id)
+    {
+        Cart::destroy();
+        $order = DB::table('orders')
+            ->where('id', '=', $id)
+            ->get();
+        //Cart::add($proid, $name, 1, $price);
+        foreach ($order as $ord) {
+            $cart = $ord->order_obj;
+            $cart = unserialize($cart);
+            //dd($cart);
+            foreach ($cart as $itm) {
+                Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
+            }
+        }
+
+        //dd(Cart::subtotal());
+
+        return view('stockmanager.viewOrder', ['orderid' => $id]);
+    }
+
     public function submitInvoice(Request $request)
     {
-        //dd($request);
-
         $Stock_data = new StockHandler();
 
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'orderid');
+
         foreach ($data as $key => $value) {
             $Stock_data->addToArray($key, $value);
         }
 
         $arr = $Stock_data->returnArr();
+        $arrSerialized = serialize($arr);
+
+        DB::table('orders')
+            ->where('id', $request->orderid)
+            ->update(['issued' => 1, 'invoice' => $arrSerialized]);
 
         $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
         return $pdf->download('invoice.pdf');

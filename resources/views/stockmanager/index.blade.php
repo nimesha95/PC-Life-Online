@@ -4,6 +4,10 @@
     Stock Manager
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all"/>
+@endsection
+
 @section('header')
     @include('partials.stock_header')
 
@@ -95,23 +99,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <h3>total pending orders</h3>
-        </div>
-        <div class="col-md-4">
-            <h3>orders today</h3>
-        </div>
-        <div class="col-md-4">
-            <h3>orders need delivering</h3>
-        </div>
+        <div id="chartdiv" style="height: 200px;width: 100%;font-size: 11px;"></div>
     </div>
 @endsection
 
 @section('scripts')
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script src="{{URL::to('js/stock_levels.js')}}"></script>
     <script src="{{URL::to('js/stock_man.js')}}"></script>
     <script>
         var token = '{{\Illuminate\Support\Facades\Session::token()}}';
         var url_curOrders = '{{route('check_orders')}}';
         var url_deliOrders = '{{route('check_deli_orders')}}';
+        var url_acc_stock = '{{route('check_stock_stat',['id'=>1])}}'
     </script>
 @endsection
