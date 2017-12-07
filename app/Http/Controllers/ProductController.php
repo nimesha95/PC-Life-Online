@@ -131,21 +131,47 @@ class ProductController extends Controller
         $serializedContent = serialize($content);   //convert the object into a string
         $total = Cart::subtotal();
         //return response()->json(['returnURL' => $total], 200);
-        DB::insert('insert into orders (email,order_obj,total,delivery,paymentType) values (?,?,?,?,?)', [Auth::user()->email, $serializedContent, $total, $deliveryMethod, $paymentMethod]);
+        // DB::insert('insert into orders (email,order_obj,total,delivery,paymentType) values (?,?,?,?,?)', [Auth::user()->email, $serializedContent, $total, $deliveryMethod, $paymentMethod]);
+
+        $id = DB::table('orders')->insertGetId(
+            ['email' => Auth::user()->email, 'order_obj' => $serializedContent,
+                'total' => $total, 'delivery' => $deliveryMethod, 'paymentType' => $paymentMethod]
+        );
+
+        session(['orderID' => $id]);
 
         Cart::destroy();
         if ($paymentMethod == "pickup")    //pickup
         {
-            return response()->json(['returnURL' => "www.google.lk"], 200);
-        } else if ($paymentMethod == "bank")    //pickup
+            \Session::put('pav_success', 'Payment success');
+            return response()->json(['returnURL' => "pay_later"], 200);
+        } else if ($paymentMethod == "bank")    //bank
         {
-            return response()->json(['returnURL' => "bank baibee"], 200);
-        } else if ($paymentMethod == "paypal")    //pickup
+            return response()->json(['returnURL' => "paywithbank/$id"], 200);
+        } else if ($paymentMethod == "paypal")    //paypal
         {
-            return response()->json(['returnURL' => "paypal baibee"], 200);
+            return response()->json(['returnURL' => "paywithpaypal/$total"], 200);
         }
 
         //return redirect()->route('user.getCart');
+
+    }
+
+    public function getBank($id)
+    {
+        return view('shop.paywithbank', ['id' => $id]);
+    }
+
+    public function postBank(Request $request)
+    {
+        //dd($request);
+
+        DB::table('orders')
+            ->where('id', $request->id)
+            ->update(['payment_ref' => $request->ref]);
+
+        \Session::put('pav_success', 'Payment success');
+        return redirect()->route('user.getCart');
 
     }
 

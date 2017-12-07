@@ -141,6 +141,18 @@ Route::group(['prefix' => 'user'], function () {
             });
         });
 
+        Route::get('/paywithbank/{id}', [
+            'uses' => 'ProductController@getBank',
+            'as' => 'user.getBank'
+        ]);
+
+        Route::post('/paywithbank', [
+            'uses' => 'ProductController@postBank',
+            'as' => 'user.postBank'
+        ]);
+
+        Route::get('paywithpaypal/{id}', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
+
         Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
         Route::post('paypal', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
         Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));

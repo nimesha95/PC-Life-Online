@@ -108,7 +108,12 @@ $("#orderSubmit").click(function () {
         .done(function (msg) {
             console.log(msg['returnURL']);
             //location.reload();
-            //window.location.href = msg['returnURL'];
+            if (msg['returnURL'] == "pay_later") {
+                location.reload(true);
+            }
+            else {
+                window.location.href = msg['returnURL'];
+            }
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
             alert('Error: ' + textStatus);
