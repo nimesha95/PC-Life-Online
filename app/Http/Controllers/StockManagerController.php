@@ -19,12 +19,12 @@ class StockManagerController extends Controller
     public function getIndex()
     {
         /*
-                Nexmo::message()->send([
-                    'to'   => '94775635458',
-                    'from' => 'Hippo',
-                    'text' => 'Testing sms'
-                ]);
-          */
+                        Nexmo::message()->send([
+                            'to'   => '94778519113',
+                            'from' => 'Hippo',
+                            'text' => 'Testing sms'
+                        ]);
+        */
         /*
                 $email = "nimesha95@live.com";
                 Mail::to($email)->send(New cashier());

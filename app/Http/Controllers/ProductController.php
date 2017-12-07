@@ -10,6 +10,10 @@ use \Cart as Cart;
 use Auth;
 use App\Order;
 use App\Item_info;
+use App\Mail\OrderMade;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Mailer;
+
 
 class ProductController extends Controller
 {
@@ -139,6 +143,8 @@ class ProductController extends Controller
         );
 
         session(['orderID' => $id]);
+
+        Mail::to(Auth::user()->email)->send(New OrderMade());
 
         Cart::destroy();
         if ($paymentMethod == "pickup")    //pickup
