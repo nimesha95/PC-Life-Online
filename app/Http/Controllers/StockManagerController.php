@@ -95,6 +95,9 @@ class StockManagerController extends Controller
             ['sno' => $sno, 'proid' => $proid]
         );
 
+        //DB::table('stock')->where('proid', $proid)->update(['stock' => DB::raw('stock+1')]);;
+        DB::table('stock')->where('proid', $proid)->increment('stock', 1);
+
         return response()->json(['msg' => "hello there"], 200);
     }
 

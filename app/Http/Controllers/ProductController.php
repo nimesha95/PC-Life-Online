@@ -9,19 +9,35 @@ use App\Http\Requests;
 use \Cart as Cart;
 use Auth;
 use App\Order;
+use App\Item_info;
 
 class ProductController extends Controller
 {
     public function getIndex()
     {
-        return view('shop.index');
+        $items = DB::select("SELECT * FROM desktops ORDER BY created_at DESC LIMIT 5");
+
+        $items2 = DB::select("SELECT * FROM laptops ORDER BY created_at DESC LIMIT 5");
+
+        $items3 = DB::select("SELECT * FROM accessories ORDER BY created_at DESC LIMIT 5");
+        return view('shop.index', ['items' => $items, 'items2' => $items2, 'items3' => $items3]);
     }
 
     public function showItem($id)
     {
         $table = $this->selectItemType($id);
         $item = DB::select("select * from " . $table . " where proid='" . $id . "'");
-        return view('shop.show', ['items' => $item]);
+
+        $specs = new Item_info();
+
+        $specs = $item[0]->itemDetails;
+        $specs = unserialize($specs);
+
+        $specs_arr = $specs->returnArr();
+
+        //dd($specs_arr['gui']);
+
+        return view('shop.show', ['items' => $item, 'specs' => $specs_arr]);
     }
 
     public function getCart()
@@ -64,11 +80,14 @@ class ProductController extends Controller
         }
     }
 
-    public function getAddToCart($id)
+    public function getAddToCart($id, Request $request)
     {
         $table = $this->selectItemType($id);
         $item = DB::select("select * from " . $table . " where proid='" . $id . "'");
         // $item = DB::select("select * from laptops where proid='LP001'");
+
+        $request->session()->flash('status', 'Task was successful!');
+
 
         foreach ($item as $itm) {
             $proid = $itm->proid;

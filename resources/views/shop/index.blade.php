@@ -4,6 +4,10 @@
     PC-Life Online
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ URL::asset('css/shop_index.css') }}"/>
+@endsection
+
 @section('header')
     @include('partials.header')
 @endsection
@@ -54,42 +58,76 @@
         </div>
 
     </div>
+    <div id="hot">
 
-    <section class="home-search  cont-bg1 hidden-xs">
-        <div class="container">
-            <div class="row">
-                <div class="mar-70 text-center">
-                    <h1 class="promo-head">
-                        Buy &amp; Sell
-                    </h1>
-                    <h1 class="promo-head2">
-                        Absolutely Free
-                    </h1>
-                    <form id="search_form1" method="GET" action="https://saleme.lk/ads">
-                        <div class="col-xs-12  search-panel1">
-                            <div class="input-group home-search1">
-                                <div class="input-group-btn ">
-                                    <button type="button" class="btn location-btn " data-toggle="modal"
-                                            data-target=".select-city-modal">
-                                        <span class="lnr lnr-pointer-down"></span> <span id="search_concept">&nbsp;Select City</span>
-                                    </button>
-                                    <button type="button" class="btn cat-btn" data-toggle="modal"
-                                            data-target=".select-category-modal">
-                                        <span class="lnr lnr-tag"></span> <span
-                                                id="search_concept">&nbsp;All Category</span>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control search-txt" name="query"
-                                       placeholder="What you looking for...">
-                                <span class="input-group-btn">
-<button class="btn  search-btn" id="more_query1" type="button"><span class="lnr lnr-magnifier"></span></button>
-</span>
-                            </div>
-                        </div>
-                    </form>
+        <div class="box">
+            <div class="container">
+                <div class="col-md-12">
+                    <h2>TODAY's HOT DEALS</h2>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="row">
+            <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
+                <div class="MultiCarousel-inner">
+                    @if(sizeof($items)>0)
+                        @foreach($items as $item)
+                            <div class="item">
+                                <div class="pad15">
+                                    <p class="lead">{{$item->name}}</p>
+                                    <div class="front">
+                                        <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                            <img src="{{ $item->image }}" alt=""
+                                                 class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <p>{{$item->price}} LKR</p>
+                                </div>
+                            </div>
+                        @endforeach
 
+                        @foreach($items2 as $item)
+                            <div class="item">
+                                <div class="pad15">
+                                    <p class="lead">{{$item->name}}</p>
+                                    <div class="front">
+                                        <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                            <img src="{{ $item->image }}" alt=""
+                                                 class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <p>{{$item->price}} LKR</p>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        @foreach($items3 as $item)
+                            <div class="item">
+                                <div class="pad15">
+                                    <p class="lead">{{$item->name}}</p>
+                                    <div class="front">
+                                        <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                            <img src="{{ $item->image }}" alt=""
+                                                 class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <p>{{$item->price}} LKR</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+
+                </div>
+                <button class="btn btn-primary leftLst"><</button>
+                <button class="btn btn-primary rightLst">></button>
+            </div>
+        </div>
+
+    </div>
+    <!-- /#hot -->
+
+@endsection
+
+@section('scripts')
+    <script src="{{URL::to('js/shop_index.js')}}"></script>
 @endsection

@@ -75,6 +75,7 @@ class AdminController extends Controller
         $price = $request->input('price');
         $discount_price = $request->input('dis_price');
         $availability = $request->input('availability');
+        $brand = 'null';
 
         $item_type = $request->ITEM_TYPE;
         if ($item_type == "acc") {
@@ -98,6 +99,17 @@ class AdminController extends Controller
             DB::insert("insert into $table (proid,name,brand,type,availability,description,image,img1,img2,img3,price,discount_price,itemDetails) values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 [$proid, $name, $brand, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $itemDetails]);
         }
+
+        //update stock table
+        DB::table('stock')->insert(
+            ['proid' => $proid]
+        );
+
+        //add to the hash table to improve searching
+        DB::table('hash_table')->insert(
+            ['proid' => $proid, 'brand' => $brand, 'name' => $name, 'tableName' => $table]
+        );
+
         return redirect(route('admin.additems'))->with('message', 'Item Added Succesfully');
     }
 
