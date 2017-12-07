@@ -142,24 +142,45 @@ class ProductController extends Controller
                 'total' => $total, 'delivery' => $deliveryMethod, 'paymentType' => $paymentMethod]
         );
 
-        session(['orderID' => $id]);
+//This code block crosscheck qty with available stock
+        $content = Cart::content();
+        $ptr = 0;
+        $outStock = array();
+        foreach ($content as $itm) {
+            $proid = $itm->id;
+            $qty = $itm->qty;
 
-        Mail::to(Auth::user()->email)->send(New OrderMade());
+            $curStock = DB::select("select stock from stock where proid='" . $proid . "'");
+            $curStock = $curStock[0]->stock;
 
-        Cart::destroy();
-        if ($paymentMethod == "pickup")    //pickup
-        {
-            \Session::put('pav_success', 'Payment success');
-            return response()->json(['returnURL' => "pay_later"], 200);
-        } else if ($paymentMethod == "bank")    //bank
-        {
-            return response()->json(['returnURL' => "paywithbank/$id"], 200);
-        } else if ($paymentMethod == "paypal")    //paypal
-        {
-            return response()->json(['returnURL' => "paywithpaypal/$total"], 200);
+            if ($qty <= $curStock) {
+                continue;
+            } else {
+                array_push($outStock, $itm->name);
+                array_push($outStock, "dumber");
+                $ptr = 1;
+            }
         }
+        if ($ptr == 1) {
+            return response()->json(['outstock' => $outStock], 200);
+        } else {
+            session(['orderID' => $id]);
 
-        //return redirect()->route('user.getCart');
+            Mail::to(Auth::user()->email)->send(New OrderMade());
+
+            Cart::destroy();
+            if ($paymentMethod == "pickup")    //pickup
+            {
+                \Session::put('pav_success', 'Payment success');
+                return response()->json(['returnURL' => "pay_later"], 200);
+            } else if ($paymentMethod == "bank")    //bank
+            {
+                return response()->json(['returnURL' => "paywithbank/$id"], 200);
+            } else if ($paymentMethod == "paypal")    //paypal
+            {
+                return response()->json(['returnURL' => "paywithpaypal/$total"], 200);
+            }
+        }
 
     }
 

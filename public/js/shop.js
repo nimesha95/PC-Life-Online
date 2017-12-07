@@ -108,11 +108,17 @@ $("#orderSubmit").click(function () {
         .done(function (msg) {
             console.log(msg['returnURL']);
             //location.reload();
-            if (msg['returnURL'] == "pay_later") {
-                location.reload(true);
+            if (msg['outstock']) {
+
+                alert(msg['outstock'] + "are out of stock. Please come back later!");
             }
             else {
-                window.location.href = msg['returnURL'];
+                if (msg['returnURL'] == "pay_later") {
+                    location.reload(true);
+                }
+                else {
+                    window.location.href = msg['returnURL'];
+                }
             }
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
