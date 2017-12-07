@@ -250,11 +250,33 @@ Route::group(['middleware' => ['auth', 'cashier']], function () {
 Route::group(['middleware' => ['auth', 'technician']], function () {
     Route::get('/technician', [
         'uses' => 'TechnicianController@getIndex',
-        'as' => 'technician.index',
+        'as' => 'technician',
     ]);
     Route::post('technician.index', [
         'uses' => 'TechnicianController@store',
         'as' => 'technician.index',
+
+    ]);
+    Route::post('/store', [
+        'uses' => 'TechnicianController@custstore',
+        'as' => 'customizestore',
+
+    ]);
+    Route::post('/customtask', [
+        'uses' => 'TechnicianController@custtask',
+        'as' => 'customizetask',
+
+    ]);
+    //new task to database
+    Route::post('/addnewtask', [
+        'uses' => 'TechnicianController@addnewtask',
+        'as' => 'addnewtask',
+
+    ]);
+    //device Questions
+    Route::post('/addReview', [
+        'uses' => 'TechnicianController@addReview',
+        'as' => 'addReview',
 
     ]);
     Route::group(['prefix' => 'technician'], function () {
@@ -265,6 +287,14 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         Route::get('/customtask', [
             'uses' => 'TechnicianController@customtask',
             'as' => 'technician.ctsk',
+        ]);
+        Route::get('/devacc', [
+            'uses' => 'TechnicianController@deviceacc',
+            'as' => 'technician.Deviceacc',
+        ]);
+        Route::get('/devquestion', [
+            'uses' => 'TechnicianController@devq',
+            'as' => 'technician.Question',
         ]);
 
 

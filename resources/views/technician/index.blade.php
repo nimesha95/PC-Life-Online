@@ -17,6 +17,20 @@
     <input type="submit" value="REGISTER NOW!">
     {{ csrf_field() }}
 </form>
+    <table>
+        <tr>
+            <td style='padding:10px; text-align:center; font-size:15px; font-family:Arial,Helvetica;'>
+
+
+
+
+            </td>
+            <td>
+                <img src='https://barcode.tec-it.com/barcode.ashx?data=01&code=Code128&dpi=150' alt='Barcode Generator TEC-IT'/>
+            </td>
+        </tr>
+    </table>
+
 
 @endsection
 

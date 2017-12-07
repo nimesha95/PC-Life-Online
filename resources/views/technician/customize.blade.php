@@ -12,8 +12,11 @@
    <div class="container">
        <h3>Customize {{$Type}} - {{$Custtype}}</h3>
        <div class="col-sm-12">
-
-
+        <form action="{{route('customizestore')}}" method="post">
+            <input type="submit">
+            <input type="hidden" name="type" value="{{$Type}}"  >
+            <input type="hidden" name="device" value=" {{$Custtype}}"  >
+            {{ csrf_field() }}
 
            <div class="row">
 
@@ -23,90 +26,90 @@
                             <table border="0" class="table table-hover">
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 1</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D1}}"></td>
+                                   <input type="text" class="form-control"  Name="D1" value="{{$Custom->D1}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 2</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D2}}"></td>
+                                   <input type="text" class="form-control"  Name="D2" value="{{$Custom->D2}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 3</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D3}}"></td>
+                                   <input type="text" class="form-control"  Name="D3" value="{{$Custom->D3}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 4</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D4}}"></td>
+                                   <input type="text" class="form-control"  Name="D4" value="{{$Custom->D4}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 5</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D5}}"></td>
+                                   <input type="text" class="form-control"  Name="D5" value="{{$Custom->D5}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 6</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D6}}"></td>
+                                   <input type="text" class="form-control"  Name="D6" value="{{$Custom->D6}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 7</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D7}}"></td>
+                                   <input type="text" class="form-control"  Name="D7" value="{{$Custom->D7}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 8</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D8}}"></td>
+                                   <input type="text" class="form-control"  Name="D8" value="{{$Custom->D8}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 9</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D9}}"></td>
+                                   <input type="text" class="form-control"  Name="D9" value="{{$Custom->D9}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 10</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D10}}"></td>
+                                   <input type="text" class="form-control"  Name="D10" value="{{$Custom->D10}}"></td>
 
 
 
@@ -119,90 +122,90 @@
                        <table border="0" class="table table-hover">
                            <tr>
 
-                               <td> <label for="comment">Question 1</label></td>
+                               <td> <label for="comment">{{$Type}} 11</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D11}}"></td>
+                                   <input type="text" class="form-control"  Name="D11" value="{{$Custom->D11}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 12</label></td>
+                               <td> <label for="comment">{{$Type}} 12</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D12}}"></td>
+                                   <input type="text" class="form-control"  Name="D12" value="{{$Custom->D12}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 13</label></td>
+                               <td> <label for="comment">{{$Type}} 13</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D13}}"></td>
+                                   <input type="text" class="form-control"  Name="D13" value="{{$Custom->D13}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 14</label></td>
+                               <td> <label for="comment">{{$Type}} 14</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D14}}"></td>
+                                   <input type="text" class="form-control"  Name="D14" value="{{$Custom->D14}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 15</label></td>
+                               <td> <label for="comment">{{$Type}} 15</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D15}}"></td>
+                                   <input type="text" class="form-control"  Name="D15" value="{{$Custom->D15}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 16</label></td>
+                               <td> <label for="comment">{{$Type}} 16</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D16}}"></td>
+                                   <input type="text" class="form-control"  Name="D16" value="{{$Custom->D16}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 17</label></td>
+                               <td> <label for="comment">{{$Type}} 17</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D17}}"></td>
+                                   <input type="text" class="form-control"  Name="D17" value="{{$Custom->D17}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 18</label></td>
+                               <td> <label for="comment">{{$Type}} 18</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D18}}"></td>
+                                   <input type="text" class="form-control"  Name="D18" value="{{$Custom->D18}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 19</label></td>
+                               <td> <label for="comment">{{$Type}} 19</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D19}}"></td>
+                                   <input type="text" class="form-control"  Name="D19" value="{{$Custom->D19}}"></td>
 
 
 
                            </tr>
                            <tr>
 
-                               <td> <label for="comment">Question 20</label></td>
+                               <td> <label for="comment">{{$Type}} 20</label></td>
                                <td>
-                                   <input type="text" class="form-control"  id="D1" value="{{$Custom->D20}}"></td>
+                                   <input type="text" class="form-control"  Name="D20" value="{{$Custom->D20}}"></td>
 
 
 
@@ -213,6 +216,7 @@
                        @endforeach
 
            </div>
+        </form>
 
 
    </div>

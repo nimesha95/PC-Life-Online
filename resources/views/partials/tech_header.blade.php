@@ -27,7 +27,7 @@
 
                 </li>
                 <li>
-                    <a href="{{route('technician.index')}}" style="all: unset;"><div class="butt" HREF="#">Dashboard </div></a>
+                    <a href="{{route('technician')}}" style="all: unset;"><div class="butt" HREF="#">Dashboard </div></a>
                 </li>
                 <li>
                     <div class="butt" data-toggle="modal" data-target="#More">
