@@ -19,12 +19,12 @@ class StockManagerController extends Controller
     public function getIndex()
     {
         /*
-                Nexmo::message()->send([
-                    'to'   => '94775635458',
-                    'from' => 'Hippo',
-                    'text' => 'Testing sms'
-                ]);
-          */
+                        Nexmo::message()->send([
+                            'to'   => '94778519113',
+                            'from' => 'Hippo',
+                            'text' => 'Testing sms'
+                        ]);
+        */
         /*
                 $email = "nimesha95@live.com";
                 Mail::to($email)->send(New cashier());
@@ -47,32 +47,11 @@ class StockManagerController extends Controller
         return view('stockmanager.add_stock', ["brand" => $brand, "product" => $product, "proid" => $proid]);
     }
 
-    public function getOrder($id)
-    {
-        Cart::destroy();
-        $order = DB::table('orders')
-            ->where('id', '=', $id)
-            ->get();
-        //Cart::add($proid, $name, 1, $price);
-        foreach ($order as $ord) {
-            $cart = $ord->order_obj;
-            $cart = unserialize($cart);
-            //dd($cart);
-            foreach ($cart as $itm) {
-                Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
-            }
-        }
-
-        //dd(Cart::subtotal());
-
-        return view('stockmanager.viewOrder');
-    }
-
     public function check_orders(Request $request)
     {
         $msg = $request['body'];
 
-        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND delivery=0");
+        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND verified=1 AND issued=0 AND delivery= 1 ORDER BY added DESC;");
 
         return response()->json(['msg' => $orders_to_process], 200);
     }
@@ -81,9 +60,34 @@ class StockManagerController extends Controller
     {
         $msg = $request['body'];
 
-        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND delivery=1");
+        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND issued=1 AND delivery=1 ORDER BY added DESC;");
 
         return response()->json(['msg' => $orders_to_process], 200);
+    }
+
+    public function check_stock_stat(Request $request)
+    {
+        $msg = $request['body'];
+        $id = $request->id;
+        /*
+         *  id =1 means accessories
+         *
+         *
+        */
+        $mobo = 0;
+        $arr = 0;
+        if ($id == 1) {
+            $mobo = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='motherboard'");
+            $ram = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='ram'");
+            $processor = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='processor'");
+            $memorycard = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='memory_cards'");
+            $mouse = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='mouse'");
+            $keyboard = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='keyboard'");
+        }
+
+        //get item count from the database and
+        $arr = [$mobo[0]->total, $ram[0]->total, $processor[0]->total, $memorycard[0]->total, $mouse[0]->total, $keyboard[0]->total];
+        return response()->json(['msg' => $arr], 200);
     }
 
     public function AddStock(Request $request)
@@ -94,6 +98,9 @@ class StockManagerController extends Controller
         DB::table('items')->insert(
             ['sno' => $sno, 'proid' => $proid]
         );
+
+        //DB::table('stock')->where('proid', $proid)->update(['stock' => DB::raw('stock+1')]);;
+        DB::table('stock')->where('proid', $proid)->increment('stock', 1);
 
         return response()->json(['msg' => "hello there"], 200);
     }
@@ -186,22 +193,71 @@ class StockManagerController extends Controller
         return redirect(route('stock.additems'));
     }
 
+    public function getOrder($id)
+    {
+        Cart::destroy();
+        $order = DB::table('orders')
+            ->where('id', '=', $id)
+            ->get();
+        //Cart::add($proid, $name, 1, $price);
+        foreach ($order as $ord) {
+            $cart = $ord->order_obj;
+            $cart = unserialize($cart);
+            //dd($cart);
+            foreach ($cart as $itm) {
+                Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
+            }
+        }
+        $deli_status = $order[0]->delivery;
+        //dd($deli_status);
+        return view('stockmanager.viewOrder', ['orderid' => $id, 'deli_stat' => $deli_status]);
+    }
+
     public function submitInvoice(Request $request)
     {
-        //dd($request);
-
         $Stock_data = new StockHandler();
 
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'orderid');
+
         foreach ($data as $key => $value) {
             $Stock_data->addToArray($key, $value);
         }
 
         $arr = $Stock_data->returnArr();
+        $arrSerialized = serialize($arr);
+
+        DB::table('orders')
+            ->where('id', $request->orderid)
+            ->update(['issued' => 1, 'invoice' => $arrSerialized]);
+
 
         $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
         return $pdf->download('invoice.pdf');
 
+    }
+
+    public function addToFB(Request $request)
+    {
+        $proid = $request['body'];
+
+        $order = DB::table('orders')
+            ->where('id', '=', $proid)
+            ->get();
+
+        $email = $order[0]->email;
+
+        $user_info = DB::table('users')
+            ->where('email', '=', $email)
+            ->get();
+
+        $addr = $user_info[0]->addr_line1 . " , " . $user_info[0]->addr_line2 . " , " . $user_info[0]->addr_city;
+        $phone = $user_info[0]->phone_no;
+        $name = $user_info[0]->name;
+        $lat = $user_info[0]->lati;
+        $lon = $user_info[0]->longi;
+
+
+        return response()->json(['addr' => $addr, 'phone' => $phone, 'name' => $name, 'lat' => $lat, 'long' => $lon], 200);
     }
 
     private function getItemName($var)

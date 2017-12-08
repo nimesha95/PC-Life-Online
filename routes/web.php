@@ -16,13 +16,6 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
-Route::get('/se', function (\Illuminate\Mail\Mailer $mailer) {
-    $mailer
-        ->to("hiipo@hippo.com")
-        ->send(new \App\Mail\TestMail());
-    return redirect()->route('product.index');
-})->name('haha');
-
 Route::get('/send', [
     'uses' => 'EmailController@send',
     'as' => 'user.sendMail'
@@ -141,6 +134,18 @@ Route::group(['prefix' => 'user'], function () {
             });
         });
 
+        Route::get('/paywithbank/{id}', [
+            'uses' => 'ProductController@getBank',
+            'as' => 'user.getBank'
+        ]);
+
+        Route::post('/paywithbank', [
+            'uses' => 'ProductController@postBank',
+            'as' => 'user.postBank'
+        ]);
+
+        Route::get('paywithpaypal/{id}', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
+
         Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
         Route::post('paypal', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
         Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
@@ -231,6 +236,16 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
         Route::post('/deli_orders', [
             'uses' => 'StockManagerController@check_deli_orders',
             'as' => 'check_deli_orders'
+        ]);
+
+        Route::post('/stock_stat/{id}', [
+            'uses' => 'StockManagerController@check_stock_stat',
+            'as' => 'check_stock_stat'
+        ]);
+
+        Route::post('/addToFirebase', [
+            'uses' => 'StockManagerController@addToFB',
+            'as' => 'add_to_fbase'
         ]);
 
         Route::get('/getOrder/{id}', [

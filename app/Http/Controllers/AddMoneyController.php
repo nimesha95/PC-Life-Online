@@ -9,6 +9,7 @@ use Validator;
 use URL;
 use Session;
 use Redirect;
+use Illuminate\Support\Facades\DB;
 /** All Paypal Details class **/
 
 use PayPal\Rest\ApiContext;
@@ -59,8 +60,14 @@ class AddMoneyController extends HomeController
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function postPaymentWithpaypal(Request $request)
+    public function postPaymentWithpaypal(Request $request, $id)
     {
+        //dd($id);
+        $num = $id;
+        $int = (int)$num;
+        $id = (float)$num;
+
+        //dd($id);
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
@@ -69,7 +76,7 @@ class AddMoneyController extends HomeController
         $item_1->setName('Item 1')/** item name **/
         ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice($request->get('amount'));
+            ->setPrice($id);
         /** unit price **/
 
         $item_list = new ItemList();
@@ -77,7 +84,7 @@ class AddMoneyController extends HomeController
 
         $amount = new Amount();
         $amount->setCurrency('USD')
-            ->setTotal($request->get('amount'));
+            ->setTotal($id);
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
@@ -158,12 +165,20 @@ class AddMoneyController extends HomeController
 
             /** it's all right **/
             /** Here Write your database logic like that insert record or value in database if you want **/
+            //dd($payment_id);
 
-            \Session::put('success', 'Payment success');
-            return Redirect::route('addmoney.paywithpaypal');
+
+            $orderID = session('orderID');
+            DB::table('orders')
+                ->where('id', $orderID)
+                ->update(['payment_ref' => $payment_id]);
+
+
+            \Session::put('pav_success', 'Payment success');
+            return Redirect::route('user.getCart');
         }
-        \Session::put('error', 'Payment failed');
+        \Session::put('pav_error', 'Payment failed');
 
-        return Redirect::route('addmoney.paywithpaypal');
+        return Redirect::route('user.getCart');
     }
 }

@@ -19,6 +19,18 @@
 @endsection
 
 @section('content')
+    <script type="text/javascript">
+        function successMsg() {
+            $.bootstrapGrowl('Item Succesfully added.', {
+                type: 'success',
+                delay: 2000,
+            });
+        }
+        @if(Session::has('status'))
+            {{"successMsg();"}}
+        @endif
+
+    </script>
 
     @foreach($items as $item)
         <div class="row">
@@ -69,9 +81,8 @@
                 </div>
                 <div class="row form-group">
                     <div class="btn-group col-md-offset-1" role="group" aria-label="...">
-                        <a href="#" role="button" class="btn btn-default">Add To Cart</a>
-                        <a href="#" role="button" class="btn btn-success">Buy it Now</a>
-                        <a href="#" role="button" class="btn btn-info">Wishlist</a>
+                        <a href="{{route('product.addToCart' , ['id'=> $item->proid])}}"
+                           class="btn btn-success pull-right" role="button"> Add to Cart </a>
                     </div>
                 </div>
             </div>
@@ -80,7 +91,17 @@
         <div class="row form-group"><br></div>
         <div class="row">
             <div class="col-md-12">
-                <p>{{$item->itemDetails}}</p>
+
+                <table class="table table-bordered">
+                    <tbody>
+                    @foreach($specs as $key => $value)
+                        <tr>
+                            <td>{{$key}}</td>
+                            <td>{{$value}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     @endforeach
