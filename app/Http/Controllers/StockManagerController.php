@@ -75,18 +75,18 @@ class StockManagerController extends Controller
          *
         */
         $mobo = 0;
+        $arr = 0;
         if ($id == 1) {
-            $mobo = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='motherboard'");
-            $ram = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='ram'");
-            $processor = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='processor'");
-            $memorycard = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='memory_cards'");
-            $mouse = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='mouse'");
-            $keyboard = DB::select("SELECT COUNT(*) AS count FROM accessories WHERE catagory='keyboard'");
-
+            $mobo = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='motherboard'");
+            $ram = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='ram'");
+            $processor = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='processor'");
+            $memorycard = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='memory_cards'");
+            $mouse = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='mouse'");
+            $keyboard = DB::select("SELECT sum(stock) AS total from stock_acc WHERE catagory='keyboard'");
         }
 
-        //get item count from the database and 
-        $arr = [$mobo[0]->count, $mobo[0]->count, $mobo[0]->count, $mobo[0]->count, $mobo[0]->count, $mobo[0]->count];
+        //get item count from the database and
+        $arr = [$mobo[0]->total, $ram[0]->total, $processor[0]->total, $memorycard[0]->total, $mouse[0]->total, $keyboard[0]->total];
         return response()->json(['msg' => $arr], 200);
     }
 
@@ -208,10 +208,9 @@ class StockManagerController extends Controller
                 Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
             }
         }
-
-        //dd(Cart::subtotal());
-
-        return view('stockmanager.viewOrder', ['orderid' => $id]);
+        $deli_status = $order[0]->delivery;
+        //dd($deli_status);
+        return view('stockmanager.viewOrder', ['orderid' => $id, 'deli_stat' => $deli_status]);
     }
 
     public function submitInvoice(Request $request)
@@ -231,9 +230,34 @@ class StockManagerController extends Controller
             ->where('id', $request->orderid)
             ->update(['issued' => 1, 'invoice' => $arrSerialized]);
 
+
         $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
         return $pdf->download('invoice.pdf');
 
+    }
+
+    public function addToFB(Request $request)
+    {
+        $proid = $request['body'];
+
+        $order = DB::table('orders')
+            ->where('id', '=', $proid)
+            ->get();
+
+        $email = $order[0]->email;
+
+        $user_info = DB::table('users')
+            ->where('email', '=', $email)
+            ->get();
+
+        $addr = $user_info[0]->addr_line1 . " , " . $user_info[0]->addr_line2 . " , " . $user_info[0]->addr_city;
+        $phone = $user_info[0]->phone_no;
+        $name = $user_info[0]->name;
+        $lat = $user_info[0]->lati;
+        $lon = $user_info[0]->longi;
+
+
+        return response()->json(['addr' => $addr, 'phone' => $phone, 'name' => $name, 'lat' => $lat, 'long' => $lon], 200);
     }
 
     private function getItemName($var)

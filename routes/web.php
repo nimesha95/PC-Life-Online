@@ -16,13 +16,6 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
-Route::get('/se', function (\Illuminate\Mail\Mailer $mailer) {
-    $mailer
-        ->to("hiipo@hippo.com")
-        ->send(new \App\Mail\TestMail());
-    return redirect()->route('product.index');
-})->name('haha');
-
 Route::get('/send', [
     'uses' => 'EmailController@send',
     'as' => 'user.sendMail'
@@ -248,6 +241,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
         Route::post('/stock_stat/{id}', [
             'uses' => 'StockManagerController@check_stock_stat',
             'as' => 'check_stock_stat'
+        ]);
+
+        Route::post('/addToFirebase', [
+            'uses' => 'StockManagerController@addToFB',
+            'as' => 'add_to_fbase'
         ]);
 
         Route::get('/getOrder/{id}', [

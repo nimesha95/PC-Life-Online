@@ -12,7 +12,7 @@ function Acc_graph() {
         .done(function (msg) {
             var len = msg['msg'].length;
             var msg = msg['msg'];
-            //console.log(msg['msg']);
+            console.log(msg);
 
             var chart = AmCharts.makeChart("chartdiv", {
                 "type": "serial",
