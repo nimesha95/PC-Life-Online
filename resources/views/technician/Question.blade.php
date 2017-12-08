@@ -10,7 +10,7 @@
 @section('content')
     @include('partials.techmodel.model')
    <div class="container">
-       <h3>{{$Invoice}} - {{$device}} - Device Question</h3>
+       <h3>{{$Jobid}} - {{$device}} - Device Question</h3>
        <div class="col-sm-12">
         <form action="{{route('addReview')}}" method="post">
             <div class="modal-footer">
@@ -19,7 +19,7 @@
             </div>
             <input type="hidden" name="type" value="{{$Type}}"  >
             <input type="hidden" name="device" value=" {{$device}}"  >
-            <input type="hidden" name="invoice" value=" {{$Invoice}}"  >
+            <input type="hidden" name="jobid" value=" {{$Jobid}}"  >
             {{ csrf_field() }}
             <div class="row">
                 <div class="col-md-9">

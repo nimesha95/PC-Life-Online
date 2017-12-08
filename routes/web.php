@@ -284,6 +284,18 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@custom',
             'as' => 'technician.customize',
         ]);
+        Route::get('/newjob/{type}', [
+            'uses' => 'TechnicianController@Newjob',
+            'as' => 'Newjob',
+        ]);
+        //NewJob form quarry
+        Route::post('/Newjobstore',
+
+            [
+                'uses' => 'TechnicianController@NewjobStore',
+                'as' => 'NewjobStore',
+
+            ]);
         Route::get('/customtask', [
             'uses' => 'TechnicianController@customtask',
             'as' => 'technician.ctsk',

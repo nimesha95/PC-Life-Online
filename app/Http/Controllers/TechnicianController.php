@@ -99,6 +99,66 @@ class TechnicianController extends Controller
 
 
     }
+
+    public function Newjob($type)
+    {
+
+
+        if($type=='D'){
+            $Device = 'Desktop';
+            $qarray = DB::select("SELECT `id` FROM job WHERE `id` = (SELECT MAX(id) FROM job);");
+
+
+            return view('technician.Newjob',compact('qarray','Device'));
+        }
+        elseif ($type=='L'){
+            $Device = 'Laptop';
+            $qarray = DB::select("SELECT `id` FROM job WHERE `id` = (SELECT MAX(id) FROM job);");
+
+
+            return view('technician.Newjob',compact('qarray','Device'));
+        }
+        elseif ($type=='T'){
+            $Device = 'Tablet';
+            $qarray = DB::select("SELECT `id` FROM job WHERE `id` = (SELECT MAX(id) FROM job);");
+
+
+            return view('technician.Newjob',compact('qarray','Device'));
+        }
+        elseif ($type=='O'){
+            $Device = 'Other';
+            $qarray = DB::select("SELECT `id` FROM job WHERE `id` = (SELECT MAX(id) FROM job);");
+
+
+            return view('technician.Newjob',compact('qarray','Device'));
+        }
+
+        else{
+
+
+        }
+
+
+    }
+    public function NewjobStore(Request $request)
+    {
+
+
+        //load user Register quarry
+
+        $Jobid = $request->input('Jobid');
+        $device = $request->input('device');
+        $Serial = $request->input('Serial');
+        $condition = $request->input('condition');
+        $Problem = $request->input('Address1');
+        $Type ='Question';
+        $qarray = DB::select("select * from customize where (type='" . $Type . "'  and device='" . $device . "')");
+
+        DB::table('job')
+            ->Insert(['jobid' => $Jobid,'SerialNo' => $Serial,'device' => $device,'Condition' => $condition,'Problem' => $Problem]);
+        //Return to questioner
+        return view('technician.Question',compact('Jobid','device','Type','qarray'));
+    }
     public function customtask()
     {
         $qarray = DB::select("select * from tasks ");
@@ -153,9 +213,8 @@ class TechnicianController extends Controller
     }
     public function devQ()
     {
-        $Invoice = 'LR11122332';
-        $device = 'Laptop';
-        $Type ='Question';
+
+
         $qarray = DB::select("select * from customize where (type='" . $Type . "'  and device='" . $device . "')");
         return view('technician.Question',compact('qarray','Type','device','Invoice'));
 
@@ -177,7 +236,7 @@ class TechnicianController extends Controller
         $item = 'hello';
         return view('technician.index', ['items' => $item]);
 
-}
+    }
     public function viewwarranty(Request $request)
     {
        ($request);
@@ -273,9 +332,10 @@ class TechnicianController extends Controller
     }
     public function addReview(Request $request)
     {
-      //dd($request);
+     //dd($request);
         $type = $request->input('type');
-        $invoice = $request->input('invoice');
+        $device = $request->input('device');
+        $jobid = $request->input('jobid');
         $d1= $request->input('D1');
         $d1c= $request->input('D1c');
         $d2= $request->input('D2');
@@ -320,13 +380,11 @@ class TechnicianController extends Controller
 
 
         DB::table('devq')
-            ->Insert(['invoice' => $invoice,'Type' => $type,'Q1' => $d1,'Q2' => $d2,'Q3' => $d3,'Q4' => $d4,'Q5' => $d5]);
+            ->Insert(['invoice' => $jobid,'Type' => $type,'Q1' => $d1,'Q2' => $d2,'Q3' => $d3,'Q4' => $d4,'Q5' => $d5]);
 
-        $Invoice = 'LR11122332';
-        $device = 'Laptop';
-        $Type ='Question';
-        $qarray = DB::select("select * from customize where (type='" . $Type . "'  and device='" . $device . "')");
-        return view('technician.Question',compact('qarray','Type','device','Invoice'));
+        $type ='Device Acc';
+        $qarray = DB::select("select * from customize where (type='" . $type . "'  and device='" . $device . "')");
+        return view('technician.Deviceacc',compact('qarray','type','device','jobid'));
 
 
     }

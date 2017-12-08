@@ -13,22 +13,26 @@
                     <h4> Custom Repair Job</h4>
                     <div class="row">
 
-                        <a href="{{url('technician/custom/DQ')}}">
+                        <a href="{{url('technician/newjob/D')}}">
                             <div class="butt" data-toggle="modal">
-                                <img src="img/Tasks-Icon.png" style="" > <p>Desktop</p>  </div>
+                            <img src="img/Tasks-Icon.png" style="" > <p>Desktop</p>  </div>
+
                         </a>
 
-                        <a href="{{url('technician/custom/LQ')}}">
+                        <a href="{{url('technician/newjob/L')}}">
                             <div class="butt" data-toggle="modal">
-                                <img src="img/Tasks-Icon.png" style="" > <p>Laptop</p>  </div>
+                            <img src="img/Tasks-Icon.png" style="" > <p>Laptop</p>  </div>
+
                         </a>
-                        <a href="{{url('technician/custom/TQ')}}">
+                        <a href="{{url('technician/newjob/T')}}">
                             <div class="butt" data-toggle="modal">
-                                <img src="img/Tasks-Icon.png" style="" > <p>Tablet</p>  </div>
+                            <img src="img/Tasks-Icon.png" style="" > <p>Tablet</p>  </div>
+
                         </a>
-                        <a href="{{url('technician/custom/OQ')}}">
+                        <a href="{{url('technician/newjob/O')}}">
                             <div class="butt" data-toggle="modal">
-                                <img src="img/Tasks-Icon.png" style="" > <p>Other</p>  </div>
+                            <img src="img/Tasks-Icon.png" style="" > <p>Other</p>  </div>
+
                         </a>
                     </div>
                 </div>

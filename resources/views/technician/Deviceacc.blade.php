@@ -10,16 +10,16 @@
 @section('content')
     @include('partials.techmodel.model')
    <div class="container">
-       <h3>{{$Invoice}} - {{$device}} - Device {{$Type}}</h3>
+       <h3>{{$jobid}} - {{$device}} - Device {{$type}}</h3>
        <div class="col-sm-12">
            <form action="{{route('addReview')}}" method="post">
                <div class="modal-footer">
                    <button type="submit" class="btn btn-default" data-toggle="modal" >Confirm</button>
 
                </div>
-               <input type="hidden" name="type" value="{{$Type}}"  >
+               <input type="hidden" name="type" value="{{$type}}"  >
                <input type="hidden" name="device" value=" {{$device}}"  >
-               <input type="hidden" name="invoice" value=" {{$Invoice}}"  >
+               <input type="hidden" name="jobid" value=" {{$jobid}}"  >
                {{ csrf_field() }}
                <div class="row">
                    <div class="col-md-9">
