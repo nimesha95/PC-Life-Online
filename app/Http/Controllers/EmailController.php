@@ -26,6 +26,10 @@ class EmailController extends Controller
 
     public function test(Request $request)
     {
+        /*
+         * This function contacts with the mobile app as a rest api
+         * And sends notifications to user accordingly
+         */
         if ($request['cur_job_id']) {
             Mail::to('nimesha95@live.com')->send(New DeliveryAccepted());
 
@@ -33,6 +37,17 @@ class EmailController extends Controller
                 'to' => '94778519113',
                 'from' => 'PC Life',
                 'text' => 'Your order is on it\'s way to you'
+            ]);
+
+            return response()->json(['msg' => $request['notification sent']]);
+        }
+
+        if ($request['job_completed']) {
+
+            Nexmo::message()->send([
+                'to' => '94778519113',
+                'from' => 'PC Life',
+                'text' => 'Your order was delivered'
             ]);
 
             return response()->json(['msg' => $request['notification sent']]);
