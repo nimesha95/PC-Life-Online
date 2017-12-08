@@ -2,6 +2,7 @@
 @include('partials.techmodel.modelnewjob')
 @include('partials.techmodel.modelmore')
 @include('partials.techmodel.modelcustomize')
+
 <nav class="navbar navbar-default">
 
     <div class="container-fluid" style="height: 100px">
@@ -23,7 +24,7 @@
 
                 <li>
                     <div class="butt" data-toggle="modal" data-target="#NewJob">
-                        <img src="img/Tasks-Icon.png" style=""> <p>New Job</p>  </div>
+                        <img src="{{ asset('img/Tasks-Icon.png')}}" style=""> <p>New Job</p>  </div>
 
                 </li>
                 <li>
@@ -31,7 +32,7 @@
                 </li>
                 <li>
                     <div class="butt" data-toggle="modal" data-target="#More">
-                        <img src="img/Tasks-Icon.png" style=""> <p>More</p>  </div>
+                        <img src="{{ asset('img/Tasks-Icon.png')}}" style=""> <p>More</p>  </div>
 
                 </li>
 

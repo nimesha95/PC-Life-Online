@@ -9,6 +9,7 @@
             </div>
 
             <div class="modal-body">
+                <div class="modal-body">
                 <h4> Questionier</h4>
                 <div class="row">
 
@@ -30,7 +31,9 @@
                             <img src="img/Tasks-Icon.png" style="" > <p>Other</p>  </div>
                     </a>
                 </div>
-                <hr>
+                </div>
+
+                <div class="modal-body">
                 <h4> Device Acceptance</h4>
                 <div class="row">
 
@@ -51,7 +54,9 @@
                             <img src="img/Tasks-Icon.png" style="" > <p>Other</p>  </div>
                     </a>
                 </div>
-                <hr>
+                </div>
+
+                <div class="modal-body">
                 <h4> Other Settings</h4>
                 <div class="row">
 
@@ -60,6 +65,7 @@
                             <img src="img/Tasks-Icon.png" style="" > <p>Tasks</p>  </div>
                     </a>
 
+                </div>
                 </div>
 
             </div>

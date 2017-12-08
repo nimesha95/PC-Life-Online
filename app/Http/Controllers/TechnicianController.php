@@ -111,6 +111,35 @@ class TechnicianController extends Controller
 
 
     }
+    public function userreg()
+        //load user Register View
+    {
+        return view('technician.RegUser');
+    }
+    public function userregform(Request $request)
+    {
+
+
+        //load user Register quarry
+        $Name1 = $request->input('Name1');
+        $Name2 = $request->input('Name2');
+        $email = $request->input('email');
+        $Telno = $request->input('Telno');
+        $Address1 = $request->input('Address1');
+        $Address2 = $request->input('Address2');
+        $role = 1;
+        $role_type='user';
+        $pw='1234';
+        $name=$Name1 . ' '.$Name2;
+        $Telno = substr($Telno, 1 );
+        $Telno = '94'.$Telno;
+        $pw= bcrypt('12345678');
+
+        DB::table('users')
+            ->Insert(['Name' => $name,'email' => $email,'password' => $pw,'role' => $role,'role_name' => $role_type,'addr_line1' => $Address1,'addr_line2' => $Address2,'addr_line1' => $Address1,'phone_no' => $Telno]);
+        return view('technician.RegUser');
+    }
+
     public function deviceacc()
     {
         $Invoice = 'LR11122332';
@@ -149,6 +178,28 @@ class TechnicianController extends Controller
         return view('technician.index', ['items' => $item]);
 
 }
+    public function viewwarranty(Request $request)
+    {
+       ($request);
+        $Invoice= $request->input('Invoice');
+        $qarray = DB::select("select * from orders where id='" . $Invoice . "' ");
+        //dd($qarray);
+
+        $cart = $qarray[0]->order_obj;
+        $cart = unserialize($cart);
+
+        $warrenty= $qarray[0]->invoice;
+        $warrenty = unserialize($warrenty);
+
+        $waren = array();
+        foreach ($warrenty as $war){
+            array_push($waren, $war);
+        }
+        //dd($cart);
+        $item = 'hello';
+        return view('technician.viewwarranty', ['cart' => $cart,'warrenty'=>$waren]);
+
+    }
     public function custstore(Request $request)
     {
       //dd($request);

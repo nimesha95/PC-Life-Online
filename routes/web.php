@@ -296,6 +296,29 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@devq',
             'as' => 'technician.Question',
         ]);
+        Route::get('/UserRegister', [
+            'uses' => 'TechnicianController@userreg',
+            'as' => 'technician.Question',
+        ]);
+        Route::post('/Reguser',
+            //User register form quarry
+            [
+            'uses' => 'TechnicianController@userregform',
+            'as' => 'userregister',
+
+        ]);
+        Route::post('/ViewWarranty',
+            //User register form quarry
+            [
+                'uses' => 'TechnicianController@viewwarranty',
+                'as' => 'viewwarranty',
+
+            ]);
+        Route::get('/ViewWarranty', [
+            'uses' => 'TechnicianController@userreg',
+            'as' => 'viewwarranty',
+        ]);
+
 
 
     });

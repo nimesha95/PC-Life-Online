@@ -9,12 +9,49 @@
             </div>
 
             <div class="modal-body">
-                <div class="butttask" data-toggle="modal" data-target="#NewJobUser" data-dismiss="modal">
-                    <img src="img/Tasks-Icon.png" style=""> <p>Custom Repair Job</p>  </div>
-                <div class="butttask" data-toggle="modal" data-target="#NewJobModal">
-                    <img src="img/Tasks-Icon.png" style=""> <p>Service Warranty</p>  </div>
-                <div class="butttask" data-toggle="modal" data-target="#NewJobModal">
-                    <img src="img/Tasks-Icon.png" style=""> <p>Company Warranty</p>  </div>
+                <div class="modal-body">
+                    <h4> Custom Repair Job</h4>
+                    <div class="row">
+
+                        <a href="{{url('technician/custom/DQ')}}">
+                            <div class="butt" data-toggle="modal">
+                                <img src="img/Tasks-Icon.png" style="" > <p>Desktop</p>  </div>
+                        </a>
+
+                        <a href="{{url('technician/custom/LQ')}}">
+                            <div class="butt" data-toggle="modal">
+                                <img src="img/Tasks-Icon.png" style="" > <p>Laptop</p>  </div>
+                        </a>
+                        <a href="{{url('technician/custom/TQ')}}">
+                            <div class="butt" data-toggle="modal">
+                                <img src="img/Tasks-Icon.png" style="" > <p>Tablet</p>  </div>
+                        </a>
+                        <a href="{{url('technician/custom/OQ')}}">
+                            <div class="butt" data-toggle="modal">
+                                <img src="img/Tasks-Icon.png" style="" > <p>Other</p>  </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h4> Warranty</h4>
+                    <div class="row">
+
+                        <table border="0" class="table " style="padding:10px">
+
+                            <form action="{{route('viewwarranty')}}" method="post">
+                                <tr>
+                                    {{ csrf_field() }}
+
+                                    <td> <label for="comment">Invoice No</label></td>
+                                    <td> <input type="text" class="form-control"  Name="Invoice" value="" placeholder="Enter Invoice No"></td>
+                                    <td> <button type="Submit" class="subbutton"  >Search</button></td>
+                                </tr>
+                            </form>
+                        </table>
+                    </div>
+
+
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#RemoveUserModal">Close</button>
