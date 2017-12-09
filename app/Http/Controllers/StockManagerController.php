@@ -87,6 +87,7 @@ class StockManagerController extends Controller
 
         //get item count from the database and
         $arr = [$mobo[0]->total, $ram[0]->total, $processor[0]->total, $memorycard[0]->total, $mouse[0]->total, $keyboard[0]->total];
+
         return response()->json(['msg' => $arr], 200);
     }
 
@@ -258,6 +259,19 @@ class StockManagerController extends Controller
 
 
         return response()->json(['addr' => $addr, 'phone' => $phone, 'name' => $name, 'lat' => $lat, 'long' => $lon], 200);
+    }
+
+    public function crit_stock_msg(Request $request)
+    {
+        $msg = $request->model;
+
+        Nexmo::message()->send([
+            'to' => '94775635458',
+            'from' => 'StockManager',
+            'text' => $msg,
+        ]);
+
+        return view('stockmanager.index');
     }
 
     private function getItemName($var)
