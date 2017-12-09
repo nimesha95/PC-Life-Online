@@ -3,7 +3,12 @@
 @include('partials.techmodel.modelmore')
 @include('partials.techmodel.modelcustomize')
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9); box-shadow: 0px 0px 10px #000">
 
     <div class="container-fluid" style="height: 100px">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{route('technician.index')}}" style="text-align: center; padding-top: auto;">PC LIFE ONLINE <br>  <b>Techician</b> </a>
+            <a class="navbar-brand" href="{{route('technician')}}" style="text-align: center; padding-top: auto; color: white">PC LIFE ONLINE <br>  <b>Techician</b> </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,20 +29,22 @@
 
                 <li>
                     <div class="butt" data-toggle="modal" data-target="#NewJob">
-                        <img src="{{ asset('img/Tasks-Icon.png')}}" style=""> <p>New Job</p>  </div>
+                        <img src="{{ asset('img/technician/addtask.png')}}" style=""> <b>New Job</b>  </div>
 
                 </li>
                 <li>
-                    <a href="{{route('technician')}}" style="all: unset;"><div class="butt" HREF="#">Dashboard </div></a>
+                    <a href="{{route('technician')}}" style="all: unset;"><div class="butt" ><img  src="{{ asset('img/technician/More.png')}}" style=""> <b>Dashboard</b>  </div></a>
                 </li>
                 <li>
                     <div class="butt" data-toggle="modal" data-target="#More">
-                        <img src="{{ asset('img/Tasks-Icon.png')}}" style=""> <p>More</p>  </div>
+                        <img src="{{ asset('img/technician/Dash.png')}}" style=""> <b>More</b>  </div>
 
                 </li>
 
                 <li>
-                    <div class="butt" data-toggle="modal" data-target="#AddUserModal">Notifications  </div>
+                    <div class="butt" data-toggle="modal" data-target="#More">
+                        <img src="{{ asset('img/technician/notify.png')}}" style=""> <b>Notification</b>  </div>
+
                 </li>
 
 

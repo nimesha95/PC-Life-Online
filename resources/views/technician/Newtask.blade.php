@@ -9,73 +9,64 @@
 @endsection
 @section('content')
 <div class="container">
-    <form action="{{route('NewjobStore')}}" method="post">
-    <h3 style="display: inline-block">New Job -  {{$Device}} Job ID #</h3> <h3 style="color: red;display: inline-block">
-            @foreach($qarray as $Custom)
-            @if(($Device)=== 'Desktop')
-                @php($i="DR000".(($Custom->id)+1))
-                    <input type="hidden" name="Jobid" value="{{$i}}"  >
-                    <input type="hidden" name="device" value="{{$Device}}"  >
-                    {{$i}}
-            @endif
-                @if(($Device)=== 'Laptop')
-                    @php($i="LR000".(($Custom->id)+1))
-                    <input type="hidden" name="Jobid" value="{{$i}}"  >
-                    <input type="hidden" name="device" value="{{$Device}}"  >
-                    {{$i}}
-                @endif
-                @if(($Device)=== 'Tablet')
-                    @php($i="TR000".(($Custom->id)+1))
-                    <input type="hidden" name="Jobid" value="{{$i}}"  >
-                    <input type="hidden" name="device" value="{{$Device}}"  >
-                    {{$i}}
-                @endif
-                @if(($Device)=== 'Other')
-                    @php($i="OR000".(($Custom->id)+1))
-                    <input type="hidden" name="Jobid" value="{{$i}}"  >
-                    <input type="hidden" name="device" value="{{$Device}}"  >
-                    {{$i}}
-                @endif
-            @endforeach </h3>
-        <div class="col-sm-12">
+    <div class="container-fluid">
+        <<div class="container">
+            <h3>{{$jobid}} - {{$device}} - Device {{$type}}</h3>
+            <div class="col-sm-12">
+                <form action="{{route('addReview')}}" method="post">
+
+                    <input type="hidden" name="type" value="{{$type}}"  >
+                    <input type="hidden" name="device" value=" {{$device}}"  >
+                    <input type="hidden" name="jobid" value=" {{$jobid}}"  >
+
+            <div class="col-sm-3" style="background-color:lavender;"><h4>Tasks List</h4>
 
 
 
-            <div class="modal-footer">
-                <button type="Submit" class="subbuttonred"  >Start Job</button>
-                <button type="button" class="subbutton" data-toggle="modal" data-target="#searchexistinguser"  >Cancel Job</button>
+                @foreach($qarray as $Custom)
+                    <form action="{{route('Addjobtask')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="type" value="{{$type}}"  >
+                        <input type="hidden" name="device" value=" {{$device}}"  >
+                        <input type="hidden" name="jobid" value=" {{$jobid}}"  >
+                                <input type="hidden" name="taskid" value=" {{$Custom->id}}"  >
+                        <button type="submit" class="btn btn-default" >{{$Custom->Name}}</button>
+                    </form>
+
+                @endforeach
+
+
+
+
+
             </div>
-            {{ csrf_field() }}
-            <table border="0" class="table table-hover">
-
-                <tr>
-
-                    <td> <label for="comment">Serial No</label></td>
-                    <td>
-                        <input type="text" class="form-control"  Name="Serial" value=""></td>
-
-                    <td></td></td>
+                    <div class="col-sm-9" style="background-color:lavenderblush;"><h4>Tasks For Job</h4>
 
 
-                </tr>
-                <tr>
+                        <div class="modal-footer">
+                            @foreach($qarray1 as $Custom2)
+                                <form action="{{route('Addjobtask')}}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="type" value="{{$type}}"  >
+                                    <input type="hidden" name="device" value=" {{$device}}"  >
+                                    <input type="hidden" name="jobid" value=" {{$jobid}}"  >
+                                    <input type="hidden" name="taskid" value=" {{$Custom2->id}}"  >
+                                    <button type="submit" class="btn btn-default" >{{$Custom2->Name}}</button>
+                                </form>
 
-                    <td> <label for="comment">Condition</label></td>
-                    <td>
-                         <input type="text" class="form-control"  Name="conditiom" value=""></td>
-                    <td></td>
-                </tr>
-                <tr>
+                            @endforeach
 
-                    <td> <label for="comment">Problem</label></td>
-                    <td>
-                        <input type="textarea" class="form-control"  Name="Problem" value=""></td>
-                    <td></td>
-                </tr>
 
-            </table>
-        </form>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
+
+
 </div>
 
 @endsection

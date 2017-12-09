@@ -10,36 +10,53 @@
 
             <div class="modal-body">
                 <div class="modal-body">
-                    <h4> Custom Repair Job</h4>
+                    <div class="row" style="position: relative; top: -20px ">
+                        <div class="col-sm-2" ><img src="{{ asset('img/technician/repair.png')}}" style=" width: 50px;height: 50px; display: inline-block" ></div>
+                        <div class="col-sm-10" ><h4> Custom Repair Job</h4></div>
+
+                    </div>
+
                     <div class="row">
+                        <div class="col-sm-3" ><a href="{{url('technician/newjob/D')}}">
+                                <div class="butt" data-toggle="modal">
+                                    <img src="{{ asset('img/technician/desktop.png')}}" style="" > <p>Desktop</p>  </div>
 
-                        <a href="{{url('technician/newjob/D')}}">
-                            <div class="butt" data-toggle="modal">
-                            <img src="img/Tasks-Icon.png" style="" > <p>Desktop</p>  </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-3" ><a href="{{url('technician/newjob/L')}}">
+                                <div class="butt" data-toggle="modal">
+                                    <img src="{{ asset('img/technician/laptop.png')}}" style="" > <p>Laptop</p>  </div>
 
-                        </a>
+                            </a>
+                        </div>
+                        <div class="col-sm-3" ><a href="{{url('technician/newjob/T')}}">
+                                <div class="butt" data-toggle="modal">
+                                    <img src="{{ asset('img/technician/tablet.png')}}" style="" > <p>Tablet</p>  </div>
 
-                        <a href="{{url('technician/newjob/L')}}">
-                            <div class="butt" data-toggle="modal">
-                            <img src="img/Tasks-Icon.png" style="" > <p>Laptop</p>  </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-3" > <a href="{{url('technician/newjob/O')}}">
+                                <div class="butt" data-toggle="modal">
+                                    <img src="{{ asset('img/technician/otherdev.png')}}" style="" > <p>Other</p>  </div>
 
-                        </a>
-                        <a href="{{url('technician/newjob/T')}}">
-                            <div class="butt" data-toggle="modal">
-                            <img src="img/Tasks-Icon.png" style="" > <p>Tablet</p>  </div>
+                            </a>
+                        </div>
 
-                        </a>
-                        <a href="{{url('technician/newjob/O')}}">
-                            <div class="butt" data-toggle="modal">
-                            <img src="img/Tasks-Icon.png" style="" > <p>Other</p>  </div>
 
-                        </a>
+
+
+
+
+
                     </div>
                 </div>
+                <hr>
                 <div class="modal-body">
-                    <h4> Warranty</h4>
-                    <div class="row">
+                    <div class="row" style="position: relative; top: -20px ">
+                        <div class="col-sm-2" ><img src="{{ asset('img/technician/warranty.png')}}" style=" width: 50px;height: 50px; display: inline-block" ></div>
+                        <div class="col-sm-10" ><h4>Claim the Warranty</h4></div>
 
+                    </div>
                         <table border="0" class="table " style="padding:10px">
 
                             <form action="{{route('viewwarranty')}}" method="post">
@@ -56,7 +73,7 @@
 
 
                 </div>
-            </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#RemoveUserModal">Close</button>
             </div>

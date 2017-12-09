@@ -319,6 +319,13 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'as' => 'userregister',
 
         ]);
+        Route::post('/Addjobtask',
+            //User register form quarry
+            [
+                'uses' => 'TechnicianController@Addtsktojob',
+                'as' => 'Addjobtask',
+
+            ]);
         Route::post('/ViewWarranty',
             //User register form quarry
             [

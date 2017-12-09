@@ -65,7 +65,7 @@
 .butt {
     border: 1px outset rgba(0,0,0,0.1);
     border-radius: 5px;
-    background-color: #F5F5F5;
+    background-color: #ffffff;
     height:90px;
     width:90px;
     cursor:pointer;
@@ -91,8 +91,9 @@
 }
 
 .butt:hover {
-    background-color: blue;
-    color:white;
+
+
+    box-shadow: 0px 0px 5px #888888;
 }
 
 
@@ -294,3 +295,13 @@ Edit on
     background-image: linear-gradient(to bottom, #f53d3d, #f76868);
     text-decoration: none;
 }
+/*.modal-header{
+    background: #c0e3fa;
+    background-image: -webkit-linear-gradient(top, #c0e3fa, #ffffff);
+    background-image: -moz-linear-gradient(top, #c0e3fa, #ffffff);
+    background-image: -ms-linear-gradient(top, #c0e3fa, #ffffff);
+    background-image: -o-linear-gradient(top, #c0e3fa, #ffffff);
+    background-image: linear-gradient(to bottom, #c0e3fa, #ffffff);
+    color: 000;
+}*/
+

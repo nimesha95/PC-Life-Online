@@ -381,6 +381,13 @@ class TechnicianController extends Controller
 
         DB::table('devq')
             ->Insert(['invoice' => $jobid,'Type' => $type,'Q1' => $d1,'Q2' => $d2,'Q3' => $d3,'Q4' => $d4,'Q5' => $d5]);
+        if ( $type =='Device Acc'){
+            $device = $request->input('device');
+            $qarray = DB::select("select * from tasks ");
+            return view('technician.Newtask',compact('qarray','type','device','jobid'));
+            //where id='" . $Invoice . "'
+        }
+
 
         $type ='Device Acc';
         $qarray = DB::select("select * from customize where (type='" . $type . "'  and device='" . $device . "')");
@@ -388,6 +395,24 @@ class TechnicianController extends Controller
 
 
     }
+    public function Addtsktojob(Request $request)
+    {
+        //dd($request);
+        $type = $request->input('type');
+        $device = $request->input('device');
+        $taskid = $request->input('taskid');
+        $jobid = $request->input('jobid');
+        $status= '0';
+        DB::table('jobtask')
+            ->Insert(['jobid' => $jobid,'taskid' => $taskid,'status' => $status]);
 
+        $qarray = DB::select("select * from tasks ");
+        $qarray1 = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+       dd($qarray1);
+        return view('technician.Newtask',compact('qarray','qarray1','type','device','jobid'));
+    }
 
 }
+
+
+
