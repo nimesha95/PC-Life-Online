@@ -257,6 +257,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
             'uses' => 'StockManagerController@submitInvoice',
             'as' => 'stock.subInv'
         ]);
+
+        Route::post('/crit_stock', [
+            'uses' => 'StockManagerController@crit_stock_msg',
+            'as' => 'stock.SendCritStock'
+        ]);
     });
 
 });

@@ -61,6 +61,24 @@
     <div class="row">
         <div id="chartdiv" style="height: 200px;width: 100%;font-size: 11px;"></div>
     </div>
+    <div class="row">
+        <form class="form" method="post" action="{{route('stock.SendCritStock')}}">
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-sm-offset-2" for="Model">Critical Stock Notification:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="crit"
+                           placeholder="Enter the names of the low stock items"
+                           name="model" required="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-4">
+                    <button type="submit" class="btn btn-default">Send Message</button>
+                </div>
+            </div>
+            {{ csrf_field() }}
+        </form>
+    </div>
 @endsection
 
 @section('scripts')
