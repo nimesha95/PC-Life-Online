@@ -384,20 +384,22 @@ class TechnicianController extends Controller
         if ( $type =='Device Acc'){
             $device = $request->input('device');
             $qarray = DB::select("select * from tasks ");
-            return view('technician.Newtask',compact('qarray','type','device','jobid'));
+            $qarray1 = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+            return view('technician.Newtask',compact('qarray','qarray1','type','device','jobid'));
             //where id='" . $Invoice . "'
         }
 
 
         $type ='Device Acc';
         $qarray = DB::select("select * from customize where (type='" . $type . "'  and device='" . $device . "')");
+
         return view('technician.Deviceacc',compact('qarray','type','device','jobid'));
 
 
     }
     public function Addtsktojob(Request $request)
     {
-        //dd($request);
+        dd($request);
         $type = $request->input('type');
         $device = $request->input('device');
         $taskid = $request->input('taskid');
@@ -408,7 +410,7 @@ class TechnicianController extends Controller
 
         $qarray = DB::select("select * from tasks ");
         $qarray1 = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
-       dd($qarray1);
+       //dd($qarray1);
         return view('technician.Newtask',compact('qarray','qarray1','type','device','jobid'));
     }
 
