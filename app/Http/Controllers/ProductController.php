@@ -36,7 +36,7 @@ class ProductController extends Controller
 
         $specs = $item[0]->itemDetails;
         $specs = unserialize($specs);
-
+        //dd($specs);
         $specs_arr = $specs->returnArr();
 
         //dd($specs_arr['gui']);

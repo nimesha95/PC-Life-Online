@@ -87,6 +87,20 @@ class StockManagerController extends Controller
 
         //get item count from the database and
         $arr = [$mobo[0]->total, $ram[0]->total, $processor[0]->total, $memorycard[0]->total, $mouse[0]->total, $keyboard[0]->total];
+
+        for ($x = 0; $x <= 5; $x++) {
+            if ($arr[$x] < 5) {     //current minimum stock level is
+                if ($x == 0) {
+
+                } elseif ($x == 1) {
+                } elseif ($x == 2) {
+                } elseif ($x == 3) {
+                } elseif ($x == 4) {
+                } elseif ($x == 5) {
+                }
+            }
+        }
+
         return response()->json(['msg' => $arr], 200);
     }
 
