@@ -15,14 +15,8 @@
                     </div>
                 @endif
             </div>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <h1>Body Contents</h1>
-                </div>
-            </div>
-
             <div class="row" style="margin-top: 20px">
-                <a href="{{route('user.orders')}}">Order History</a>
+
             </div>
 
             <div class="row" style="margin-top: 20px">
@@ -46,9 +40,6 @@
                 @endif
             </div>
 
-            <div class="row">
-                <a href="#" data-toggle="modal" data-target="#UpdateInfo">Update Information</a></li>
-            </div>
         </div>
     </div>
 

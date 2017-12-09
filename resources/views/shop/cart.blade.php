@@ -9,6 +9,32 @@
 @endsection
 
 @section('content')
+    <script type="text/javascript">
+        function successMsg() {
+            $.bootstrapGrowl('Payment is Successful.', {
+                type: 'success',
+                delay: 2000,
+            });
+        }
+
+        function FailedMsg() {
+            $.bootstrapGrowl('Payment Failed', {
+                type: 'danger',
+                delay: 2000,
+            });
+        }
+
+        @if(Session::has('pav_success'))
+            {{"successMsg();"}}
+            {{session()->forget('pav_success')}}
+        @endif
+        @if(Session::has('pav_error'))
+            {{"FailedMsg();"}}
+            {{session()->forget('pav_error')}}
+        @endif
+
+    </script>
+
 
     <div class=" container">
         <div class="row">
@@ -50,7 +76,7 @@
                         </a>
                     </div>
                     <div class="col-md-2 col-xs-2">{{$row->price}}</div>
-                    <div class="col-md-2 col-xs-2">{{$row->total}}</div>
+                    <div class="col-md-2 col-xs-2">{{$row->price * $row->qty}}</div>
                     <div class="col-md-1 col-xs-1">
                         <a href="{{route('product.RemoveFromCart' , ['count'=>'all','rowid'=> $row->rowId])}}"
                            class="btn btn-xs btn-danger" role="button">
@@ -98,7 +124,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="paymentTab">
-                                <form class="form-horizontal" method="post" action="{{route('admin.reguser')}}">
+                                <form class="form-horizontal" method="post" action="#">
                                     <div class="form-group">
                                         <label class="control-label col-sm-4" for="Payment">Select Payment
                                             Method:</label>
@@ -167,7 +193,7 @@
                                         <div class="col-md-5 col-xs-5">* {{$row->name}}</div>
                                         <div class="col-md-2 col-xs-3">{{$row->qty}}</div>
                                         <div class="col-md-2 col-xs-2">{{$row->price}}</div>
-                                        <div class="col-md-2 col-xs-2">{{$row->total}}</div>
+                                        <div class="col-md-2 col-xs-2">{{$row->price * $row->qty}}</div>
                                     </div>
                                 @endforeach
                                 <div class="row col-md-offset-1 col-xs-offset-2" style="margin-top: 10px">

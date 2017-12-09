@@ -1,4 +1,8 @@
 <div class="form-group">
+    <input type="hidden" name="ITEM_TYPE" value="dsk">
+</div>
+
+<div class="form-group">
     <label class="control-label col-sm-2" for="Brand">Brand:</label>
     <div class="col-sm-3">
         <select class="form-control" id="brand" name="brand">
@@ -40,8 +44,8 @@
     <div class="col-sm-2">
         <select class="form-control" id="cond" name="cond">
 
-            <option value="Brand New" selected>Brand new</option>
-            <option value="Used">Used</option>
+            <option value="new" selected>Brand new</option>
+            <option value="used">Used</option>
         </select>
     </div>
 </div>
@@ -137,8 +141,8 @@
     <div class="col-sm-2">
         <select class="form-control" id="availability" name="availability">
 
-            <option value="Available" selected>Available</option>
-            <option value="Not Available">Not Available</option>
+            <option value="1" selected>Available</option>
+            <option value="0">Not Available</option>
         </select>
     </div>
 </div>
@@ -169,35 +173,31 @@
         </select>
     </div>
 </div>
+
+
+<!-- fafaafafaa -->
+
 <div class="form-group">
-    <label class="control-label col-sm-2" for="Primary Image">Primary Image:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="pri_image"
-               placeholder="Paste the link of the Image (Thumbnail Image)" name="pri_image" accept="image/*">
+    <label class="control-label col-sm-2" for="image">Images (Max 3 images)</label>
+    <div class="col-sm-6">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <span class="btn btn-default btn-file">
+                                        <span>Choose file</span>
+                                        <input name="img[]" type="file" multiple/>
+                                    </span>
+            <span class="fileinput-filename"></span>
+        </div>
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-sm-2" for="Image 1">Image 1:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="img1" placeholder="Paste the link of the Image" name="img1">
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Image 2">Image 2:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="img2" placeholder="Paste the link of the Image" name="img2">
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Image 3">Image 3:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="img3" placeholder="Paste the link of the Image" name="img3">
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Image 4">Image 4:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="img4" placeholder="Paste the link of the Image "
-               name="img4">
+    <label class="control-label col-sm-2" for="imageForHome">Thumbnail (450*600)</label>
+    <div class="col-sm-6">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <span class="btn btn-default btn-file">
+                                        <span>Choose file</span>
+                                        <input name="img1" type="file"/>
+                                    </span>
+            <span class="fileinput-filename"></span>
+        </div>
     </div>
 </div>

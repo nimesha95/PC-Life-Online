@@ -45,7 +45,7 @@ function syncCurr() {
                     )
             }
 
-            console.log("hh");
+            //     console.log("hh");
         })
 
     repeater = setTimeout(syncCurr, 10000);
@@ -67,7 +67,7 @@ function syncDelivery() {
                 var model = msg['msg'][i]['id'];
                 $("#deliOrders").find('tbody')
                 //.append($("<tr class='clickable-row' data-url='www.google.com/"+model+"'>")
-                    .append($('<tr onclick="window.location=\'www.google.com\';">')
+                    .append($('<tr>')
                         .append($('<td>')
                             .text(msg['msg'][i]['id'])
                         )
@@ -83,8 +83,10 @@ function syncDelivery() {
                     )
             }
 
-            console.log("hh");
+            // console.log("hh");
         })
 
     repeater = setTimeout(syncDelivery, 10000);
 }
+
+

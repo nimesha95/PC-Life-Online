@@ -81,7 +81,6 @@ class UserController extends Controller
         } else {
             return redirect()->back()->withErrors("Please Check your credentials");
         }
-
     }
 
     public function getProfile()
@@ -109,13 +108,13 @@ class UserController extends Controller
 
     public function postRegUser(Request $request)
     {
-
+        //dd($request);
         session(['AdminRegUser' => 1]);
         $this->validate($request, [
             'name' => 'required',
+            'phone' => 'required',
             'email' => 'email | required | unique:users',
             'password' => 'required | min:4',
-            'role' => 'required'
         ]);
 
 
@@ -123,11 +122,12 @@ class UserController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'role' => $request->input('role'),
-            'role_name' => $this->getRoleName($request->input('role')),
+            'phone_no' => $request->input('phone'),
+            'role' => 1,
+            'role_name' => 'user',
         ]);
         $user->save();
-        return redirect()->back();
+        return redirect()->route('product.index');
 
     }
 

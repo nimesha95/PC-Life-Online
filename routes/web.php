@@ -21,6 +21,10 @@ Route::get('/send', [
     'as' => 'user.sendMail'
 ]);
 
+Route::post('/rest_api', [
+    'uses' => 'EmailController@test'
+]);
+
 Route::get('/send_test', function () {
     Mail::raw('Sending emails with Mailgun and Laravel is easy!', function ($message) {
         $message->to('nimesha95@live.com');
@@ -29,12 +33,14 @@ Route::get('/send_test', function () {
 
 Route::get('/desktops/{type}/{brand?}', [
     'uses' => 'ProductController@getDesktops',
-    'as' => 'product.product'
 ]);
 
 Route::get('/laptops/{type}/{brand?}', [
     'uses' => 'ProductController@getLaptops',
-    'as' => 'product.product'
+]);
+
+Route::get('/acc/{type}', [
+    'uses' => 'ProductController@getAcc',
 ]);
 
 Route::get('/product/{id}', [
@@ -56,7 +62,7 @@ Route::group(['prefix' => 'user'], function () {
         ]);
 
         Route::post('/signup', [
-            'uses' => 'UserController@postSignup',
+            'uses' => 'UserController@postRegUser',
             'as' => 'user.signup'
         ]);
 
@@ -128,6 +134,18 @@ Route::group(['prefix' => 'user'], function () {
             });
         });
 
+        Route::get('/paywithbank/{id}', [
+            'uses' => 'ProductController@getBank',
+            'as' => 'user.getBank'
+        ]);
+
+        Route::post('/paywithbank', [
+            'uses' => 'ProductController@postBank',
+            'as' => 'user.postBank'
+        ]);
+
+        Route::get('paywithpaypal/{id}', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
+
         Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
         Route::post('paypal', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
         Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
@@ -167,6 +185,12 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'uses' => 'AdminController@postRegUser',
             'as' => 'admin.reguser'
         ]);
+
+        Route::post('/edit_item', [
+            'uses' => 'AdminController@getEditItem',
+            'as' => 'admin.get_edit_item'
+        ]);
+
 
     });
 
@@ -214,6 +238,16 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
             'as' => 'check_deli_orders'
         ]);
 
+        Route::post('/stock_stat/{id}', [
+            'uses' => 'StockManagerController@check_stock_stat',
+            'as' => 'check_stock_stat'
+        ]);
+
+        Route::post('/addToFirebase', [
+            'uses' => 'StockManagerController@addToFB',
+            'as' => 'add_to_fbase'
+        ]);
+
         Route::get('/getOrder/{id}', [
             'uses' => 'StockManagerController@getOrder',
             'as' => 'stock.getOrder',
@@ -222,6 +256,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
         Route::post('/submit_invoice', [
             'uses' => 'StockManagerController@submitInvoice',
             'as' => 'stock.subInv'
+        ]);
+
+        Route::post('/crit_stock', [
+            'uses' => 'StockManagerController@crit_stock_msg',
+            'as' => 'stock.SendCritStock'
         ]);
     });
 
