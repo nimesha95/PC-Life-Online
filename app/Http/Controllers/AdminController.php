@@ -75,6 +75,7 @@ class AdminController extends Controller
         $price = $request->input('price');
         $discount_price = $request->input('dis_price');
         $availability = $request->input('availability');
+        $warrenty = $request->input('warranty');
         $brand = 'null';
 
         $item_type = $request->ITEM_TYPE;
@@ -82,22 +83,22 @@ class AdminController extends Controller
             $specific = $request->input('specification');
             $catagory = $request->input('catagory');
 
-            DB::insert("insert into $table (proid,catagory,name,type,availability,description,image,img1,img2,img3,price,discount_price,specification) values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                [$proid, $catagory, $name, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $specific]);
+            DB::insert("insert into $table (proid,catagory,name,type,availability,description,warrenty,image,img1,img2,img3,price,discount_price,specification) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                [$proid, $catagory, $name, $type, $availability, $description, $warrenty, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $specific]);
         } else {
             $item = new Item_info();
 
             $brand = $request->input('brand');
 
-            $specifications = $request->except('_token', 'productid', 'brand', 'model', 'cond', 'price', 'dis_price', 'availability', 'img', 'img1', 'add');
+            $specifications = $request->except('_token', 'productid', 'brand', 'model', 'cond', 'price', 'dis_price', 'warranty', 'availability', 'img', 'img1', 'add');
             foreach ($specifications as $key => $value) {
                 $item->addToArray($key, $value);
             }
 
             $itemDetails = serialize($item);
 
-            DB::insert("insert into $table (proid,name,brand,type,availability,description,image,img1,img2,img3,price,discount_price,itemDetails) values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                [$proid, $name, $brand, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $itemDetails]);
+            DB::insert("insert into $table (proid,name,brand,type,availability,description,warrenty,image,img1,img2,img3,price,discount_price,itemDetails) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                [$proid, $name, $brand, $type, $availability, $warrenty, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $itemDetails]);
         }
 
         //update stock table
