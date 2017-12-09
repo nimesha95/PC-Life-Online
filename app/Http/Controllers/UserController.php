@@ -108,10 +108,11 @@ class UserController extends Controller
 
     public function postRegUser(Request $request)
     {
-
+        //dd($request);
         session(['AdminRegUser' => 1]);
         $this->validate($request, [
             'name' => 'required',
+            'phone' => 'required',
             'email' => 'email | required | unique:users',
             'password' => 'required | min:4',
         ]);
@@ -121,6 +122,7 @@ class UserController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
+            'phone_no' => $request->input('phone'),
             'role' => 1,
             'role_name' => 'user',
         ]);
