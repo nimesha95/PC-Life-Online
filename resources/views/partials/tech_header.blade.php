@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="{{ URL::asset('css/techstyle.css') }}"/>
 @include('partials.techmodel.modelnewjob')
 @include('partials.techmodel.modelmore')
 @include('partials.techmodel.modelcustomize')
@@ -8,7 +8,7 @@
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
   background-image: -ms-linear-gradient(top, #3498db, #2980b9);
   background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9); box-shadow: 0px 0px 10px #000">
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);box-shadow: 0px 0px 10px rgba(0,0,0,0.5)">
 
     <div class="container-fluid" style="height: 100px">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -20,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{route('technician')}}" style="text-align: center; padding-top: auto; color: white">PC LIFE ONLINE <br>  <b>Techician</b> </a>
+            <a class="navbar-brand" href="{{route('technician.index')}}" style="text-align: center; padding-top: auto; color: white">PC LIFE ONLINE <br>  <b>Techician</b> </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,7 +33,7 @@
 
                 </li>
                 <li>
-                    <a href="{{route('technician')}}" style="all: unset;"><div class="butt" ><img  src="{{ asset('img/technician/More.png')}}" style=""> <b>Dashboard</b>  </div></a>
+                    <a href="{{route('technician.index')}}" style="all: unset;"><div class="butt" ><img  src="{{ asset('img/technician/More.png')}}" style=""> <b>Dashboard</b>  </div></a>
                 </li>
                 <li>
                     <div class="butt" data-toggle="modal" data-target="#More">
@@ -75,10 +75,11 @@
 
 
             </ul>
-            <form class="navbar-form navbar-right" style="margin-top: 30px;">
+            <form class="navbar-form navbar-right" style="margin-top: 30px;" action="{{route('viewjob')}}" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" autofocus="autofocus">
+                    <input type="text" Name="Jobid" class="form-control" placeholder="Read the Invoice ID" autofocus="autofocus">
                 </div>
+                {{ csrf_field() }}
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-right" >

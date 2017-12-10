@@ -20,33 +20,7 @@
   background-image: -ms-linear-gradient(top, #3498db, #2980b9);
   background-image: -o-linear-gradient(top, #3498db, #2980b9);
   background-image: linear-gradient(to bottom, #3498db, #2980b9); box-shadow: 0px 0px 2px #000; width: auto; padding: 10px" >
-                     <h4 style="color: White;display: inline-block"> New Job   {{$Device}} <br><hr>Job ID
-                        @foreach($qarray as $Custom)
-                            @if(($Device)=== 'Desktop')
-                                @php($i="DR000".(($Custom->id)+1))
-                                <input type="hidden" name="Jobid" value="{{$i}}"  >
-                                <input type="hidden" name="device" value="{{$Device}}"  >
-                                {{$i}}
-                            @endif
-                            @if(($Device)=== 'Laptop')
-                                @php($i="LR000".(($Custom->id)+1))
-                                <input type="hidden" name="Jobid" value="{{$i}}"  >
-                                <input type="hidden" name="device" value="{{$Device}}"  >
-                                {{$i}}
-                            @endif
-                            @if(($Device)=== 'Tablet')
-                                @php($i="TR000".(($Custom->id)+1))
-                                <input type="hidden" name="Jobid" value="{{$i}}"  >
-                                <input type="hidden" name="device" value="{{$Device}}"  >
-                                {{$i}}
-                            @endif
-                            @if(($Device)=== 'Other')
-                                @php($i="OR000".(($Custom->id)+1))
-                                <input type="hidden" name="Jobid" value="{{$i}}"  >
-                                <input type="hidden" name="device" value="{{$Device}}"  >
-                                {{$i}}
-                            @endif
-                        @endforeach </h4>
+
 
                     <div style="height:auto;
     width:auto;
@@ -89,7 +63,7 @@
 
                             <td> <label for="comment">Condition</label></td>
                             <td>
-                                <input type="text" class="form-control"  Name="condition" value=""></td>
+                                <input type="text" class="form-control"  Name="conditiom" value=""></td>
                             <td></td>
                         </tr>
                         <tr>

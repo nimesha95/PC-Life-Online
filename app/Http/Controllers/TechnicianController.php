@@ -10,8 +10,10 @@ class TechnicianController extends Controller
 {
     public function getIndex()
     {
-                $item = 'hello';
-        return view('technician.index', ['items' => $item]);
+        $qarray = DB::select("SELECT * FROM job where status='0' LIMIT 5 ");
+        $qarray1 = DB::select("SELECT * FROM job where status='1' LIMIT 5 ");
+        $qarray2 = DB::select("SELECT * FROM job where status='2' LIMIT 5 ");
+        return view('technician.index', compact('qarray','qarray1','qarray2'));
 
 
     }
@@ -143,19 +145,21 @@ class TechnicianController extends Controller
     public function NewjobStore(Request $request)
     {
 
-
+            //dd($request);
         //load user Register quarry
 
         $Jobid = $request->input('Jobid');
         $device = $request->input('device');
         $Serial = $request->input('Serial');
         $condition = $request->input('condition');
-        $Problem = $request->input('Address1');
+        $Problem = $request->input('Problem');
+
         $Type ='Question';
         $qarray = DB::select("select * from customize where (type='" . $Type . "'  and device='" . $device . "')");
 
         DB::table('job')
-            ->Insert(['jobid' => $Jobid,'SerialNo' => $Serial,'device' => $device,'Condition' => $condition,'Problem' => $Problem]);
+            ->Insert(['jobid' => $Jobid,'SerialNo' => $Serial,'device' => $device,'Condition' => $condition,'Problem' => $Problem,'status' =>'0','jobtype' => 'R','invoiceno' => '-']);
+
         //Return to questioner
         return view('technician.Question',compact('Jobid','device','Type','qarray'));
     }
@@ -399,7 +403,7 @@ class TechnicianController extends Controller
     }
     public function Addtsktojob(Request $request)
     {
-        dd($request);
+        //dd($request);
         $type = $request->input('type');
         $device = $request->input('device');
         $taskid = $request->input('taskid');
@@ -412,6 +416,51 @@ class TechnicianController extends Controller
         $qarray1 = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
        //dd($qarray1);
         return view('technician.Newtask',compact('qarray','qarray1','type','device','jobid'));
+    }
+    public function Deletetsktojob(Request $request)
+    {
+        //dd($request);
+        $type = $request->input('type');
+        $device = $request->input('device');
+        $taskid = $request->input('taskid');
+        $jobid = $request->input('jobid');
+        DB::table('jobtask')->where([ ['taskid', '=', $taskid] and ['jobid', '=', $jobid]])->delete();
+
+        $qarray = DB::select("select * from tasks ");
+        $qarray1 = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+        //dd($qarray1);
+        return view('technician.Newtask',compact('qarray','qarray1','type','device','jobid'));
+    }
+    public function confrimtsktojob(Request $request)
+    {
+        //dd($request);
+        $type = $request->input('type');
+        $device = $request->input('device');
+        $taskid = $request->input('taskid');
+        $jobid = $request->input('jobid');
+        $DTOP = $request->input('DTOP');
+        $DINT = $request->input('DINT');
+        $cost = $request->input('cost');
+        DB::table('job')
+            ->where('jobid', $jobid)
+            ->update(['totaltime' => $DTOP,'price' => $cost]);
+
+
+        return view('technician.adduserdetails',compact('jobid','device'));
+    }
+
+    public function viewjob(Request $request)
+    {
+        //dd($request);
+        $jobid = $request->input('Jobid');
+        $qarrayj = DB::select("select * from job where jobid='" . $jobid . "' ");
+        $qarrayq = DB::select("select * from devq where (Type='Question'  and invoice='" . $jobid . "')");
+        $qarraya = DB::select("select * from devq where (Type='Device Acc'  and invoice='" . $jobid . "')");
+        $qarrayt = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+
+
+        //dd($qarrayj);
+        return view('technician.viewjob',compact('qarrayj','qarrayq','qarraya','qarrayt','jobid'));
     }
 
 }

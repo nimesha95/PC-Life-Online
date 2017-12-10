@@ -289,7 +289,7 @@ Route::group(['middleware' => ['auth', 'cashier']], function () {
 Route::group(['middleware' => ['auth', 'technician']], function () {
     Route::get('/technician', [
         'uses' => 'TechnicianController@getIndex',
-        'as' => 'technician',
+        'as' => 'technician.index',
     ]);
     Route::post('technician.index', [
         'uses' => 'TechnicianController@store',
@@ -376,6 +376,19 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@userreg',
             'as' => 'viewwarranty',
         ]);
+        Route::post('/Viewjob', [
+            'uses' => 'TechnicianController@viewjob',
+            'as' => 'viewjob',
+        ]);
+        Route::post('/Deletetask', [
+            'uses' => 'TechnicianController@Deletetsktojob',
+            'as' => 'deletetask',
+        ]);
+        Route::post('/Confirmtask', [
+            'uses' => 'TechnicianController@confrimtsktojob',
+            'as' => 'Confirmtask',
+        ]);
+
 
 
 

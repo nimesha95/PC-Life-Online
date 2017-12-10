@@ -10,27 +10,59 @@
 @section('content')
     @include('partials.techmodel.model')
    <div class="container">
-       <h3>{{$jobid}} - {{$device}} - Device {{$type}}</h3>
+
        <div class="col-sm-12">
            <form action="{{route('addReview')}}" method="post">
-               <div class="modal-footer">
-                   <button type="submit" class="btn btn-default" data-toggle="modal" >Confirm</button>
 
-               </div>
                <input type="hidden" name="type" value="{{$type}}"  >
                <input type="hidden" name="device" value=" {{$device}}"  >
                <input type="hidden" name="jobid" value=" {{$jobid}}"  >
                {{ csrf_field() }}
                <div class="row">
+                   <div class="col-md-3">
+                       <div style="background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9); box-shadow: 0px 0px 2px #000; width: auto; padding: 10px" >
+                           <h4 style="color: White;display: inline-block"> New Job   {{$device}} <br><hr>Job ID {{$jobid}}
+                               </h4>
+                           <hr>
+                           <div style="color: white ;padding: 10px;"> <b>Enter Device Information</b></div>
+                           <div style="color: white ;padding: 10px;">
+                               <b>Enter Device Questioneier</b>
+                           </div>
+                           <div style="height:auto;
+    width:auto;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.5) ;"> <b>Enter Other Device Recieved</b></div>
+
+                           <div style="color: white ;padding: 10px;">
+                               <b>Add New Tasks</b>
+                           </div>
+                           <div style="color: white ;padding: 10px;">
+                               <b>Get Customer Information</b>
+                           </div>
+                           <div style="color: white ;padding: 10px;">
+                               <b>Job Confirm</b>
+                           </div>
+                       </div>
+                   </div>
+
+
+
                    <div class="col-md-9">
 
+                       <div class="modal-footer">
+                           <button type="submit" class="btn btn-default subbuttonred" data-toggle="modal" >Confirm</button>
 
+                       </div>
                        <table border="0" class="table table-hover">
                            <thead>
                            <th>#</th>
                            <th>Device</th>
                            <th>Availability</th>
-                           <th>Remark</th>
 
 
                            </thead>
@@ -42,7 +74,7 @@
                                @if (($Custom->D1)!== '')
                                    <tr>
                                        <td> <label for="comment">{{$i}}</label></td>
-                                       <td><label for="comment"  value="{{$Custom->D1}}">{{$Custom->D1}}</td>
+                                       <td><label for="comment"  value="">{{$Custom->D1}}</td>
                                        <input type="hidden" name="D1" value="{{$Custom->D1}}"  >
                                        <td>
                                            <div class="checkbox">
