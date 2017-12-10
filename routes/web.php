@@ -16,6 +16,11 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
+Route::post('/search', [
+    'uses' => 'ProductController@search',
+    'as' => 'product.search'
+]);
+
 Route::get('/send', [
     'uses' => 'EmailController@send',
     'as' => 'user.sendMail'

@@ -27,6 +27,16 @@ class ProductController extends Controller
         return view('shop.index', ['items' => $items, 'items2' => $items2, 'items3' => $items3]);
     }
 
+    public function search(Request $request)
+    {
+        //$searchQuery = DB::select("SELECT * from hash_table WHERE name  LIKE %".$request->keywords.);
+
+        $searchQuery = DB::table('hash_table')
+            ->where('name', 'like', "%" . $request->keywords . "%")
+            ->get();
+        return response()->json(['msg' => $searchQuery], 200);
+    }
+
     public function showItem($id)
     {
         $table = $this->selectItemType($id);

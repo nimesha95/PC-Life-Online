@@ -1,3 +1,32 @@
+<script>
+    var token = '{{\Illuminate\Support\Facades\Session::token()}}';
+    var url = '{{route('product.search')}}';
+</script>
+<script type="text/javascript">
+    var timer;
+
+    function up() {
+        timer = setTimeout(function () {
+            var keywords = $('#search-input').val();
+            //console.log(keywords);
+            if (keywords.length > 0) {
+                $.ajax({
+                    method: 'POST',
+                    url: url,
+                    data: {keywords: keywords, _token: token}
+                })
+                    .done(function (msg) {
+                        console.log(msg['msg'][0]);
+                    })
+            }
+        }, 500);
+    }
+
+    function down() {
+        clearTimeout(timer);
+    }
+</script>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -126,12 +155,29 @@
                     </ul>
                 </li>
             </ul>
+            <div class="search-box">
+                <form class="navbar-form navbar-left" action="#" method="post">
+                    <div class="form-group">
+                        <input name="search-input" id="search-input" type="text" class="form-control" onkeydown="down()"
+                               onkeyup="up()"
+                               placeholder="Search item"/>
+                    </div>
+                    <div class="result" id="search-results">
+
+                    </div>
+                    <input type="submit" class="btn btn-default" name="my_form_submit_button"
+                           value="Search"/>
+
+                </form>
+            </div>
+            <!--
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
+            -->
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ route('user.getCart') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
