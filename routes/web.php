@@ -161,7 +161,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     ]);
 
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/reports', [
+        Route::get('/reports/{type?}/{day?}', [
             'uses' => 'AdminController@getReports',
             'as' => 'admin.reports',
         ]);
@@ -191,7 +191,15 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'as' => 'admin.get_edit_item'
         ]);
 
+        Route::get('/view/{id}', [
+            'uses' => 'AdminController@show',
+            'as' => 'admin.show',
+        ]);
 
+        Route::post('/syncNoti', [
+            'uses' => 'AdminController@syncData',
+            'as' => 'sync_noti'
+        ]);
     });
 
 });
