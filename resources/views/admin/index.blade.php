@@ -82,7 +82,7 @@
                                     <i class="fa fa-money fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
+                                    <div class="huge" id="earn" name="earn">124</div>
                                     <div>Today's Earning</div>
                                 </div>
                             </div>

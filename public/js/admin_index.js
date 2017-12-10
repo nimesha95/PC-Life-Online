@@ -48,6 +48,7 @@ function syncNotificationData() {
             //console.log(msg['msg']);
             $('#orders').text(msg['msg'][0]);
             $('#deliv').text(msg['msg'][1]);
+            $('#earn').text(msg['msg'][2]);
         })
 
     repeater = setTimeout(syncNotificationData, 1000);
