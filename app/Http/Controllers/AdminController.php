@@ -6,18 +6,83 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Item_info;
 use Illuminate\Support\Facades\DB;
-
+use \Cart as Cart;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     public function getIndex()
     {
+        Cart::destroy();
         return view('admin.index');
     }
 
-    public function getReports()
+    public function getReports($type, $day)
     {
-        return view('admin.reports');
+        //dd($type);
+        $topic = "haha";
+        $orders = "";
+        if ($type == "orders") {
+            if ($day == "recent") {
+                Cart::destroy();
+                $orders = DB::select('select * from orders ORDER BY added DESC LIMIT 8');
+                $topic = "Recent Orders";
+            }
+        } elseif ($type == "deliveries") {
+            if ($day == "recent") {
+                Cart::destroy();
+                $orders = DB::select('select * from orders WHERE delivery=1 ORDER BY added DESC LIMIT 8');
+                $topic = "Recent Deliveries";
+            }
+        } elseif ($type == "earning") {
+            if ($day == "recent") {
+                dd("today earning");
+                $topic = "Recent Earnings";
+            }
+        } elseif ($type == "service") {
+            if ($day == "recent") {
+                dd("today service");
+                $topic = "Recent Service Requests";
+            }
+        }
+
+        return view('admin.info_view', ['orders' => $orders, 'topic' => $topic]);
+        // return view('admin.info_view', ['orders'=>$orders,'test'=>$test]);
+    }
+
+    public function syncData(Request $request)
+    {
+        $recentOrder = DB::select('SELECT count(*) as total FROM orders WHERE DATE(added) = CURDATE();');
+        $recentDeliveries = DB::select('SELECT count(*) as total FROM orders WHERE DATE(added) = CURDATE() AND delivery = 1;');
+
+
+        $arr = [$recentOrder[0]->total, $recentDeliveries[0]->total];
+        return response()->json(['msg' => $arr], 200);
+    }
+
+
+    public function getEarning()
+    {
+
+    }
+
+
+    public function show($id)
+    {
+        $orders = DB::select('select * from orders where id = ? ', [$id]);
+
+
+        Cart::destroy();
+        foreach ($orders as $ord) {
+            $cart = $ord->order_obj;
+            $cart = unserialize($cart);
+            //dd($cart);
+            foreach ($cart as $itm) {
+                Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
+            }
+        }
+
+        return view('admin.details', compact('orders'));
     }
 
     public function getAdditems()
@@ -75,6 +140,7 @@ class AdminController extends Controller
         $price = $request->input('price');
         $discount_price = $request->input('dis_price');
         $availability = $request->input('availability');
+        $warrenty = $request->input('warranty');
         $brand = 'null';
 
         $item_type = $request->ITEM_TYPE;
@@ -82,22 +148,22 @@ class AdminController extends Controller
             $specific = $request->input('specification');
             $catagory = $request->input('catagory');
 
-            DB::insert("insert into $table (proid,catagory,name,type,availability,description,image,img1,img2,img3,price,discount_price,specification) values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                [$proid, $catagory, $name, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $specific]);
+            DB::insert("insert into $table (proid,catagory,name,type,availability,description,warrenty,image,img1,img2,img3,price,discount_price,specification) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                [$proid, $catagory, $name, $type, $availability, $description, $warrenty, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $specific]);
         } else {
             $item = new Item_info();
 
             $brand = $request->input('brand');
 
-            $specifications = $request->except('_token', 'productid', 'brand', 'model', 'cond', 'price', 'dis_price', 'availability', 'img', 'img1', 'add');
+            $specifications = $request->except('_token', 'productid', 'brand', 'model', 'cond', 'price', 'dis_price', 'warranty', 'availability', 'img', 'img1', 'add');
             foreach ($specifications as $key => $value) {
                 $item->addToArray($key, $value);
             }
 
             $itemDetails = serialize($item);
 
-            DB::insert("insert into $table (proid,name,brand,type,availability,description,image,img1,img2,img3,price,discount_price,itemDetails) values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                [$proid, $name, $brand, $type, $availability, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $itemDetails]);
+            DB::insert("insert into $table (proid,name,brand,type,availability,description,warrenty,image,img1,img2,img3,price,discount_price,itemDetails) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                [$proid, $name, $brand, $type, $availability, $warrenty, $description, $imgThumb[0], $imgArr[0], $imgArr[1], $imgArr[2], $price, $discount_price, $itemDetails]);
         }
 
         //update stock table
@@ -229,4 +295,5 @@ class AdminController extends Controller
             return ['accessories', 'partials.items.accessories_edit'];
         }
     }
+
 }

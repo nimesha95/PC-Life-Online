@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Mail;
 use \Cart as Cart;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class CashierController extends Controller
 {
@@ -52,6 +53,12 @@ class CashierController extends Controller
         //$email=DB::select('select email from orders where id = ? ', [$cash]);
         //$email = "nimesha95@live.com";
         //Mail::to($email)->send(New cashier());
+
+        Nexmo::message()->send([
+            'to' => '94775635458',
+            'from' => 'PC Life',
+            'text' => "you've order is confirmed ",
+        ]);
 
         return redirect(route('cashier.index'));
     }

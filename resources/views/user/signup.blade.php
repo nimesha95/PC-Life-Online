@@ -66,14 +66,15 @@
                         <div class="help-block">Minimum of 4 characters</div>
                     </div>
                     <div class="form-group col-sm-6">
-                        <input type="password" class="form-control" id="passwordConfirm" data-match="#password"
+                        <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
+                               data-match="#password"
                                data-match-error="Whoops, these don't match" placeholder="Confirm" required>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="signup" class="btn btn-primary signup">Submit</button>
             </div>
             {{ csrf_field() }}
         </form>
