@@ -79,7 +79,7 @@
                     <div class="col-md-2 col-xs-2">{{$row->price * $row->qty}}</div>
                     <div class="col-md-1 col-xs-1">
                         <a href="{{route('product.RemoveFromCart' , ['count'=>'all','rowid'=> $row->rowId])}}"
-                           class="btn btn-xs btn-danger" role="button">
+                           class="btn btn-xs btn-danger rmCart" role="button">
                             <span class="glyphicon glyphicon-remove"></span>&nbsp;
                         </a>
                     </div>

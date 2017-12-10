@@ -138,7 +138,7 @@
                         <span class="badge">{{Auth::check()? Cart::count() : ''}}</span>
                     </a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown drp">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         @if(Auth::check())
@@ -153,7 +153,7 @@
                             <li><a href="{{ route('user.profile') }}">Profile</a></li>
                             <li><a href="#">Settings</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('user.logout') }}">Sign Out</a></li>
+                            <li><a class="signout_link" href="{{ route('user.logout') }}">Sign Out</a></li>
                         @else
                             <li><a href="{{ route('user.signin') }}">Sign In</a></li>
                             <li><a href="{{ route('user.signup') }}">Sign Up</a></li>
