@@ -1,4 +1,4 @@
-<div class="col-md-3">
+<div class="col-md-3" style=" ">
     <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
     <div id="sidebar" class="well sidebar-nav">
         <h5><i class="glyphicon glyphicon-home"></i>

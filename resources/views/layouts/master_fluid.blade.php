@@ -13,9 +13,10 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
 
+
     @yield('styles')
 </head>
-<body>
+<body style="background-color: #f3f3f3">
 @yield('header')
 
 
