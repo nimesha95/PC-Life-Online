@@ -22,7 +22,7 @@
                     <div class="panel-heading">Pending Orders</div>
 
                     <!-- Table -->
-                    <table class="table" id="curOrders">
+                    <table class="table" id="curOrders" style="border: 3px solid black">
                         <thead>
                         <tr>
                             <th>ID</th>

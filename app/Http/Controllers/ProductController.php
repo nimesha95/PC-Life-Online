@@ -82,6 +82,7 @@ class ProductController extends Controller
         } else {
             $items = DB::select("select * from laptops where type='" . $type . "' and brand='" . $brand . "'");
         }
+     
         return view('shop.product', ['items' => $items, 'sidebar' => 'laptop_sbar']);
     }
 

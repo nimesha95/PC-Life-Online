@@ -44,8 +44,8 @@
     <div class="col-sm-2">
         <select class="form-control" id="cond" name="cond">
 
-            <option value="Brand New" selected>Brand new</option>
-            <option value="Used">Used</option>
+            <option value="new" selected>Brand new</option>
+            <option value="used">Used</option>
         </select>
     </div>
 </div>
