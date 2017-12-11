@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-md-12 col-md-offset-2">
-                <div class="container" style="box-shadow: 0px 0px 3px rgba(0,0,0,0.3); min-width: 400px; max-width: 800px;   margin: 10px; padding: 30px; border-radius: 5px">
+                <div class="container" style="background-color:white;  box-shadow: 0px 0px 3px rgba(0,0,0,0.3); min-width: 400px; max-width: 800px;   margin: 10px; padding: 30px; border-radius: 5px">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-4">
                             <h2>Sign Up</h2>
@@ -68,7 +68,7 @@
                                     <label for="inputPassword" class="control-label">Password</label>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="inputPassword" class="control-label">Password</label>
+                                    <label for="inputPassword" class="control-label"> Confirm Password</label>
                                 </div>
                             </div>
 

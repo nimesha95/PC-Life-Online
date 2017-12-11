@@ -137,7 +137,7 @@
         <div class="box">
             <div class="container" >
                 <div class="col-md-12">
-                    <h2>TODAY's HOT DEALS</h2>
+                    <h2>TODAY'S HOT DEALS</h2>
                 </div>
             </div>
         </div>
@@ -148,14 +148,14 @@
                             @foreach($items as $item)
                                 <div class="item" >
                                     <div class="pad15" style="background-color: white">
-                                        <p >{{$item->name}}</p>
+                                        <p ><b>{{$item->name}}</b></p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
                                                 <img src="{{ $item->image }}" alt=""
                                                      class="img-responsive">
                                             </a>
                                         </div>
-                                        <p>{{$item->price}} LKR</p>
+                                        <p style="color: red"><b>{{$item->price}} LKR </b></p>
                                     </div>
                                 </div>
                             @endforeach
@@ -163,14 +163,14 @@
                             @foreach($items2 as $item)
                                 <div class="item">
                                     <div class="pad15" style="background-color: white">
-                                        <p >{{$item->name}}</p>
+                                        <p ><b>{{$item->name}}</b></p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
                                                 <img src="{{ $item->image }}" alt=""
                                                      class="img-responsive">
                                             </a>
                                         </div>
-                                        <p>{{$item->price}} LKR</p>
+                                        <p style="color: red"><b>{{$item->price}} LKR </b></p>
                                     </div>
                                 </div>
                             @endforeach
@@ -178,14 +178,14 @@
                             @foreach($items3 as $item)
                                 <div class="item">
                                     <div class="pad15" style="background-color: white">
-                                        <p >{{$item->name}}</p>
+                                        <p ><b>{{$item->name}}</b></p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
                                                 <img src="{{ $item->image }}" alt=""
                                                      class="img-responsive">
                                             </a>
                                         </div>
-                                        <p>{{$item->price}} LKR</p>
+                                        <p style="color: red"><b>{{$item->price}} LKR </b></p>
                                     </div>
                                 </div>
                             @endforeach
