@@ -58,10 +58,21 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-10 col-sm-20">
-                    <button type="submit" class="btn btn-info">Submit</button>
+                    <button type="submit" id="submitBtn" name="submitBtn" class="btn btn-info">Submit</button>
                 </div>
             </div>
             {{ csrf_field() }}
         </form>
     </div>
+    <script>
+        var url = '{{route('stockmanager.index')}}'
+    </script>
+    <script type="text/javascript">
+        $("#submitBtn").click(function () {
+            var delay = 2000;
+            setTimeout(function () {
+                window.location = url;
+            }, delay);
+        });
+    </script>
 @endsection

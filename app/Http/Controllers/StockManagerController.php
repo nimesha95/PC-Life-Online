@@ -51,7 +51,7 @@ class StockManagerController extends Controller
     {
         $msg = $request['body'];
 
-        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND verified=1 AND issued=0 AND delivery= 1 ORDER BY added DESC;");
+        $orders_to_process = DB::select("select id,email,total,added from orders WHERE paid=1 AND verified=1 AND issued=0 ORDER BY added DESC;");
 
         return response()->json(['msg' => $orders_to_process], 200);
     }
@@ -217,7 +217,7 @@ class StockManagerController extends Controller
     public function submitInvoice(Request $request)
     {
         $Stock_data = new StockHandler();
-
+        //dd($request);
         $data = $request->except('_token', 'orderid');
 
         foreach ($data as $key => $value) {
@@ -230,11 +230,14 @@ class StockManagerController extends Controller
         DB::table('orders')
             ->where('id', $request->orderid)
             ->update(['issued' => 1, 'invoice' => $arrSerialized]);
+        $order = DB::table('orders')->select('email', 'added')->where('id', $request->orderid)->get();
 
+        $users = DB::table('users')->select('name', 'email', 'phone_no')->where('email', $order[0]->email)->get();
+        //dd($order);
 
-        $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
+        $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr, 'id' => $request->orderid, 'user_info' => $users, 'order' => $order));
         return $pdf->download('invoice.pdf');
-
+        return redirect()->route('stockmanager.index');
     }
 
     public function addToFB(Request $request)
