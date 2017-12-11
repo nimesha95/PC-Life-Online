@@ -12,6 +12,7 @@
     @include('partials.header')
 @endsection
 
+
 @section('content')
 
     <div class="carousel   fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
@@ -145,8 +146,8 @@
                     <div class="MultiCarousel-inner" >
                         @if(sizeof($items)>0)
                             @foreach($items as $item)
-                                <div class="item">
-                                    <div class="pad15">
+                                <div class="item" >
+                                    <div class="pad15" style="background-color: white">
                                         <p >{{$item->name}}</p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
@@ -161,8 +162,8 @@
 
                             @foreach($items2 as $item)
                                 <div class="item">
-                                    <div class="pad15">
-                                        <p class="lead">{{$item->name}}</p>
+                                    <div class="pad15" style="background-color: white">
+                                        <p >{{$item->name}}</p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
                                                 <img src="{{ $item->image }}" alt=""
@@ -176,8 +177,8 @@
 
                             @foreach($items3 as $item)
                                 <div class="item">
-                                    <div class="pad15">
-                                        <p class="lead">{{$item->name}}</p>
+                                    <div class="pad15" style="background-color: white">
+                                        <p >{{$item->name}}</p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
                                                 <img src="{{ $item->image }}" alt=""

@@ -53,7 +53,7 @@
     padding: 10px;
     background-color: rgba(255,255,255,0.5) ;"> <b>Enter Device Information</b></div>
                     <div style="color: white ;padding: 10px;">
-                        <b>Enter Device Questioneier</b>
+                        <b>Enter Device Questionnaire</b>
                     </div>
                     <div style="color: white ;padding: 10px;">
                         <b>Enter Other Device Recieved</b>

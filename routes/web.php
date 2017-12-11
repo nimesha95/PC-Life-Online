@@ -319,6 +319,10 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         'as' => 'customizestore',
 
     ]);
+    Route::post('/repairinvoice', [
+        'uses' => 'TechnicianController@submitInvoice',
+        'as' => 'RepairInv'
+    ]);
     Route::post('/customtask', [
         'uses' => 'TechnicianController@custtask',
         'as' => 'customizetask',

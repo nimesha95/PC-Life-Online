@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    @include('partials/'.$sidebar)
+    @include('partials.Sidebar')
 
     <script type="text/javascript">
         function successMsg() {

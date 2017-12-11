@@ -13,7 +13,7 @@
 
         <div class="col-sm-12" >
             <div class="col-sm-3" >
-                <form action="{{route('NewjobStore')}}" method="post">
+                <form action="{{route('RepairInv')}}" method="post">
                     <div style="background: #3498db;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -42,6 +42,7 @@
                             <b>Job Confirm</b>
                         </div>
                     </div>
+                </form>
             </div>
 
             <div class="col-sm-9" >
@@ -50,11 +51,12 @@
                 <div class="row">
 
                     <div class="col-sm-10" >
-                        <form action="{{route('viewjob')}}" method="post">
+                        <form action="{{route('RepairInv')}}" method="post">
                             <h2>Job No - {{$jobid}} </h2>
+                            {{ csrf_field() }}
                             <div class="modal-footer">
                                 <button type="Submit" class="subbuttonred"  >Print Invoice</button>
-                                <a  href="{{route('technician')}}" style="all: unset;"> <button type="button" class="subbutton" data-toggle="modal" data-target=""  >Done</button></a>
+                                <a  href="{{url('technician')}}" style="all: unset;"> <button type="button" class="subbutton" data-toggle="modal" data-target=""  >Done</button></a>
                             </div>
                             <input type="hidden" name="jobid" value="{{$jobid}}">
                             <div class="row">
@@ -95,7 +97,7 @@
                                                     <tr>
                                                         <td><b>Device serial  no</b></td>
                                                         <td>{{$Custom->Serialno}}</td>
-                                                        <td>device</td>
+                                                        <td><b>Device </b></td>
                                                         <td>{{$Custom->device}}</td>
                                                     </tr>
                                                     <tr>
@@ -107,7 +109,7 @@
                                                     <tr>
                                                         <td><b>Price</b></td>
                                                         <td>{{$Custom->price}}</td>
-                                                        <td>Total time</td>
+                                                        <td><b>Total time</b></td>
                                                         <td>{{$Custom->totaltime}}</td>
 
 
@@ -128,6 +130,7 @@
                                                         <td><b>Telephone No</b></td>
                                                         <td>{{$Custom->telno}}</td>
                                                     </tr>
+
 
 
 
