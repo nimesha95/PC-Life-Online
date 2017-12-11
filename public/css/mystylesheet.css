@@ -46,84 +46,8 @@
     color: #262626;
     background-color: #999;
 }
-.span6{
-    display: inline;
-    height: 1000px;
-    margin: 0px;
-    padding: 0px;
-    width: 100px;
-
-    border: 1px solid black;
-}
-.btn-sq {
-    width: 100px ;
-    height: 100px ;
-    font-size: 10px;
-    background: #FFFAFA;
-
-}
-.butt {
-    border: 1px outset rgba(0,0,0,0.1);
-    border-radius: 5px;
-    background-color: #ffffff;
-    height:90px;
-    width:90px;
-    cursor:pointer;
-
-    box-shadow: 0px 0px 1px #888888;
-    text-align: center;
 
 
-    margin: 5px;
-    display:inline-block;
-
-
-}
-.butt > img{
-    width: 60px;
-    height: 60px;
-
-    margin-top: 5px;
-}
-.butt > p{
-    margin-top: 2px;
-    font-weight: 150%;
-}
-
-.butt:hover {
-
-
-    box-shadow: 0px 0px 5px #888888;
-}
-
-
-.butt em.leftImage{
-    background-position: -96px -112px;
-}
-.dashcont{
-    height:auto;
-    width:auto;
-    border: 1px outset rgba(0,0,0,0.1);
-    border-radius: 5px;
-    box-shadow: 0px 0px 1px #888888;
-    padding: 10px;
-}
-.dashhead{
-    height:auto;
-    width:auto;
-
-}
-.dashcont > table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.dashcont >th {
-    text-align: left;
-    padding: 8px;
-}
-
- .dashcont> tr:nth-child(even) {background-color: #f2f2f2;}
 
 /* ------------------- Sidebar Styling ------------------- */
 /*
@@ -137,171 +61,21 @@
     overflow-y: auto;
     z-index: 1000;
     transition: all 0.4s ease 0s;
-ul }
+}
 */
 
-.butttask {
-    border: 1px outset rgba(0,0,0,0.1);
-    border-radius: 5px;
-    background-color: #F5F5F5;
-    height:90px;
-    width:500px;
-    cursor:pointer;
-
-    box-shadow: 0px 0px 1px #888888;
-    text-align: center;
-
-
-    margin: 5px;
-
-
+#imaginary_container{
+    margin-top:20%; /* Don't copy this */
 }
-.butttask:hover {
-    background-color: blue;
-    color:white;
+.stylish-input-group .input-group-addon{
+    background: white !important;
 }
-.butttask > img{
-    width: 60px;
-    height: 60px;
-
-    margin-top: 5px;
+.stylish-input-group .form-control{
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
 }
-.butttask > p{
-    margin-top: 2px;
-    font-weight: 150%;
+.stylish-input-group button{
+    border:0;
+    background:transparent;
 }
-
-.checkcont {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-HTML  CSS   Result
-Edit on
-.switch-field {
-    font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
-    padding: 40px;
-    overflow: hidden;
-}
-
-.switch-title {
-    margin-bottom: 6px;
-}
-
-.switch-field input {
-    position: absolute !important;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    border: 0;
-    overflow: hidden;
-}
-
-.switch-field label {
-    float: left;
-}
-
-.switch-field label {
-    display: inline-block;
-    width: 60px;
-    background-color: #e4e4e4;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 14px;
-    font-weight: normal;
-    text-align: center;
-    text-shadow: none;
-    padding: 6px 14px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition:    all 0.1s ease-in-out;
-    -ms-transition:     all 0.1s ease-in-out;
-    -o-transition:      all 0.1s ease-in-out;
-    transition:         all 0.1s ease-in-out;
-}
-
-.switch-field label:hover {
-    cursor: pointer;
-}
-
-.switch-field input:checked + label {
-    background-color: #A5DC86;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-.switch-field label:first-of-type {
-    border-radius: 4px 0 0 4px;
-}
-
-.switch-field label:last-of-type {
-    border-radius: 0 4px 4px 0;
-}
-.subbutton{
-    background: #3498db;
-    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-    background-image: -o-linear-gradient(top, #3498db, #2980b9);
-    background-image: linear-gradient(to bottom, #3498db, #2980b9);
-    -webkit-border-radius: 6;
-    -moz-border-radius: 6;
-    border-radius: 6px;
-    font-family: Arial;
-    color: #ffffff;
-    font-size: 15px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-}
-.subbutton:hover{
-    background: #3cb0fd;
-    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-    text-decoration: none;
-}
-.subbuttonred{
-    background: #fa4163;
-    background-image: -webkit-linear-gradient(top, #fa4163, #ff5e5e);
-    background-image: -moz-linear-gradient(top, #fa4163, #ff5e5e);
-    background-image: -ms-linear-gradient(top, #fa4163, #ff5e5e);
-    background-image: -o-linear-gradient(top, #fa4163, #ff5e5e);
-    background-image: linear-gradient(to bottom, #fa4163, #ff5e5e);
-    -webkit-border-radius: 6;
-    -moz-border-radius: 6;
-    border-radius: 6px;
-    font-family: Arial;
-    color: #ffffff;
-    font-size: 15px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-}
-.subbuttonred:hover{
-    background: #f53d3d;
-    background-image: -webkit-linear-gradient(top, #f53d3d, #f76868);
-    background-image: -moz-linear-gradient(top, #f53d3d, #f76868);
-    background-image: -ms-linear-gradient(top, #f53d3d, #f76868);
-    background-image: -o-linear-gradient(top, #f53d3d, #f76868);
-    background-image: linear-gradient(to bottom, #f53d3d, #f76868);
-    text-decoration: none;
-}
-/*.modal-header{
-    background: #c0e3fa;
-    background-image: -webkit-linear-gradient(top, #c0e3fa, #ffffff);
-    background-image: -moz-linear-gradient(top, #c0e3fa, #ffffff);
-    background-image: -ms-linear-gradient(top, #c0e3fa, #ffffff);
-    background-image: -o-linear-gradient(top, #c0e3fa, #ffffff);
-    background-image: linear-gradient(to bottom, #c0e3fa, #ffffff);
-    color: 000;
-}*/
-

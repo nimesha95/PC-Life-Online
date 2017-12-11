@@ -85,7 +85,8 @@ class UserController extends Controller
 
     public function getProfile()
     {
-        return view('user.profile');
+        $info = DB::select("select * from users where email='" . Auth::user()->email . "'");
+        return view('user.profile', ['profile_info' => $info]);
     }
 
     public function viewOrders()

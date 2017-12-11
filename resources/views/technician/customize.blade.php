@@ -13,10 +13,12 @@
        <h3>Customize {{$Type}} - {{$Custtype}}</h3>
        <div class="col-sm-12">
         <form action="{{route('customizestore')}}" method="post">
-            <input type="submit">
+           
             <input type="hidden" name="type" value="{{$Type}}"  >
             <input type="hidden" name="device" value=" {{$Custtype}}"  >
-            {{ csrf_field() }}
+            {{ csrf_field() }}<div class="modal-footer">
+                <button type="Submit" class="subbuttonred"  >Print Invoice</button>
+                </div>
 
            <div class="row">
 

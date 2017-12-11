@@ -1,5 +1,9 @@
 @extends('layouts.master_fluid')
 
+@section('title')
+    User Profile
+@endsection
+
 @section('header')
     @include('partials.header')
 @endsection
@@ -21,22 +25,61 @@
 
             <div class="row" style="margin-top: 20px">
                 @if(isset($orders))
-                    @foreach($orders as $order)
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <ul class="list-group">
-                                    @foreach($order->order_obj as $row)
-                                        <li class="list-group-item">
-                                            {{$row->name}} || {{$row->qty}} || {{$row->price}}
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="panel-footer">
-                                <strong>Total Price: {{$order->total}}</strong>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-offset-4">
+                            <h4>Your Previous Orders</h4>
                         </div>
-                    @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 col-md-offset-2">
+                            @foreach($orders as $order)
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <ul class="list-group">
+                                            @foreach($order->order_obj as $row)
+                                                <li class="list-group-item">
+                                                    {{$row->name}} <span class="badge">{{$row->qty}}</span> <span
+                                                            class="label label-success">{{$row->price}} LKR</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <strong>Total Price: {{$order->total}}</strong>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                @if(isset($orders))
+                    <div class="row">
+                        <div class="col-md-offset-4">
+                            <h4>Your Previous Orders</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 col-md-offset-2">
+                            @foreach($orders as $order)
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <ul class="list-group">
+                                            @foreach($order->order_obj as $row)
+                                                <li class="list-group-item">
+                                                    {{$row->name}} <span class="badge">{{$row->qty}}</span> <span
+                                                            class="label label-success">{{$row->price}} LKR</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <strong>Total Price: {{$order->total}}</strong>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 @endif
             </div>
 

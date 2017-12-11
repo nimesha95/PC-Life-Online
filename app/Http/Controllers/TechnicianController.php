@@ -8,10 +8,32 @@ use App\Tech;
 
 class TechnicianController extends Controller
 {
+
+    public function submitInvoice(Request $request)
+    {
+        $Stock_data = new StockHandler();
+
+
+
+
+        $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
+        return $pdf->download('invoice.pdf');
+
+    }
+
+    public function dashqarray()
+    {
+        $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
+        $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
+        $qarray2 = DB::select("SELECT * FROM job where type='Company Warranty' LIMIT 5 ");
+    }
+
     public function getIndex()
     {
-                $item = 'hello';
-        return view('technician.index', ['items' => $item]);
+        $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
+        $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
+        $qarray2 = DB::select("SELECT * FROM job where jobtype='Company Warranty' LIMIT 5 ");
+        return view('technician.index', compact('qarray','qarray1','qarray2'));
 
 
     }
@@ -143,19 +165,21 @@ class TechnicianController extends Controller
     public function NewjobStore(Request $request)
     {
 
-
+            //dd($request);
         //load user Register quarry
 
         $Jobid = $request->input('Jobid');
         $device = $request->input('device');
         $Serial = $request->input('Serial');
         $condition = $request->input('condition');
-        $Problem = $request->input('Address1');
+        $Problem = $request->input('Problem');
+
         $Type ='Question';
         $qarray = DB::select("select * from customize where (type='" . $Type . "'  and device='" . $device . "')");
 
         DB::table('job')
-            ->Insert(['jobid' => $Jobid,'SerialNo' => $Serial,'device' => $device,'Condition' => $condition,'Problem' => $Problem]);
+            ->Insert(['jobid' => $Jobid,'SerialNo' => $Serial,'device' => $device,'Condition' => $condition,'Problem' => $Problem,'status' =>'0','jobtype' => 'R','invoiceno' => '-']);
+
         //Return to questioner
         return view('technician.Question',compact('Jobid','device','Type','qarray'));
     }
@@ -290,8 +314,11 @@ class TechnicianController extends Controller
             ->update(['D1' => $d1,'D2' => $d2,'D3' => $d3,'D4' => $d4,'D5' => $d5,'D6' => $d6,'D7' => $d7,'D8' => $d8,'D9' => $d9,'D10'    => $d10,'D11' => $d11,'D12' => $d12,'D13' => $d13,'D14' => $d14,'D15' => $d15,'D16' => $d16,'D17' => $d7,'D18' => $d8,'D19' => $d19,'D20' => $d20]);
 
 
-        $item = 'hello';
-        return view('technician.index', ['items' => $item]);
+        $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
+        $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
+        $qarray2 = DB::select("SELECT * FROM job where jobtype='Company Warranty' LIMIT 5 ");
+        return view('technician.index', compact('qarray','qarray1','qarray2'));
+
 
     }
     public function custtask(Request $request)
@@ -384,13 +411,15 @@ class TechnicianController extends Controller
         if ( $type =='Device Acc'){
             $device = $request->input('device');
             $qarray = DB::select("select * from tasks ");
-            return view('technician.Newtask',compact('qarray','type','device','jobid'));
+            $qarray1 = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+            return view('technician.Newtask',compact('qarray','qarray1','type','device','jobid'));
             //where id='" . $Invoice . "'
         }
 
 
         $type ='Device Acc';
         $qarray = DB::select("select * from customize where (type='" . $type . "'  and device='" . $device . "')");
+
         return view('technician.Deviceacc',compact('qarray','type','device','jobid'));
 
 
@@ -408,8 +437,77 @@ class TechnicianController extends Controller
 
         $qarray = DB::select("select * from tasks ");
         $qarray1 = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
-       dd($qarray1);
+       //dd($qarray1);
         return view('technician.Newtask',compact('qarray','qarray1','type','device','jobid'));
+    }
+    public function Deletetsktojob(Request $request)
+    {
+        //dd($request);
+        $type = $request->input('type');
+        $device = $request->input('device');
+        $taskid = $request->input('taskid');
+        $jobid = $request->input('jobid');
+        DB::table('jobtask')->where([ ['taskid', '=', $taskid] and ['jobid', '=', $jobid]])->delete();
+
+        $qarray = DB::select("select * from tasks ");
+        $qarray1 = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+        //dd($qarray1);
+        return view('technician.Newtask',compact('qarray','qarray1','type','device','jobid'));
+    }
+    public function confrimtsktojob(Request $request)
+    {
+        //dd($request);
+        $type = $request->input('type');
+        $device = $request->input('device');
+        $taskid = $request->input('taskid');
+        $jobid = $request->input('jobid');
+        $DTOP = $request->input('DTOP');
+        $DINT = $request->input('DINT');
+        $cost = $request->input('cost');
+        DB::table('job')
+            ->where('jobid', $jobid)
+            ->update(['totaltime' => $DTOP,'price' => $cost]);
+
+
+        return view('technician.adduserdetails',compact('jobid','device'));
+    }
+
+    //add customer on forum
+    public function Addcustomer(Request $request)
+    {
+        //dd($request);
+        $type = $request->input('type');
+        $device = $request->input('device');
+
+        $jobid = $request->input('jobid');
+        $name = $request->input('name');
+        $contact = $request->input('contact');
+        $orderdate='2017-12-21';
+
+        DB::table('job')
+            ->where('jobid', $jobid)
+            ->update(['user' => $name,'telno' => $contact,'orderdate' => $orderdate]);
+        $qarrayj = DB::select("select * from job where jobid='" . $jobid . "' ");
+        $qarrayq = DB::select("select * from devq where (Type='Question'  and invoice='" . $jobid . "')");
+        $qarraya = DB::select("select * from devq where (Type='Device Acc'  and invoice='" . $jobid . "')");
+        $qarrayt = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+
+
+        return view('technician.JobOk',compact('qarrayj','qarrayq','qarraya','qarrayt','jobid'));
+    }
+
+    public function viewjob(Request $request)
+    {
+        //dd($request);
+        $jobid = $request->input('Jobid');
+        $qarrayj = DB::select("select * from job where jobid='" . $jobid . "' ");
+        $qarrayq = DB::select("select * from devq where (Type='Question'  and invoice='" . $jobid . "')");
+        $qarraya = DB::select("select * from devq where (Type='Device Acc'  and invoice='" . $jobid . "')");
+        $qarrayt = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+
+
+        //dd($qarrayj);
+        return view('technician.viewjob',compact('qarrayj','qarrayq','qarraya','qarrayt','jobid'));
     }
 
 }

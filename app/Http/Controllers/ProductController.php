@@ -27,11 +27,26 @@ class ProductController extends Controller
         return view('shop.index', ['items' => $items, 'items2' => $items2, 'items3' => $items3]);
     }
 
+    public function search(Request $request)
+    {
+        //$searchQuery = DB::select("SELECT * from hash_table WHERE name  LIKE %".$request->keywords.);
+
+        $searchQuery = DB::table('hash_table')
+            ->where('name', 'like', "%" . $request->keywords . "%")
+            ->get();
+        return response()->json(['msg' => $searchQuery], 200);
+    }
+
     public function showItem($id)
     {
+        //dd($id);
         $table = $this->selectItemType($id);
         $item = DB::select("select * from " . $table . " where proid='" . $id . "'");
 
+        if ($table == 'accessories') {
+            //dd($item);
+            return view('shop.show1', ['items' => $item]);
+        }
         $specs = new Item_info();
 
         $specs = $item[0]->itemDetails;
@@ -67,6 +82,7 @@ class ProductController extends Controller
         } else {
             $items = DB::select("select * from laptops where type='" . $type . "' and brand='" . $brand . "'");
         }
+     
         return view('shop.product', ['items' => $items, 'sidebar' => 'laptop_sbar']);
     }
 
@@ -205,7 +221,7 @@ class ProductController extends Controller
     private function selectItemType($id)
     {
         //this function is used to find the correct table to search when product id is given
-        $tables = array("desktops" => "DS", "laptops" => "LP");      //this array stores the names of the tables in database
+        $tables = array("desktops" => "DS", "laptops" => "LP", "accessories" => "AC");      //this array stores the names of the tables in database
 
         $prefix = substr($id, 0, 2);      //all of the product types have unique prefix
 
