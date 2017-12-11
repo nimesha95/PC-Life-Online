@@ -18,8 +18,8 @@
                         <div class="dashhead">
                             <form >
 
-                                    <div class="col-sm-10" ><h4 >All</h4></div>
-                                <div class="col-sm-2" ><button type="submit" class="btn btn-default showbutton" style="background-color: #00dd00">Search</button></div>
+                                    <div class="col-sm-10" ><h4 >Repairs To Do</h4></div>
+                                <div class="col-sm-2" ><button type="submit" class="btn btn-default showbutton" style="background-color: #00dd00">View All</button></div>
 
 
 
@@ -70,8 +70,8 @@
                         <div class="dashhead">
                             <form >
 
-                                <div class="col-sm-10" ><h4 >All</h4></div>
-                                <div class="col-sm-2" ><button type="submit" class="btn btn-default showbutton" style="background-color: #00dd00">Search</button></div>
+                                <div class="col-sm-10" ><h4 >Completed (Need to Deliver)</h4></div>
+                                <div class="col-sm-2" ><button type="submit" class="btn btn-default showbutton" style="background-color: #00dd00">View All</button></div>
 
 
 
@@ -119,8 +119,8 @@
                         <div class="dashhead">
                             <form >
 
-                                <div class="col-sm-10" ><h4 >All</h4></div>
-                                <div class="col-sm-2" ><button type="submit" class="btn btn-default showbutton" >Search</button></div>
+                                <div class="col-sm-10" ><h4 >Company Warrnaty</h4></div>
+                                <div class="col-sm-2" ><button type="submit" class="btn btn-default showbutton" >View All</button></div>
 
 
 
@@ -203,7 +203,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <h4> Questionier</h4>
+                        <h4> {{$Custom->jobid}}</h4>
                         <div class="row">
 
                             <table border="0" class="table " style="padding:10px">

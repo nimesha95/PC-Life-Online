@@ -88,7 +88,7 @@
                             //console.log(msg['msg'].length);
                             var msg_len = msg['msg'].length;
                             for (i = 0; i < msg_len; i++) {
-                                var dta = "<p><a href='http://pclife.dev/product/" + msg['msg'][i]['proid'] + "'>" + msg['msg'][i]['name'] + "</a></p>";
+                                var dta = "<a href='http://pclife.dev/product/" + msg['msg'][i]['proid'] + "' ><p>" + msg['msg'][i]['name'] + "</p></a>";
                                 $('#search-results').append(dta);
                             }
                             //var dta ="<p>" + $row["itemName"] + "</p>";
@@ -107,86 +107,96 @@
     </script>
 
     <div class="row">
-        <div class="col-md-5 col-md-offset-4">
-            <form class="navbar-form navbar-left" action="#" method="post">
-
-                <div class="form-group">
-                    <input name="search-input" id="search-input" type="text" class="form-control" onkeydown="down()"
-                           onkeyup="up()"
-                           placeholder="Search item"/>
-                </div>
+        <div class="container">
+            <div class="input-group stylish-input-group" style="margin: 10px; box-shadow: 0px 0px 3px rgba(0,0,0,0.5)">
+                <input name="search-input" style="height: 50px; " id="search-input" type="text" class="form-control" onkeydown="down()"
+                       onkeyup="up()"
+                       placeholder="Search item"/>
+                <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
                 <div class="result" id="search-results" name="search-results"></div>
+            </div>
+
+        </div>
+
+
+
                 <!--
                 <input type="submit" class="btn btn-default" name="my_form_submit_button"
                        value="Search"/>
                        -->
-            </form>
+
         </div>
-    </div>
+
     <div id="hot">
 
         <div class="box">
-            <div class="container">
+            <div class="container" >
                 <div class="col-md-12">
                     <h2>TODAY's HOT DEALS</h2>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
-                <div class="MultiCarousel-inner">
-                    @if(sizeof($items)>0)
-                        @foreach($items as $item)
-                            <div class="item">
-                                <div class="pad15">
-                                    <p class="lead">{{$item->name}}</p>
-                                    <div class="front">
-                                        <a href="{{route('product.show' , ['id'=> $item->proid])}}">
-                                            <img src="{{ $item->image }}" alt=""
-                                                 class="img-responsive">
-                                        </a>
+        <div class="container"><div class="row">
+                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000" style="padding: 10px">
+                    <div class="MultiCarousel-inner" >
+                        @if(sizeof($items)>0)
+                            @foreach($items as $item)
+                                <div class="item">
+                                    <div class="pad15">
+                                        <p >{{$item->name}}</p>
+                                        <div class="front">
+                                            <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                                <img src="{{ $item->image }}" alt=""
+                                                     class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <p>{{$item->price}} LKR</p>
                                     </div>
-                                    <p>{{$item->price}} LKR</p>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
 
-                        @foreach($items2 as $item)
-                            <div class="item">
-                                <div class="pad15">
-                                    <p class="lead">{{$item->name}}</p>
-                                    <div class="front">
-                                        <a href="{{route('product.show' , ['id'=> $item->proid])}}">
-                                            <img src="{{ $item->image }}" alt=""
-                                                 class="img-responsive">
-                                        </a>
+                            @foreach($items2 as $item)
+                                <div class="item">
+                                    <div class="pad15">
+                                        <p class="lead">{{$item->name}}</p>
+                                        <div class="front">
+                                            <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                                <img src="{{ $item->image }}" alt=""
+                                                     class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <p>{{$item->price}} LKR</p>
                                     </div>
-                                    <p>{{$item->price}} LKR</p>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
 
-                        @foreach($items3 as $item)
-                            <div class="item">
-                                <div class="pad15">
-                                    <p class="lead">{{$item->name}}</p>
-                                    <div class="front">
-                                        <a href="{{route('product.show' , ['id'=> $item->proid])}}">
-                                            <img src="{{ $item->image }}" alt=""
-                                                 class="img-responsive">
-                                        </a>
+                            @foreach($items3 as $item)
+                                <div class="item">
+                                    <div class="pad15">
+                                        <p class="lead">{{$item->name}}</p>
+                                        <div class="front">
+                                            <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                                <img src="{{ $item->image }}" alt=""
+                                                     class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <p>{{$item->price}} LKR</p>
                                     </div>
-                                    <p>{{$item->price}} LKR</p>
                                 </div>
-                            </div>
-                        @endforeach
-                    @endif
+                            @endforeach
+                        @endif
 
+                    </div>
+                    <button class="btn btn-primary leftLst" STYLE="z-index: 999; position: absolute; left: -10px"><</button>
+                    <button class="btn btn-primary rightLst" STYLE="position: absolute; right: -10px">></button>
                 </div>
-                <button class="btn btn-primary leftLst"><</button>
-                <button class="btn btn-primary rightLst">></button>
             </div>
         </div>
+
 
     </div>
     <!-- /#hot -->

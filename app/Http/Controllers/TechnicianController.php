@@ -8,10 +8,23 @@ use App\Tech;
 
 class TechnicianController extends Controller
 {
+
+    public function submitInvoice(Request $request)
+    {
+        $Stock_data = new StockHandler();
+
+
+
+
+        $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
+        return $pdf->download('invoice.pdf');
+
+    }
+
     public function getIndex()
     {
-        $qarray = DB::select("SELECT * FROM job where status='0' LIMIT 5 ");
-        $qarray1 = DB::select("SELECT * FROM job where status='1' LIMIT 5 ");
+        $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
+        $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
         $qarray2 = DB::select("SELECT * FROM job where status='2' LIMIT 5 ");
         return view('technician.index', compact('qarray','qarray1','qarray2'));
 

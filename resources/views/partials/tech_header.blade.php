@@ -3,12 +3,7 @@
 @include('partials.techmodel.modelmore')
 @include('partials.techmodel.modelcustomize')
 
-<nav class="navbar navbar-default" style="background: #3498db;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);box-shadow: 0px 0px 10px rgba(0,0,0,0.5)">
+<nav class="navbar navbar-default" style="background: #f8f8f8; box-shadow: 0px 0px 10px rgba(0,0,0,0.5)">
 
     <div class="container-fluid" style="height: 100px">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,7 +28,7 @@
 
                 </li>
                 <li>
-                    <a href="{{route('technician.index')}}" style="all: unset;"><div class="butt" ><img  src="{{ asset('img/technician/Dash.png')}}" style=""> <b>Dashboard</b>  </div></a>
+                    <a href="{{url('technician')}}" style="all: unset;"><div class="butt" ><img  src="{{ asset('img/technician/Dash.png')}}" style=""> <b>Dashboard</b>  </div></a>
                 </li>
                 <li>
                     <div class="butt" data-toggle="modal" data-target="#More">

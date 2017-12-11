@@ -13,7 +13,7 @@
         <div class="col-sm-1" ></div>
         <div class="col-sm-10" >
             <form action="{{route('viewjob')}}" method="post">
-            <h2>Job No - {{$jobid}} </h2>
+            <h2>Job Overview- {{$jobid}} </h2>
                 <input type="hidden" name="jobid" value="{{$jobid}}">
             <div class="row">
 
@@ -28,24 +28,7 @@
 
                         <table class="table table-hover">
                             <thead>
-                            <tr>
-                                <th>Job Type </th>
-                                <th>Invoice No</th>
-                                <th>Device serial  no</th>
-                                <th>device</th>
-                                <th>Condition</th>
-                                <th>Problem</th>
-                                <th>Price</th>
 
-                            </tr>
-                            <tr>
-                                <th>Total time</th>
-                                <th>Order Date</th>
-                                <th>Delivety Date</th>
-                                <th>Status</th>
-                                <th>User</th>
-                                <th>Telephone No</th>
-                            </tr>
                             </thead>
                             <tbody>
 
@@ -53,25 +36,47 @@
                                 @foreach($qarrayj as $Custom)
                                     <tr  >
 
+                                        <td><b>Job Type</b> </td>
                                         <td>{{$Custom->jobtype}}</td>
+                                        <td><b>Invoice No</b></td>
                                         <td>{{$Custom->invoiceno}}</td>
-
-
-
-                                        <td>{{$Custom->Serialno}}</td>
-                                        <td>{{$Custom->device}}</td>
-                                        <td>{{$Custom->Condition}}</td>
-                                        <td>{{$Custom->Problem}}</td>
-                                        <td>{{$Custom->price}}</td>
 
 
                                     </tr>
                                     <tr>
+                                        <td><b>Device serial  no</b></td>
+                                        <td>{{$Custom->Serialno}}</td>
+                                        <td>device</td>
+                                        <td>{{$Custom->device}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Condition</b></td>
+                                        <td>{{$Custom->Condition}}</td>
+                                        <td><b>Problem</b></td>
+                                        <td>{{$Custom->Problem}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Price</b></td>
+                                        <td>{{$Custom->price}}</td>
+                                        <td>Total time</td>
                                         <td>{{$Custom->totaltime}}</td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td><b>Order Date</b></td>
                                         <td>{{$Custom->orderdate}}</td>
+                                        <td><b>Delivety Date</b></td>
                                         <td>{{$Custom->deleverdate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Status</b></td>
                                         <td>{{$Custom->status}}</td>
+                                        <td><b>User</b></td>
                                         <td>{{$Custom->user}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Telephone No</b></td>
                                         <td>{{$Custom->telno}}</td>
                                     </tr>
 
