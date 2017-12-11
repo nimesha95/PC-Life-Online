@@ -33,11 +33,11 @@
 
                 </li>
                 <li>
-                    <a href="{{route('technician.index')}}" style="all: unset;"><div class="butt" ><img  src="{{ asset('img/technician/More.png')}}" style=""> <b>Dashboard</b>  </div></a>
+                    <a href="{{route('technician.index')}}" style="all: unset;"><div class="butt" ><img  src="{{ asset('img/technician/Dash.png')}}" style=""> <b>Dashboard</b>  </div></a>
                 </li>
                 <li>
                     <div class="butt" data-toggle="modal" data-target="#More">
-                        <img src="{{ asset('img/technician/Dash.png')}}" style=""> <b>More</b>  </div>
+                        <img src="{{ asset('img/technician/More.png')}}" style=""> <b>More</b>  </div>
 
                 </li>
 

@@ -80,7 +80,7 @@
 
                     <div class="modal-footer">
                         <button type="Submit" class="subbuttonred"  >Start Job</button>
-                        <button type="button" class="subbutton" data-toggle="modal" data-target="#searchexistinguser"  >Cancel Job</button>
+                        <button type="button" class="subbutton" data-toggle="modal" data-target=""  >Cancel Job</button>
                     </div>
                     {{ csrf_field() }}
                     <table border="0" class="table table-hover">

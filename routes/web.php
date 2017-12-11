@@ -388,6 +388,11 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@viewjob',
             'as' => 'viewjob',
         ]);
+        Route::post('/ConfirmJob', [
+            'uses' => 'TechnicianController@Addcustomer',
+            'as' => 'ConfirmJob',
+        ]);
+
         Route::post('/Deletetask', [
             'uses' => 'TechnicianController@Deletetsktojob',
             'as' => 'deletetask',

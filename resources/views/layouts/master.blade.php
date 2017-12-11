@@ -13,7 +13,7 @@
 
     @yield('styles')
 </head>
-<body>
+<body bgcolor="#f0f8ff">
 @yield('header')
 
 

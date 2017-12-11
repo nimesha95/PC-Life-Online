@@ -449,6 +449,30 @@ class TechnicianController extends Controller
         return view('technician.adduserdetails',compact('jobid','device'));
     }
 
+    //add customer on forum
+    public function Addcustomer(Request $request)
+    {
+        //dd($request);
+        $type = $request->input('type');
+        $device = $request->input('device');
+
+        $jobid = $request->input('jobid');
+        $name = $request->input('name');
+        $contact = $request->input('contact');
+        $orderdate='2017-12-21';
+
+        DB::table('job')
+            ->where('jobid', $jobid)
+            ->update(['user' => $name,'telno' => $contact,'orderdate' => $orderdate]);
+        $qarrayj = DB::select("select * from job where jobid='" . $jobid . "' ");
+        $qarrayq = DB::select("select * from devq where (Type='Question'  and invoice='" . $jobid . "')");
+        $qarraya = DB::select("select * from devq where (Type='Device Acc'  and invoice='" . $jobid . "')");
+        $qarrayt = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $jobid . "' )");
+
+
+        return view('technician.JobOk',compact('qarrayj','qarrayq','qarraya','qarrayt','jobid'));
+    }
+
     public function viewjob(Request $request)
     {
         //dd($request);

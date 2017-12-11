@@ -53,7 +53,9 @@
                                 <input type="hidden" name="device" value=" {{$device}}"  >
                                 <input type="hidden" name="jobid" value=" {{$jobid}}"  >
                                 <input type="hidden" name="taskid" value=" {{$Custom->id}}"  >
-                                <button type="submit" class="subbuttonred1" >{{$Custom->Name}}</button>
+
+
+                                <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top: 2px">{{$Custom->Name}}</button>
                             </form>
 
                         @endforeach
