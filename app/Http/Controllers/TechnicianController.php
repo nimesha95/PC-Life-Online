@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use PDF;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,12 +12,12 @@ class TechnicianController extends Controller
 
     public function submitInvoice(Request $request)
     {
-        $Stock_data = new StockHandler();
+        //dd($request);
+        $Jobid = $request->input('jobid');
 
-
-
-
-        $pdf = PDF::loadView('pdf.invoice', array('arr' => $arr));
+        //dd($Jobid);
+        $pdf = PDF::loadView('pdf.invoiceRepair', array('Jobid'=>$Jobid));
+        //dd($pdf);
         return $pdf->download('invoice.pdf');
 
     }
@@ -178,7 +179,7 @@ class TechnicianController extends Controller
         $qarray = DB::select("select * from customize where (type='" . $Type . "'  and device='" . $device . "')");
 
         DB::table('job')
-            ->Insert(['jobid' => $Jobid,'SerialNo' => $Serial,'device' => $device,'Condition' => $condition,'Problem' => $Problem,'status' =>'0','jobtype' => 'R','invoiceno' => '-']);
+            ->Insert(['jobid' => $Jobid,'SerialNo' => $Serial,'device' => $device,'Condition' => $condition,'Problem' => $Problem,'status' =>'On going','jobtype' => 'Repair','invoiceno' => $Jobid]);
 
         //Return to questioner
         return view('technician.Question',compact('Jobid','device','Type','qarray'));
@@ -482,11 +483,11 @@ class TechnicianController extends Controller
         $jobid = $request->input('jobid');
         $name = $request->input('name');
         $contact = $request->input('contact');
-        $orderdate='2017-12-21';
+
 
         DB::table('job')
             ->where('jobid', $jobid)
-            ->update(['user' => $name,'telno' => $contact,'orderdate' => $orderdate]);
+            ->update(['user' => $name,'telno' => $contact]);
         $qarrayj = DB::select("select * from job where jobid='" . $jobid . "' ");
         $qarrayq = DB::select("select * from devq where (Type='Question'  and invoice='" . $jobid . "')");
         $qarraya = DB::select("select * from devq where (Type='Device Acc'  and invoice='" . $jobid . "')");

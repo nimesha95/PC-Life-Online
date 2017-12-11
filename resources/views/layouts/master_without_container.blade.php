@@ -15,7 +15,7 @@
 
     @yield('styles')
 </head>
-<body>
+<body style="background-color: #f3f3f3">
 @yield('header')
 @yield('scripts1')
 

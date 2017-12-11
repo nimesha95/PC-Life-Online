@@ -24,7 +24,7 @@
 
                     <div style="color: white ;padding: 10px;"> <b>Enter Device Information</b></div>
                     <div style="color: white ;padding: 10px;">
-                        <b>Enter Device Questioneier</b>
+                        <b>Enter Device Questionnaire</b>
                     </div>
                     <div style="color: white ;padding: 10px;">
                         <b>Enter Other Device Recieved</b>
