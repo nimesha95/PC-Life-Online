@@ -41,3 +41,31 @@
     pointer-events: none;
     background: #ccc;
 }
+
+/*
+    search bar customization
+*/
+.result {
+    position: absolute;
+    background-color: white;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+}
+
+.search-box input[type="text"], .result {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.result p {
+    margin: 0;
+    padding: 7px 10px;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    cursor: pointer;
+}
+
+.result p:hover {
+    background: #f2f2f2;
+}

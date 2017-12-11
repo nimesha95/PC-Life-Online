@@ -27,36 +27,101 @@
         <div class="carousel-inner">
             <div class="item slides">
                 <div class="slide-1">
-                    <img src="https://saleme.lk/images/saleme/banner.jpg" class="img-responsive hidden-xs"
-                         alt="saleme.lk">
-                    <img src="https://saleme.lk/images/saleme/banner-m1.jpg" class="img-responsive visible-xs"
-                         alt="saleme.lk">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
+                         class="img-responsive hidden-xs"
+                         alt="cover0">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960683/21_cbj9kg.png"
+                         class="img-responsive visible-xs"
+                         alt="cover0">
                 </div>
                 <div class="hero">
                 </div>
             </div>
             <div class="item slides">
                 <div class="slide-2">
-                    <img src="https://saleme.lk/images/saleme/banner1.jpg" class="img-responsive hidden-xs"
-                         alt="saleme.lk">
-                    <img src="https://saleme.lk/images/saleme/banner-m2.jpg" class="img-responsive visible-xs"
-                         alt="saleme.lk">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960689/3_jv3bc9.png"
+                         class="img-responsive hidden-xs"
+                         alt="cover1">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960684/31_umk2ul.png"
+                         class="img-responsive visible-xs"
+                         alt="cover1">
                 </div>
                 <div class="hero">
                 </div>
             </div>
             <div class="item slides active">
                 <div class="slide-3">
-                    <img src="https://saleme.lk/images/saleme/banner2.jpg" class="img-responsive hidden-xs"
-                         alt="saleme.lk">
-                    <img src="https://saleme.lk/images/saleme/banner-m3.jpg" class="img-responsive visible-xs"
-                         alt="saleme.lk">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/2_pzwsyb.png"
+                         class="img-responsive hidden-xs"
+                         alt="cover2">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960684/11_bxvjc2.png"
+                         class="img-responsive visible-xs"
+                         alt="cover2">
                 </div>
                 <div class="hero">
                 </div>
             </div>
         </div>
 
+    </div>
+    <script>
+        var token = '{{\Illuminate\Support\Facades\Session::token()}}';
+        var url = '{{route('product.search')}}';
+    </script>
+    <script type="text/javascript">
+        var timer;
+
+        function up() {
+            timer = setTimeout(function () {
+                var keywords = $('#search-input').val();
+                //console.log(keywords);
+                var resultDropdown = $(this).siblings("#search-results");
+                if (keywords.length > 0) {
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        data: {keywords: keywords, _token: token}
+                    })
+                        .done(function (msg) {
+                            console.log(msg['msg'][0]);
+                            $('#search-results').empty();
+                            //console.log(msg['msg'].length);
+                            var msg_len = msg['msg'].length;
+                            for (i = 0; i < msg_len; i++) {
+                                var dta = "<p><a href='http://pclife.dev/product/" + msg['msg'][i]['proid'] + "'>" + msg['msg'][i]['name'] + "</a></p>";
+                                $('#search-results').append(dta);
+                            }
+                            //var dta ="<p>" + $row["itemName"] + "</p>";
+                        })
+                }
+                else {
+                    $('#search-results').empty();
+                }
+            }, 500);
+        }
+
+        function down() {
+            clearTimeout(timer);
+
+        }
+    </script>
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+            <form class="navbar-form navbar-left" action="#" method="post">
+
+                <div class="form-group">
+                    <input name="search-input" id="search-input" type="text" class="form-control" onkeydown="down()"
+                           onkeyup="up()"
+                           placeholder="Search item"/>
+                </div>
+                <div class="result" id="search-results" name="search-results"></div>
+                <!--
+                <input type="submit" class="btn btn-default" name="my_form_submit_button"
+                       value="Search"/>
+                       -->
+            </form>
+        </div>
     </div>
     <div id="hot">
 
