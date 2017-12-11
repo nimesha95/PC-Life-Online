@@ -21,11 +21,18 @@ class TechnicianController extends Controller
 
     }
 
+    public function dashqarray()
+    {
+        $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
+        $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
+        $qarray2 = DB::select("SELECT * FROM job where type='Company Warranty' LIMIT 5 ");
+    }
+
     public function getIndex()
     {
         $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
         $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
-        $qarray2 = DB::select("SELECT * FROM job where status='2' LIMIT 5 ");
+        $qarray2 = DB::select("SELECT * FROM job where jobtype='Company Warranty' LIMIT 5 ");
         return view('technician.index', compact('qarray','qarray1','qarray2'));
 
 
@@ -307,8 +314,11 @@ class TechnicianController extends Controller
             ->update(['D1' => $d1,'D2' => $d2,'D3' => $d3,'D4' => $d4,'D5' => $d5,'D6' => $d6,'D7' => $d7,'D8' => $d8,'D9' => $d9,'D10'    => $d10,'D11' => $d11,'D12' => $d12,'D13' => $d13,'D14' => $d14,'D15' => $d15,'D16' => $d16,'D17' => $d7,'D18' => $d8,'D19' => $d19,'D20' => $d20]);
 
 
-        $item = 'hello';
-        return view('technician.index', ['items' => $item]);
+        $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
+        $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
+        $qarray2 = DB::select("SELECT * FROM job where jobtype='Company Warranty' LIMIT 5 ");
+        return view('technician.index', compact('qarray','qarray1','qarray2'));
+
 
     }
     public function custtask(Request $request)

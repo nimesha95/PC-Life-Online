@@ -46,7 +46,7 @@
                                     <tr>
                                         <td><b>Device serial  no</b></td>
                                         <td>{{$Custom->Serialno}}</td>
-                                        <td>device</td>
+                                        <td><b>Device </b></td>
                                         <td>{{$Custom->device}}</td>
                                     </tr>
                                     <tr>
@@ -58,7 +58,7 @@
                                     <tr>
                                         <td><b>Price</b></td>
                                         <td>{{$Custom->price}}</td>
-                                        <td>Total time</td>
+                                        <td><b>Total time</b></td>
                                         <td>{{$Custom->totaltime}}</td>
 
 
@@ -108,7 +108,7 @@
                     <div class="dashhead">
 
 
-                        <div class="col-sm-12" ><h4 >Job Questioneier</h4></div>
+                        <div class="col-sm-12" ><h4 >Job Task</h4></div>
                     </div>
                     <hr>
 
@@ -179,7 +179,7 @@
                                 <div class="dashhead">
 
 
-                                    <div class="col-sm-12" ><h4 >Job Questioneier</h4></div>
+                                    <div class="col-sm-12" ><h4 >Problems In Device</h4></div>
                                 </div>
                                 <hr>
 
@@ -242,7 +242,7 @@
                                 <div class="dashhead">
 
 
-                                    <div class="col-sm-12" ><h4 >Job Questioneier</h4></div>
+                                    <div class="col-sm-12" ><h4 >Devices Recived</h4></div>
                                 </div>
                                 <hr>
 
