@@ -16,6 +16,11 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
+Route::post('/search', [
+    'uses' => 'ProductController@search',
+    'as' => 'product.search'
+]);
+
 Route::get('/send', [
     'uses' => 'EmailController@send',
     'as' => 'user.sendMail'
@@ -199,6 +204,11 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::post('/syncNoti', [
             'uses' => 'AdminController@syncData',
             'as' => 'sync_noti'
+        ]);
+
+        Route::post('/syncEarning', [
+            'uses' => 'AdminController@syncEarning',
+            'as' => 'sync_earning'
         ]);
     });
 

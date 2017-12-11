@@ -82,7 +82,7 @@
                                     <i class="fa fa-money fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
+                                    <div class="huge" id="earn" name="earn">124</div>
                                     <div>Today's Earning</div>
                                 </div>
                             </div>
@@ -132,39 +132,10 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script src="{{URL::to('js/admin_index.js')}}"></script>
+    <script src="{{URL::to('js/admin_earning.js')}}"></script>
     <script>
         var token = '{{\Illuminate\Support\Facades\Session::token()}}';
         var url_sync = '{{route('sync_noti')}}';
-    </script>
-    <script type="text/javascript">
-        var data = [
-                {y: '2014', a: 50},
-                {y: '2015', a: 65},
-                {y: '2016', a: 50},
-                {y: '2017', a: 75},
-                {y: '2018', a: 80},
-                {y: '2019', a: 90},
-                {y: '2020', a: 100},
-                {y: '2021', a: 115},
-                {y: '2022', a: 120},
-                {y: '2023', a: 145},
-                {y: '2024', a: 160}
-            ],
-            config = {
-                data: data,
-                xkey: 'y',
-                ykeys: ['a'],
-                labels: ['Total Income', 'Total Outcome'],
-                fillOpacity: 0.6,
-                hideHover: 'auto',
-                behaveLikeLine: true,
-                resize: true,
-                pointFillColors: ['#ffffff'],
-                pointStrokeColors: ['black'],
-                lineColors: ['blue']
-            };
-        config.element = 'area-chart';
-        Morris.Area(config);
-
+        var url_earning = '{{route('sync_earning')}}';
     </script>
 @endsection

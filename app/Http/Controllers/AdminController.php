@@ -54,16 +54,25 @@ class AdminController extends Controller
     {
         $recentOrder = DB::select('SELECT count(*) as total FROM orders WHERE DATE(added) = CURDATE();');
         $recentDeliveries = DB::select('SELECT count(*) as total FROM orders WHERE DATE(added) = CURDATE() AND delivery = 1;');
+        $recentEarning = DB::select('select date(added) as day,sum(total) as tot from orders group by date(added) ORDER BY day DESC LIMIT 1');
 
-
-        $arr = [$recentOrder[0]->total, $recentDeliveries[0]->total];
+        $arr = [$recentOrder[0]->total, $recentDeliveries[0]->total, $recentEarning[0]->tot];
         return response()->json(['msg' => $arr], 200);
     }
 
 
-    public function getEarning()
+    public function syncEarning()
     {
+        $sales = DB::select('select date(added) as day,sum(total) as tot from orders group by date(added)');
 
+        $arr = array();
+
+        foreach ($sales as $record) {
+            $temp = [$record->day, $record->tot];
+            array_push($arr, $temp);
+        }
+
+        return response()->json(['msg' => $arr], 200);
     }
 
 

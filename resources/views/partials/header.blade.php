@@ -128,12 +128,31 @@
                     </ul>
                 </li>
             </ul>
+            <!--
+            <div class="search-box">
+                <form class="navbar-form navbar-left" action="#" method="post">
+                    <div class="form-group">
+                        <input name="search-input" id="search-input" type="text" class="form-control" onkeydown="down()"
+                               onkeyup="up()"
+                               placeholder="Search item"/>
+                    </div>
+                    <div class="result" id="search-results" name="search-results" ></div>
+                    <!--
+                    <input type="submit" class="btn btn-default" name="my_form_submit_button"
+                           value="Search"/>
+
+
+                </form>
+            </div>
+            -->
+            <!--
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
+            -->
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ route('user.getCart') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
