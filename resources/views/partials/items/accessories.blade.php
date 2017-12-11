@@ -4,7 +4,7 @@
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="catagory">Catagory:</label>
-    <div class="col-md-5">
+    <div class="col-md-4">
         <input class="form-control" list="catagory" name="catagory">
         <datalist id="catagory">
             <option value="Motherboard">
@@ -40,14 +40,14 @@
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Model">Model:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <input type="text" class="form-control" id="model" title="Model Number" placeholder="Enter model type"
                name="model" required="true">
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Description">Description:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
         <textarea class="form-control" rows="5" id="description" title="description"
                   placeholder="Enter a brief description"
                   name="description" required="true"></textarea>
@@ -67,7 +67,7 @@
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Description">Specification:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
         <textarea class="form-control" rows="5" id="specification" title="specification"
                   placeholder="Enter a brief description"
                   name="specification" required="true"></textarea>
@@ -77,15 +77,15 @@
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Price">Price:</label>
-    <div class="col-sm-5">
-        <input type="text" class="form-control" pattern="\d+.{1,}" id="price" title="" placeholder="Enter Price"
-               name="price">
+    <div class="col-sm-4">
+        <input type="number" pattern="{0-9}" min="2" class="form-control" id="price" title="" placeholder="Enter Price"
+               name="number">
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Discounted Price">Discounted Price:</label>
-    <div class="col-sm-5">
-        <input type="text" class="form-control" pattern="\d+.{1,}" id="dis_price"
+    <div class="col-sm-4">
+        <input type="number" class="form-control" pattern="{0-9}" min="2" id="dis_price"
                title="Price after got discount" placeholder="Enter Discounted Price " name="dis_price">
     </div>
 </div>
