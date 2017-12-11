@@ -238,6 +238,26 @@ class AdminController extends Controller
 
     }
 
+    public function getDeliReport()
+    {
+        //delivery list
+        $cust = DB::select('select * from orders a, users b where a.delivery=0 AND a.email=b.email');
+        return view('admin.Del', compact('cust'));
+    }
+
+    public function custHistory()
+    {
+        $cust = DB::select('select distinct(a.email), b.name from orders a, users b where a.email=b.email');
+        return view('admin.customer', compact('cust'));
+    }
+
+    public function showDets($cus)
+    {
+        $cust = DB::select('select * FROM orders WHERE email=?', [$cus]);
+        $cusDets = DB::select('select * FROM users WHERE email=?', [$cus]);
+        return view('admin.customerDet', compact('cust', 'cusDets'));
+    }
+
     private function getRoleName($var)
     {
         if ($var == 0) {

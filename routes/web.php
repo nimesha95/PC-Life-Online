@@ -210,6 +210,39 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'uses' => 'AdminController@syncEarning',
             'as' => 'sync_earning'
         ]);
+        /*
+                //delivery list
+                Route::get('/delivery_report', [
+                    'uses'=>'AdminController@getDeliReport',
+                    'as' => 'admin.report_deli'
+                ]);
+        */
+        Route::get('/delivery_report', [
+            'uses' => 'AdminController@getDeliReport',
+            'as' => 'admin.report_deli'
+        ]);
+
+        Route::get('/cus', [
+            'uses' => 'AdminController@custHistory',
+            'as' => 'admin.report_cust_history'
+        ]);
+
+        Route::get('/cus/{cus}', [
+            'uses' => 'AdminController@showDets',
+            'as' => 'admin.report_cust_history1'
+        ]);
+        /*
+        //customer report
+                Route::get('/cus', 'CustomerController@show');
+
+                Route::get('/cus/{cus}', 'CustomerController@showDets');
+
+
+        //sales report
+                Route::get('/', 'ItemController@index');
+
+                Route::get('/{item}','ItemController@show');
+        */
     });
 
 });

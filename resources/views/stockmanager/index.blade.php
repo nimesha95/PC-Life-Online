@@ -17,12 +17,12 @@
     <div class="row">
         <div class="col-md-6">
             <div class="pre-scrollable" style="height: 200px">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <!-- Default panel contents -->
-                    <div class="panel-heading">Pending Orders</div>
+                    <div class="panel-heading"><b>Pending Orders</b></div>
 
                     <!-- Table -->
-                    <table class="table" id="curOrders" style="border: 3px solid black">
+                    <table class="table" id="curOrders">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -38,9 +38,9 @@
         </div>
         <div class="col-md-6">
             <div class="pre-scrollable" style="height: 200px">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <!-- Default panel contents -->
-                    <div class="panel-heading">Orders need Delivering</div>
+                    <div class="panel-heading"><b>Orders need Delivering</b></div>
 
                     <!-- Table -->
                     <table class="table" id="deliOrders">
@@ -58,6 +58,8 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
     <div class="row">
         <div id="chartdiv" style="height: 200px;width: 100%;font-size: 11px;"></div>
     </div>
@@ -73,7 +75,8 @@
             </div>
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-4">
-                    <button type="submit" class="btn btn-default">Send Message</button>
+                    <br>
+                    <button type="submit" class="btn btn-success">Send Message</button>
                 </div>
             </div>
             {{ csrf_field() }}

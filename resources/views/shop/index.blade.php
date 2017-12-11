@@ -88,7 +88,7 @@
                             //console.log(msg['msg'].length);
                             var msg_len = msg['msg'].length;
                             for (i = 0; i < msg_len; i++) {
-                                var dta = "<a href='http://pclife.dev/product/" + msg['msg'][i]['proid'] + "' ><p>" + msg['msg'][i]['name'] + "</p></a>";
+                                var dta = "<a href='{{ url('/') }}/product/" + msg['msg'][i]['proid'] + "' ><p>" + msg['msg'][i]['name'] + "</p></a>";
                                 $('#search-results').append(dta);
                             }
                             //var dta ="<p>" + $row["itemName"] + "</p>";
