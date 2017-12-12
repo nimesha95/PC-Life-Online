@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DeliveryAccepted;
 use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Mailer;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class EmailController extends Controller
 {
@@ -20,18 +22,36 @@ class EmailController extends Controller
         // ->send(new TestMail());
         return redirect()->back();
 
+    }
+
+    public function test(Request $request)
+    {
         /*
-        $title = "some title ";
-        $content = "here goes some content for the email notification!!";
+         * This function contacts with the mobile app as a rest api
+         * And sends notifications to user accordingly
+         */
+        if ($request['cur_job_id']) {
+            Mail::to('nimesha95@live.com')->send(New DeliveryAccepted());
 
-        Mail::send('emails.send', ['title' => $title, 'content' => $content], function ($message) {
+            Nexmo::message()->send([
+                'to' => '94778519113',
+                'from' => 'PC Life',
+                'text' => 'Your order is on it\'s way to you'
+            ]);
 
-            $message->from('me@gmail.com', 'NK');
+            return response()->json(['msg' => $request['notification sent']]);
+        }
 
-            $message->to('nimesha95@live.com');
+        if ($request['job_completed']) {
 
-        });
-        return response()->json(['message' => 'Request completed']);
-        */
+            Nexmo::message()->send([
+                'to' => '94775635458',
+                'from' => 'PC Life',
+                'text' => 'Your order was delivered'
+            ]);
+
+            return response()->json(['msg' => $request['notification sent']]);
+        }
+
     }
 }

@@ -1,4 +1,8 @@
 <div class="form-group">
+    <input type="hidden" name="ITEM_TYPE" value="dsk">
+</div>
+
+<div class="form-group">
     <label class="control-label col-sm-2" for="Brand">Brand:</label>
     <div class="col-sm-3">
         <select class="form-control" id="brand" name="brand">
@@ -15,14 +19,14 @@
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Model">Model:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <input type="text" class="form-control" id="model" title="Model Number" placeholder="Enter model type"
                name="model" required="true">
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Description">Description:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
         <textarea class="form-control" rows="5" id="description" title="description"
                   placeholder="Enter a brief description"
                   name="description" required="true"></textarea>
@@ -30,9 +34,9 @@
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Processor">Processor:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="processor" title="Processor Details" placeholder="Enter
-        Processor type" name="processor">
+    <div class="col-sm-5">
+        <input type="text" class="form-control" id="processor" title="Processor Details"
+               placeholder="Enter Processor type" name="processor" required>
     </div>
 </div>
 <div class="form-group">
@@ -40,96 +44,96 @@
     <div class="col-sm-2">
         <select class="form-control" id="cond" name="cond">
 
-            <option value="Brand New" selected>Brand new</option>
-            <option value="Used">Used</option>
+            <option value="new" selected>Brand new</option>
+            <option value="used">Used</option>
         </select>
     </div>
 </div>
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Mother Board">Mother Board Details:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="m_board" title="Mother Board Details" placeholder="Enter
-        motherboard type" name="m_board">
+    <div class="col-sm-5">
+        <input type="text" class="form-control" id="m_board" title="Mother Board Details"
+               placeholder="Enter motherboard type" name="m_board" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="RAM">RAM type:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <input type="text" class="form-control" id="ram" title="RAM Type" placeholder="Enter RAM type"
                name="ram" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Hard Drive">Hard Drive:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <input type="text" class="form-control" id="hdd" title="Hard Drive Details"
-               placeholder="Enter Hard Drive details" name="hdd">
+               placeholder="Enter Hard Drive details" name="hdd" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Graphic Driver">Graphic Driver:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="gui" title="VGA Details" placeholder="Enter Graphic Driver
-        type" name="gui">
+    <div class="col-sm-5">
+        <input type="text" class="form-control" id="gui" title="VGA Details" placeholder="Enter Graphic Driver type"
+               name="gui" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Optical Driver">Optical Driver:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <input type="text" class="form-control" id="op_drive" title="Optical Drive Details"
-               placeholder="Enter Optical Driver type" name="op_drive">
+               placeholder="Enter Optical Driver type" name="op_drive" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Monitor details">Monitor Details:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <input type="text" class="form-control" id="monitor_des" placeholder="Enter Monitor Details"
-               title="Monitor Details" name="monitor_des">
+               title="Monitor Details" name="monitor_des" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="power Supply">Power Supply:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="pw_supply" title="Power Supply Details" placeholder="Enter
-        Power Supply Details" name="pw_supply">
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="pw_supply" title="Power Supply Details"
+               placeholder="Enter Power Supply Details" name="pw_supply" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Mouse type">Mouse Type:</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" title="Mouse Details" id="mouse" placeholder="Enter Mouse
-        type" name="mouse">
+    <div class="col-sm-4">
+        <input type="text" class="form-control" title="Mouse Details" id="mouse" placeholder="Enter Mouse type"
+               name="mouse" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Key Board">Key Board Type:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-4">
         <input type="text" class="form-control" id="key_bd" title="Key Board Details"
-               placeholder="Enter Key Board type" name="key_bd">
+               placeholder="Enter Key Board type" name="key_bd" required>
     </div>
 </div>
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Sound System">Sound System:</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <input type="text" class="form-control" id="sound" title="Sound System Details"
-               placeholder="Enter Sound System type" name="sounds">
+               placeholder="Enter Sound System type" name="sounds" required>
     </div>
 </div>
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Price">Price:</label>
     <div class="col-sm-5">
-        <input type="text" class="form-control" pattern="\d+.{1,}" id="price" title="" placeholder="Enter Price"
-               name="price">
+        <input type="number" pattern="{0-9}" min="2" class="form-control" id="price" title="" placeholder="Enter Price"
+               name="price" required>
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-sm-2" for="Discounted Price">Discounted Price:</label>
     <div class="col-sm-5">
-        <input type="text" class="form-control" pattern="\d+.{1,}" id="dis_price"
-               title="Price after got discount" placeholder="Enter Discounted Price " name="dis_price">
+        <input type="number" pattern="{0-9}" min="2" class="form-control" id="dis_price"
+               title="Price after got discount" placeholder="Enter Discounted Price " name="dis_price" required>
     </div>
 </div>
 <div class="form-group">
@@ -137,8 +141,8 @@
     <div class="col-sm-2">
         <select class="form-control" id="availability" name="availability">
 
-            <option value="Available" selected>Available</option>
-            <option value="Not Available">Not Available</option>
+            <option value="1" selected>Available</option>
+            <option value="0">Not Available</option>
         </select>
     </div>
 </div>
@@ -147,15 +151,15 @@
     <label class="control-label col-sm-2" for="Warranty">Warranty:</label>
     <div class="col-sm-2">
         <input type="text" class="form-control" id="warranty" title="Warranty Period" pattern="\d+.{1,}"
-               placeholder="Add warranty in Months " name="warranty">
+               placeholder="Add warranty in Months " name="warranty" required>
     </div>
 </div>
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Operating System">Operating system:</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
         <input type="text" class="form-control" id="os" title="Already Installed Operating System"
-               placeholder="Enter OS " name="os">
+               placeholder="Enter OS " name="os" required>
     </div>
 </div>
 <div class="form-group">

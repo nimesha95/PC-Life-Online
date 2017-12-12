@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5)">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -24,22 +24,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Stock <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" data-toggle="modal" data-target="#AddSelectModal">Add Product</a></li>
-                        <li><a href="#">Edit Products</a></li>
-                        <li><a href="#">Remove Product</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#AddStockModal">Update Stock</a></li>
-                        <li><a href="#">Availability</a></li>
                     </ul>
                 </li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Orders <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Pre Orders</a></li>
-                        <li><a href="#">ReOrders</a></li>
-                    </ul>
-                </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -92,10 +80,6 @@
                             <select class="form-control" id="items" name="ItemType">
                                 <option value="1">Desktop</option>
                                 <option value="2">Laptop</option>
-                                <option value="3">some</option>
-                                <option value="4">stuff</option>
-                                <option value="5">goes</option>
-                                <option value="6">here</option>
                             </select>
                         </div>
                     </div>

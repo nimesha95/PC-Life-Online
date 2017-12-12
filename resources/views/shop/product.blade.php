@@ -9,7 +9,20 @@
 @endsection
 
 @section('content')
-    @include('partials/'.$sidebar)
+    @include('partials.Sidebar')
+
+    <script type="text/javascript">
+        function successMsg() {
+            $.bootstrapGrowl('Item Succesfully added.', {
+                type: 'success',
+                delay: 2000,
+            });
+        }
+        @if(Session::has('status'))
+            {{"successMsg();"}}
+        @endif
+
+    </script>
 
     <div class="col-md-9">
         @if(sizeof($items)>0)

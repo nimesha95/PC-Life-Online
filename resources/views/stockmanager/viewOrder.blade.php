@@ -11,6 +11,7 @@
 
 @section('content')
     <div class="col-md-10 col-md-offset-1">
+
         <form class="form-horizontal" method="post" action="{{route('stock.subInv')}}">
             <table class="table table-striped">
                 <thead>
@@ -39,12 +40,39 @@
                 @endforeach
                 </tbody>
             </table>
+
+            @if($deli_stat)
+                <script>
+                    var token = '{{\Illuminate\Support\Facades\Session::token()}}';
+                    var url_add_to_firebase = '{{route('add_to_fbase')}}';
+                </script>
+                <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+                <script src="{{URL::to('js/addToFirebase.js')}}"></script>
+                <script type="text/javascript">
+                    addToDeliveryTable({{$orderid}});
+                </script>
+            @endif
+
+            <div class="form-group">
+                <input type="hidden" name="orderid" id="orderid" value="{{$orderid}}">
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-10 col-sm-20">
-                    <button type="submit" class="btn btn-info">Submit</button>
+                    <button type="submit" id="submitBtn" name="submitBtn" class="btn btn-info">Submit</button>
                 </div>
             </div>
             {{ csrf_field() }}
         </form>
     </div>
+    <script>
+        var url = '{{route('stockmanager.index')}}'
+    </script>
+    <script type="text/javascript">
+        $("#submitBtn").click(function () {
+            var delay = 3000;
+            setTimeout(function () {
+                window.location = url;
+            }, delay);
+        });
+    </script>
 @endsection

@@ -4,9 +4,14 @@
     PC-Life Online
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ URL::asset('css/shop_index.css') }}"/>
+@endsection
+
 @section('header')
     @include('partials.header')
 @endsection
+
 
 @section('content')
 
@@ -23,30 +28,36 @@
         <div class="carousel-inner">
             <div class="item slides">
                 <div class="slide-1">
-                    <img src="https://saleme.lk/images/saleme/banner.jpg" class="img-responsive hidden-xs"
-                         alt="saleme.lk">
-                    <img src="https://saleme.lk/images/saleme/banner-m1.jpg" class="img-responsive visible-xs"
-                         alt="saleme.lk">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
+                         class="img-responsive hidden-xs"
+                         alt="cover0">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960683/21_cbj9kg.png"
+                         class="img-responsive visible-xs"
+                         alt="cover0">
                 </div>
                 <div class="hero">
                 </div>
             </div>
             <div class="item slides">
                 <div class="slide-2">
-                    <img src="https://saleme.lk/images/saleme/banner1.jpg" class="img-responsive hidden-xs"
-                         alt="saleme.lk">
-                    <img src="https://saleme.lk/images/saleme/banner-m2.jpg" class="img-responsive visible-xs"
-                         alt="saleme.lk">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960689/3_jv3bc9.png"
+                         class="img-responsive hidden-xs"
+                         alt="cover1">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960684/31_umk2ul.png"
+                         class="img-responsive visible-xs"
+                         alt="cover1">
                 </div>
                 <div class="hero">
                 </div>
             </div>
             <div class="item slides active">
                 <div class="slide-3">
-                    <img src="https://saleme.lk/images/saleme/banner2.jpg" class="img-responsive hidden-xs"
-                         alt="saleme.lk">
-                    <img src="https://saleme.lk/images/saleme/banner-m3.jpg" class="img-responsive visible-xs"
-                         alt="saleme.lk">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/2_pzwsyb.png"
+                         class="img-responsive hidden-xs"
+                         alt="cover2">
+                    <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960684/11_bxvjc2.png"
+                         class="img-responsive visible-xs"
+                         alt="cover2">
                 </div>
                 <div class="hero">
                 </div>
@@ -54,42 +65,145 @@
         </div>
 
     </div>
+    <script>
+        var token = '{{\Illuminate\Support\Facades\Session::token()}}';
+        var url = '{{route('product.search')}}';
+    </script>
+    <script type="text/javascript">
+        var timer;
 
-    <section class="home-search  cont-bg1 hidden-xs">
+        function up() {
+            timer = setTimeout(function () {
+                var keywords = $('#search-input').val();
+                //console.log(keywords);
+                var resultDropdown = $(this).siblings("#search-results");
+                if (keywords.length > 0) {
+                    $.ajax({
+                        method: 'POST',
+                        url: url,
+                        data: {keywords: keywords, _token: token}
+                    })
+                        .done(function (msg) {
+                            console.log(msg['msg'][0]);
+                            $('#search-results').empty();
+                            //console.log(msg['msg'].length);
+                            var msg_len = msg['msg'].length;
+                            for (i = 0; i < msg_len; i++) {
+                                var dta = "<a href='{{ url('/') }}/product/" + msg['msg'][i]['proid'] + "' ><p>" + msg['msg'][i]['name'] + "</p></a>";
+                                $('#search-results').append(dta);
+                            }
+                            //var dta ="<p>" + $row["itemName"] + "</p>";
+                        })
+                }
+                else {
+                    $('#search-results').empty();
+                }
+            }, 500);
+        }
+
+        function down() {
+            clearTimeout(timer);
+
+        }
+    </script>
+
+    <div class="row">
         <div class="container">
-            <div class="row">
-                <div class="mar-70 text-center">
-                    <h1 class="promo-head">
-                        Buy &amp; Sell
-                    </h1>
-                    <h1 class="promo-head2">
-                        Absolutely Free
-                    </h1>
-                    <form id="search_form1" method="GET" action="https://saleme.lk/ads">
-                        <div class="col-xs-12  search-panel1">
-                            <div class="input-group home-search1">
-                                <div class="input-group-btn ">
-                                    <button type="button" class="btn location-btn " data-toggle="modal"
-                                            data-target=".select-city-modal">
-                                        <span class="lnr lnr-pointer-down"></span> <span id="search_concept">&nbsp;Select City</span>
-                                    </button>
-                                    <button type="button" class="btn cat-btn" data-toggle="modal"
-                                            data-target=".select-category-modal">
-                                        <span class="lnr lnr-tag"></span> <span
-                                                id="search_concept">&nbsp;All Category</span>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control search-txt" name="query"
-                                       placeholder="What you looking for...">
-                                <span class="input-group-btn">
-<button class="btn  search-btn" id="more_query1" type="button"><span class="lnr lnr-magnifier"></span></button>
-</span>
-                            </div>
-                        </div>
-                    </form>
+            <div class="input-group stylish-input-group" style="margin: 10px; box-shadow: 0px 0px 3px rgba(0,0,0,0.5)">
+                <input name="search-input" style="height: 50px; " id="search-input" type="text" class="form-control" onkeydown="down()"
+                       onkeyup="up()"
+                       placeholder="Search item"/>
+                <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                <div class="result" id="search-results" name="search-results"></div>
+            </div>
+
+        </div>
+
+
+
+                <!--
+                <input type="submit" class="btn btn-default" name="my_form_submit_button"
+                       value="Search"/>
+                       -->
+
+        </div>
+
+    <div id="hot">
+
+        <div class="box">
+            <div class="container" >
+                <div class="col-md-12">
+                    <h2>TODAY'S HOT DEALS</h2>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="container"><div class="row">
+                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000" style="padding: 10px">
+                    <div class="MultiCarousel-inner" >
+                        @if(sizeof($items)>0)
+                            @foreach($items as $item)
+                                <div class="item" >
+                                    <div class="pad15" style="background-color: white">
+                                        <p ><b>{{$item->name}}</b></p>
+                                        <div class="front">
+                                            <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                                <img src="{{ $item->image }}" alt=""
+                                                     class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <p style="color: red"><b>{{$item->price}} LKR </b></p>
+                                    </div>
+                                </div>
+                            @endforeach
 
+                            @foreach($items2 as $item)
+                                <div class="item">
+                                    <div class="pad15" style="background-color: white">
+                                        <p ><b>{{$item->name}}</b></p>
+                                        <div class="front">
+                                            <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                                <img src="{{ $item->image }}" alt=""
+                                                     class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <p style="color: red"><b>{{$item->price}} LKR </b></p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            @foreach($items3 as $item)
+                                <div class="item">
+                                    <div class="pad15" style="background-color: white">
+                                        <p ><b>{{$item->name}}</b></p>
+                                        <div class="front">
+                                            <a href="{{route('product.show' , ['id'=> $item->proid])}}">
+                                                <img src="{{ $item->image }}" alt=""
+                                                     class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <p style="color: red"><b>{{$item->price}} LKR </b></p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+
+                    </div>
+                    <button class="btn btn-primary leftLst" STYLE="z-index: 999; position: absolute; left: -10px"><</button>
+                    <button class="btn btn-primary rightLst" STYLE="position: absolute; right: -10px">></button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- /#hot -->
+
+@endsection
+
+@section('scripts')
+    <script src="{{URL::to('js/shop_index.js')}}"></script>
 @endsection

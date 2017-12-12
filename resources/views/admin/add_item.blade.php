@@ -26,7 +26,8 @@
             @if(session()->has('type'))
                 <div class="row">
                     <div class="col-md-12">
-                        <form class="form-horizontal" action="{{ route('admin.additems') }}" method="post">
+                        <form class="form-horizontal" action="{{ route('admin.additems') }}" method="post"
+                              enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="proid">Product ID:</label>
                                 <div class="col-sm-2">

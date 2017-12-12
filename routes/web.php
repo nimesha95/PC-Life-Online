@@ -16,16 +16,18 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
-Route::get('/se', function (\Illuminate\Mail\Mailer $mailer) {
-    $mailer
-        ->to("hiipo@hippo.com")
-        ->send(new \App\Mail\TestMail());
-    return redirect()->route('product.index');
-})->name('haha');
+Route::post('/search', [
+    'uses' => 'ProductController@search',
+    'as' => 'product.search'
+]);
 
 Route::get('/send', [
     'uses' => 'EmailController@send',
     'as' => 'user.sendMail'
+]);
+
+Route::post('/rest_api', [
+    'uses' => 'EmailController@test'
 ]);
 
 Route::get('/send_test', function () {
@@ -36,12 +38,14 @@ Route::get('/send_test', function () {
 
 Route::get('/desktops/{type}/{brand?}', [
     'uses' => 'ProductController@getDesktops',
-    'as' => 'product.product'
 ]);
 
 Route::get('/laptops/{type}/{brand?}', [
     'uses' => 'ProductController@getLaptops',
-    'as' => 'product.product'
+]);
+
+Route::get('/acc/{type}', [
+    'uses' => 'ProductController@getAcc',
 ]);
 
 Route::get('/product/{id}', [
@@ -135,6 +139,18 @@ Route::group(['prefix' => 'user'], function () {
             });
         });
 
+        Route::get('/paywithbank/{id}', [
+            'uses' => 'ProductController@getBank',
+            'as' => 'user.getBank'
+        ]);
+
+        Route::post('/paywithbank', [
+            'uses' => 'ProductController@postBank',
+            'as' => 'user.postBank'
+        ]);
+
+        Route::get('paywithpaypal/{id}', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
+
         Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
         Route::post('paypal', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
         Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
@@ -150,7 +166,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     ]);
 
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/reports', [
+        Route::get('/reports/{type?}/{day?}', [
             'uses' => 'AdminController@getReports',
             'as' => 'admin.reports',
         ]);
@@ -175,6 +191,73 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'as' => 'admin.reguser'
         ]);
 
+        Route::post('/removeusr', [
+            'uses' => 'AdminController@removeUsr',
+            'as' => 'admin.removeuser'
+        ]);
+
+        Route::post('/removeitem', [
+            'uses' => 'AdminController@removeItem',
+            'as' => 'admin.removeitem'
+        ]);
+
+        Route::get('/user_history', [
+            'uses' => 'AdminController@getUserHistory',
+            'as' => 'admin.getUserHistory'
+        ]);
+
+        Route::post('/edit_item', [
+            'uses' => 'AdminController@getEditItem',
+            'as' => 'admin.get_edit_item'
+        ]);
+
+        Route::get('/view/{id}', [
+            'uses' => 'AdminController@show',
+            'as' => 'admin.show',
+        ]);
+
+        Route::post('/syncNoti', [
+            'uses' => 'AdminController@syncData',
+            'as' => 'sync_noti'
+        ]);
+
+        Route::post('/syncEarning', [
+            'uses' => 'AdminController@syncEarning',
+            'as' => 'sync_earning'
+        ]);
+        /*
+                //delivery list
+                Route::get('/delivery_report', [
+                    'uses'=>'AdminController@getDeliReport',
+                    'as' => 'admin.report_deli'
+                ]);
+        */
+        Route::get('/delivery_report', [
+            'uses' => 'AdminController@getDeliReport',
+            'as' => 'admin.report_deli'
+        ]);
+
+        Route::get('/cus', [
+            'uses' => 'AdminController@custHistory',
+            'as' => 'admin.report_cust_history'
+        ]);
+
+        Route::get('/cus/{cus}', [
+            'uses' => 'AdminController@showDets',
+            'as' => 'admin.report_cust_history1'
+        ]);
+        /*
+        //customer report
+                Route::get('/cus', 'CustomerController@show');
+
+                Route::get('/cus/{cus}', 'CustomerController@showDets');
+
+
+        //sales report
+                Route::get('/', 'ItemController@index');
+
+                Route::get('/{item}','ItemController@show');
+        */
     });
 
 });
@@ -221,6 +304,16 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
             'as' => 'check_deli_orders'
         ]);
 
+        Route::post('/stock_stat/{id}', [
+            'uses' => 'StockManagerController@check_stock_stat',
+            'as' => 'check_stock_stat'
+        ]);
+
+        Route::post('/addToFirebase', [
+            'uses' => 'StockManagerController@addToFB',
+            'as' => 'add_to_fbase'
+        ]);
+
         Route::get('/getOrder/{id}', [
             'uses' => 'StockManagerController@getOrder',
             'as' => 'stock.getOrder',
@@ -229,6 +322,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
         Route::post('/submit_invoice', [
             'uses' => 'StockManagerController@submitInvoice',
             'as' => 'stock.subInv'
+        ]);
+
+        Route::post('/crit_stock', [
+            'uses' => 'StockManagerController@crit_stock_msg',
+            'as' => 'stock.SendCritStock'
         ]);
     });
 
@@ -262,10 +360,12 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
     Route::post('technician.index', [
         'uses' => 'TechnicianController@store',
         'as' => 'technician.index',
+
     ]);
     Route::post('/store', [
         'uses' => 'TechnicianController@custstore',
         'as' => 'customizestore',
+
     ]);
     Route::post('/repairinvoice', [
         'uses' => 'TechnicianController@submitInvoice',
@@ -274,25 +374,24 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
     Route::post('/customtask', [
         'uses' => 'TechnicianController@custtask',
         'as' => 'customizetask',
+
     ]);
     //new task to database
     Route::post('/addnewtask', [
         'uses' => 'TechnicianController@addnewtask',
         'as' => 'addnewtask',
+
     ]);
     //device Questions
     Route::post('/addReview', [
         'uses' => 'TechnicianController@addReview',
         'as' => 'addReview',
+
     ]);
     Route::group(['prefix' => 'technician'], function () {
         Route::get('/custom/{type}', [
             'uses' => 'TechnicianController@custom',
             'as' => 'technician.customize',
-        ]);
-        Route::get('/Jobs/{type}', [
-            'uses' => 'TechnicianController@viewjobsall',
-            'as' => 'Jobs',
         ]);
         Route::get('/newjob/{type}', [
             'uses' => 'TechnicianController@Newjob',
@@ -300,9 +399,11 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         ]);
         //NewJob form quarry
         Route::post('/Newjobstore',
+
             [
                 'uses' => 'TechnicianController@NewjobStore',
                 'as' => 'NewjobStore',
+
             ]);
         Route::get('/customtask', [
             'uses' => 'TechnicianController@customtask',
@@ -323,20 +424,23 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         Route::post('/Reguser',
             //User register form quarry
             [
-                'uses' => 'TechnicianController@userregform',
-                'as' => 'userregister',
-            ]);
+            'uses' => 'TechnicianController@userregform',
+            'as' => 'userregister',
+
+        ]);
         Route::post('/Addjobtask',
             //User register form quarry
             [
                 'uses' => 'TechnicianController@Addtsktojob',
                 'as' => 'Addjobtask',
+
             ]);
         Route::post('/ViewWarranty',
             //User register form quarry
             [
                 'uses' => 'TechnicianController@viewwarranty',
                 'as' => 'viewwarranty',
+
             ]);
         Route::get('/ViewWarranty', [
             'uses' => 'TechnicianController@userreg',
@@ -350,6 +454,7 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@Addcustomer',
             'as' => 'ConfirmJob',
         ]);
+
         Route::post('/Deletetask', [
             'uses' => 'TechnicianController@Deletetsktojob',
             'as' => 'deletetask',
@@ -358,5 +463,9 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@confrimtsktojob',
             'as' => 'Confirmtask',
         ]);
+
+
+
+
     });
 });

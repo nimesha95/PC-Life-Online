@@ -1,0 +1,186 @@
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+@-webkit-keyframes fadeInUpBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 2000px, 0);
+        transform: translate3d(0, 2000px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInUpBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 2000px, 0);
+        transform: translate3d(0, 2000px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeInUpBig {
+    -webkit-animation-name: fadeInUpBig;
+    animation-name: fadeInUpBig;
+}
+.team-member {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.team-member h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    letter-spacing: 0.08em;
+}
+.team-member h3 a {
+    color: #555555;
+}
+.team-member p.role {
+    color: #999999;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+.team-member .social {
+    margin-bottom: 20px;
+}
+.team-member .social a {
+    margin: 0 10px 0 0;
+    color: #fff;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    line-height: 26px;
+    font-size: 15px;
+    text-align: center;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    vertical-align: bottom;
+}
+.team-member .social a i {
+    vertical-align: bottom;
+    line-height: 26px;
+}
+.team-member .social a.facebook {
+    background-color: #4460ae;
+}
+.team-member .social a.gplus {
+    background-color: #c21f25;
+}
+.team-member .social a.twitter {
+    background-color: #3cf;
+}
+.team-member .social a.instagram {
+    background-color: #cd4378;
+}
+.team-member .social a.email {
+    background-color: #4a7f45;
+}
+.team-member .text p {
+    color: #999999;
+    font-size: 12px;
+}
+.team-member .social,
+.team-member-detail .social {
+    margin-bottom: 20px;
+}
+.team-member .social a,
+.team-member-detail .social a {
+    margin: 0 10px 0 0;
+    color: #fff;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    line-height: 26px;
+    font-size: 15px;
+    text-align: center;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    vertical-align: bottom;
+}
+.team-member .social a i,
+.team-member-detail .social a i {
+    vertical-align: bottom;
+    line-height: 26px;
+}
+.team-member .social a.facebook,
+.team-member-detail .social a.facebook {
+    background-color: #4460ae;
+}
+.team-member .social a.gplus,
+.team-member-detail .social a.gplus {
+    background-color: #c21f25;
+}
+.team-member .social a.twitter,
+.team-member-detail .social a.twitter {
+    background-color: #3cf;
+}
+.team-member .social a.instagram,
+.team-member-detail .social a.instagram {
+    background-color: #cd4378;
+}
+.team-member .social a.email,
+.team-member-detail .social a.email {
+    background-color: #4a7f45;
+}
+h2{color: red}
+#imaginary_container{
+    margin-top:20%; /* Don't copy this */
+}
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
