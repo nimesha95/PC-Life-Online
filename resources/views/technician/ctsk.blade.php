@@ -151,11 +151,11 @@
                                    <label for="comment"> Name :</label>
                                    <input type="text" class="form-control"  Name="name" value="" required>
                                    <label for="comment"> Default Operation Time :</label>
-                                   <input type="text" class="form-control"  Name="DOPT" value="" pattern="\+[0-9]{12}" required  >
+                                   <input type="text" class="form-control"  Name="DOPT" value="" required  >
                                    <label for="comment"> Default Involve Time :</label>
-                                   <input type="text" class="form-control"  Name="DINT" value=""  pattern="\+[0-9]{12}" required>
+                                   <input type="text" class="form-control"  Name="DINT" value=""  required>
                                    <label for="comment"> Default Price :</label>
-                                   <input type="text" class="form-control"  Name="price" value=""  pattern="\+[0-9]{12}" required>
+                                   <input type="text" class="form-control"  Name="price" value=""   required>
 
                                    <label for="comment"> Usage :</label>
                                    <div class="row">

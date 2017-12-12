@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-sm-3" ><a href="{{url('technician/Jobs/Repair')}}">
                                 <div class="butt" data-toggle="modal">
-                                    <img src="{{ asset('img/technician/repair.png')}}" style="" > <p>Customize</p>  </div>
+                                    <img src="{{ asset('img/technician/repair.png')}}" style="" > <p>Repair</p>  </div>
 
                             </a>
                         </div>

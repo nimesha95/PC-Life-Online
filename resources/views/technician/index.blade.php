@@ -35,7 +35,7 @@
                                 <th>Job ID </th>
                                 <th>Device</th>
                                 <th>Job Time (Min)</th>
-                                <th>Price</th>
+                                <th>Price (Rs.)</th>
                                 <th>Deliver Date</th>
                             </tr>
                             </thead>
