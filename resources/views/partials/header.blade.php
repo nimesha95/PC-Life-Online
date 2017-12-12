@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5)">
 
     <div class="container-fluid">

@@ -225,13 +225,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'uses' => 'AdminController@syncEarning',
             'as' => 'sync_earning'
         ]);
-        /*
-                //delivery list
-                Route::get('/delivery_report', [
-                    'uses'=>'AdminController@getDeliReport',
-                    'as' => 'admin.report_deli'
-                ]);
-        */
+
         Route::get('/delivery_report', [
             'uses' => 'AdminController@getDeliReport',
             'as' => 'admin.report_deli'
@@ -246,18 +240,17 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'uses' => 'AdminController@showDets',
             'as' => 'admin.report_cust_history1'
         ]);
-        /*
-        //customer report
-                Route::get('/cus', 'CustomerController@show');
-
-                Route::get('/cus/{cus}', 'CustomerController@showDets');
 
 
         //sales report
-                Route::get('/', 'ItemController@index');
-
-                Route::get('/{item}','ItemController@show');
-        */
+        Route::get('/salesReport', [
+            'uses' => 'AdminController@showSales',
+            'as' => 'admin.showSales'
+        ]);
+        Route::get('/salesReport/{proid}', [
+            'uses' => 'AdminController@showSalesItem',
+            'as' => 'admin.showSales1'
+        ]);
     });
 
 });
@@ -355,7 +348,7 @@ Route::group(['middleware' => ['auth', 'cashier']], function () {
 Route::group(['middleware' => ['auth', 'technician']], function () {
     Route::get('/technician', [
         'uses' => 'TechnicianController@getIndex',
-        'as' => 'technician.index',
+        'as' => 'technician.index1',
     ]);
     Route::post('technician.index', [
         'uses' => 'TechnicianController@store',
@@ -424,10 +417,10 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         Route::post('/Reguser',
             //User register form quarry
             [
-            'uses' => 'TechnicianController@userregform',
-            'as' => 'userregister',
+                'uses' => 'TechnicianController@userregform',
+                'as' => 'userregister',
 
-        ]);
+            ]);
         Route::post('/Addjobtask',
             //User register form quarry
             [
@@ -463,8 +456,6 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@confrimtsktojob',
             'as' => 'Confirmtask',
         ]);
-
-
 
 
     });

@@ -10,14 +10,19 @@
 
             <div class="modal-body">
                 <div class="butttask" data-toggle="modal" data-target="#Customize" data-dismiss="modal">
-                    <img src="img/Tasks-Icon.png" style=""> <p>Customize</p>  </div>
+                    <img src="img/Tasks-Icon.png" style="">
+                    <p>Customize</p></div>
                 <div class="butttask" data-toggle="modal" data-target="#NewJobModal">
-                    <img src="img/Tasks-Icon.png" style=""> <p>Service Warranty</p>  </div>
+                    <img src="img/Tasks-Icon.png" style="">
+                    <p>Service Warranty</p></div>
                 <div class="butttask" data-toggle="modal" data-target="#NewJobModal">
-                    <img src="img/Tasks-Icon.png" style=""> <p>Company Warranty</p>  </div>
+                    <img src="img/Tasks-Icon.png" style="">
+                    <p>Company Warranty</p></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#RemoveUserModal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                        data-target="#RemoveUserModal">Close
+                </button>
             </div>
         </div>
 

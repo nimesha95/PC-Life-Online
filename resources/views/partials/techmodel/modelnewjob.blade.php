@@ -11,41 +11,41 @@
             <div class="modal-body">
                 <div class="modal-body">
                     <div class="row" style="position: relative; top: -20px ">
-                        <div class="col-sm-2" ><img src="{{ asset('img/technician/repair.png')}}" style=" width: 50px;height: 50px; display: inline-block" ></div>
-                        <div class="col-sm-10" ><h4> Custom Repair Job</h4></div>
+                        <div class="col-sm-2"><img src="{{ asset('img/technician/repair.png')}}"
+                                                   style=" width: 50px;height: 50px; display: inline-block"></div>
+                        <div class="col-sm-10"><h4> Custom Repair Job</h4></div>
 
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-3" ><a href="{{url('technician/newjob/D')}}">
+                        <div class="col-sm-3"><a href="{{url('technician/newjob/D')}}">
                                 <div class="butt" data-toggle="modal">
-                                    <img src="{{ asset('img/technician/desktop.png')}}" style="" > <p>Desktop</p>  </div>
+                                    <img src="{{ asset('img/technician/desktop.png')}}" style="">
+                                    <p>Desktop</p></div>
 
                             </a>
                         </div>
-                        <div class="col-sm-3" ><a href="{{url('technician/newjob/L')}}">
+                        <div class="col-sm-3"><a href="{{url('technician/newjob/L')}}">
                                 <div class="butt" data-toggle="modal">
-                                    <img src="{{ asset('img/technician/laptop.png')}}" style="" > <p>Laptop</p>  </div>
+                                    <img src="{{ asset('img/technician/laptop.png')}}" style="">
+                                    <p>Laptop</p></div>
 
                             </a>
                         </div>
-                        <div class="col-sm-3" ><a href="{{url('technician/newjob/T')}}">
+                        <div class="col-sm-3"><a href="{{url('technician/newjob/T')}}">
                                 <div class="butt" data-toggle="modal">
-                                    <img src="{{ asset('img/technician/tablet.png')}}" style="" > <p>Tablet</p>  </div>
+                                    <img src="{{ asset('img/technician/tablet.png')}}" style="">
+                                    <p>Tablet</p></div>
 
                             </a>
                         </div>
-                        <div class="col-sm-3" > <a href="{{url('technician/newjob/O')}}">
+                        <div class="col-sm-3"><a href="{{url('technician/newjob/O')}}">
                                 <div class="butt" data-toggle="modal">
-                                    <img src="{{ asset('img/technician/otherdev.png')}}" style="" > <p>Other</p>  </div>
+                                    <img src="{{ asset('img/technician/otherdev.png')}}" style="">
+                                    <p>Other</p></div>
 
                             </a>
                         </div>
-
-
-
-
-
 
 
                     </div>
@@ -53,29 +53,35 @@
                 <hr>
                 <div class="modal-body">
                     <div class="row" style="position: relative; top: -20px ">
-                        <div class="col-sm-2" ><img src="{{ asset('img/technician/warranty.png')}}" style=" width: 50px;height: 50px; display: inline-block" ></div>
-                        <div class="col-sm-10" ><h4>Claim the Warranty</h4></div>
+                        <div class="col-sm-2"><img src="{{ asset('img/technician/warranty.png')}}"
+                                                   style=" width: 50px;height: 50px; display: inline-block"></div>
+                        <div class="col-sm-10"><h4>Claim the Warranty</h4></div>
 
                     </div>
-                        <table border="0" class="table " style="padding:10px">
+                    <table border="0" class="table " style="padding:10px">
 
-                            <form action="{{route('viewwarranty')}}" method="post">
-                                <tr>
-                                    {{ csrf_field() }}
+                        <form action="{{route('viewwarranty')}}" method="post">
+                            <tr>
+                                {{ csrf_field() }}
 
-                                    <td> <label for="comment">Invoice No</label></td>
-                                    <td> <input type="text" class="form-control"  Name="Invoice" value="" placeholder="Enter Invoice No"></td>
-                                    <td> <button type="Submit" class="subbutton"  >Search</button></td>
-                                </tr>
-                            </form>
-                        </table>
-                    </div>
-
-
+                                <td><label for="comment">Invoice No</label></td>
+                                <td><input type="text" class="form-control" Name="Invoice" value=""
+                                           placeholder="Enter Invoice No"></td>
+                                <td>
+                                    <button type="Submit" class="subbutton">Search</button>
+                                </td>
+                            </tr>
+                        </form>
+                    </table>
                 </div>
 
+
+            </div>
+
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#RemoveUserModal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                        data-target="#RemoveUserModal">Close
+                </button>
             </div>
         </div>
 
@@ -92,7 +98,7 @@
             </div>
 
             <div class="modal-body">
-                <form class="form-horizontal" method="post" >
+                <form class="form-horizontal" method="post">
                     <div class="form-group">
 
                     </div>
@@ -100,7 +106,8 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="name">Name:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Enter Name" autofocus="autofocus"
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name"
+                                   autofocus="autofocus"
                                    name="name">
                         </div>
                     </div>
@@ -127,7 +134,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#RemoveUserModal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                        data-target="#RemoveUserModal">Close
+                </button>
             </div>
         </div>
 

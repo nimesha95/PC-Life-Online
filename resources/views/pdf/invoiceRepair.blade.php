@@ -7,14 +7,15 @@
             <tbody>
 
 
-                <tr>
-                    <td>
-                        <img src='https://barcode.tec-it.com/barcode.ashx?data={{$Jobid}}&code=Code128&dpi=72' alt='Barcode Generator TEC-IT'/>
-                    </td>
-                    {{ csrf_field() }}
-                    <td></td>
+            <tr>
+                <td>
+                    <img src='https://barcode.tec-it.com/barcode.ashx?data={{$Jobid}}&code=Code128&dpi=72'
+                         alt='Barcode Generator TEC-IT'/>
+                </td>
+                {{ csrf_field() }}
+                <td></td>
 
-                </tr>
+            </tr>
 
             </tbody>
     </form>

@@ -110,7 +110,8 @@
     <div class="row">
         <div class="container">
             <div class="input-group stylish-input-group" style="margin: 10px; box-shadow: 0px 0px 3px rgba(0,0,0,0.5)">
-                <input name="search-input" style="height: 50px; " id="search-input" type="text" class="form-control" onkeydown="down()"
+                <input name="search-input" style="height: 50px; " id="search-input" type="text" class="form-control"
+                       onkeydown="down()"
                        onkeyup="up()"
                        placeholder="Search item"/>
                 <span class="input-group-addon">
@@ -124,31 +125,32 @@
         </div>
 
 
+        <!--
+        <input type="submit" class="btn btn-default" name="my_form_submit_button"
+               value="Search"/>
+               -->
 
-                <!--
-                <input type="submit" class="btn btn-default" name="my_form_submit_button"
-                       value="Search"/>
-                       -->
-
-        </div>
+    </div>
 
     <div id="hot">
 
         <div class="box">
-            <div class="container" >
+            <div class="container">
                 <div class="col-md-12">
                     <h2>TODAY'S HOT DEALS</h2>
                 </div>
             </div>
         </div>
-        <div class="container"><div class="row">
-                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000" style="padding: 10px">
-                    <div class="MultiCarousel-inner" >
+        <div class="container">
+            <div class="row">
+                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000"
+                     style="padding: 10px">
+                    <div class="MultiCarousel-inner">
                         @if(sizeof($items)>0)
                             @foreach($items as $item)
-                                <div class="item" >
+                                <div class="item">
                                     <div class="pad15" style="background-color: white">
-                                        <p ><b>{{$item->name}}</b></p>
+                                        <p><b>{{$item->name}}</b></p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
                                                 <img src="{{ $item->image }}" alt=""
@@ -163,7 +165,7 @@
                             @foreach($items2 as $item)
                                 <div class="item">
                                     <div class="pad15" style="background-color: white">
-                                        <p ><b>{{$item->name}}</b></p>
+                                        <p><b>{{$item->name}}</b></p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
                                                 <img src="{{ $item->image }}" alt=""
@@ -178,7 +180,7 @@
                             @foreach($items3 as $item)
                                 <div class="item">
                                     <div class="pad15" style="background-color: white">
-                                        <p ><b>{{$item->name}}</b></p>
+                                        <p><b>{{$item->name}}</b></p>
                                         <div class="front">
                                             <a href="{{route('product.show' , ['id'=> $item->proid])}}">
                                                 <img src="{{ $item->image }}" alt=""
@@ -192,7 +194,8 @@
                         @endif
 
                     </div>
-                    <button class="btn btn-primary leftLst" STYLE="z-index: 999; position: absolute; left: -10px"><</button>
+                    <button class="btn btn-primary leftLst" STYLE="z-index: 999; position: absolute; left: -10px"><
+                    </button>
                     <button class="btn btn-primary rightLst" STYLE="position: absolute; right: -10px">></button>
                 </div>
             </div>

@@ -80,7 +80,7 @@ class UserController extends Controller
                     return redirect()->route('cashier.index');
                     break;
                 case 4: //4 is technician
-                    return redirect()->route('technician.index');
+                    return redirect()->route('technician.index1');
                     break;
             }
         } else {

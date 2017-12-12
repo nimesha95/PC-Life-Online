@@ -60,7 +60,6 @@ class AdminController extends Controller
         return response()->json(['msg' => $arr], 200);
     }
 
-
     public function syncEarning()
     {
         $sales = DB::select('select date(added) as day,sum(total) as tot from orders group by date(added)');
@@ -74,7 +73,6 @@ class AdminController extends Controller
 
         return response()->json(['msg' => $arr], 200);
     }
-
 
     public function show($id)
     {
@@ -283,6 +281,21 @@ class AdminController extends Controller
         $cust = DB::select('select * FROM orders WHERE email=?', [$cus]);
         $cusDets = DB::select('select * FROM users WHERE email=?', [$cus]);
         return view('admin.customerDet', compact('cust', 'cusDets'));
+    }
+
+    public function showSales()
+    {
+        $des = DB::select('select * FROM desktops');
+        $lap = DB::select('select * FROM laptops');
+
+        return view('admin.item', compact('des', 'lap'));
+    }
+
+    public function showSalesItem($proid)
+    {
+        $items = DB::select('select SUM(total) AS total, COUNT(order_obj) AS Items_Sold,order_obj FROM orders WHERE order_obj=? GROUP BY order_obj', [$proid]);
+
+        return view('admin.itemDets', compact('items'));
     }
 
     private function getRoleName($var)

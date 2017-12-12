@@ -37,13 +37,14 @@
                     </div>
                     <div>
                         <li>
-                            <div class="butt" data-toggle="modal" data-target="#AddUserModal">New Job  </div>
+                            <div class="butt" data-toggle="modal" data-target="#AddUserModal">New Job</div>
                         </li>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="name">Name:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Enter Name" autofocus="autofocus"
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name"
+                                   autofocus="autofocus"
                                    name="name">
                         </div>
                     </div>
@@ -70,7 +71,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#RemoveUserModal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                        data-target="#RemoveUserModal">Close
+                </button>
             </div>
         </div>
 

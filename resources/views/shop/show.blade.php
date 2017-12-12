@@ -35,7 +35,7 @@
     @foreach($items as $item)
         <div class="row">
 
-                @include('partials.Sidebar')
+            @include('partials.Sidebar')
 
             <div class="col-md-9">
                 <div class="col-md-6">
