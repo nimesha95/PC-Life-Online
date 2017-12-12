@@ -191,6 +191,7 @@ class AdminController extends Controller
     public function getEditItem(Request $request)
     {
         //need to validate data here
+        // dd($request);
         $pro_id = $request->input('pro_id');
         $table = $this->getItemType($pro_id);
 
@@ -208,20 +209,46 @@ class AdminController extends Controller
                 'description' => $rw->description, 'price' => $rw->price,
                 'discount_price' => $rw->discount_price];
         }
+
         $item = unserialize($item);
+        //dd($table);
         $row = array_merge($rowX, $item->returnArr());
 
         return view('admin.edit_item')->with('data', ['type' => $table[1], 'row' => $row]);
     }
 
+    public function removeUsr(Request $request)
+    {
+        //dd($request);
+
+        DB::table('users')->where('email', '=', $request->email)->delete();
+        return redirect()->back();
+    }
+
+    public function removeItem(Request $request)
+    {
+
+        $arr = $this->getItemType($request->proid);
+        // dd($arr);
+
+        DB::table($arr[0])->where('proid', '=', $request->proid)->delete();
+        return redirect()->back();
+    }
+
+    public function getUserHistory()
+    {
+        $userQry = DB::select("select name,email,role_name,created_at,last_login from users");
+        return view('admin.login_history', ['userQry' => $userQry]);
+    }
+
     public function postRegUser(Request $request)
     {
-        dd($request);
+        //dd($request);
         session(['AdminRegUser' => 1]);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'email | required | unique:users',
-            'password' => 'required | min:4',
+            'pwd' => 'required | min:4',
             'role' => 'required'
         ]);
 
@@ -229,7 +256,7 @@ class AdminController extends Controller
         $user = new User([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'password' => bcrypt($request->input('pwd')),
             'role' => $request->input('role'),
             'role_name' => $this->getRoleName($request->input('role')),
         ]);

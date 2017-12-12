@@ -45,7 +45,7 @@ class EmailController extends Controller
         if ($request['job_completed']) {
 
             Nexmo::message()->send([
-                'to' => '94778519113',
+                'to' => '94775635458',
                 'from' => 'PC Life',
                 'text' => 'Your order was delivered'
             ]);

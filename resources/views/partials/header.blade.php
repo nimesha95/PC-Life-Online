@@ -172,7 +172,7 @@
                     <ul class="dropdown-menu">
                         @if(Auth::check())
                             <li><a href="{{ route('user.profile') }}">Profile</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="{{route('user.getTrack')}}">Track Orders</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a class="signout_link" href="{{ route('user.logout') }}">Sign Out</a></li>
                         @else

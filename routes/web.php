@@ -191,6 +191,21 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'as' => 'admin.reguser'
         ]);
 
+        Route::post('/removeusr', [
+            'uses' => 'AdminController@removeUsr',
+            'as' => 'admin.removeuser'
+        ]);
+
+        Route::post('/removeitem', [
+            'uses' => 'AdminController@removeItem',
+            'as' => 'admin.removeitem'
+        ]);
+
+        Route::get('/user_history', [
+            'uses' => 'AdminController@getUserHistory',
+            'as' => 'admin.getUserHistory'
+        ]);
+
         Route::post('/edit_item', [
             'uses' => 'AdminController@getEditItem',
             'as' => 'admin.get_edit_item'

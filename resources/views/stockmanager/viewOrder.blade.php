@@ -69,7 +69,7 @@
     </script>
     <script type="text/javascript">
         $("#submitBtn").click(function () {
-            var delay = 2000;
+            var delay = 3000;
             setTimeout(function () {
                 window.location = url;
             }, delay);

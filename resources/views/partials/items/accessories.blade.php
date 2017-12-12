@@ -79,13 +79,13 @@
     <label class="control-label col-sm-2" for="Price">Price:</label>
     <div class="col-sm-4">
         <input type="number" pattern="{0-9}" min="2" class="form-control" id="price" title="" placeholder="Enter Price"
-               name="number">
+               name="price">
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-sm-2" for="Discounted Price">Discounted Price:</label>
+    <label class="control-label col-sm-2" for="Discounted Price">Discount (%):</label>
     <div class="col-sm-4">
-        <input type="number" class="form-control" pattern="{0-9}" min="2" id="dis_price"
+        <input type="number" class="form-control" pattern="{0-9}" min="1" max="99" id="dis_price"
                title="Price after got discount" placeholder="Enter Discounted Price " name="dis_price">
     </div>
 </div>
@@ -103,7 +103,7 @@
 <div class="form-group">
     <label class="control-label col-sm-2" for="Warranty">Warranty:</label>
     <div class="col-sm-2">
-        <input type="text" class="form-control" id="warranty" title="Warranty Period" pattern="\d+.{1,}"
+        <input type="text" class="form-control" id="warranty" title="Warranty Period" maxlength="2" pattern="\d+.{1,}"
                placeholder="Add warranty in Months " name="warranty">
     </div>
 </div>

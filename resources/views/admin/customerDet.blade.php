@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-<body>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+@extends('layouts.master')
 
-<div class="container">
+@section('title')
+
+@endsection
+
+@section('header')
+    @include('partials.admin_header')
+@endsection
+
+@section('content')
+
+    <div class="container">
     <div class="row">
 
         <h1 align="center">Customer Detail Report</h1><br><br>
@@ -47,13 +47,13 @@
 
                                         @foreach($cust as $cus )
                                             <tr>
-                                                <td>{{ $cus->order_obj }}</td>
+                                                <td>{{ $cus->id }}</td>
                                                 <td>Rs. {{ $cus->total }}</td>
                                                 <td>{{ $cus->added }}</td>
                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $cus->paymentType }}</td>
                                                 <td>&nbsp;&nbsp;&nbsp;{{ $cus->paid }}</td>
                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $cus->delivery }}</td>
-                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $cus->Verified }}</td>
+                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $cus->verified }}</td>
                                             </tr>
                                         @endforeach
 
@@ -70,6 +70,4 @@
                             </div>
     </div>
 </div>
-
-</body>
-</html>
+@endsection

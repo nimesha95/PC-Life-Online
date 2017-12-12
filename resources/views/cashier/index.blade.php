@@ -3,6 +3,9 @@
 @section('title')
     PC-Life Online
 @endsection
+@section('header')
+    @include('partials.cashier_header')
+@endsection
 
 
 @section('content')

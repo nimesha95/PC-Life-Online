@@ -120,13 +120,6 @@
     </div>
 </div>
 
-<div class="form-group">
-    <label class="control-label col-sm-2" for="Warranty">Warranty:</label>
-    <div class="col-sm-2">
-        <input type="text" class="form-control" id="warranty" title="Warranty Period" pattern="\d+.{1,}"
-               placeholder="Add warranty in Months " name="warranty" value="{{$data['row']['warranty']}}">
-    </div>
-</div>
 
 <div class="form-group">
     <label class="control-label col-sm-2" for="Operating System">Operating system:</label>
