@@ -34,16 +34,18 @@ class StockManagerController extends Controller
 
     public function getAddStock(Request $request)
     {
+        //dd($request);
         $type = $request['ItemType1'];
         $brand = $request['ItemModel1'];
         $product = $request['productSelect'];
 
         $table = $this->getTable($type);
-        $itemProid = DB::select("select proid from $table WHERE 1");
+
+        $itemProid = DB::select("select proid from $table WHERE name='" . $product . "'");
         foreach ($itemProid as $row) {
             $proid = $row->proid;
         }
-
+        //dd($proid);
         return view('stockmanager.add_stock', ["brand" => $brand, "product" => $product, "proid" => $proid]);
     }
 
@@ -109,21 +111,35 @@ class StockManagerController extends Controller
     public function fillDrop(Request $request)
     {
         if ($request['type'] == 'model') {
-
             $catagory = $request['body'];
             $table = $this->getTable($catagory);
 
-            $itemBrand = DB::select("select DISTINCT brand from $table WHERE 1");
-            foreach ($itemBrand as $row) {
-                $brand_arr[] = array("id" => $row->brand);
+            if ($table == "accessories") {
+                $itemBrand = DB::select("select DISTINCT catagory from $table WHERE 1");
+
+                foreach ($itemBrand as $row) {
+                    $brand_arr[] = array("id" => $row->catagory);
+                }
+            } else {
+                $itemBrand = DB::select("select DISTINCT brand from $table WHERE 1");
+
+                foreach ($itemBrand as $row) {
+                    $brand_arr[] = array("id" => $row->brand);
+                }
             }
+
             return response()->json(['msg' => $brand_arr], 200);
         } else if ($request['type'] == 'product') {
             $product = $request['body'];
             $cat = $request['cat'];
             $table = $this->getTable($cat);
 
-            $ProductList = DB::select("select name from $table WHERE brand='$product'");
+            if ($table == "accessories") {
+                $ProductList = DB::select("select name from $table WHERE catagory='$product'");
+            } else {
+                $ProductList = DB::select("select name from $table WHERE brand='$product'");
+            }
+
             foreach ($ProductList as $row) {
                 $product_arr[] = array("id" => $row->name);
             }
@@ -288,7 +304,12 @@ class StockManagerController extends Controller
     {
         if ($var == 1) {
             return 'desktops';
+        } elseif ($var == 2) {
+            return 'laptops';
+        } elseif ($var == 3) {
+            return 'accessories';
         }
+
     }
 
     private function getNextProid($var)

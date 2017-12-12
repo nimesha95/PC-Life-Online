@@ -20,6 +20,11 @@ $('#serialNo').keypress(function (e) {
             })
                 .done(function (msg) {
                     console.log(msg);
+                    setTimeout(function () {
+                        $.bootstrapGrowl("Item Added to Stock", {type: 'success'});
+                    }, 500);
+                    $('#serialNo').val('');
+                    $('#serialNo').focus();
                 })
                 .fail(function () {
                     $("#already_there").show();
