@@ -89,21 +89,21 @@
 
                             <td> <label for="comment">Condition</label></td>
                             <td>
-                                <input type="text" class="form-control"  Name="condition" value=""></td>
+                                <input type="text" class="form-control"  Name="condition" value="" required></td>
                             <td></td>
                         </tr>
                         <tr>
 
                             <td> <label for="comment">Problem</label></td>
                             <td>
-                                <input type="textarea" class="form-control"  Name="Problem" value=""></td>
+                                <input type="textarea" class="form-control"  Name="Problem" value="" required></td>
                             <td></td>
                         </tr>
                         <tr>
 
                             <td> <label for="comment">Serial No</label></td>
                             <td>
-                                <input type="text" class="form-control"  Name="Serial" value=""></td>
+                                <input type="text" class="form-control"  Name="Serial" value="" required></td>
 
                             <td></td></td>
 

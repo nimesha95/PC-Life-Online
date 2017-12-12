@@ -15,7 +15,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{route('technician.index')}}" style="text-align: center; padding-top: auto; color: white">PC LIFE ONLINE <br>  <b>Techician</b> </a>
+            <a class="navbar-brand" href="{{route('technician.index')}}" style="text-align: center; padding-top: auto; color: black">PC LIFE ONLINE <br>  <b>Techician</b> </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,7 +37,7 @@
                 </li>
 
                 <li>
-                    <div class="butt" data-toggle="modal" data-target="#More">
+                    <div class="butt" data-toggle="modal" data-target="#Shownote">
                         <img src="{{ asset('img/technician/notify.png')}}" style=""> <b>Notification</b>  </div>
 
                 </li>
@@ -79,7 +79,7 @@
             </form>
             <ul class="nav navbar-right" >
                 <li>
-                    <div class="butt" data-toggle="modal" data-target="#AddUserModal">Log Out  </div>
+                    <div class="butt" > <img  src="{{ asset('img/technician/logout.png')}}" style=""><b>LogOut</b>  </div>
                 </li>
 
             </ul>

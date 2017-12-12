@@ -345,6 +345,10 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@custom',
             'as' => 'technician.customize',
         ]);
+        Route::get('/Jobs/{type}', [
+            'uses' => 'TechnicianController@viewjobsall',
+            'as' => 'Jobs',
+        ]);
         Route::get('/newjob/{type}', [
             'uses' => 'TechnicianController@Newjob',
             'as' => 'Newjob',

@@ -20,6 +20,9 @@
   background-image: -ms-linear-gradient(top, #3498db, #2980b9);
   background-image: -o-linear-gradient(top, #3498db, #2980b9);
   background-image: linear-gradient(to bottom, #3498db, #2980b9); box-shadow: 0px 0px 2px #000; width: auto; padding: 10px" >
+                        <h4 style="color: White;display: inline-block"> New Job   Desktop <br><hr>Job ID {{$jobid}}
+                        </h4>
+                        <hr>
 
 
                         <div style="color: white ;padding: 10px;"> <b>Enter Device Information</b></div>

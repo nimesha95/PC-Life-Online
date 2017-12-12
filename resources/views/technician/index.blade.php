@@ -199,30 +199,87 @@
                     <div class="modal-header">
 
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">{{$Custom->jobid}}</h4>
+                        <h4 class="modal-title">{{$Custom->jobid}}- Job Overview</h4>
                     </div>
 
                     <div class="modal-body">
-                        <h4> {{$Custom->jobid}}</h4>
-                        <div class="row">
 
-                            <table border="0" class="table " style="padding:10px">
+                        <div class="row">
+                            <div class="container">
+
+                            <table  class="table " style="width: 400px">
 
                                 <form action="{{route('viewjob')}}" method="post">
-                                        <tr>
-                                            {{ csrf_field() }}
-                                            <td> <label for="comment">Enter the User Name</label></td>
-                                            <td> <input type="hidden" class="form-control"  Name="Jobid" value="{{$Custom->jobid}}" placeholder="Enter the Customer's User ID"></td>
-                                            <td> <button type="Submit" class="subbutton"  >Goto the Job</button></td>
+                                    {{ csrf_field() }}
+                                    <tr>
+
+                                        <td> <label for="comment">Device </label></td>
+                                        <td>  <b>: {{$Custom->device}}</b></td>
+
+                                    </tr>
+                                    <tr>
+
+                                            <td> <label for="comment">Job Type </label></td>
+                                            <td>  <b>: {{$Custom->jobtype}}</b></td>
+
                                         </tr>
+                                    <tr>
+
+                                        <td> <label for="comment">Device Serial No </label></td>
+                                        <td>  <b>: {{$Custom->Serialno}}</b></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td> <label for="comment">Condition  </label></td>
+                                        <td>  <b>: {{$Custom->Condition}}</b></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td> <label for="comment">Problem  </label></td>
+                                        <td>  <b>: {{$Custom->Problem}}</b></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td> <label for="comment">Order Date</label></td>
+                                        <td>  <b>: {{$Custom->orderdate}}</b></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td> <label for="comment">Delivery Date</label></td>
+                                        <td>  <b>: {{$Custom->deleverdate}}</b></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td> <label for="comment">Customer Name</label></td>
+                                        <td>  <b>: {{$Custom->user}}</b></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td> <label for="comment">Contact No</label></td>
+                                        <td>  <b>: {{$Custom->telno}}</b></td>
+
+                                    </tr>
+
+                                        <td> <input type="hidden" class="form-control"  Name="Jobid" value="{{$Custom->jobid}}" placeholder="Enter the Customer's User ID"></td>
+
+                                   <tr>
+                                        <td> <button type="Submit" class="subbutton"  >Goto the Job</button></td>
+                                    </tr>
                                 </form>
                             </table>
+                            </div>
                         </div>
 
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#RemoveUserModal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" >Close</button>
                     </div>
                 </div>
 
@@ -231,7 +288,348 @@
 
     @endforeach
 
+    @foreach($qarray1 as $Custom)
 
+        <div class="modal fade" id="Showtask{{$Custom->jobid}}" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{{$Custom->jobid}}- Job Overview</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="container">
+
+                                <table  class="table " style="width: 400px">
+
+                                    <form action="{{route('viewjob')}}" method="post">
+                                        {{ csrf_field() }}
+                                        <tr>
+
+                                            <td> <label for="comment">Device </label></td>
+                                            <td>  <b>: {{$Custom->device}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Job Type </label></td>
+                                            <td>  <b>: {{$Custom->jobtype}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Device Serial No </label></td>
+                                            <td>  <b>: {{$Custom->Serialno}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Condition  </label></td>
+                                            <td>  <b>: {{$Custom->Condition}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Problem  </label></td>
+                                            <td>  <b>: {{$Custom->Problem}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Order Date</label></td>
+                                            <td>  <b>: {{$Custom->orderdate}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Delivery Date</label></td>
+                                            <td>  <b>: {{$Custom->deleverdate}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Customer Name</label></td>
+                                            <td>  <b>: {{$Custom->user}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Contact No</label></td>
+                                            <td>  <b>: {{$Custom->telno}}</b></td>
+
+                                        </tr>
+
+                                        <td> <input type="hidden" class="form-control"  Name="Jobid" value="{{$Custom->jobid}}" placeholder="Enter the Customer's User ID"></td>
+
+                                        <tr>
+                                            <td> <button type="Submit" class="subbutton"  >Goto the Job</button></td>
+                                        </tr>
+                                    </form>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" >Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    @endforeach
+
+    @foreach($qarray2 as $Custom)
+
+        <div class="modal fade" id="Showtask{{$Custom->jobid}}" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{{$Custom->jobid}}- Job Overview</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="container">
+
+                                <table  class="table " style="width: 400px">
+
+                                    <form action="{{route('viewjob')}}" method="post">
+                                        {{ csrf_field() }}
+                                        <tr>
+
+                                            <td> <label for="comment">Device </label></td>
+                                            <td>  <b>: {{$Custom->device}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Job Type </label></td>
+                                            <td>  <b>: {{$Custom->jobtype}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Device Serial No </label></td>
+                                            <td>  <b>: {{$Custom->Serialno}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Condition  </label></td>
+                                            <td>  <b>: {{$Custom->Condition}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Problem  </label></td>
+                                            <td>  <b>: {{$Custom->Problem}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Order Date</label></td>
+                                            <td>  <b>: {{$Custom->orderdate}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Delivery Date</label></td>
+                                            <td>  <b>: {{$Custom->deleverdate}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Customer Name</label></td>
+                                            <td>  <b>: {{$Custom->user}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Contact No</label></td>
+                                            <td>  <b>: {{$Custom->telno}}</b></td>
+
+                                        </tr>
+
+                                        <td> <input type="hidden" class="form-control"  Name="Jobid" value="{{$Custom->jobid}}" placeholder="Enter the Customer's User ID"></td>
+
+                                        <tr>
+                                            <td> <button type="Submit" class="subbutton"  >Goto the Job</button></td>
+                                        </tr>
+                                    </form>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" >Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    @endforeach
+    @foreach($qarray3 as $Custom)
+
+        <div class="modal fade" id="Shownote{{$Custom->jobid}}" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{{$Custom->jobid}}- Job Overview</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="container">
+
+                                <table  class="table " style="width: 400px">
+
+                                    <form action="{{route('viewjob')}}" method="post">
+                                        {{ csrf_field() }}
+                                        <tr>
+
+                                            <td> <label for="comment">Device </label></td>
+                                            <td>  <b>: {{$Custom->device}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Job Type </label></td>
+                                            <td>  <b>: {{$Custom->jobtype}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Device Serial No </label></td>
+                                            <td>  <b>: {{$Custom->Serialno}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Condition  </label></td>
+                                            <td>  <b>: {{$Custom->Condition}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Problem  </label></td>
+                                            <td>  <b>: {{$Custom->Problem}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Order Date</label></td>
+                                            <td>  <b>: {{$Custom->orderdate}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Delivery Date</label></td>
+                                            <td>  <b>: {{$Custom->deleverdate}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Customer Name</label></td>
+                                            <td>  <b>: {{$Custom->user}}</b></td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td> <label for="comment">Contact No</label></td>
+                                            <td>  <b>: {{$Custom->telno}}</b></td>
+
+                                        </tr>
+
+                                        <td> <input type="hidden" class="form-control"  Name="Jobid" value="{{$Custom->jobid}}" placeholder="Enter the Customer's User ID"></td>
+
+                                        <tr>
+                                            <td> <button type="Submit" class="subbutton"  >Goto the Job</button></td>
+                                        </tr>
+                                    </form>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" >Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    @endforeach
+    <div class="modal fade" id="Shownote" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Notification</h4>
+                </div>
+                <div class="container">
+                <table class="table table-hover" style="width: 300px">
+                    <thead>
+                    <tr>
+                        <th>Job ID </th>
+                        <th>Device</th>
+
+
+                        <th>Deliver Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach($qarray3 as $Custom)
+                        <tr  data-toggle="modal" data-target="#Showtask{{$Custom->jobid}}" data-dismiss="modal">
+                            <td>{{$Custom->jobid}}</td>
+                            <td>{{$Custom->device}}</td>
+
+
+                            <td>{{$Custom->deleverdate}}</td>
+                        </tr>
+
+
+                    @endforeach
+
+
+
+                    </tbody>
+                </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" >Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 @endsection
 

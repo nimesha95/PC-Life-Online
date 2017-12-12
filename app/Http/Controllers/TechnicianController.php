@@ -14,11 +14,14 @@ class TechnicianController extends Controller
     {
         //dd($request);
         $Jobid = $request->input('jobid');
+        $qarrayj = DB::select("select * from job where jobid='" . $Jobid . "' ");
+        $qarrayt = DB::select(" select * from tasks where id in (select taskid from jobtask where jobid='" . $Jobid . "' )");
+        $qarraya = DB::select("select * from devq where (Type='Device Acc'  and invoice='" . $Jobid . "')");
 
         //dd($Jobid);
-        $pdf = PDF::loadView('pdf.invoiceRepair', array('Jobid'=>$Jobid));
+        $pdf = PDF::loadView('pdf.invoiceRepair', array('Jobid'=>$Jobid, 'qarrayj'=>$qarrayj, 'qarrayt'=>$qarrayt ,'qarraya'=>$qarraya));
         //dd($pdf);
-        return $pdf->download('invoice.pdf');
+        return $pdf->download($Jobid.'.pdf');
 
     }
 
@@ -26,6 +29,7 @@ class TechnicianController extends Controller
     {
         $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
         $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
+        $qarray3 = DB::select("SELECT * FROM job where (status='On going' and deleverdate='2017-12-13' ) LIMIT 5 ");
         $qarray2 = DB::select("SELECT * FROM job where type='Company Warranty' LIMIT 5 ");
     }
 
@@ -34,11 +38,54 @@ class TechnicianController extends Controller
         $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
         $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
         $qarray2 = DB::select("SELECT * FROM job where jobtype='Company Warranty' LIMIT 5 ");
-        return view('technician.index', compact('qarray','qarray1','qarray2'));
+        $qarray3 = DB::select("SELECT * FROM job where (status='On going' and deleverdate='2017-12-13' ) LIMIT 5 ");
+
+        return view('technician.index', compact('qarray','qarray1','qarray2','qarray3'));
 
 
     }
-    public function custom($type)
+    public function viewjobsall($type)
+    {
+
+
+        if($type=='Repair'){
+            $Task = 'Repair Onging';
+            $qarray = DB::select("SELECT * FROM job where status='On going' ");
+
+
+            return view('technician.Joblist',compact('qarray','Task'));
+        }
+        elseif ($type=='Service'){
+            $Task = 'Service Warrnaty';
+            $qarray  = DB::select("SELECT * FROM job where jobtype='Service' ");
+
+
+            return view('technician.Joblist',compact('qarray','Task'));
+        }
+        elseif ($type=='Company Warrnaty'){
+            $Task = 'Company Warrnaty';
+            $qarray  = DB::select("SELECT * FROM job where jobtype='Company Warranty' ");
+
+
+            return view('technician.Joblist',compact('qarray','Task'));
+        }
+        elseif ($type=='Completed'){
+            $Task= 'Completed';
+            $qarray = DB::select("SELECT * FROM job where status='Completed'");
+
+
+            return view('technician.Joblist',compact('qarray','Task'));
+        }
+
+        else{
+
+
+        }
+    }
+
+
+
+        public function custom($type)
     {
 
 
@@ -318,7 +365,8 @@ class TechnicianController extends Controller
         $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
         $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
         $qarray2 = DB::select("SELECT * FROM job where jobtype='Company Warranty' LIMIT 5 ");
-        return view('technician.index', compact('qarray','qarray1','qarray2'));
+        $qarray3 = DB::select("SELECT * FROM job where (status='On going' and deleverdate='2017-12-14' ) LIMIT 5 ");
+        return view('technician.index', compact('qarray','qarray1','qarray2','qarray3'));
 
 
     }

@@ -12,9 +12,14 @@
     <div class="row">
         <div class="col-sm-1" ></div>
         <div class="col-sm-10" >
-            <form action="{{route('viewjob')}}" method="post">
+            <form action="{{route('RepairInv')}}" method="post">
             <h2>Job Overview- {{$jobid}} </h2>
+                {{ csrf_field() }}
                 <input type="hidden" name="jobid" value="{{$jobid}}">
+                <div class="modal-footer">
+                    <button type="Submit" class="subbuttonred"  >Print Invoice</button>
+                    <a  href="{{url('technician')}}" style="all: unset;"> <button type="button" class="subbutton" data-toggle="modal" data-target=""  >Done</button></a>
+                </div>
             <div class="row">
 
                 <div class="col-sm-12" >

@@ -132,7 +132,10 @@
                                     @php($DTOP=$DTOP+($Custom2->DOPT))
                                     @php($DINT=$DINT+($Custom2->DINT))
                                 @endforeach
+                                <div class="">
+                                    <button type="Submit" class="subbuttonred"  >Confirm</button>
 
+                                </div>
                                 <h4 > Job Overview
                                 </h4></div>
 
@@ -155,10 +158,7 @@
                             <input type="hidden" name="DINT" value=" {{$DINT}}"  >
                             <input type="hidden" name="cost" value=" {{$cost}}"  >
 
-                            <div class="">
-                                <button type="Submit" class="subbuttonred"  >Confirm</button>
 
-                            </div>
 
                         </div>
                     </div>

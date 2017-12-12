@@ -20,7 +20,9 @@
   background-image: -ms-linear-gradient(top, #3498db, #2980b9);
   background-image: -o-linear-gradient(top, #3498db, #2980b9);
   background-image: linear-gradient(to bottom, #3498db, #2980b9); box-shadow: 0px 0px 2px #000; width: auto; padding: 10px" >
-
+                    <h4 style="color: White;display: inline-block"> New Job   {{$device}} <br><hr>Job ID {{$jobid}}
+                    </h4>
+                    <hr>
 
                     <div style="color: white ;padding: 10px;"> <b>Enter Device Information</b></div>
                     <div style="color: white ;padding: 10px;">
@@ -63,14 +65,14 @@
 
                             <td> <label for="comment">Customer Name</label></td>
                             <td>
-                                <input type="text" class="form-control"  Name="name" value=""></td>
+                                <input type="text" class="form-control"  Name="name" value="" placeholder="Customer Name"  required></td>
                             <td></td>
                         </tr>
                         <tr>
 
                             <td> <label for="comment">Contact</label></td>
                             <td>
-                                <input type="textarea" class="form-control"  Name="contact" value=""></td>
+                                <input type="textarea" class="form-control"  Name="contact" value=""  placeholder="Contact Number"  required></td>
                             <td></td>
                         </tr>
 
