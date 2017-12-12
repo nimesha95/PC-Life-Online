@@ -259,6 +259,104 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         'uses' => 'TechnicianController@getIndex',
         'as' => 'technician.index',
     ]);
-
-
+    Route::post('technician.index', [
+        'uses' => 'TechnicianController@store',
+        'as' => 'technician.index',
+    ]);
+    Route::post('/store', [
+        'uses' => 'TechnicianController@custstore',
+        'as' => 'customizestore',
+    ]);
+    Route::post('/repairinvoice', [
+        'uses' => 'TechnicianController@submitInvoice',
+        'as' => 'RepairInv'
+    ]);
+    Route::post('/customtask', [
+        'uses' => 'TechnicianController@custtask',
+        'as' => 'customizetask',
+    ]);
+    //new task to database
+    Route::post('/addnewtask', [
+        'uses' => 'TechnicianController@addnewtask',
+        'as' => 'addnewtask',
+    ]);
+    //device Questions
+    Route::post('/addReview', [
+        'uses' => 'TechnicianController@addReview',
+        'as' => 'addReview',
+    ]);
+    Route::group(['prefix' => 'technician'], function () {
+        Route::get('/custom/{type}', [
+            'uses' => 'TechnicianController@custom',
+            'as' => 'technician.customize',
+        ]);
+        Route::get('/Jobs/{type}', [
+            'uses' => 'TechnicianController@viewjobsall',
+            'as' => 'Jobs',
+        ]);
+        Route::get('/newjob/{type}', [
+            'uses' => 'TechnicianController@Newjob',
+            'as' => 'Newjob',
+        ]);
+        //NewJob form quarry
+        Route::post('/Newjobstore',
+            [
+                'uses' => 'TechnicianController@NewjobStore',
+                'as' => 'NewjobStore',
+            ]);
+        Route::get('/customtask', [
+            'uses' => 'TechnicianController@customtask',
+            'as' => 'technician.ctsk',
+        ]);
+        Route::get('/devacc', [
+            'uses' => 'TechnicianController@deviceacc',
+            'as' => 'technician.Deviceacc',
+        ]);
+        Route::get('/devquestion', [
+            'uses' => 'TechnicianController@devq',
+            'as' => 'technician.Question',
+        ]);
+        Route::get('/UserRegister', [
+            'uses' => 'TechnicianController@userreg',
+            'as' => 'technician.Question',
+        ]);
+        Route::post('/Reguser',
+            //User register form quarry
+            [
+                'uses' => 'TechnicianController@userregform',
+                'as' => 'userregister',
+            ]);
+        Route::post('/Addjobtask',
+            //User register form quarry
+            [
+                'uses' => 'TechnicianController@Addtsktojob',
+                'as' => 'Addjobtask',
+            ]);
+        Route::post('/ViewWarranty',
+            //User register form quarry
+            [
+                'uses' => 'TechnicianController@viewwarranty',
+                'as' => 'viewwarranty',
+            ]);
+        Route::get('/ViewWarranty', [
+            'uses' => 'TechnicianController@userreg',
+            'as' => 'viewwarranty',
+        ]);
+        Route::post('/Viewjob', [
+            'uses' => 'TechnicianController@viewjob',
+            'as' => 'viewjob',
+        ]);
+        Route::post('/ConfirmJob', [
+            'uses' => 'TechnicianController@Addcustomer',
+            'as' => 'ConfirmJob',
+        ]);
+        Route::post('/Deletetask', [
+            'uses' => 'TechnicianController@Deletetsktojob',
+            'as' => 'deletetask',
+        ]);
+        Route::post('/Confirmtask', [
+            'uses' => 'TechnicianController@confrimtsktojob',
+            'as' => 'Confirmtask',
+        ]);
+    });
 });
