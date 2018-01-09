@@ -305,10 +305,12 @@ Route::group(['middleware' => ['auth', 'cashier']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'technician']], function () {
+    //return to Technician homepage (Dashboard)
     Route::get('/technician', [
         'uses' => 'TechnicianController@getIndex',
         'as' => 'technician.index',
     ]);
+
     Route::post('technician.index', [
         'uses' => 'TechnicianController@store',
         'as' => 'technician.index',

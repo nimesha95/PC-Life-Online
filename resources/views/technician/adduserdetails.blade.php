@@ -72,7 +72,7 @@
 
                             <td> <label for="comment">Contact</label></td>
                             <td>
-                                <input type="textarea" class="form-control"  Name="contact" value=""  placeholder="Contact Number"  required></td>
+                                <input type="textarea" class="form-control"  Name="contact" value=""  placeholder="Contact Number" pattern="\d*" required></td>
                             <td></td>
                         </tr>
 

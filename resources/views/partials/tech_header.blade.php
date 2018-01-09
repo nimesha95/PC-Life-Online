@@ -79,7 +79,7 @@
             </form>
             <ul class="nav navbar-right" >
                 <li>
-                    <div class="butt" > <img  src="{{ asset('img/technician/logout.png')}}" style=""><b>LogOut</b>  </div>
+                    <a href="{{ route('user.logout') }}" style="all : unset"><div class="butt" > <img  src="{{ asset('img/technician/logout.png')}}" style=""><b>LogOut</b>  </div></a>
                 </li>
 
             </ul>

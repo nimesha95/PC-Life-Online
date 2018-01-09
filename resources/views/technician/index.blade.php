@@ -19,7 +19,7 @@
                             <form >
 
                                     <div class="col-sm-10" ><h4 >Repairs To Do</h4></div>
-                                <div class="col-sm-2" ><button type="submit" class="btn btn-default showbutton" style="background-color: #00dd00">View All</button></div>
+                                <div class="col-sm-2" ><a href="{{url('technician/Jobs/Repair')}}"><button type="button" class="btn btn-default showbutton" style="background-color: #00dd00">View All</button></a></div>
 
 
 

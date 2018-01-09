@@ -9,7 +9,7 @@ use App\Tech;
 
 class TechnicianController extends Controller
 {
-
+    // Invoice
     public function submitInvoice(Request $request)
     {
         //dd($request);
@@ -25,14 +25,15 @@ class TechnicianController extends Controller
 
     }
 
-    public function dashqarray()
+    /*public function dashqarray()
     {
         $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
         $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
         $qarray3 = DB::select("SELECT * FROM job where (status='On going' and deleverdate='2017-12-13' ) LIMIT 5 ");
         $qarray2 = DB::select("SELECT * FROM job where type='Company Warranty' LIMIT 5 ");
-    }
+    }*/
 
+    //load index page
     public function getIndex()
     {
         $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
@@ -44,6 +45,7 @@ class TechnicianController extends Controller
 
 
     }
+    // dashboad and customize view
     public function viewjobsall($type)
     {
 
@@ -83,7 +85,7 @@ class TechnicianController extends Controller
         }
     }
 
-
+        //questioneri and acceptance customization
 
         public function custom($type)
     {
@@ -170,6 +172,8 @@ class TechnicianController extends Controller
 
     }
 
+    //Create new job
+
     public function Newjob($type)
     {
 
@@ -210,11 +214,13 @@ class TechnicianController extends Controller
 
 
     }
+
+    //store a new job
     public function NewjobStore(Request $request)
     {
 
             //dd($request);
-        //load user Register quarry
+
 
         $Jobid = $request->input('Jobid');
         $device = $request->input('device');
@@ -231,6 +237,8 @@ class TechnicianController extends Controller
         //Return to questioner
         return view('technician.Question',compact('Jobid','device','Type','qarray'));
     }
+
+    //return to customize task
     public function customtask()
     {
         $qarray = DB::select("select * from tasks ");
@@ -242,7 +250,12 @@ class TechnicianController extends Controller
 
 
 
+
+
     }
+
+
+
     public function userreg()
         //load user Register View
     {

@@ -202,6 +202,7 @@
     </div>
     <!-- /#hot -->
 
+    @include('partials.footer')
 @endsection
 
 @section('scripts')

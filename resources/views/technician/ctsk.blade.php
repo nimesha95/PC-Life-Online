@@ -49,13 +49,13 @@
                                            <div class="col-md-12">
                                                <input type="hidden" name="id" value="{{$Tasks->id}}"  >
                                                <label for="comment"> Name :</label>
-                                               <input type="text" class="form-control"  Name="name" value="{{$Tasks->Name}}" >
+                                               <input type="text" class="form-control"  Name="name"  value="{{$Tasks->Name}}" >
                                                <label for="comment"> Default Operation Time :</label>
-                                               <input type="text" class="form-control"  Name="DOPT" value="{{$Tasks->DOPT}}" >
+                                               <input type="text" class="form-control"  Name="DOPT" pattern="\d*" value="{{$Tasks->DOPT}}" >
                                                <label for="comment"> Default Involve Time :</label>
-                                               <input type="text" class="form-control"  Name="DINT" value="{{$Tasks->DINT}}" >
+                                               <input type="text" class="form-control"  Name="DINT" pattern="\d*" value="{{$Tasks->DINT}}" >
                                                <label for="comment"> Default Price :</label>
-                                               <input type="text" class="form-control"  Name="price" value="{{$Tasks->price}}" >
+                                               <input type="text" class="form-control"  Name="price" pattern="\d*" value="{{$Tasks->price}}" >
 
                                                <label for="comment"> Usage :</label>
                                                <div class="row">
@@ -151,11 +151,11 @@
                                    <label for="comment"> Name :</label>
                                    <input type="text" class="form-control"  Name="name" value="" required>
                                    <label for="comment"> Default Operation Time :</label>
-                                   <input type="text" class="form-control"  Name="DOPT" value="" required  >
+                                   <input type="text" class="form-control"  Name="DOPT" pattern="\d*" value="" required  >
                                    <label for="comment"> Default Involve Time :</label>
-                                   <input type="text" class="form-control"  Name="DINT" value=""  required>
+                                   <input type="text" class="form-control"  Name="DINT" value=""  pattern="\d*" required>
                                    <label for="comment"> Default Price :</label>
-                                   <input type="text" class="form-control"  Name="price" value=""   required>
+                                   <input type="text" class="form-control"  Name="price" value=""   pattern="\d*" required>
 
                                    <label for="comment"> Usage :</label>
                                    <div class="row">
