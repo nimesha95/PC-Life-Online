@@ -112,5 +112,8 @@
         <div class="row form-group"><br></div>
 
     @endforeach
-    @include('partials.footer')
+    <div style="width: 130%; position:  relative; left: -20%;">
+        @include('partials.footer')
+    </div>
 @endsection
+
