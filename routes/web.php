@@ -341,6 +341,11 @@ Route::group(['middleware' => ['auth', 'cashier']], function () {
         'as' => 'cashier.index',
     ]);
 
+    Route::post('/cashier', [
+        'uses' => 'CashierController@getIndex',
+        'as' => 'cashier.index',
+    ]);
+
     Route::group(['prefix' => 'cashier'], function () {
         Route::get('/{cash}', [
             'uses' => 'CashierController@show',
