@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="row" >
+    <div class="row" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white; border-radius: 5px; margin:10px">
         <div>
             @foreach($orders as $order)
 
@@ -26,7 +26,7 @@
                     <input type="hidden" name="date" id="date" value="{{ $order->added }}">
 
                     <div style="margin-top: 20px">
-                        <div class="row" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white; border-radius: 5px; margin:10px">
+                        <div class="row" >
                             <div class="col-md-5 col-md-offset-1">
 
                                 <h3>Your Order</h3>
@@ -75,9 +75,10 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
 
-                        <div class="row" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white; border-radius: 5px; margin:10px">
-                            <div class="col-md-6 col-md-offset-3">
+                        <div class="row">
+                            <div class="col-md-6  col-md-offset-3">
 
                                 <div class="form-group">
                                     <label for="email">Order Total: </label>
@@ -103,7 +104,7 @@
                             </div>
                         </div>
 
-                        <div class="footer col-md-2 col-md-offset-5">
+
 
 
 
