@@ -31,6 +31,9 @@
                         <input type="password" id="password" name="password" class="form-control"
                                placeholder="Password">
                     </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="">Remember Me</label>
+                    </div>
                     <div style="margin-bottom: 3px">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
                     </div>
