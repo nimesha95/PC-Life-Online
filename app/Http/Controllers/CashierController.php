@@ -10,11 +10,12 @@ use Nexmo\Laravel\Facade\Nexmo;
 
 class CashierController extends Controller
 {
-    public function getIndex()
+    public function getIndex(Request $request)
     {
+        //dd($request);
         Cart::destroy();
 
-        $orders = DB::select('select * from orders where verified = ? ORDER BY added DESC ', [0]);
+        $orders = DB::select('select * from orders where verified = ? and added like ? ORDER BY added DESC ', [0, '%' . $request->date . '%']);
         $email = "nimesha95@live.com";
         //Mail::to($email)->send(New cashier());
         return view('cashier.index', compact('orders'));
@@ -34,7 +35,6 @@ class CashierController extends Controller
                 Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
             }
         }
-
         return view('cashier.details', compact('orders'));
     }
 

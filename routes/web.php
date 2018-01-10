@@ -93,6 +93,11 @@ Route::group(['prefix' => 'user'], function () {
             'as' => 'user.profile'
         ]);
 
+        Route::get('/profile1', [
+            'uses' => 'UserController@getProfile1',
+            'as' => 'user.profile1'
+        ]);
+
         Route::get('/profile/vieworders', [
             'uses' => 'UserController@viewOrders',
             'as' => 'user.orders'
@@ -332,6 +337,11 @@ Route::group(['middleware' => ['auth', 'stockmanager']], function () {
 
 Route::group(['middleware' => ['auth', 'cashier']], function () {
     Route::get('/cashier', [
+        'uses' => 'CashierController@getIndex',
+        'as' => 'cashier.index',
+    ]);
+
+    Route::post('/cashier', [
         'uses' => 'CashierController@getIndex',
         'as' => 'cashier.index',
     ]);
