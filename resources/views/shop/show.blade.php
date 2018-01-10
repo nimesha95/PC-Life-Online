@@ -35,9 +35,10 @@
     @foreach($items as $item)
         <div class="row">
 
-                @include('partials.Sidebar')
+            @include('partials.Sidebar')
             <H4>Device Details</H4>
-            <div class="col-md-9" style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px">
+            <div class="col-md-9"
+                 style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px">
                 <div class="col-md-6">
                     <table border="0">
                         <tr>
@@ -61,7 +62,7 @@
                     </table>
                 </div>
 
-                <div class="col-md-6" >
+                <div class="col-md-6">
                     <!-- form-group is used to put some top margins between rows-->
                     <div class="row form-group"><br></div>
                     <div class="row form-group"><br></div>

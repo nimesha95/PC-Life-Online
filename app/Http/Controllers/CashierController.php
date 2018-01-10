@@ -45,8 +45,10 @@ class CashierController extends Controller
 
         if ($order_total == $new_total) {
             DB::update('update orders set verified = 1 where  id = ? ', [$cash]);
+            DB::update('update orders set paid = 1 where  id = ? ', [$cash]);
         } else {
             DB::update('update orders set verified = 1  where  id = ? ', [$cash]);
+            DB::update('update orders set paid = 1 where  id = ? ', [$cash]);
             DB::update('update orders set total = ?  where  id = ? ', [$new_total, $cash]);
         }
 

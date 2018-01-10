@@ -60,7 +60,6 @@ class AdminController extends Controller
         return response()->json(['msg' => $arr], 200);
     }
 
-
     public function syncEarning()
     {
         $sales = DB::select('select date(added) as day,sum(total) as tot from orders group by date(added)');
@@ -74,7 +73,6 @@ class AdminController extends Controller
 
         return response()->json(['msg' => $arr], 200);
     }
-
 
     public function show($id)
     {
@@ -191,6 +189,7 @@ class AdminController extends Controller
     public function getEditItem(Request $request)
     {
         //need to validate data here
+        // dd($request);
         $pro_id = $request->input('pro_id');
         $table = $this->getItemType($pro_id);
 
@@ -208,20 +207,46 @@ class AdminController extends Controller
                 'description' => $rw->description, 'price' => $rw->price,
                 'discount_price' => $rw->discount_price];
         }
+
         $item = unserialize($item);
+        //dd($table);
         $row = array_merge($rowX, $item->returnArr());
 
         return view('admin.edit_item')->with('data', ['type' => $table[1], 'row' => $row]);
     }
 
+    public function removeUsr(Request $request)
+    {
+        //dd($request);
+
+        DB::table('users')->where('email', '=', $request->email)->delete();
+        return redirect()->back();
+    }
+
+    public function removeItem(Request $request)
+    {
+
+        $arr = $this->getItemType($request->proid);
+        // dd($arr);
+
+        DB::table($arr[0])->where('proid', '=', $request->proid)->delete();
+        return redirect()->back();
+    }
+
+    public function getUserHistory()
+    {
+        $userQry = DB::select("select name,email,role_name,created_at,last_login from users");
+        return view('admin.login_history', ['userQry' => $userQry]);
+    }
+
     public function postRegUser(Request $request)
     {
-        dd($request);
+        //dd($request);
         session(['AdminRegUser' => 1]);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'email | required | unique:users',
-            'password' => 'required | min:4',
+            'pwd' => 'required | min:4',
             'role' => 'required'
         ]);
 
@@ -229,13 +254,48 @@ class AdminController extends Controller
         $user = new User([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'password' => bcrypt($request->input('pwd')),
             'role' => $request->input('role'),
             'role_name' => $this->getRoleName($request->input('role')),
         ]);
         $user->save();
         return redirect()->back();
 
+    }
+
+    public function getDeliReport()
+    {
+        //delivery list
+        $cust = DB::select('select * from orders a, users b where a.delivery=0 AND a.email=b.email');
+        return view('admin.Del', compact('cust'));
+    }
+
+    public function custHistory()
+    {
+        $cust = DB::select('select distinct(a.email), b.name from orders a, users b where a.email=b.email');
+        return view('admin.customer', compact('cust'));
+    }
+
+    public function showDets($cus)
+    {
+        $cust = DB::select('select * FROM orders WHERE email=?', [$cus]);
+        $cusDets = DB::select('select * FROM users WHERE email=?', [$cus]);
+        return view('admin.customerDet', compact('cust', 'cusDets'));
+    }
+
+    public function showSales()
+    {
+        $des = DB::select('select * FROM desktops');
+        $lap = DB::select('select * FROM laptops');
+
+        return view('admin.item', compact('des', 'lap'));
+    }
+
+    public function showSalesItem($proid)
+    {
+        $items = DB::select('select SUM(total) AS total, COUNT(order_obj) AS Items_Sold,order_obj FROM orders WHERE order_obj=? GROUP BY order_obj', [$proid]);
+
+        return view('admin.itemDets', compact('items'));
     }
 
     private function getRoleName($var)

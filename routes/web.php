@@ -83,6 +83,11 @@ Route::group(['prefix' => 'user'], function () {
     });
 
     Route::group(['middleware' => ['auth', 'user']], function () {
+        Route::get('/testing', [
+            'uses' => 'UserController@getTest',
+            'as' => 'user.test'
+        ]);
+
         Route::get('/profile', [
             'uses' => 'UserController@getProfile',
             'as' => 'user.profile'
@@ -191,6 +196,21 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
             'as' => 'admin.reguser'
         ]);
 
+        Route::post('/removeusr', [
+            'uses' => 'AdminController@removeUsr',
+            'as' => 'admin.removeuser'
+        ]);
+
+        Route::post('/removeitem', [
+            'uses' => 'AdminController@removeItem',
+            'as' => 'admin.removeitem'
+        ]);
+
+        Route::get('/user_history', [
+            'uses' => 'AdminController@getUserHistory',
+            'as' => 'admin.getUserHistory'
+        ]);
+
         Route::post('/edit_item', [
             'uses' => 'AdminController@getEditItem',
             'as' => 'admin.get_edit_item'
@@ -209,6 +229,32 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::post('/syncEarning', [
             'uses' => 'AdminController@syncEarning',
             'as' => 'sync_earning'
+        ]);
+
+        Route::get('/delivery_report', [
+            'uses' => 'AdminController@getDeliReport',
+            'as' => 'admin.report_deli'
+        ]);
+
+        Route::get('/cus', [
+            'uses' => 'AdminController@custHistory',
+            'as' => 'admin.report_cust_history'
+        ]);
+
+        Route::get('/cus/{cus}', [
+            'uses' => 'AdminController@showDets',
+            'as' => 'admin.report_cust_history1'
+        ]);
+
+
+        //sales report
+        Route::get('/salesReport', [
+            'uses' => 'AdminController@showSales',
+            'as' => 'admin.showSales'
+        ]);
+        Route::get('/salesReport/{proid}', [
+            'uses' => 'AdminController@showSalesItem',
+            'as' => 'admin.showSales1'
         ]);
     });
 
@@ -308,7 +354,7 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
     //return to Technician homepage (Dashboard)
     Route::get('/technician', [
         'uses' => 'TechnicianController@getIndex',
-        'as' => 'technician.index',
+        'as' => 'technician.index1',
     ]);
 
     Route::post('technician.index', [
@@ -382,10 +428,10 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         Route::post('/Reguser',
             //User register form quarry
             [
-            'uses' => 'TechnicianController@userregform',
-            'as' => 'userregister',
+                'uses' => 'TechnicianController@userregform',
+                'as' => 'userregister',
 
-        ]);
+            ]);
         Route::post('/Addjobtask',
             //User register form quarry
             [
@@ -421,8 +467,6 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
             'uses' => 'TechnicianController@confrimtsktojob',
             'as' => 'Confirmtask',
         ]);
-
-
 
 
     });

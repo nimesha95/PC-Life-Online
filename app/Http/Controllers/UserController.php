@@ -8,6 +8,7 @@ use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use \Cart as Cart;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -60,13 +61,17 @@ class UserController extends Controller
             $type = Auth::user()->role;
             //dd($type);
 
+            DB::table('users')->where('email', $request->input('email'))->update(array(
+                'last_login' => Carbon::now()->toDateTimeString(),      //saving current timestamp as last login activity
+            ));
+
             switch ($type) {
                 case 0: //0 is admin
                     return redirect()->route('admin.index');
                     break;
                 case 1: //1 is normal user
                     Cart::restore(Auth::user()->email);
-                    return redirect()->route('user.profile');
+                    return redirect()->route('product.index');
                     break;
                 case 2: //2 is stockmanager
                     return redirect()->route('stockmanager.index');
@@ -75,7 +80,7 @@ class UserController extends Controller
                     return redirect()->route('cashier.index');
                     break;
                 case 4: //4 is technician
-                    return redirect()->route('technician.index');
+                    return redirect()->route('technician.index1');
                     break;
             }
         } else {
@@ -169,5 +174,10 @@ class UserController extends Controller
         Cart::destroy();        //destroying the current cart object
         Auth::logout();
         return redirect()->back();
+    }
+
+    public function getTest()
+    {
+        return view('user.testing');
     }
 }

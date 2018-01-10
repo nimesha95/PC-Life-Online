@@ -12,13 +12,12 @@
     <link rel="stylesheet" href="{{ URL::asset('css/mystylesheet.css') }}"/>
 
 
-
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
 
     @yield('styles')
 </head>
-<body  background="{{ asset('img/back.jpg')}}">
+<body background="{{ asset('img/back.jpg')}}">
 @yield('header')
 @yield('scripts1')
 

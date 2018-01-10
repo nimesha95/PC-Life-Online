@@ -15,7 +15,8 @@
 
         <div class="row">
             <div class="col-md-12 col-md-offset-2">
-                <div class="container" style="background-color:white;  box-shadow: 0px 0px 3px rgba(0,0,0,0.3); min-width: 400px; max-width: 800px;   margin: 10px; padding: 30px; border-radius: 5px">
+                <div class="container"
+                     style="background-color:white;  box-shadow: 0px 0px 3px rgba(0,0,0,0.3); min-width: 400px; max-width: 800px;   margin: 10px; padding: 30px; border-radius: 5px">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-4">
                             <h2>Sign Up</h2>
@@ -53,7 +54,8 @@
                         </div>
                         <div class="form-group">
                             <label for="phone" class="control-label">Phone</label>
-                            <input type="tel" pattern="^\d{10}$" maxlength="10" id="phone" name="phone" class="form-control"
+                            <input type="tel" pattern="^\d{10}$" maxlength="10" id="phone" name="phone"
+                                   class="form-control"
                                    required>
                         </div>
                         <div class="form-group">
@@ -75,13 +77,15 @@
 
                             <div class="form-inline row">
                                 <div class="form-group col-sm-6">
-                                    <input type="password" data-minlength="4" class="form-control" id="password" name="password"
+                                    <input type="password" data-minlength="4" class="form-control" id="password"
+                                           name="password"
                                            placeholder="password" required>
                                     <div class="help-block">Minimum of 4 characters</div>
                                 </div>
                                 <div class="form-group col-sm-6">
 
-                                    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
+                                    <input type="password" class="form-control" id="passwordConfirm"
+                                           name="passwordConfirm"
                                            data-match="#password"
                                            data-match-error="Whoops, these don't match" placeholder="Confirm" required>
                                     <div class="help-block with-errors"></div>
@@ -89,8 +93,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div style="margin-bottom: 3px"><button class="btn btn-lg btn-primary btn-block" name="signup" type="submit" >Submit</button></div>
-
+                            <div style="margin-bottom: 3px">
+                                <button class="btn btn-lg btn-primary btn-block" name="signup" type="submit">Submit
+                                </button>
+                            </div>
                         </div>
                         {{ csrf_field() }}
                     </form>

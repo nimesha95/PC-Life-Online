@@ -1,5 +1,5 @@
 
-.span6{
+.span6 {
     display: inline;
     height: 1000px;
     margin: 0px;
@@ -8,85 +8,89 @@
 
     border: 1px solid black;
 }
+
 .btn-sq {
-    width: 100px ;
-    height: 100px ;
+    width: 100px;
+    height: 100px;
     font-size: 10px;
     background: #FFFAFA;
 
 }
+
 .butt {
-    border: 1px outset rgba(0,0,0,0.1);
+    border: 1px outset rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     background-color: #ffffff;
-    height:90px;
-    width:90px;
-    cursor:pointer;
+    height: 90px;
+    width: 90px;
+    cursor: pointer;
 
     box-shadow: 0px 0px 1px #888888;
     text-align: center;
 
-
     margin: 5px;
-    display:inline-block;
-
+    display: inline-block;
 
 }
-.butt > img{
+
+.butt > img {
     width: 60px;
     height: 60px;
 
     margin-top: 5px;
 }
-.butt > p{
+
+.butt > p {
     margin-top: 2px;
     font-weight: 150%;
 }
 
 .butt:hover {
 
-
     box-shadow: 0px 0px 5px #888888;
 }
 
-
-.butt em.leftImage{
+.butt em.leftImage {
     background-position: -96px -112px;
 }
-.dashcont{
-    height:auto;
-    width:auto;
-    border: 1px outset rgba(0,0,0,0.5);
+
+.dashcont {
+    height: auto;
+    width: auto;
+    border: 1px outset rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     box-shadow: 0px 0px 1px #888888;
     padding: 10px;
     background-color: white;
 }
-.Sidecont{
-    height:auto;
-    width:auto;
 
-
+.Sidecont {
+    height: auto;
+    width: auto;
 
     padding: 10px;
-    background-color: rgba(255,255,255,0.5) ;
+    background-color: rgba(255, 255, 255, 0.5);
 }
-.dashhead{
-    height:auto;
-    width:auto;
+
+.dashhead {
+    height: auto;
+    width: auto;
 
 }
+
 .dashcont > table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.dashcont >th {
+.dashcont > th {
     text-align: left;
     padding: 8px;
 }
 
-.dashcont> tr:nth-child(even) {background-color: #f2f2f2;}
+.dashcont > tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
 /* ------------------- Sidebar Styling ------------------- */
 /*
@@ -104,32 +108,33 @@ ul }
 */
 
 .butttask {
-    border: 1px outset rgba(0,0,0,0.1);
+    border: 1px outset rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     background-color: #F5F5F5;
-    height:90px;
-    width:550px;
-    cursor:pointer;
+    height: 90px;
+    width: 550px;
+    cursor: pointer;
 
     box-shadow: 0px 0px 1px #888888;
     text-align: center;
 
-
     margin: 5px;
 
-
 }
+
 .butttask:hover {
     background-color: blue;
-    color:white;
+    color: white;
 }
-.butttask > img{
+
+.butttask > img {
     width: 60px;
     height: 60px;
 
     margin-top: 5px;
 }
-.butttask > p{
+
+.butttask > p {
     margin-top: 2px;
     font-weight: 150%;
 }
@@ -146,7 +151,8 @@ ul }
     -ms-user-select: none;
     user-select: none;
 }
-HTML  CSS   Result
+
+HTML CSS Result
 Edit on
 .switch-field {
     font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
@@ -185,10 +191,10 @@ Edit on
     -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
     -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition:    all 0.1s ease-in-out;
-    -ms-transition:     all 0.1s ease-in-out;
-    -o-transition:      all 0.1s ease-in-out;
-    transition:         all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .switch-field label:hover {
@@ -208,7 +214,8 @@ Edit on
 .switch-field label:last-of-type {
     border-radius: 0 4px 4px 0;
 }
-.subbutton{
+
+.subbutton {
     background: #3498db;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
     background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -224,7 +231,8 @@ Edit on
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
-.subbutton:hover{
+
+.subbutton:hover {
     background: #3cb0fd;
     background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
     background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
@@ -233,7 +241,8 @@ Edit on
     background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
     text-decoration: none;
 }
-.subbuttonred1{
+
+.subbuttonred1 {
     background: #fa4163;
     background-image: -webkit-linear-gradient(top, #fa4163, #ff5e5e);
     background-image: -moz-linear-gradient(top, #fa4163, #ff5e5e);
@@ -250,7 +259,8 @@ Edit on
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
-.subbuttonred{
+
+.subbuttonred {
     background: #fa4163;
     background-image: -webkit-linear-gradient(top, #fa4163, #ff5e5e);
     background-image: -moz-linear-gradient(top, #fa4163, #ff5e5e);
@@ -266,7 +276,8 @@ Edit on
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
-.subbuttonred:hover{
+
+.subbuttonred:hover {
     background: #f53d3d;
     background-image: -webkit-linear-gradient(top, #f53d3d, #f76868);
     background-image: -moz-linear-gradient(top, #f53d3d, #f76868);
@@ -275,6 +286,7 @@ Edit on
     background-image: linear-gradient(to bottom, #f53d3d, #f76868);
     text-decoration: none;
 }
+
 /*.modal-header{
     background: #c0e3fa;
     background-image: -webkit-linear-gradient(top, #c0e3fa, #ffffff);
@@ -285,7 +297,7 @@ Edit on
     color: 000;
 }*/
 
-.showbutton{
+.showbutton {
     background: #48ed11;
     background-image: -webkit-linear-gradient(top, #48ed11, #6ab82b);
     background-image: -moz-linear-gradient(top, #48ed11, #6ab82b);

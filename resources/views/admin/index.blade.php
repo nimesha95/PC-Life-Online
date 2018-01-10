@@ -29,7 +29,7 @@
     <div class="row">
         @include('partials.admin_sidebar')
         <div class="col-md-9">
-            <div class="row">
+            <div class="row" style="margin-bottom:80px;">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -38,7 +38,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge" id="orders" name="orders">26</div>
+                                    <div class="huge" id="orders" name="orders">0</div>
                                     <div>New Orders!</div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                     <i class="fa fa-truck fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge" id="deliv" name="deliv">12</div>
+                                    <div class="huge" id="deliv" name="deliv">0</div>
                                     <div>New Deliveries</div>
                                 </div>
                             </div>
@@ -82,14 +82,13 @@
                                     <i class="fa fa-money fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge" id="earn" name="earn">124</div>
+                                    <div class="huge" id="earn" name="earn">0</div>
                                     <div>Today's Earning</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{route('admin.reports',['type'=>"earning",'day'=> "recent"])}}">
+                        <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -111,7 +110,6 @@
                         </div>
                         <a href="{{route('admin.reports',['type'=>"service",'day'=> "recent"])}}">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -119,6 +117,7 @@
                     </div>
                 </div>
             </div>
+            <div class="row"><h3>Income Fluctuation</h3></div>
             <div class="row">
                 <div class="col-md-12">
                     <div id="area-chart" style="min-height: 250px;"></div>

@@ -17,9 +17,12 @@
                         <form action="{{route('userregister')}}" method="post">
                             <tr>
 
-                            <td> <label for="comment">Enter the User Name</label></td>
-                            <td> <input type="text" class="form-control"  Name="Name1" value="" placeholder="Enter the Customer's User ID"></td>
-                                <td> <button type="Submit" class="subbutton"  >Search</button></td>
+                                <td><label for="comment">Enter the User Name</label></td>
+                                <td><input type="text" class="form-control" Name="Name1" value=""
+                                           placeholder="Enter the Customer's User ID"></td>
+                                <td>
+                                    <button type="Submit" class="subbutton">Search</button>
+                                </td>
                             </tr>
                         </form>
                     </table>
@@ -28,7 +31,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#RemoveUserModal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                        data-target="#RemoveUserModal">Close
+                </button>
             </div>
         </div>
 

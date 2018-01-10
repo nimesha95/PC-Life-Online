@@ -82,7 +82,7 @@ class ProductController extends Controller
         } else {
             $items = DB::select("select * from laptops where type='" . $type . "' and brand='" . $brand . "'");
         }
-     
+
         return view('shop.product', ['items' => $items, 'sidebar' => 'laptop_sbar']);
     }
 
@@ -164,6 +164,7 @@ class ProductController extends Controller
         $outStock = array();
         foreach ($content as $itm) {
             $proid = $itm->id;
+            DB::table('stock')->where('proid', $proid)->decrement('stock', 1);  //reducing the stock count
             $qty = $itm->qty;
 
             $curStock = DB::select("select stock from stock where proid='" . $proid . "'");

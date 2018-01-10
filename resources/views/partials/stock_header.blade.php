@@ -24,27 +24,16 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Stock <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" data-toggle="modal" data-target="#AddSelectModal">Add Product</a></li>
-                        <li><a href="#">Edit Products</a></li>
-                        <li><a href="#">Remove Product</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#AddStockModal">Update Stock</a></li>
-                        <li><a href="#">Availability</a></li>
                     </ul>
                 </li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Orders <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Pre Orders</a></li>
-                        <li><a href="#">ReOrders</a></li>
-                    </ul>
-                </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Notification icon
+                <li><a href="#" data-toggle="modal" data-target="#ContactAdminModal">
+                        <i class="fa fa-comment" aria-hidden="true"></i> Contact Admin
+
                     </a>
                 </li>
                 <li class="dropdown">
@@ -92,10 +81,6 @@
                             <select class="form-control" id="items" name="ItemType">
                                 <option value="1">Desktop</option>
                                 <option value="2">Laptop</option>
-                                <option value="3">some</option>
-                                <option value="4">stuff</option>
-                                <option value="5">goes</option>
-                                <option value="6">here</option>
                             </select>
                         </div>
                     </div>
@@ -140,10 +125,7 @@
                                 <option value="0" selected>Select Catagory</option>
                                 <option value="1">Desktop</option>
                                 <option value="2">Laptop</option>
-                                <option value="3">some</option>
-                                <option value="4">stuff</option>
-                                <option value="5">goes</option>
-                                <option value="6">here</option>
+                                <option value="3">Accessories</option>
                             </select>
                         </div>
                     </div>
@@ -177,6 +159,47 @@
         </div>
     </div>
 </div>
+
+
+<!-- Contact Admin Modal -->
+<div class="modal fade" id="ContactAdminModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Contact Admin</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form class="form" method="post" action="{{route('stock.SendCritStock')}}">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2 col-sm-offset-2" for="Model">Critical Stock
+                                Notification:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="crit"
+                                       placeholder="Enter the names of the low stock items"
+                                       name="model" required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                                <br>
+                                <button type="submit" class="btn btn-success">Send Message</button>
+                            </div>
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="{{URL::to('js/add_stock.js')}}"></script>
 <script>
