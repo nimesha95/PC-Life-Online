@@ -16,12 +16,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/"><img src="{{ asset('img/home/home.png')}}" style="width:20px;height: 20px; position: relative; top: -5px "> Home <span
+                <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/"><img
+                                src="{{ asset('img/home/home.png')}}"
+                                style="width:20px;height: 20px; position: relative; top: -5px "> Home <span
                                 class="sr-only">(current)</span></a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"><img src="{{ asset('img/home/desk.png')}}" style="width:20px;height: 20px; position: relative; top: -5px "> Desktop Computers <span class="caret"></span></a>
+                       aria-expanded="false"><img src="{{ asset('img/home/desk.png')}}"
+                                                  style="width:20px;height: 20px; position: relative; top: -5px ">
+                        Desktop Computers <span class="caret"></span></a>
                     <ul class="dropdown-menu multi-column columns-2">
                         <div class="row">
                             <div class="col-sm-6">
@@ -49,7 +53,9 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('img/home/lap.png')}}" style="width:20px;height: 20px; position: relative; top: -5px "> Laptop Computers <span
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('img/home/lap.png')}}"
+                                                                                    style="width:20px;height: 20px; position: relative; top: -5px ">
+                        Laptop Computers <span
                                 class="caret"></span></a>
                     <ul class="dropdown-menu multi-column columns-2">
                         <div class="row">
@@ -78,7 +84,9 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('img/home/acc.png')}}" style="width:20px;height: 20px; position: relative; top: -5px "> Accessories <span
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('img/home/acc.png')}}"
+                                                                                    style="width:20px;height: 20px; position: relative; top: -5px ">
+                        Accessories <span
                                 class="caret"></span></a>
                     <ul class="dropdown-menu multi-column columns-3">
                         <div class="row">
@@ -127,7 +135,9 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('img/home/services.png')}}" style="width:20px;height: 20px; position: relative; top: -5px "> Services <span
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
+                                src="{{ asset('img/home/services.png')}}"
+                                style="width:20px;height: 20px; position: relative; top: -5px "> Services <span
                                 class="caret"></span></a>
                     <ul class="dropdown-menu multi-column columns-2">
                         <div class="row">
@@ -143,7 +153,8 @@
                         </div>
                     </ul>
                 </li>
-                <li ><a href="/"><img src="{{ asset('img/home/About.png')}}" style="width:20px;height: 20px; position: relative; top: -5px ">  About Us </a>
+                <li><a href="/"><img src="{{ asset('img/home/About.png')}}"
+                                     style="width:20px;height: 20px; position: relative; top: -5px "> About Us </a>
                 </li>
             </ul>
             <!--

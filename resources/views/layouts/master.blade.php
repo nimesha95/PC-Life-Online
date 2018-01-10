@@ -12,10 +12,9 @@
     <link rel="stylesheet" href="{{ URL::asset('css/mystylesheet.css') }}"/>
 
 
-
     @yield('styles')
 </head>
-<body  background="{{ asset('img/back.jpg')}}">
+<body background="{{ asset('img/back.jpg')}}">
 @yield('header')
 
 
