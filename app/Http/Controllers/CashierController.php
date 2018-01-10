@@ -35,7 +35,6 @@ class CashierController extends Controller
                 Cart::add($itm->id, $itm->name, $itm->qty, $itm->price);
             }
         }
-
         return view('cashier.details', compact('orders'));
     }
 
