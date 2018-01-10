@@ -24,23 +24,29 @@ class UserController extends Controller
 
     public function postEditInfo(Request $request)
     {
+
+
         $this->validate($request, [
             'mobile' => 'required'
         ]);
 
         $mobile = $request->input('mobile');
-        $addrLine1 = $request->input('addrLine1');
-        $addrLine2 = $request->input('addrLine2');
-        $addrCity = $request->input('addrCity');
+
+        $addr = $request->input('geoposition1d');
+        $addrCity = $request->input('geoposition1c');
+
+        $lati = $request->input('geoposition1a');
+        $longi = $request->input('geoposition1b');
 
         $email = Auth::user()->email;
 
-
         DB::table('users')->where('email', $email)->update(array(
-            'addr_line1' => $addrLine1,
-            'addr_line2' => $addrLine2,
+            'addr_line1' => explode(",", $addr)[0],
+            'addr_line2' => $addr,
             'addr_city' => $addrCity,
             'phone_no' => $mobile,
+            'lati' => $lati,
+            'longi' => $longi
         ));
         return redirect(route('user.profile'))->with('message', 'Information Updated');
     }
