@@ -97,7 +97,6 @@
                                 <button class="btn btn-lg btn-primary btn-block" name="signup" type="submit">Submit
                                 </button>
                             </div>
-
                         </div>
                         {{ csrf_field() }}
                     </form>

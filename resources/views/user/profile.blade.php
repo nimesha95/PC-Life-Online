@@ -4,11 +4,16 @@
     User Profile
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ URL::asset('css/spinner.css') }}"/>
+@endsection
+
 @section('header')
     @include('partials.header')
 @endsection
 
 @section('content')
+    <div class="loading">Loading&#8230;</div>
     <div class="row">
         @include('partials.user_prof_sidebar')
         <div class="col-md-9">
@@ -52,7 +57,7 @@
                         </div>
                     </div>
                 @endif
-
+            <!--
                 @if(isset($orders))
                     <div class="row">
                         <div class="col-md-offset-4">
@@ -81,6 +86,7 @@
                         </div>
                     </div>
                 @endif
+                    -->
             </div>
 
         </div>
@@ -163,4 +169,7 @@
         </div>
     </div>
 
+@endsection
+@section('scripts')
+    <script src="{{URL::to('js/test.js')}}"></script>
 @endsection

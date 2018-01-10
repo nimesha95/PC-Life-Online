@@ -83,6 +83,11 @@ Route::group(['prefix' => 'user'], function () {
     });
 
     Route::group(['middleware' => ['auth', 'user']], function () {
+        Route::get('/testing', [
+            'uses' => 'UserController@getTest',
+            'as' => 'user.test'
+        ]);
+
         Route::get('/profile', [
             'uses' => 'UserController@getProfile',
             'as' => 'user.profile'

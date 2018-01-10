@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Some header passed from the parameters
+    PC LIFE ONLINE
 @endsection
 
 @section('header')

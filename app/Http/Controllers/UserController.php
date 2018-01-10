@@ -175,4 +175,9 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->back();
     }
+
+    public function getTest()
+    {
+        return view('user.testing');
+    }
 }
