@@ -10,11 +10,14 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white; border-radius: 5px">
         <div class="row">
 
-            <h1 align="center">Delivery Report</h1><br><br>
-            <div class="col-md-12">
+            <img
+                    src="{{ asset('img/home/dash.png')}}"
+                    style="width:50px;height: 50px; position: relative; top: -5px ; left:100px;  display: inline-block"> <h3 style="display: inline-block;position: relative;  left:120px;  display: inline-block">   Dashboard</h3></div>
+
+        <div class="col-md-12" >
 
                 <div class="table-responsive">
 

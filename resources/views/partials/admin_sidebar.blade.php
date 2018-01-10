@@ -1,6 +1,6 @@
-<div class="col-md-3">
+<div class="col-md-3" >
     <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
-    <div id="sidebar" class="well sidebar-nav">
+    <div id="sidebar" class="well sidebar-nav" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white">
         <h5><i class="glyphicon glyphicon-home"></i>
             <small><b>MANAGEMENT</b></small>
         </h5>

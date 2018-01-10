@@ -10,10 +10,15 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white; border-radius: 5px">
         <div class="row">
+            <img
+                    src="{{ asset('img/home/cust.png')}}"
+                    style="width:50px;height: 50px; position: relative; top: -5px ; left:100px;  display: inline-block"> <h3 style="display: inline-block;position: relative;  left:120px;  display: inline-block">Customer Detail Report</h3></div>
 
-            <h1 align="center">Customer Detail Report</h1><br><br>
+
+
+
 
             <div class="col-md-12">
 

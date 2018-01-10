@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/mystylesheet.css') }}"/>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
-
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
 
     @yield('styles')
 </head>
