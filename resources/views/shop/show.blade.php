@@ -35,9 +35,9 @@
     @foreach($items as $item)
         <div class="row">
 
-            @include('partials.Sidebar')
-
-            <div class="col-md-9">
+                @include('partials.Sidebar')
+            <H4>Device Details</H4>
+            <div class="col-md-9" style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px">
                 <div class="col-md-6">
                     <table border="0">
                         <tr>
@@ -61,7 +61,7 @@
                     </table>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6" >
                     <!-- form-group is used to put some top margins between rows-->
                     <div class="row form-group"><br></div>
                     <div class="row form-group"><br></div>
@@ -84,31 +84,32 @@
                         <div class="col-md-3"><b>{{$item->price}}</b></div>
                     </div>
                     <div class="row form-group">
-                        <div class="btn-group col-md-offset-1" role="group" aria-label="...">
+                        <div class="btn-group col-md-offset-6" role="group" aria-label="...">
                             <a href="{{route('product.addToCart' , ['id'=> $item->proid])}}"
                                class="btn btn-success pull-right" role="button"> Add to Cart </a>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-0">
+
+                        <table class="table">
+                            <tbody>
+                            @foreach($specs as $key => $value)
+                                <tr>
+                                    <td><B>{{$key}}</B></td>
+                                    <td>{{$value}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row form-group"><br></div>
         <div class="row form-group"><br></div>
-        <div class="row">
-            <div class="col-md-9 col-md-offset-3">
 
-                <table class="table table-bordered">
-                    <tbody>
-                    @foreach($specs as $key => $value)
-                        <tr>
-                            <td>{{$key}}</td>
-                            <td>{{$value}}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
     @endforeach
-
+    @include('partials.footer')
 @endsection

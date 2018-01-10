@@ -25,7 +25,7 @@
             <li data-target="#bs-carousel" data-slide-to="2" class="active"></li>
         </ol>
 
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5)">
             <div class="item slides">
                 <div class="slide-1">
                     <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
@@ -203,8 +203,44 @@
 
 
     </div>
+    <div class="carousel-inner">
+
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
+                     class="img-responsive hidden-xs"
+                     alt="cover0">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960683/21_cbj9kg.png"
+                     class="img-responsive visible-xs"
+                     alt="cover0">
+
+        </div>
+        <div class="item slides">
+            <div class="slide-2">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960689/3_jv3bc9.png"
+                     class="img-responsive hidden-xs"
+                     alt="cover1">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960684/31_umk2ul.png"
+                     class="img-responsive visible-xs"
+                     alt="cover1">
+            </div>
+            <div class="hero">
+            </div>
+        </div>
+        <div class="item slides active">
+            <div class="slide-3">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/2_pzwsyb.png"
+                     class="img-responsive hidden-xs"
+                     alt="cover2">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960684/11_bxvjc2.png"
+                     class="img-responsive visible-xs"
+                     alt="cover2">
+            </div>
+            <div class="hero">
+            </div>
+        </div>
+    </div>
     <!-- /#hot -->
 
+    @include('partials.footer')
 @endsection
 
 @section('scripts')

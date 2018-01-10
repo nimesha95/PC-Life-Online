@@ -14,4 +14,5 @@
             <h2>The item You're looking for does not exist</h2>
         </div>
     </div>
+    @include('partials.footer')
 @endsection

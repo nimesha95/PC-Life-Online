@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="{{ URL::to('src/css/app.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/mystylesheet.css') }}"/>
 
+
+
     @yield('styles')
 </head>
-<body style="background-color: #f3f3f3">
+<body  background="{{ asset('img/back.jpg')}}">
 @yield('header')
 
 

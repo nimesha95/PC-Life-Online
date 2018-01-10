@@ -351,10 +351,12 @@ Route::group(['middleware' => ['auth', 'cashier']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'technician']], function () {
+    //return to Technician homepage (Dashboard)
     Route::get('/technician', [
         'uses' => 'TechnicianController@getIndex',
         'as' => 'technician.index1',
     ]);
+
     Route::post('technician.index', [
         'uses' => 'TechnicianController@store',
         'as' => 'technician.index',
@@ -390,6 +392,10 @@ Route::group(['middleware' => ['auth', 'technician']], function () {
         Route::get('/custom/{type}', [
             'uses' => 'TechnicianController@custom',
             'as' => 'technician.customize',
+        ]);
+        Route::get('/Jobs/{type}', [
+            'uses' => 'TechnicianController@viewjobsall',
+            'as' => 'Jobs',
         ]);
         Route::get('/newjob/{type}', [
             'uses' => 'TechnicianController@Newjob',

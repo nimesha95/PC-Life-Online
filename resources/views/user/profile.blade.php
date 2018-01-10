@@ -168,7 +168,7 @@
 
         </div>
     </div>
-
+    @include('partials.footer')
 @endsection
 @section('scripts')
     <script src="{{URL::to('js/test.js')}}"></script>
