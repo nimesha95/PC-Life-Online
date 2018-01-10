@@ -111,5 +111,5 @@
         <div class="row form-group"><br></div>
 
     @endforeach
-
+    @include('partials.footer')
 @endsection

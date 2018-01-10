@@ -18,7 +18,7 @@
 
     @yield('styles')
 </head>
-<body style="background-color: #f3f3f3">
+<body  background="{{ asset('img/back.jpg')}}">
 @yield('header')
 @yield('scripts1')
 
