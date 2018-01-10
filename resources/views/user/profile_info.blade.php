@@ -28,7 +28,15 @@
                     </div>
                 @endif
             </div>
-            <div class="row" style="margin-top: 20px"></div>
+            <div class="row" style="margin-top: 20px">
+
+                <h2>Your information</h2>
+                <h3>Name: {{$profile_info[0]->name}}</h3>
+                <h3>Email: {{$profile_info[0]->email}}</h3>
+                <h3>Address: {{$profile_info[0]->addr_line2}}</h3>
+                <h3>Phone: {{$profile_info[0]->phone_no}}</h3>
+                <h3>Joined: {{$profile_info[0]->created_at}}</h3>
+            </div>
 
             <div class="row" style="margin-top: 20px">
                 @if(isset($orders))
