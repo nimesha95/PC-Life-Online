@@ -44,7 +44,7 @@
                 <ul>
                     <li><i class="fa fa-map-marker"></i>Colombo Road, Divulapitiya </li>
                     <li><i class="fa fa-envelope-o"></i>pclifeinfo@gmail.com </li>
-                    <li><i class="fa fa-phone"></i>+9477- </li>
+                    <li><i class="fa fa-phone"></i>+9477-1959952 </li>
 
                 </ul>
 

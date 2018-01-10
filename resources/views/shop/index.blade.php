@@ -201,39 +201,41 @@
 
     </div>
     <div class="carousel-inner">
-
+        <div class="row" style="margin: 10px">
+            <div class="col-lg-6 col-md-6">
                 <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
                      class="img-responsive hidden-xs"
                      alt="cover0">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960683/21_cbj9kg.png"
-                     class="img-responsive visible-xs"
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
+                     class="img-responsive hidden-xs"
                      alt="cover0">
+            </div>
 
         </div>
-        <div class="item slides">
-            <div class="slide-2">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960689/3_jv3bc9.png"
+        <div class="row" style="margin: 10px">
+            <div class="col-lg-4 col-md-4">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
                      class="img-responsive hidden-xs"
-                     alt="cover1">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960684/31_umk2ul.png"
-                     class="img-responsive visible-xs"
-                     alt="cover1">
+                     alt="cover0">
             </div>
-            <div class="hero">
-            </div>
-        </div>
-        <div class="item slides active">
-            <div class="slide-3">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/2_pzwsyb.png"
+            <div class="col-lg-4 col-md-4">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
                      class="img-responsive hidden-xs"
-                     alt="cover2">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960684/11_bxvjc2.png"
-                     class="img-responsive visible-xs"
-                     alt="cover2">
+                     alt="cover0">
             </div>
-            <div class="hero">
+            <div class="col-lg-4 col-md-4">
+                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
+                     class="img-responsive hidden-xs"
+                     alt="cover0">
             </div>
+
         </div>
+
+
+
+
     </div>
     <!-- /#hot -->
 
