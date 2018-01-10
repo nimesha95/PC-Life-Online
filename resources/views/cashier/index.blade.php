@@ -33,9 +33,7 @@
         </div>
         <div class="row" style="margin-bottom: 25px">
             <form action="{{route('cashier.index')}}" method="POST">
-
                 {{ csrf_field() }}
-
                 <div align="center" style="padding-left: 96px;">
                     <div class="col-xs-3">
                         <input id="datepicker" name="date" readonly placeholder="Date"/>
