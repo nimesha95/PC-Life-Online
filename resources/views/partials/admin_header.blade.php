@@ -15,14 +15,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="{{ Request::is('/admin') ? 'active' : '' }}"><a href="{{route('admin.index')}}">Home <span
+                <li class="{{ Request::is('/admin') ? 'active' : '' }}"><a href="{{route('admin.index')}}"><img
+                                src="{{ asset('img/home/home.png')}}"
+                                style="width:20px;height: 20px; position: relative; top: -5px "> Home <span
                                 class="sr-only">(current)</span></a>
                 </li>
 
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">I AM Admin <span class="caret"></span></a>
+                       aria-expanded="false"><img
+                                src="{{ asset('img/home/admin.png')}}"
+                                style="width:20px;height: 20px; position: relative; top: -5px ">  I AM Admin <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#" data-toggle="modal" data-target="#AddUserModal">Add Users</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#RemoveUserModal">Remove Users</a></li>
@@ -32,7 +36,9 @@
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Stock <span class="caret"></span></a>
+                       aria-expanded="false"><img
+                                src="{{ asset('img/home/stock.png')}}"
+                                style="width:20px;height: 20px; position: relative; top: -5px "> Stock <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#" data-toggle="modal" data-target="#AddSelectModal">Add Product</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#EditItemModal">Edit Products</a></li>
@@ -42,7 +48,9 @@
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Reports <span class="caret"></span></a>
+                       aria-expanded="false"><img
+                                src="{{ asset('img/home/report.png')}}"
+                                style="width:20px;height: 20px; position: relative; top: -5px "> Reports <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{route('admin.report_deli')}}">Delivery Report</a></li>
                         <li><a href="{{route('admin.report_cust_history')}}">Customer Detail</a></li>

@@ -29,98 +29,109 @@
     <div class="row">
         @include('partials.admin_sidebar')
         <div class="col-md-9">
-            <div class="row" style="margin-bottom:80px;">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge" id="orders" name="orders">0</div>
-                                    <div>New Orders!</div>
+        <div class="well sidebar-nav" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white">
+
+                <div class="row" style="margin-bottom:10px;">
+                    <img
+                            src="{{ asset('img/home/dash.png')}}"
+                            style="width:50px;height: 50px; position: relative; top: -5px ; left:10px;  display: inline-block"> <h3 style="display: inline-block;position: relative;  left:10px;  display: inline-block">   Dash Board</h3></div>
+                    <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" id="orders" name="orders">0</div>
+                                        <div>New Orders!</div>
+                                    </div>
                                 </div>
                             </div>
+                            <a href="{{route('admin.reports',['type'=>"orders",'day'=> "recent"])}}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
                         </div>
-                        <a href="{{route('admin.reports',['type'=>"orders",'day'=> "recent"])}}">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-truck fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" id="deliv" name="deliv">0</div>
+                                        <div>New Deliveries</div>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
+                            <a href="{{route('admin.reports',['type'=>"deliveries",'day'=> "recent"])}}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-money fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" id="earn" name="earn">0</div>
+                                        <div>Today's Earning</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-wrench fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div>New Service</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{route('admin.reports',['type'=>"service",'day'=> "recent"])}}">
+                                <div class="panel-footer">
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-truck fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge" id="deliv" name="deliv">0</div>
-                                    <div>New Deliveries</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{route('admin.reports',['type'=>"deliveries",'day'=> "recent"])}}">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
+        </div>
+            <div class="well sidebar-nav" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white">
+                <div class="row"><img
+                            src="{{ asset('img/home/income.png')}}"
+                            style="width:50px;height: 50px; position: relative; top: -5px ; left:10px;  display: inline-block"> <h3 style="display: inline-block;position: relative;  left:10px;  display: inline-block">   Income Fluctuation</h3></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="area-chart" style="min-height: 250px;"></div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-money fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge" id="earn" name="earn">0</div>
-                                    <div>Today's Earning</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-wrench fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>New Service</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{route('admin.reports',['type'=>"service",'day'=> "recent"])}}">
-                            <div class="panel-footer">
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row"><h3>Income Fluctuation</h3></div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="area-chart" style="min-height: 250px;"></div>
                 </div>
             </div>
         </div>

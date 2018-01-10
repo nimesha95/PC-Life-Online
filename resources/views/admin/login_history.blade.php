@@ -10,10 +10,13 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row" >
         @include('partials.admin_sidebar')
-        <div class="col-md-9">
+        <div >
+        <div class="col-md-9" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white; border-radius: 5px">
+
             @if(sizeof($userQry)>0)
+
                 <h3>User Login History</h3>
                 <table class="table table-striped table-hover">
                     <thead>
@@ -40,6 +43,7 @@
             @else
                 No stuff
             @endif
+        </div>
         </div>
     </div>
 @endsection()
