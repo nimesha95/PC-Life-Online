@@ -24,8 +24,10 @@
 
     </script>
 
-    <div class="col-md-9">
-        @if(sizeof($items)>0)
+    <div class="col-md-9" >
+
+                @if(sizeof($items)>0)
+
             @foreach(array_chunk($items,3) as $itemschunk)
                 <div class="row">
                     @foreach($itemschunk as $item)

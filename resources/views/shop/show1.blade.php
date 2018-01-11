@@ -33,8 +33,12 @@
     </script>
 
     @foreach($items as $item)
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row" >
+            @include('partials.Sidebar')
+            <div class="col-md-9" style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px" >
+                <H3>Device Details</H3>
+                <div class="col-md-6" >
+
                 <table border="0">
                     <tr>
                         <td width="400px" height="400px" colspan="5"><img id="imageReplace" src="{{$item->image}}"
@@ -86,15 +90,18 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row form-group"><br></div>
-        <div class="row form-group"><br></div>
-        <div class="row">
-            <div class="col-md-12">
+                <div class="row form-group"><br></div>
+                <div class="row form-group"><br></div>
+                <div class="row">
+                    <div class="col-md-12">
 
-                {{$item->specification}}
-            </div>
+                        {{$item->specification}}
+                    </div>
+                </div>
         </div>
+        </div>
+
+
     @endforeach
     @include('partials.footer')
 @endsection

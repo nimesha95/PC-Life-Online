@@ -36,9 +36,10 @@
         <div class="row">
 
             @include('partials.Sidebar')
-            <H4>Device Details</H4>
+
             <div class="col-md-9"
                  style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px">
+                <H3>Device Details</H3>
                 <div class="col-md-6">
                     <table border="0">
                         <tr>

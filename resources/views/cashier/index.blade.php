@@ -5,6 +5,18 @@
 @endsection
 @section('header')
     @include('partials.cashier_header')
+
+    <script>
+        $(document).ready(function () {
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap', format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
+    <script src="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/js/gijgo.min.js"
+            type="text/javascript"></script>
+    <link href="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/css/gijgo.min.css" rel="stylesheet"
+          type="text/css"/>
 @endsection
 
 
@@ -19,7 +31,21 @@
 
 
         </div>
+        <div class="row" style="margin-bottom: 25px">
+            <form action="{{route('cashier.index')}}" method="POST">
+                {{ csrf_field() }}
+                <div align="center" style="padding-left: 96px;">
+                    <div class="col-xs-3">
+                        <input id="datepicker" name="date" readonly placeholder="Date"/>
+                    </div>
 
+                    <div class="col-xs-1">
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
         @foreach($orders as $order)
 
             <div method="POST" action="">
@@ -89,4 +115,5 @@
 
         @endforeach
     </div>
+
 @endsection
