@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5);background-color: white">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     @if ($message = Session::get('success'))

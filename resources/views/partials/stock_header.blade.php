@@ -16,13 +16,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="{{ Request::is('/stockmanager') ? 'active' : '' }}"><a
-                            href="{{route('stockmanager.index')}}">Home <span
+                            href="{{route('stockmanager.index')}}"><img
+                                src="{{ asset('img/home/home.png')}}"
+                                style="width:20px;height: 20px; position: relative; top: -5px "> Home <span
                                 class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Stock <span class="caret"></span></a>
+                       aria-expanded="false">
+                        <img
+                                src="{{ asset('img/home/stock.png')}}"
+                                style="width:20px;height: 20px; position: relative; top: -5px "> Stock <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#" data-toggle="modal" data-target="#AddStockModal">Update Stock</a></li>
                     </ul>

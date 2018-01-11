@@ -14,7 +14,8 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row" style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px ; padding: 10px ;margin:10px ">
+        <div class="row"></div>
         <div class="col-md-6">
             <div class="pre-scrollable" style="height: 200px">
                 <div class="panel panel-primary">
@@ -58,14 +59,18 @@
             </div>
         </div>
     </div>
+    </div>
     <br>
     <br>
-    <div class="row">
-        <div class="col-md-4 col-sm-offset-1"><h3>Stock Status</h3></div>
+    <div class="row" style="height: 300px; background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px ; padding: 10px ;margin:30px " >
+
+    <div class="col-md-4 col-sm-offset-1"><h3>Stock Status</h3></div>
+
+            <div id="chartdiv" style="height: 200px;width: 100%;font-size: 11px;"></div>
+
     </div>
-    <div class="row">
-        <div id="chartdiv" style="height: 200px;width: 100%;font-size: 11px;"></div>
-    </div>
+
+
 
 @endsection
 

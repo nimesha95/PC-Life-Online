@@ -35,18 +35,22 @@
 
     </script>
 
-    <div class="container">
+    <div class="row">
 
 
         @include('partials.user_prof_sidebar');
 
         <div class="col-sm-9">
             <div class=" container"
-                 style="box-shadow: 0px 0px 3px rgba(0,0,0,0.3); max-width: 800px; min-width: 500px; position: relative; top: -10px; padding: 30px; border-radius: 5px">
+                 style="box-shadow:  0px 0px 10px rgba(0,0,0,0.5);background-color: white; border-radius: 5px; max-width: 800px; min-width: 500px; position: relative; top: -10px; padding: 30px; border-radius: 5px">
                 <div class="row">
                     <div class="col-xs-3 col-md-4"></div>
                     <div class="col-xs-6 col-md-4">
-                        <h2>Your Cart</h2>
+                        <img
+                                src="{{ asset('img/home/cart.png')}}"
+                                style="width:50px;height: 50px; position: relative; top: -5px ; left:10px;  display: inline-block"> <h3 style="display: inline-block;position: relative;  left:10px;  display: inline-block">   Your Cart</h3>
+
+
                     </div>
                     <div class="col-xs-3 col-md-4"></div>
                 </div>

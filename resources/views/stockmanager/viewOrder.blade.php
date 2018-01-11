@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+    <div class="row" style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px ; padding: 10px ;margin:10px ">
     <div class="col-md-10 col-md-offset-1">
 
         <form class="form-horizontal" method="post" action="{{route('stock.subInv')}}">
@@ -63,6 +64,7 @@
             </div>
             {{ csrf_field() }}
         </form>
+    </div>
     </div>
     <script>
         var url = '{{route('stockmanager.index')}}'

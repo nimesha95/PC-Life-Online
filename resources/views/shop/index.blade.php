@@ -202,33 +202,38 @@
     </div>
     <div class="carousel-inner">
         <div class="row" style="margin: 10px">
-            <div class="col-lg-6 col-md-6">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
-                     class="img-responsive hidden-xs"
-                     alt="cover0">
+            <div class="col-lg-6 col-md-6" >
+                <img
+                        src="{{ asset('img/banner/offer1.png')}}"  class="img-responsive hidden-xs"
+                        alt="cover0" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5)"
+                        >
             </div>
             <div class="col-lg-6 col-md-6">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
-                     class="img-responsive hidden-xs"
-                     alt="cover0">
+                <img
+                        src="{{ asset('img/banner/offer2.png')}}"  class="img-responsive hidden-xs"
+                        alt="cover0" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5)"
+                >
             </div>
 
         </div>
         <div class="row" style="margin: 10px">
             <div class="col-lg-4 col-md-4">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
-                     class="img-responsive hidden-xs"
-                     alt="cover0">
+                <img
+                        src="{{ asset('img/banner/banner1.png')}}"  class="img-responsive hidden-xs"
+                        alt="cover0" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5)"
+                >
             </div>
             <div class="col-lg-4 col-md-4">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
-                     class="img-responsive hidden-xs"
-                     alt="cover0">
+                <img
+                        src="{{ asset('img/banner/banner2.png')}}"  class="img-responsive hidden-xs"
+                        alt="cover0" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5)"
+                >
             </div>
             <div class="col-lg-4 col-md-4">
-                <img src="http://res.cloudinary.com/docp8wv1x/image/upload/v1512960688/1_tgxro0.png"
-                     class="img-responsive hidden-xs"
-                     alt="cover0">
+                <img
+                        src="{{ asset('img/banner/banner3.png')}}"  class="img-responsive hidden-xs"
+                        alt="cover0" style="box-shadow: 0px 0px 10px rgba(0,0,0,0.5)"
+                >
             </div>
 
         </div>

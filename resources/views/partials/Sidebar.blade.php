@@ -1,4 +1,5 @@
-<nav class="col-md-3">
+<nav class="col-md-3" >
+
     <h4> Categories </h4>
     <ul class="nav nav-pills nav-stacked" data-offset-top="205">
         <li class="dropdown pad13">
@@ -67,6 +68,7 @@
         </li>
 
     </ul>
+
 </nav>
 
 

@@ -97,7 +97,7 @@
                                            value="{{ $order->total }}"
                                            readonly>
                                 </div>
-                                <button class="right" id="add-to-cart" type="submit"><span
+                                <button class="right" id="add-to-cart" type="submit" style="margin-bottom: 20px"><span
                                             class="glyphicon glyphicon-ok-sign"></span> Confirm
                                 </button>
 
