@@ -5,18 +5,6 @@
 @endsection
 @section('header')
     @include('partials.cashier_header')
-
-    <script>
-        $(document).ready(function () {
-            $('#datepicker').datepicker({
-                uiLibrary: 'bootstrap', format: 'yyyy-mm-dd'
-            });
-        });
-    </script>
-    <script src="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/js/gijgo.min.js"
-            type="text/javascript"></script>
-    <link href="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/css/gijgo.min.css" rel="stylesheet"
-          type="text/css"/>
 @endsection
 
 
@@ -25,27 +13,13 @@
         <div class="page-header">
             <img
                     src="{{ asset('img/home/orders.png')}}"
-                    style="width:50px;height: 50px; position: relative; top: -5px ; left:10px;  display: inline-block">
-            <h3 style="display: inline-block;position: relative;  left:10px;  display: inline-block"> Orders to be
-                Confirmed.</h3>
+                    style="width:50px;height: 50px; position: relative; top: -5px ; left:10px;  display: inline-block"> <h3 style="display: inline-block;position: relative;  left:10px;  display: inline-block"> Orders to be Confirmed.</h3>
+
+
 
 
         </div>
-        <div class="row" style="margin-bottom: 25px">
-            <form action="{{route('cashier.index')}}" method="POST">
-                {{ csrf_field() }}
-                <div align="center" style="padding-left: 96px;">
-                    <div class="col-xs-3">
-                        <input id="datepicker" name="date" readonly placeholder="Date"/>
-                    </div>
 
-                    <div class="col-xs-1">
-                        <button type="submit" class="btn btn-success">Search</button>
-                    </div>
-
-                </div>
-            </form>
-        </div>
         @foreach($orders as $order)
 
             <div method="POST" action="">
@@ -90,8 +64,7 @@
 
                                                         <a class="btn btn-success btn-circle text-uppercase left"
                                                            href="{{route('cashier.show',['cash'=>$order->id])}}"><span
-                                                                    class="glyphicon glyphicon-info-sign"></span>
-                                                            View</a>
+                                                                    class="glyphicon glyphicon-info-sign"></span> View</a>
 
                                                     </div>
 
@@ -115,5 +88,4 @@
 
         @endforeach
     </div>
-
 @endsection
