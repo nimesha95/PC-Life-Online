@@ -27,7 +27,8 @@
                        aria-expanded="false">
                         <img
                                 src="{{ asset('img/home/stock.png')}}"
-                                style="width:20px;height: 20px; position: relative; top: -5px "> Stock <span class="caret"></span></a>
+                                style="width:20px;height: 20px; position: relative; top: -5px "> Stock <span
+                                class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#" data-toggle="modal" data-target="#AddStockModal">Update Stock</a></li>
                     </ul>

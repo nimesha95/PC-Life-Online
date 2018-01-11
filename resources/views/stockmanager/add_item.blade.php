@@ -23,7 +23,8 @@
                 @endif
             </div>
             @if(session()->has('type'))
-                <div class="row" style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px ; padding: 10px ;margin:10px ">
+                <div class="row"
+                     style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px ; padding: 10px ;margin:10px ">
                     <div class="col-md-12">
                         <form class="form-horizontal" action="{{ route('admin.additems') }}" method="post">
                             <div class="form-group">

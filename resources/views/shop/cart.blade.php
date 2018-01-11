@@ -48,7 +48,9 @@
                     <div class="col-xs-6 col-md-4">
                         <img
                                 src="{{ asset('img/home/cart.png')}}"
-                                style="width:50px;height: 50px; position: relative; top: -5px ; left:10px;  display: inline-block"> <h3 style="display: inline-block;position: relative;  left:10px;  display: inline-block">   Your Cart</h3>
+                                style="width:50px;height: 50px; position: relative; top: -5px ; left:10px;  display: inline-block">
+                        <h3 style="display: inline-block;position: relative;  left:10px;  display: inline-block"> Your
+                            Cart</h3>
 
 
                     </div>

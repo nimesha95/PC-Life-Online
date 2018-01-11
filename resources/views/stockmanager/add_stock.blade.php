@@ -13,8 +13,9 @@
 @endsection
 
 @section('content')
-    <div class="row" style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px ; padding: 30px ;margin:10px ">
-    <div class="row" >
+    <div class="row"
+         style="background-color: white; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); border-radius: 10px ; padding: 30px ;margin:10px ">
+        <div class="row">
         <div class="col-md-4">
             <h4>You are adding <a href="#"> {{$brand}}</a> >> <a href="#"> {{$product}}</a></h4>
         </div>
