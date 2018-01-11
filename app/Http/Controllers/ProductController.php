@@ -174,7 +174,7 @@ class ProductController extends Controller
                 continue;
             } else {
                 array_push($outStock, $itm->name);
-                array_push($outStock, "dumber");
+                //array_push($outStock, "dumber");
                 $ptr = 1;
             }
         }

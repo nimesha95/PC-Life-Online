@@ -110,7 +110,7 @@ $("#orderSubmit").click(function () {
             //location.reload();
             if (msg['outstock']) {
 
-                alert(msg['outstock'] + "are out of stock. Please come back later!");
+                alert(msg['outstock'] + " is out of stock. Please come back later!");
             }
             else {
                 if (msg['returnURL'] == "pay_later") {
@@ -122,7 +122,7 @@ $("#orderSubmit").click(function () {
             }
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
-            alert('Error: ' + textStatus);
+            alert('Error: ' + jqXHR);
         })
 
 });

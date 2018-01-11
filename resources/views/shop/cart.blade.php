@@ -13,14 +13,14 @@
         function successMsg() {
             $.bootstrapGrowl('Payment is Successful.', {
                 type: 'success',
-                delay: 2000,
+                delay: 2000
             });
         }
 
         function FailedMsg() {
             $.bootstrapGrowl('Payment Failed', {
                 type: 'danger',
-                delay: 2000,
+                delay: 2000
             });
         }
 
@@ -257,6 +257,7 @@
 
 @section('scripts')
     <script src="{{URL::to('js/shop.js')}}"></script>
+    <script src="{{URL::to('js/bootstrap_growl.js')}}"></script>
     <script>
         var token = '{{\Illuminate\Support\Facades\Session::token()}}';
         var url = '{{route('getAddr')}}';

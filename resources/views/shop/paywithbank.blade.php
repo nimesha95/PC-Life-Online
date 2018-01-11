@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Pay With Paypal
+    Pay With Bank Deposit
 @endsection
 
 @section('header')
