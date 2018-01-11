@@ -39,7 +39,7 @@ class TechnicianController extends Controller
         $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
         $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
         $qarray2 = DB::select("SELECT * FROM job where jobtype='Company Warranty' LIMIT 5 ");
-        $qarray3 = DB::select("SELECT * FROM job where (status='On going' and deleverdate='2017-12-13' ) LIMIT 5 ");
+        $qarray3 = DB::select("SELECT * FROM job where (status='On going' and deleverdate='2018-01-11' ) LIMIT 5 ");
 
         return view('technician.index', compact('qarray', 'qarray1', 'qarray2', 'qarray3'));
 
@@ -347,7 +347,7 @@ class TechnicianController extends Controller
         $qarray = DB::select("SELECT * FROM job where status='On going' LIMIT 5 ");
         $qarray1 = DB::select("SELECT * FROM job where status='Completed' LIMIT 5 ");
         $qarray2 = DB::select("SELECT * FROM job where jobtype='Company Warranty' LIMIT 5 ");
-        $qarray3 = DB::select("SELECT * FROM job where (status='On going' and deleverdate='2017-12-14' ) LIMIT 5 ");
+        $qarray3 = DB::select("SELECT * FROM job where (status='On going' and deleverdate='2018-01-22' ) LIMIT 5 ");
         return view('technician.index', compact('qarray', 'qarray1', 'qarray2', 'qarray3'));
 
 
