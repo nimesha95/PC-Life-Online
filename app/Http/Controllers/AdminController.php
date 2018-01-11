@@ -65,7 +65,6 @@ class AdminController extends Controller
         $sales = DB::select('select date(added) as day,sum(total) as tot from orders group by date(added)');
 
         $arr = array();
-
         foreach ($sales as $record) {
             $temp = [$record->day, $record->tot];
             array_push($arr, $temp);
